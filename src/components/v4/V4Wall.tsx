@@ -132,13 +132,6 @@ const V4Wall = ({ onSelect }: Props) => {
 
         {/* HUD overlay */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="v4-focus-frame">
-            <span className="v4-focus-corner v4-focus-corner--tl" />
-            <span className="v4-focus-corner v4-focus-corner--tr" />
-            <span className="v4-focus-corner v4-focus-corner--bl" />
-            <span className="v4-focus-corner v4-focus-corner--br" />
-          </div>
-
           <div className="absolute top-6 left-6 v4-mono text-[10px] uppercase tracking-[0.22em] v4-dim">
             wall · 36 видимых · {dashboards.length} уникальных
           </div>
