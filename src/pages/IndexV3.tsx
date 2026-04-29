@@ -2,11 +2,9 @@ import { useState } from "react";
 import "@/styles/v3.css";
 import V3Nav from "@/components/v3/V3Nav";
 import V3Hero from "@/components/v3/V3Hero";
-import V3Marquee from "@/components/v3/V3Marquee";
-import V3Bento from "@/components/v3/V3Bento";
-import V3Quote from "@/components/v3/V3Quote";
-import V3Index from "@/components/v3/V3Index";
-import V3Footer from "@/components/v3/V3Footer";
+import V3Showcase from "@/components/v3/V3Showcase";
+import V3Stream from "@/components/v3/V3Stream";
+import V3Grid from "@/components/v3/V3Grid";
 import V3Modal from "@/components/v3/V3Modal";
 import type { Dashboard } from "@/data/dashboards";
 
@@ -16,11 +14,12 @@ const IndexV3Page = () => {
     <main className="v3-scope min-h-screen overflow-x-hidden">
       <V3Nav />
       <V3Hero />
-      <V3Marquee />
-      <V3Bento onSelect={setSelected} />
-      <V3Quote />
-      <V3Index onSelect={setSelected} />
-      <V3Footer />
+      <V3Showcase onSelect={setSelected} />
+      <V3Stream onSelect={setSelected} />
+      <V3Grid onSelect={setSelected} />
+      <footer className="border-t py-12 px-8 text-center v3-mono text-xs uppercase tracking-widest v3-muted" style={{ borderColor: "hsl(222 30% 14%)" }}>
+        Galaxy of Works · 2026 · Школа аналитики
+      </footer>
       {selected && <V3Modal dashboard={selected} onClose={() => setSelected(null)} />}
     </main>
   );
