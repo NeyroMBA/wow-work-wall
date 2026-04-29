@@ -19,17 +19,16 @@ const V4Wall = ({ onSelect }: Props) => {
   const sectionRef = useRef<HTMLElement>(null);
   const wallRef = useRef<HTMLDivElement>(null);
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const progressRef = useRef(0);
+  const lastFocusRef = useRef<number>(-1);
 
-  // featured updates rarely → cheap React state
-  const [featuredCol, setFeaturedCol] = useState(0);
+  const [focusIdx, setFocusIdx] = useState(0);
   const [progressDisplay, setProgressDisplay] = useState(0);
+  const [rowDisplay, setRowDisplay] = useState(1);
 
   const tiles = useMemo(() => buildTiles(), []);
 
   useEffect(() => {
     let raf = 0;
-    let lastFeatured = -1;
 
     const tick = () => {
       const el = sectionRef.current;
@@ -41,35 +40,73 @@ const V4Wall = ({ onSelect }: Props) => {
       const r = el.getBoundingClientRect();
       const total = r.height - window.innerHeight;
       const p = Math.min(1, Math.max(0, -r.top / total));
-      progressRef.current = p;
 
-      const rotY = -p * 360;
-      const tiltX = -8 + p * 4;
-      wall.style.transform = `translateZ(-${RADIUS}px) rotateX(${tiltX}deg) rotateY(${rotY}deg)`;
+      // Split scroll: 70% rotates the wall, 30% sweeps rows (up → middle → down)
+      // We loop the row sweep across the rotation a few times so user notices vertical motion.
+      const rotY = -p * 360;                         // full revolution
+      // verticalPhase: shifts the wall up/down so different rows align to the camera
+      // sin gives a smooth oscillation across the scroll
+      const verticalPhase = Math.sin(p * Math.PI * 2) * ROW_GAP; // -ROW_GAP..+ROW_GAP
+      const tiltX = -6;                              // gentle constant tilt
 
-      // Featured tile = the one whose angle puts it closest to camera (front, middle row)
-      const front = ((Math.round(((-rotY) % 360 + 360) % 360 / ANGLE_STEP)) % COLS + COLS) % COLS;
-      if (front !== lastFeatured) {
-        // toggle highlight class on middle-row tile
-        const prev = tileRefs.current[1 * COLS + lastFeatured];
-        const next = tileRefs.current[1 * COLS + front];
+      wall.style.transform = `translateZ(-${RADIUS}px) translateY(${verticalPhase}px) rotateX(${tiltX}deg) rotateY(${rotY}deg)`;
+
+      // The tile facing the camera is at angle ≈ 0 (mod 360) relative to current rotation.
+      // Each tile's world angle = colAngle. After rotating wall by rotY, the tile that
+      // ends up facing camera has colAngle ≡ -rotY (mod 360). Because we rotate negatively,
+      // -rotY = p*360.
+      const targetAngle = ((p * 360) % 360 + 360) % 360;
+
+      // Determine which row is closest to camera (cancels verticalPhase)
+      // Camera-aligned row is the one whose yOffset ≈ -verticalPhase
+      let bestRow = 1;
+      let bestRowDist = Infinity;
+      for (let row = 0; row < ROWS; row++) {
+        const yOffset = (row - (ROWS - 1) / 2) * ROW_GAP;
+        const d = Math.abs(yOffset + verticalPhase);
+        if (d < bestRowDist) { bestRowDist = d; bestRow = row; }
+      }
+
+      // Determine which column is closest, accounting for the row's angle offset
+      const rowAngleOffset = bestRow % 2 === 0 ? 0 : ANGLE_STEP / 2;
+      let bestCol = 0;
+      let bestColDist = Infinity;
+      for (let col = 0; col < COLS; col++) {
+        const a = (col * ANGLE_STEP + rowAngleOffset) % 360;
+        let d = Math.abs(a - targetAngle);
+        if (d > 180) d = 360 - d;
+        if (d < bestColDist) { bestColDist = d; bestCol = col; }
+      }
+
+      const focus = bestRow * COLS + bestCol;
+      if (focus !== lastFocusRef.current) {
+        const prev = tileRefs.current[lastFocusRef.current];
+        const next = tileRefs.current[focus];
         if (prev) prev.classList.remove("v4-tile--focus");
         if (next) next.classList.add("v4-tile--focus");
-        lastFeatured = front;
-        setFeaturedCol(front);
+        lastFocusRef.current = focus;
+        setFocusIdx(focus);
+        setRowDisplay(bestRow);
         setProgressDisplay(Math.round(p * 100));
+      } else {
+        // Still update progress occasionally
+        if (Math.abs(Math.round(p * 100) - progressDisplay) >= 1) {
+          setProgressDisplay(Math.round(p * 100));
+        }
       }
 
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const featured = tiles[1 * COLS + featuredCol] ?? tiles[0];
+  const featured = tiles[focusIdx] ?? tiles[0];
+  const rowLabel = ["верхний", "средний", "нижний"][rowDisplay] ?? "средний";
 
   return (
-    <section ref={sectionRef} id="wall" className="relative" style={{ height: "500vh" }}>
+    <section ref={sectionRef} id="wall" className="relative" style={{ height: "600vh" }}>
       <div className="v4-stage">
         <div
           className="absolute inset-0 pointer-events-none"
@@ -88,13 +125,12 @@ const V4Wall = ({ onSelect }: Props) => {
               const i = row * COLS + col;
               const tile = tiles[i % tiles.length];
               const angle = col * ANGLE_STEP + rowAngleOffset;
-              const isMiddle = row === 1;
 
               return (
                 <div
                   key={`${row}-${col}`}
                   ref={(n) => { tileRefs.current[i] = n; }}
-                  className={`v4-tile ${isMiddle ? "v4-tile--target" : ""}`}
+                  className="v4-tile"
                   style={{
                     transform: `rotateY(${angle}deg) translateZ(${RADIUS}px) translateY(${yOffset}px)`,
                   }}
@@ -105,11 +141,9 @@ const V4Wall = ({ onSelect }: Props) => {
                     <span>№ {String((i % tiles.length) + 1).padStart(3, "0")}</span>
                     <span>{tile.category}</span>
                   </div>
-                  {isMiddle && (
-                    <div className="v4-tile-badge">
-                      <span className="v4-chip-dot" /> в фокусе
-                    </div>
-                  )}
+                  <div className="v4-tile-badge">
+                    <span className="v4-chip-dot" /> в фокусе
+                  </div>
                 </div>
               );
             });
@@ -127,23 +161,37 @@ const V4Wall = ({ onSelect }: Props) => {
           </div>
 
           <div className="absolute top-6 left-6 v4-mono text-[10px] uppercase tracking-[0.22em] v4-dim">
-            wall · {dashboards.length * ROWS * 4 / ROWS} works
+            wall · 36 видимых · {dashboards.length} уникальных
           </div>
-          <div className="absolute top-6 right-6 v4-mono text-[10px] uppercase tracking-[0.22em] v4-mint">
-            {progressDisplay}% · в фокусе № {String(((featuredCol) % dashboards.length) + 1).padStart(3, "0")}
+          <div className="absolute top-6 right-6 v4-mono text-[10px] uppercase tracking-[0.22em] v4-mint text-right">
+            <div>{progressDisplay}% · ряд: {rowLabel}</div>
+            <div className="v4-dim mt-1">в фокусе № {String(((focusIdx % dashboards.length)) + 1).padStart(3, "0")}</div>
           </div>
 
-          {/* connector line from frame to info card */}
-          <svg className="v4-connector" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden>
-            <path d="M 500 500 L 240 720 L 60 720" />
-          </svg>
+          {/* row indicator on the right edge */}
+          <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 v4-mono text-[10px] uppercase tracking-[0.2em]">
+            {[0, 1, 2].map((r) => (
+              <div key={r} className="flex items-center gap-2 justify-end">
+                <span style={{ color: r === rowDisplay ? "hsl(152 76% 58%)" : "hsl(230 15% 45%)" }}>
+                  {["верх", "центр", "низ"][r]}
+                </span>
+                <span
+                  className="w-2 h-2 rounded-full transition-all"
+                  style={{
+                    background: r === rowDisplay ? "hsl(152 76% 58%)" : "hsl(230 15% 30%)",
+                    boxShadow: r === rowDisplay ? "0 0 12px hsl(152 76% 58%)" : "none",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
 
           {/* featured info */}
           <div className="absolute left-8 bottom-8 max-w-md v4-glass p-5 pointer-events-auto v4-info">
             <div className="v4-mono text-[10px] uppercase tracking-[0.22em] v4-dim mb-2 flex items-center gap-2">
-              <span className="v4-chip-dot" /> сейчас смотрим
+              <span className="v4-chip-dot" /> сейчас смотрим · {rowLabel} ряд
             </div>
-            <div key={featured.id} className="v4-info-anim">
+            <div key={focusIdx} className="v4-info-anim">
               <div className="v4-serif text-3xl leading-tight mb-1">{featured.title}</div>
               <div className="v4-mono text-[11px] uppercase tracking-[0.18em] v4-dim mb-3">
                 {featured.author} · {featured.cohort} · {featured.category}
@@ -160,9 +208,9 @@ const V4Wall = ({ onSelect }: Props) => {
             </button>
           </div>
 
-          <div className="absolute right-8 bottom-8 v4-mono text-[10px] uppercase tracking-[0.22em] v4-dim text-right">
-            <div>скролл = поворот стены</div>
-            <div className="v4-mint mt-1">подсвеченная работа = в фокусе</div>
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-8 v4-mono text-[10px] uppercase tracking-[0.22em] v4-dim text-center">
+            <div>скролл = поворот стены + смена ряда</div>
+            <div className="v4-mint mt-1">подсвеченная карточка = в фокусе</div>
           </div>
         </div>
       </div>
