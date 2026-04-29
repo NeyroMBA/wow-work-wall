@@ -86,6 +86,7 @@
   inset: 0;
   transform-style: preserve-3d;
   will-change: transform;
+  /* avoid React re-rendering: transform applied imperatively, no transition during scroll */
 }
 
 .v4-tile {
@@ -104,7 +105,11 @@
     0 30px 60px -20px hsl(0 0% 0% / 0.6),
     0 0 0 1px hsl(var(--v4-ink) / 0.04) inset;
   cursor: pointer;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  contain: layout paint;
+  backface-visibility: hidden;
+  transition: box-shadow 0.35s ease, outline-color 0.35s ease;
+  outline: 1px solid transparent;
+  outline-offset: 0px;
 }
 
 .v4-tile:hover {
@@ -112,6 +117,46 @@
     0 40px 80px -20px hsl(var(--v4-violet) / 0.55),
     0 0 0 1px hsl(var(--v4-mint) / 0.4) inset;
 }
+
+/* Currently focused (front-and-center) tile */
+.v4-tile--focus {
+  outline: 2px solid hsl(var(--v4-mint));
+  outline-offset: 4px;
+  box-shadow:
+    0 50px 90px -20px hsl(var(--v4-mint) / 0.55),
+    0 0 0 1px hsl(var(--v4-mint)) inset,
+    0 0 80px hsl(var(--v4-mint) / 0.35);
+  z-index: 2;
+}
+
+.v4-tile--focus .v4-tile-meta {
+  color: hsl(var(--v4-mint));
+}
+
+.v4-tile-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: hsl(var(--v4-bg) / 0.85);
+  border: 1px solid hsl(var(--v4-mint) / 0.6);
+  color: hsl(var(--v4-mint));
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+}
+
+.v4-tile--focus .v4-tile-badge {
+  display: inline-flex;
+  animation: v4-fade 0.3s ease-out both;
+}
+
 
 .v4-tile img {
   width: 100%;
@@ -184,4 +229,54 @@
 @keyframes v4-fade {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Center focus frame: marks where the in-focus tile lands */
+.v4-focus-frame {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 320px;
+  height: 240px;
+  margin-left: -160px;
+  margin-top: -120px;
+  pointer-events: none;
+  z-index: 3;
+}
+.v4-focus-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid hsl(var(--v4-mint));
+  filter: drop-shadow(0 0 8px hsl(var(--v4-mint) / 0.6));
+}
+.v4-focus-corner--tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.v4-focus-corner--tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.v4-focus-corner--bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.v4-focus-corner--br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* SVG connector from focus frame to info panel */
+.v4-connector {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.45;
+}
+.v4-connector path {
+  fill: none;
+  stroke: hsl(var(--v4-mint));
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+  vector-effect: non-scaling-stroke;
+}
+
+.v4-info {
+  border-color: hsl(var(--v4-mint) / 0.35) !important;
+  box-shadow: 0 30px 60px -20px hsl(var(--v4-mint) / 0.25);
+}
+
+.v4-info-anim {
+  animation: v4-fade 0.35s ease-out both;
 }
