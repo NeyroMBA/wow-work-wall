@@ -10,15 +10,8 @@ import type { Dashboard } from "@/data/dashboards";
 
 const IndexV3Page = () => {
   const [selected, setSelected] = useState<Dashboard | null>(null);
-  const [debug, setDebug] = useState("...");
-  if (typeof window !== "undefined") {
-    setTimeout(() => {
-      setDebug(`scrollH=${document.documentElement.scrollHeight}, innerH=${window.innerHeight}, bodyH=${document.body.scrollHeight}`);
-    }, 500);
-  }
   return (
     <main className="v3-scope min-h-screen">
-      <div style={{ position: "fixed", top: 60, left: 10, zIndex: 9999, background: "red", color: "white", padding: 8, fontSize: 12 }}>{debug}</div>
       <V3Nav />
       <V3Hero />
       <V3Showcase onSelect={setSelected} />
