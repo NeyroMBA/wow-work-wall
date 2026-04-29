@@ -11,7 +11,7 @@ import type { Dashboard } from "@/data/dashboards";
 const IndexV3Page = () => {
   const [selected, setSelected] = useState<Dashboard | null>(null);
   return (
-    <main className="v3-scope min-h-screen overflow-x-hidden">
+    <main className="v3-scope min-h-screen">
       <V3Nav />
       <V3Hero />
       <V3Showcase onSelect={setSelected} />
