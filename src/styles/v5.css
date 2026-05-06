@@ -241,9 +241,7 @@
 
 .v5-frame img {
   width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: contain;
-  object-position: center;
+  height: auto;
   display: block;
   border-radius: 10px;
   background: hsl(0 0% 100% / 0.04);
