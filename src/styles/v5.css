@@ -79,26 +79,28 @@
   box-shadow: 0 0 12px hsl(var(--ina-green));
 }
 
-/* ---- Hero screen with 3D auto-spin wall (V4-style) ---- */
+/* ---- Hero (editorial layout + 3D auto-spin wall behind) ---- */
 .v5-hero-screen {
   position: relative;
   height: 100vh;
-  min-height: 640px;
+  min-height: 700px;
   overflow: hidden;
-  padding-top: 80px;
+  padding-top: 88px;
 }
+
+/* Wall layer */
 .v5-hero-stage {
   position: absolute;
   inset: 0;
-  perspective: 1600px;
-  perspective-origin: 50% 50%;
+  perspective: 1700px;
+  perspective-origin: 50% 45%;
+  z-index: 1;
 }
 .v5-wall-wrap {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  /* Tilt scene slightly */
-  transform: rotateX(-4deg);
+  transform: rotateX(-6deg);
 }
 .v5-wall {
   position: absolute;
@@ -111,30 +113,26 @@
   transform-style: preserve-3d;
   will-change: transform;
 }
-@keyframes v5-spin-cw  { from { transform: rotateY(0deg);   } to { transform: rotateY(360deg);  } }
-@keyframes v5-spin-ccw { from { transform: rotateY(0deg);   } to { transform: rotateY(-360deg); } }
+@keyframes v5-spin-cw  { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+@keyframes v5-spin-ccw { from { transform: rotateY(0deg); } to { transform: rotateY(-360deg); } }
 
 .v5-tile {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 240px;
-  height: 170px;
-  margin-left: -120px;
-  margin-top: -85px;
+  left: 50%; top: 50%;
+  width: 230px; height: 160px;
+  margin-left: -115px; margin-top: -80px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid hsl(var(--v5-line));
   background: hsl(var(--v5-bg-2));
-  box-shadow: 0 30px 60px -20px hsl(0 0% 0% / 0.7), 0 0 0 1px hsl(var(--v5-ink) / 0.04) inset;
+  box-shadow: 0 30px 60px -20px hsl(0 0% 0% / 0.75);
   backface-visibility: hidden;
   contain: layout paint;
 }
 .v5-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .v5-tile-meta {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 8px 10px;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 7px 10px;
   background: linear-gradient(180deg, transparent, hsl(var(--v5-bg) / 0.92));
   font-family: "JetBrains Mono", monospace;
   font-size: 9px;
@@ -145,23 +143,79 @@
   justify-content: space-between;
 }
 
-.v5-hero-title {
+/* Vignette for legibility */
+.v5-hero-screen::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 75% at 26% 55%, hsl(var(--v5-bg) / 0.94) 0%, hsl(var(--v5-bg) / 0.55) 45%, transparent 78%),
+    linear-gradient(180deg, hsl(var(--v5-bg) / 0.6) 0%, transparent 18%, transparent 78%, hsl(var(--v5-bg) / 0.9) 100%);
+}
+
+/* Editorial text layers */
+.v5-hero-top {
+  position: absolute;
+  top: 110px;
+  left: 6vw;
+  z-index: 4;
+}
+.v5-hero-headline {
+  position: absolute;
+  left: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  max-width: 70vw;
+  pointer-events: none;
+}
+.v5-hero-headline h1 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+  font-size: clamp(3.2rem, 9vw, 9.5rem);
+  text-shadow: 0 6px 30px hsl(var(--v5-bg)), 0 0 80px hsl(var(--v5-bg) / 0.9);
+}
+.v5-hero-italic {
+  font-family: "Instrument Serif", "Manrope", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: hsl(var(--ina-green));
+  letter-spacing: -0.02em;
+}
+
+.v5-hero-caption {
+  position: absolute;
+  right: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: min(280px, 28vw);
+  padding: 22px 22px 24px;
+  border: 1px solid hsl(var(--v5-line));
+  border-radius: 18px;
+  background: hsl(var(--v5-bg) / 0.55);
+  backdrop-filter: blur(14px);
+}
+
+.v5-hero-cue {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  text-align: center;
-  padding: 44px 36px;
-  pointer-events: none;
-  width: min(92%, 880px);
-  border-radius: 28px;
-  background:
-    radial-gradient(ellipse at center, hsl(var(--v5-bg) / 0.95) 0%, hsl(var(--v5-bg) / 0.85) 55%, hsl(var(--v5-bg) / 0.5) 90%);
-  backdrop-filter: blur(10px);
+  bottom: 30px;
+  transform: translateX(-50%);
+  z-index: 4;
+  animation: v5-cue 2.2s ease-in-out infinite;
 }
-.v5-hero-title h1 {
-  text-shadow: 0 4px 24px hsl(var(--v5-bg)), 0 0 60px hsl(var(--v5-bg));
+@keyframes v5-cue {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, 0); }
+  50%      { opacity: 1;   transform: translate(-50%, 6px); }
+}
+
+@media (max-width: 768px) {
+  .v5-hero-caption { display: none; }
+  .v5-hero-headline { max-width: 92vw; }
 }
 
 /* ---- Gallery cards ---- */
