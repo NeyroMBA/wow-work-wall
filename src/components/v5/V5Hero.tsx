@@ -1,4 +1,16 @@
-import { dashboards } from "@/data/dashboards";
+import { dashboards, type Dashboard } from "@/data/dashboards";
+
+const CATEGORY_LABEL: Record<Dashboard["category"], string> = {
+  Sales: "Продажи",
+  Finance: "Финансы",
+  Marketing: "Маркетинг",
+  HR: "HR",
+  Health: "Здоровье",
+  SaaS: "SaaS",
+  Logistics: "Логистика",
+  RealEstate: "Недвижимость",
+  Support: "Поддержка",
+};
 
 const COLS = 10;
 const RADIUS = 560;
@@ -31,7 +43,7 @@ const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
             </div>
             <div className="v5-tile-meta">
               <span>№ {String((i % dashboards.length) + 1).padStart(3, "0")}</span>
-              <span>{tile.category}</span>
+              <span>{CATEGORY_LABEL[tile.category]}</span>
             </div>
           </div>
         );
