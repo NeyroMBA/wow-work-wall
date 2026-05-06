@@ -16,6 +16,18 @@ const CATEGORIES: { key: Dashboard["category"] | "All"; label: string }[] = [
   { key: "Support", label: "Поддержка" },
 ];
 
+const CATEGORY_LABEL: Record<Dashboard["category"], string> = {
+  Sales: "Продажи",
+  Finance: "Финансы",
+  Marketing: "Маркетинг",
+  HR: "HR",
+  Health: "Здоровье",
+  SaaS: "SaaS",
+  Logistics: "Логистика",
+  RealEstate: "Недвижимость",
+  Support: "Поддержка",
+};
+
 // chaotic offsets per column position (3 per row)
 const offsets = [
   { mt: 0,   rot: -1.5 },
@@ -93,7 +105,7 @@ const V5Gallery = ({ onSelect }: Props) => {
                           className="absolute top-7 right-7 v5-chip"
                           style={{ background: "hsl(var(--v5-bg) / 0.75)", zIndex: 4 }}
                         >
-                          {d.category}
+                          {CATEGORY_LABEL[d.category]}
                         </div>
                       </div>
                       <div className="v5-gallery-card-body">
@@ -101,7 +113,7 @@ const V5Gallery = ({ onSelect }: Props) => {
                           {d.title}
                         </h3>
                         <div className="text-xs v5-dim mb-3">{d.author}</div>
-                        <p className="text-sm leading-relaxed v5-dim line-clamp-2">
+                        <p className="text-sm leading-relaxed v5-dim">
                           {d.description}
                         </p>
                       </div>

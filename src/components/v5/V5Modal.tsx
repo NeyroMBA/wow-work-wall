@@ -1,6 +1,18 @@
 import { useEffect } from "react";
 import type { Dashboard } from "@/data/dashboards";
 
+const CATEGORY_LABEL: Record<Dashboard["category"], string> = {
+  Sales: "Продажи",
+  Finance: "Финансы",
+  Marketing: "Маркетинг",
+  HR: "HR",
+  Health: "Здоровье",
+  SaaS: "SaaS",
+  Logistics: "Логистика",
+  RealEstate: "Недвижимость",
+  Support: "Поддержка",
+};
+
 type Props = { dashboard: Dashboard; onClose: () => void };
 
 const V5Modal = ({ dashboard, onClose }: Props) => {
@@ -33,7 +45,7 @@ const V5Modal = ({ dashboard, onClose }: Props) => {
           </div>
           <div className="col-span-12 md:col-span-10">
             <div className="v5-mono text-[11px] uppercase tracking-[0.2em] v5-green mb-3">
-              {dashboard.category} · {dashboard.cohort}
+              {CATEGORY_LABEL[dashboard.category]} · {dashboard.cohort}
             </div>
             <h3 className="v5-display text-5xl md:text-7xl leading-[0.95] mb-4">{dashboard.title}</h3>
             <div className="v5-mono text-xs uppercase tracking-[0.18em] v5-dim">
