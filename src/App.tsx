@@ -8,6 +8,7 @@ import IndexV2 from "./pages/IndexV2.tsx";
 import IndexV3Page from "./pages/IndexV3.tsx";
 import IndexV4 from "./pages/IndexV4.tsx";
 import IndexV5 from "./pages/IndexV5.tsx";
+import IndexV6 from "./pages/IndexV6.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
