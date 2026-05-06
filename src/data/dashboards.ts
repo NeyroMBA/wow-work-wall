@@ -167,7 +167,7 @@ const RAW: Omit<Dashboard, "palette">[] = [
 
 export const dashboards: Dashboard[] = RAW.map((d, i) => ({
   ...d,
-  palette: d.palette ?? PALETTE_CYCLE[i % PALETTE_CYCLE.length],
+  palette: PALETTE_CYCLE[i % PALETTE_CYCLE.length],
 }));
 
 export const PALETTES = PALETTE_CYCLE;
