@@ -47,12 +47,12 @@ const V5Gallery = ({ onSelect }: Props) => {
             <div className="v5-mono text-[10px] uppercase tracking-[0.3em] v5-dim mb-3">
               № 002 — каталог
             </div>
-            <h2 className="v5-serif text-5xl md:text-7xl leading-[0.95]">
-              Все <span className="italic v5-violet">работы</span>
+            <h2 className="v5-display text-5xl md:text-7xl leading-[0.95]">
+              Все <span className="italic v5-blue">работы</span>
             </h2>
           </div>
           <div className="v5-mono text-[11px] uppercase tracking-[0.2em] v5-dim">
-            показано · <span className="v5-mint">{items.length}</span> из {dashboards.length}
+            показано · <span className="v5-green">{items.length}</span> из {dashboards.length}
           </div>
         </div>
 
@@ -99,10 +99,10 @@ const V5Gallery = ({ onSelect }: Props) => {
                         </div>
                       </div>
                       <div className="v5-gallery-card-body">
-                        <div className="v5-mono text-[10px] uppercase tracking-[0.22em] v5-mint mb-3">
+                        <div className="v5-mono text-[10px] uppercase tracking-[0.22em] v5-green mb-3">
                           № {String(d.id).padStart(3, "0")} · {d.cohort}
                         </div>
-                        <h3 className="v5-serif text-3xl md:text-4xl leading-[0.95] mb-3">
+                        <h3 className="v5-display text-3xl md:text-4xl leading-[0.95] mb-3">
                           {d.title}
                         </h3>
                         <div className="v5-mono text-[11px] uppercase tracking-[0.18em] v5-dim mb-4">

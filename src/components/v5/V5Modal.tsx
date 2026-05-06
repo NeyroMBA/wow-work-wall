@@ -32,10 +32,10 @@ const V5Modal = ({ dashboard, onClose }: Props) => {
             № {String(dashboard.id).padStart(3, "0")}
           </div>
           <div className="col-span-12 md:col-span-10">
-            <div className="v5-mono text-[11px] uppercase tracking-[0.2em] v5-mint mb-3">
+            <div className="v5-mono text-[11px] uppercase tracking-[0.2em] v5-green mb-3">
               {dashboard.category} · {dashboard.cohort}
             </div>
-            <h3 className="v5-serif text-5xl md:text-7xl leading-[0.95] mb-4">{dashboard.title}</h3>
+            <h3 className="v5-display text-5xl md:text-7xl leading-[0.95] mb-4">{dashboard.title}</h3>
             <div className="v5-mono text-xs uppercase tracking-[0.18em] v5-dim">
               автор — {dashboard.author}
             </div>
@@ -52,7 +52,7 @@ const V5Modal = ({ dashboard, onClose }: Props) => {
           </div>
           <div className="col-span-12 md:col-span-2 mt-8 v5-mono text-[10px] uppercase tracking-[0.22em] v5-dim">
             <div>стек</div>
-            <div className="mt-2 flex flex-col gap-1 v5-mint">
+            <div className="mt-2 flex flex-col gap-1 v5-green">
               {dashboard.tools.map((t) => <span key={t}>· {t}</span>)}
             </div>
           </div>
