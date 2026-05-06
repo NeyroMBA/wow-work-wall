@@ -18,7 +18,7 @@ const IndexV5 = () => {
       <V5CourseCTA />
       <footer className="px-8 py-10 text-xs v5-dim flex justify-between border-t" style={{ borderColor: "hsl(0 0% 16%)" }}>
         <div>© 2026 Институт Нейро-Аналитики</div>
-        <div>v5 · ИНА edition</div>
+        
       </footer>
       {selected && <V5Modal dashboard={selected} onClose={() => setSelected(null)} />}
     </main>
