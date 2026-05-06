@@ -1,4 +1,4 @@
-export type Palette = "dark" | "light" | "neonOrange" | "neonViolet" | "neonGreen" | "neonCyan";
+export type Palette = "dark" | "light" | "green" | "yellow" | "blue" | "red";
 
 export type Dashboard = {
   id: string;
@@ -16,7 +16,7 @@ export type Dashboard = {
   cohort: string;
 };
 
-const PALETTE_CYCLE: Palette[] = ["dark", "light", "neonOrange", "neonViolet", "neonGreen", "neonCyan"];
+const PALETTE_CYCLE: Palette[] = ["dark", "green", "light", "blue", "yellow", "red"];
 
 const RAW: Omit<Dashboard, "palette">[] = [
   {
