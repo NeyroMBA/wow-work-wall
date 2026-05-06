@@ -19,20 +19,20 @@ const V5CourseCTA = () => (
       {/* Headline numbers */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
         <div className="v5-stat v5-stat--green">
-          <div className="v5-display text-4xl mb-2">4 <span className="v5-green">недели</span></div>
-          <div className="text-sm v5-dim">интенсивного обучения онлайн</div>
+          <div className="v5-display text-2xl md:text-4xl mb-2">4 <span className="v5-green">недели</span></div>
+          <div className="text-xs md:text-sm v5-dim">интенсивного обучения онлайн</div>
         </div>
         <div className="v5-stat v5-stat--blue">
-          <div className="v5-display text-4xl mb-2">7 <span className="v5-blue">модулей</span></div>
-          <div className="text-sm v5-dim">от анализа до выпускного проекта</div>
+          <div className="v5-display text-2xl md:text-4xl mb-2">7 <span className="v5-blue">модулей</span></div>
+          <div className="text-xs md:text-sm v5-dim">от анализа до выпускного проекта</div>
         </div>
         <div className="v5-stat v5-stat--yellow">
-          <div className="v5-display text-4xl mb-2">2 <span className="v5-yellow">урока</span><span className="text-base v5-dim">/нед</span></div>
-          <div className="text-sm v5-dim">онлайн-сессии и материалы на ГетКурс</div>
+          <div className="v5-display text-2xl md:text-4xl mb-2">2 <span className="v5-yellow">урока</span><span className="text-sm v5-dim">/нед</span></div>
+          <div className="text-xs md:text-sm v5-dim">онлайн-сессии и материалы на ГетКурс</div>
         </div>
         <div className="v5-stat v5-stat--red">
-          <div className="v5-display text-4xl mb-2"><span className="v5-red">Claude</span> MAX</div>
-          <div className="text-sm v5-dim">доступ на период обучения</div>
+          <div className="v5-display text-2xl md:text-4xl mb-2"><span className="v5-red">Claude</span> MAX</div>
+          <div className="text-xs md:text-sm v5-dim">доступ на период обучения</div>
         </div>
       </div>
 
