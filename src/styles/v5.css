@@ -1,67 +1,82 @@
-/* V5 — Hybrid: editorial hero + 3D ribbon + chaotic gallery */
+/* V5 — ИНА (Институт Нейро-Аналитики) brand edition */
+
+/* Gilroy via close substitute (Manrope) — used as display + body */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
 
 .v5-scope {
-  --v5-bg: 230 35% 8%;
-  --v5-bg-2: 224 38% 11%;
-  --v5-ink: 40 30% 96%;
-  --v5-ink-dim: 230 15% 70%;
-  --v5-line: 230 25% 22%;
-  --v5-mint: 152 76% 58%;
-  --v5-violet: 260 85% 75%;
+  /* brand */
+  --ina-green: 75 75% 60%;     /* #BFE74B */
+  --ina-gray:  0 0% 95%;       /* #F3F3F3 */
+  --ina-black: 0 0% 4%;        /* #0B0B0B */
+  --ina-yellow: 42 93% 62%;    /* #F8C845 */
+  --ina-blue: 228 41% 43%;     /* #41559A */
+  --ina-red: 355 85% 52%;      /* #ED1A2C */
+
+  --v5-bg: var(--ina-black);
+  --v5-bg-2: 0 0% 7%;
+  --v5-ink: var(--ina-gray);
+  --v5-ink-dim: 0 0% 62%;
+  --v5-line: 0 0% 16%;
 
   background:
-    radial-gradient(1200px 800px at 80% -10%, hsl(var(--v5-violet) / 0.18), transparent 60%),
-    radial-gradient(900px 700px at 0% 110%, hsl(var(--v5-mint) / 0.14), transparent 60%),
-    linear-gradient(180deg, hsl(var(--v5-bg)), hsl(var(--v5-bg-2)));
+    radial-gradient(900px 600px at 88% -8%, hsl(var(--ina-blue) / 0.22), transparent 60%),
+    radial-gradient(700px 600px at -6% 110%, hsl(var(--ina-green) / 0.16), transparent 60%),
+    hsl(var(--v5-bg));
   color: hsl(var(--v5-ink));
-  font-family: "Work Sans", system-ui, sans-serif;
+  font-family: "Manrope", "Gilroy", system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
   min-height: 100vh;
   overflow-x: clip;
 }
 
-.v5-serif {
-  font-family: "Instrument Serif", "Times New Roman", serif;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+.v5-display {
+  font-family: "Manrope", "Gilroy", system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
   line-height: 0.92;
 }
-.v5-mono {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-}
+.v5-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
 .v5-rule { height: 1px; background: hsl(var(--v5-line)); }
-.v5-mint { color: hsl(var(--v5-mint)); }
-.v5-violet { color: hsl(var(--v5-violet)); }
-.v5-dim { color: hsl(var(--v5-ink-dim)); }
 
+.v5-green { color: hsl(var(--ina-green)); }
+.v5-blue  { color: hsl(var(--ina-blue)); }
+.v5-yellow { color: hsl(var(--ina-yellow)); }
+.v5-red   { color: hsl(var(--ina-red)); }
+.v5-dim   { color: hsl(var(--v5-ink-dim)); }
+
+/* Underline highlight in brand blue */
+.v5-hl {
+  color: hsl(var(--ina-blue));
+  font-weight: 800;
+}
+
+/* Chips */
 .v5-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border: 1px solid hsl(var(--v5-line));
   border-radius: 999px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: hsl(var(--v5-ink-dim));
-  background: hsl(var(--v5-bg) / 0.4);
-  backdrop-filter: blur(8px);
+  background: hsl(0 0% 100% / 0.02);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
-.v5-chip:hover { color: hsl(var(--v5-ink)); border-color: hsl(var(--v5-mint) / 0.5); }
+.v5-chip:hover { color: hsl(var(--v5-ink)); border-color: hsl(var(--ina-green) / 0.6); }
 .v5-chip--active {
-  color: hsl(var(--v5-bg));
-  background: hsl(var(--v5-mint));
-  border-color: hsl(var(--v5-mint));
-  box-shadow: 0 0 24px hsl(var(--v5-mint) / 0.4);
+  color: hsl(var(--ina-black));
+  background: hsl(var(--ina-green));
+  border-color: hsl(var(--ina-green));
 }
-
 .v5-chip-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: hsl(var(--v5-mint));
-  box-shadow: 0 0 12px hsl(var(--v5-mint));
+  background: hsl(var(--ina-green));
+  box-shadow: 0 0 12px hsl(var(--ina-green));
 }
 
 /* ---- 3D Ribbon ---- */
@@ -82,14 +97,8 @@
   transform-style: preserve-3d;
   will-change: transform;
 }
-.v5-ribbon-row--top {
-  top: 30px;
-  animation: v5-marq-l 60s linear infinite;
-}
-.v5-ribbon-row--bot {
-  bottom: 30px;
-  animation: v5-marq-r 70s linear infinite;
-}
+.v5-ribbon-row--top { top: 30px; animation: v5-marq-l 60s linear infinite; }
+.v5-ribbon-row--bot { bottom: 30px; animation: v5-marq-r 70s linear infinite; }
 @keyframes v5-marq-l {
   from { transform: rotateX(8deg) translateX(0); }
   to   { transform: rotateX(8deg) translateX(-50%); }
@@ -98,54 +107,45 @@
   from { transform: rotateX(-8deg) translateX(-50%); }
   to   { transform: rotateX(-8deg) translateX(0); }
 }
-
 .v5-rcard {
   flex-shrink: 0;
   width: 360px;
   height: 220px;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
   border: 1px solid hsl(var(--v5-line));
   background: hsl(var(--v5-bg-2));
-  box-shadow: 0 30px 60px -20px hsl(0 0% 0% / 0.6);
+  box-shadow: 0 30px 60px -20px hsl(0 0% 0% / 0.7);
   position: relative;
 }
-.v5-rcard img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.v5-rcard img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .v5-rcard::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 60%, hsl(var(--v5-bg) / 0.6));
+  background: linear-gradient(180deg, transparent 60%, hsl(var(--v5-bg) / 0.7));
 }
 
-/* ---- Chaotic gallery ---- */
+/* ---- Gallery cards ---- */
 .v5-gallery-card {
   position: relative;
-  border-radius: 18px;
+  border-radius: 22px;
   overflow: hidden;
   cursor: pointer;
   border: 1px solid hsl(var(--v5-line));
   background: hsl(var(--v5-bg-2));
-  box-shadow: 0 30px 80px -30px hsl(0 0% 0% / 0.7);
-  transition: transform 0.5s cubic-bezier(.2,.8,.2,1), box-shadow 0.5s ease;
+  box-shadow: 0 30px 80px -30px hsl(0 0% 0% / 0.8);
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1), box-shadow 0.5s ease, border-color 0.3s;
 }
 .v5-gallery-card:hover {
   transform: translateY(-10px) rotate(0deg) scale(1.02) !important;
-  box-shadow: 0 50px 120px -30px hsl(var(--v5-violet) / 0.5);
+  box-shadow: 0 50px 120px -30px hsl(var(--ina-green) / 0.35);
+  border-color: hsl(var(--ina-green) / 0.5);
   z-index: 10;
 }
-.v5-gallery-card img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  display: block;
-}
+.v5-gallery-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
 .v5-gallery-card-body {
-  padding: 18px 22px 22px;
-  background: linear-gradient(180deg, hsl(var(--v5-bg-2)), hsl(var(--v5-bg)));
+  padding: 22px 24px 26px;
+  background: hsl(var(--v5-bg-2));
 }
 
 .v5-fade { animation: v5-fade 0.5s ease-out both; }
@@ -155,29 +155,81 @@
 }
 
 .v5-glass {
-  background: linear-gradient(135deg, hsl(var(--v5-ink) / 0.06), hsl(var(--v5-ink) / 0.02));
+  background: linear-gradient(135deg, hsl(0 0% 100% / 0.04), hsl(0 0% 100% / 0.01));
   backdrop-filter: blur(18px);
-  border: 1px solid hsl(var(--v5-ink) / 0.08);
-  border-radius: 18px;
+  border: 1px solid hsl(0 0% 100% / 0.08);
+  border-radius: 22px;
 }
 
+/* CTA button — INA green pill */
 .v5-cta-btn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 18px 32px;
-  border-radius: 999px;
-  background: hsl(var(--v5-mint));
-  color: hsl(var(--v5-bg));
-  font-family: "JetBrains Mono", monospace;
-  font-size: 13px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 20px 50px -10px hsl(var(--v5-mint) / 0.5);
+  padding: 18px 34px;
+  border-radius: 14px;
+  background: hsl(var(--ina-green));
+  color: hsl(var(--ina-black));
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  transition: all 0.25s ease;
+  box-shadow: 0 18px 50px -10px hsl(var(--ina-green) / 0.5);
 }
 .v5-cta-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 30px 70px -10px hsl(var(--v5-mint) / 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 28px 70px -10px hsl(var(--ina-green) / 0.8);
+}
+
+/* Stat tile (like INA "10 месяцев обучения" cards) */
+.v5-stat {
+  position: relative;
+  border-radius: 18px;
+  background: hsl(var(--v5-bg-2));
+  border: 1px solid hsl(var(--v5-line));
+  padding: 28px 26px;
+  overflow: hidden;
+}
+.v5-stat::before {
+  content: "";
+  position: absolute; top: 0; left: 22px; right: 22px; height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: var(--accent, hsl(var(--ina-green)));
+}
+.v5-stat--green  { --accent: hsl(var(--ina-green)); }
+.v5-stat--blue   { --accent: hsl(var(--ina-blue)); }
+.v5-stat--yellow { --accent: hsl(var(--ina-yellow)); }
+.v5-stat--red    { --accent: hsl(var(--ina-red)); }
+
+/* CTA banner with green glow (like screenshot 4) */
+.v5-cta-banner {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: hsl(var(--v5-bg-2));
+  border: 1px solid hsl(var(--v5-line));
+}
+.v5-cta-banner::after {
+  content: "";
+  position: absolute;
+  right: -120px; top: -80px;
+  width: 720px; height: 720px;
+  background:
+    radial-gradient(circle at 30% 50%, hsl(var(--ina-green) / 0.9), transparent 55%),
+    radial-gradient(circle at 60% 50%, hsl(var(--ina-yellow) / 0.5), transparent 60%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.v5-cta-banner-rings {
+  position: absolute;
+  right: 200px; top: 50%; transform: translateY(-50%);
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0 6px,
+    hsl(0 0% 100% / 0.06) 6px 7px
+  );
+  pointer-events: none;
 }

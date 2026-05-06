@@ -16,9 +16,9 @@ const IndexV5 = () => {
       <V5Hero />
       <V5Gallery onSelect={setSelected} />
       <V5CourseCTA />
-      <footer className="px-8 py-10 v5-mono text-[10px] uppercase tracking-[0.22em] v5-dim flex justify-between border-t" style={{ borderColor: "hsl(230 25% 22%)" }}>
-        <div>© 2026 Школа</div>
-        <div>v5 · hybrid edition</div>
+      <footer className="px-8 py-10 text-xs v5-dim flex justify-between border-t" style={{ borderColor: "hsl(0 0% 16%)" }}>
+        <div>© 2026 Институт Нейро-Аналитики</div>
+        <div>v5 · ИНА edition</div>
       </footer>
       {selected && <V5Modal dashboard={selected} onClose={() => setSelected(null)} />}
     </main>
