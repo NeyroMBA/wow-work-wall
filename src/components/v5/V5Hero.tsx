@@ -1,52 +1,56 @@
 import { dashboards } from "@/data/dashboards";
 
-const COLS = 12;
-const RADIUS = 620;
-const ROW_GAP = 230;
+const COLS = 10;
+const RADIUS = 560;
+const ROW_GAP = 220;
+
+const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
+  const yOffset = (row - 0.5) * ROW_GAP;
+  const rowAngleOffset = row % 2 === 0 ? 0 : 360 / COLS / 2;
+  return (
+    <div
+      className="v5-wall-row"
+      style={{
+        animation: `v5-spin-${dir === 1 ? "cw" : "ccw"} 60s linear infinite`,
+      }}
+    >
+      {Array.from({ length: COLS }).map((_, col) => {
+        const i = row * COLS + col;
+        const tile = dashboards[i % dashboards.length];
+        const angle = col * (360 / COLS) + rowAngleOffset;
+        return (
+          <div
+            key={col}
+            className="v5-tile"
+            style={{
+              transform: `rotateY(${angle}deg) translateZ(${RADIUS}px) translateY(${yOffset}px)`,
+            }}
+          >
+            <img src={tile.image} alt="" loading="lazy" decoding="async" />
+            <div className="v5-tile-meta">
+              <span>№ {String((i % dashboards.length) + 1).padStart(3, "0")}</span>
+              <span>{tile.category}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const V5Hero = () => {
-  const tiles = dashboards;
-
   return (
     <section className="v5-hero-screen">
       <div className="v5-hero-stage">
-        {/* Auto-rotating 3D wall (V4-style) */}
         <div className="v5-wall-wrap">
-          <div className="v5-wall v5-wall--spin">
-            {[0, 1].map((row) => {
-              const yOffset = (row - 0.5) * ROW_GAP;
-              const rowAngleOffset = row % 2 === 0 ? 0 : 360 / COLS / 2;
-              const dir = row === 0 ? 1 : -1;
-              return Array.from({ length: COLS }).map((_, col) => {
-                const i = row * COLS + col;
-                const tile = tiles[i % tiles.length];
-                const angle = col * (360 / COLS) + rowAngleOffset;
-                return (
-                  <div
-                    key={`${row}-${col}`}
-                    className="v5-tile"
-                    style={{
-                      transform: `rotateY(${angle}deg) translateZ(${RADIUS}px) translateY(${yOffset}px) rotateY(${-angle}deg)`,
-                    }}
-                  >
-                    <img src={tile.image} alt="" loading="lazy" decoding="async" />
-                    <div className="v5-tile-meta">
-                      <span>№ {String((i % tiles.length) + 1).padStart(3, "0")}</span>
-                      <span>{tile.category}</span>
-                    </div>
-                  </div>
-                );
-              }).map((node, idx) => (
-                // wrap each row in spinner via key trick — but we need group rotation.
-                node
-              ));
-            })}
+          <div className="v5-wall">
+            <Row row={0} dir={1} />
+            <Row row={1} dir={-1} />
           </div>
         </div>
 
-        {/* Title overlay */}
         <div className="v5-hero-title">
-          <h1 className="v5-display text-[10vw] md:text-[5.5vw]">
+          <h1 className="v5-display text-[9vw] md:text-[5vw]">
             Данные, превращённые
             <br />
             <span className="v5-hl">в искусство</span>
