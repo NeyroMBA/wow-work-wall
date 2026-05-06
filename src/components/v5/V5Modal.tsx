@@ -54,7 +54,17 @@ const V5Modal = ({ dashboard, onClose }: Props) => {
           </div>
           <div className="col-span-12 mt-6">
             <div className="rounded-2xl overflow-hidden border" style={{ borderColor: "hsl(230 25% 22%)" }}>
-              <img src={dashboard.image} alt={dashboard.title} className="w-full block" />
+              {dashboard.link ? (
+                <iframe
+                  src={dashboard.link}
+                  title={dashboard.title}
+                  className="w-full block bg-white"
+                  style={{ height: "70vh", border: 0 }}
+                  loading="lazy"
+                />
+              ) : (
+                <img src={dashboard.image} alt={dashboard.title} className="w-full block" />
+              )}
             </div>
           </div>
           <div className="col-span-12 md:col-span-7 md:col-start-3 mt-8 space-y-6">
