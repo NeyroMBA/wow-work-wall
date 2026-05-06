@@ -17,7 +17,7 @@ const V5CourseCTA = () => (
       </div>
 
       {/* Headline numbers */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
         <div className="v5-stat v5-stat--green">
           <div className="v5-display text-4xl mb-2">4 <span className="v5-green">недели</span></div>
           <div className="text-sm v5-dim">интенсивного обучения онлайн</div>
@@ -36,25 +36,18 @@ const V5CourseCTA = () => (
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="v5-cta-banner relative px-8 md:px-14 py-12 md:py-16 min-h-[280px] flex items-center">
-        <div className="v5-cta-banner-rings hidden md:block" />
-        <div className="relative z-10 max-w-xl">
-          <h3 className="v5-display text-3xl md:text-5xl mb-4 leading-tight">
-            Изучите <span className="v5-green">программу</span> курса
-            <br />и записывайтесь на поток
-          </h3>
-          <p className="v5-dim text-sm md:text-base mb-8">
-            Тарифы от <span className="v5-green font-semibold">20 000 ₽</span> · доступ к урокам до 12 месяцев · сертификат
-          </p>
-          <a
-            href="https://neyro.mba/intensiv-dash-ai"
-            target="_blank"
-            rel="noreferrer"
-            className="v5-cta-btn"
-          >
-            Изучить программу →
-          </a>
+      {/* CTA buttons */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="https://neyro.mba/intensiv-dash-ai"
+          target="_blank"
+          rel="noreferrer"
+          className="v5-cta-btn"
+        >
+          Изучить программу →
+        </a>
+        <div className="v5-mono text-xs v5-dim">
+          Тарифы от <span className="v5-green">20 000 ₽</span> · сертификат
         </div>
       </div>
     </div>
