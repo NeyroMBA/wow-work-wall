@@ -10,11 +10,19 @@ import "@/styles/v5.css";
 const IndexV5 = () => {
   const [selected, setSelected] = useState<Dashboard | null>(null);
 
+  const handleSelect = (d: Dashboard) => {
+    if (d.link) {
+      window.open(d.link, "_blank", "noopener,noreferrer");
+    } else {
+      setSelected(d);
+    }
+  };
+
   return (
     <main className="v5-scope relative">
       <V5Nav />
       <V5Hero />
-      <V5Gallery onSelect={setSelected} />
+      <V5Gallery onSelect={handleSelect} />
       <V5CourseCTA />
       <footer className="px-8 py-10 text-xs v5-dim flex justify-between border-t" style={{ borderColor: "hsl(0 0% 16%)" }}>
         <div>© 2026 Институт Нейро-Аналитики</div>
