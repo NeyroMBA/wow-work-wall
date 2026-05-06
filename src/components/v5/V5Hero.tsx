@@ -41,23 +41,48 @@ const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
 const V5Hero = () => {
   return (
     <section className="v5-hero-screen">
+      {/* Top label */}
+      <div className="v5-hero-top">
+        <div className="inline-flex items-center gap-2 v5-mono text-[11px] uppercase tracking-[0.32em] v5-green">
+          <span className="v5-chip-dot" /> Галерея · поток 2026
+        </div>
+      </div>
+
+      {/* Headline */}
+      <div className="v5-hero-headline">
+        <h1 className="v5-display">
+          Данные,
+          <br />
+          превращённые
+          <br />
+          <span className="v5-hero-italic">в искусство.</span>
+        </h1>
+      </div>
+
+      {/* Right caption */}
+      <div className="v5-hero-caption">
+        <div className="v5-mono text-[10px] uppercase tracking-[0.28em] v5-dim mb-3">
+          № 001 / collection
+        </div>
+        <p className="text-sm md:text-[15px] leading-relaxed" style={{ color: "hsl(0 0% 88%)" }}>
+          Лучшие дашборды студентов
+          Института Нейро-Аналитики —
+          каждая работа история, спрятанная в цифрах.
+        </p>
+      </div>
+
+      {/* Scroll cue */}
+      <div className="v5-hero-cue v5-mono text-[10px] uppercase tracking-[0.32em] v5-dim">
+        ↓ скролл — галерея ниже
+      </div>
+
+      {/* Wall */}
       <div className="v5-hero-stage">
         <div className="v5-wall-wrap">
           <div className="v5-wall">
             <Row row={0} dir={1} />
             <Row row={1} dir={-1} />
           </div>
-        </div>
-
-        <div className="v5-hero-title">
-          <h1 className="v5-display text-[9vw] md:text-[5vw]">
-            Данные, превращённые
-            <br />
-            <span className="v5-hl">в искусство</span>
-          </h1>
-          <p className="mt-5 mx-auto max-w-xl text-sm md:text-base v5-dim leading-relaxed">
-            Лучшие дашборды студентов Института Нейро-Аналитики — каждая работа история, спрятанная в цифрах.
-          </p>
         </div>
       </div>
     </section>
