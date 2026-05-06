@@ -41,13 +41,6 @@ const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
 const V5Hero = () => {
   return (
     <section className="v5-hero-screen">
-      {/* Top label */}
-      <div className="v5-hero-top">
-        <div className="inline-flex items-center gap-2 v5-mono text-[11px] uppercase tracking-[0.32em] v5-green">
-          <span className="v5-chip-dot" /> Галерея · поток 2026
-        </div>
-      </div>
-
       {/* Headline */}
       <div className="v5-hero-headline">
         <h1 className="v5-display">
@@ -57,16 +50,8 @@ const V5Hero = () => {
           <br />
           <span className="v5-hero-italic">в искусство.</span>
         </h1>
-      </div>
-
-      {/* Right caption */}
-      <div className="v5-hero-caption">
-        <div className="v5-mono text-[10px] uppercase tracking-[0.28em] v5-dim mb-3">
-          № 001 / collection
-        </div>
-        <p className="text-sm md:text-[15px] leading-relaxed" style={{ color: "hsl(0 0% 88%)" }}>
-          Лучшие дашборды студентов
-          Института Нейро-Аналитики —
+        <p className="v5-hero-preheader">
+          Лучшие дашборды студентов Института Нейро-Аналитики —
           каждая работа история, спрятанная в цифрах.
         </p>
       </div>
