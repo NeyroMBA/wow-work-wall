@@ -1,39 +1,63 @@
 import { dashboards } from "@/data/dashboards";
 
-const V5Hero = () => {
-  const top = [...dashboards, ...dashboards];
-  const bot = [...dashboards.slice().reverse(), ...dashboards.slice().reverse()];
+const COLS = 10;
+const RADIUS = 560;
+const ROW_GAP = 220;
 
+const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
+  const yOffset = (row - 0.5) * ROW_GAP;
+  const rowAngleOffset = row % 2 === 0 ? 0 : 360 / COLS / 2;
   return (
-    <section className="relative pt-36 pb-12">
-      {/* Title */}
-      <div className="text-center px-6 mb-12">
-        <h1 className="v5-display text-[13vw] md:text-[7.5vw]">
-          Данные, превращённые
-          <br />
-          <span className="v5-hl">в искусство</span>
-        </h1>
-        <p className="mt-8 mx-auto max-w-2xl text-base md:text-lg v5-dim leading-relaxed">
-          Лучшие дашборды студентов Института Нейро-Аналитики — от продаж
-          до аналитики здоровья. Каждая работа — история, спрятанная в цифрах.
-        </p>
-      </div>
+    <div
+      className="v5-wall-row"
+      style={{
+        animation: `v5-spin-${dir === 1 ? "cw" : "ccw"} 60s linear infinite`,
+      }}
+    >
+      {Array.from({ length: COLS }).map((_, col) => {
+        const i = row * COLS + col;
+        const tile = dashboards[i % dashboards.length];
+        const angle = col * (360 / COLS) + rowAngleOffset;
+        return (
+          <div
+            key={col}
+            className="v5-tile"
+            style={{
+              transform: `rotateY(${angle}deg) translateZ(${RADIUS}px) translateY(${yOffset}px)`,
+            }}
+          >
+            <img src={tile.image} alt="" loading="lazy" decoding="async" />
+            <div className="v5-tile-meta">
+              <span>№ {String((i % dashboards.length) + 1).padStart(3, "0")}</span>
+              <span>{tile.category}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
-      {/* 3D ribbon */}
-      <div className="v5-ribbon mt-8">
-        <div className="v5-ribbon-row v5-ribbon-row--top">
-          {top.map((d, i) => (
-            <div key={`t-${i}`} className="v5-rcard">
-              <img src={d.image} alt="" loading="lazy" decoding="async" />
-            </div>
-          ))}
+const V5Hero = () => {
+  return (
+    <section className="v5-hero-screen">
+      <div className="v5-hero-stage">
+        <div className="v5-wall-wrap">
+          <div className="v5-wall">
+            <Row row={0} dir={1} />
+            <Row row={1} dir={-1} />
+          </div>
         </div>
-        <div className="v5-ribbon-row v5-ribbon-row--bot">
-          {bot.map((d, i) => (
-            <div key={`b-${i}`} className="v5-rcard">
-              <img src={d.image} alt="" loading="lazy" decoding="async" />
-            </div>
-          ))}
+
+        <div className="v5-hero-title">
+          <h1 className="v5-display text-[9vw] md:text-[5vw]">
+            Данные, превращённые
+            <br />
+            <span className="v5-hl">в искусство</span>
+          </h1>
+          <p className="mt-5 mx-auto max-w-xl text-sm md:text-base v5-dim leading-relaxed">
+            Лучшие дашборды студентов Института Нейро-Аналитики — каждая работа история, спрятанная в цифрах.
+          </p>
         </div>
       </div>
     </section>
