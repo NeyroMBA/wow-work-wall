@@ -87,9 +87,12 @@ const V5Gallery = ({ onSelect }: Props) => {
                       style={{ transform: `rotate(${o.rot}deg)` }}
                       onClick={() => onSelect(d)}
                     >
-                      <div className="relative">
+                      <div className={`v5-frame v5-pal-${d.palette ?? "dark"}`}>
                         <img src={d.image} alt={d.title} loading="lazy" />
-                        <div className="absolute top-4 left-4 v5-chip" style={{ background: "hsl(var(--v5-bg) / 0.75)" }}>
+                        <div
+                          className="absolute top-7 right-7 v5-chip"
+                          style={{ background: "hsl(var(--v5-bg) / 0.75)", zIndex: 4 }}
+                        >
                           {d.category}
                         </div>
                       </div>

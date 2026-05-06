@@ -21,12 +21,14 @@ const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
         return (
           <div
             key={col}
-            className="v5-tile"
+            className={`v5-tile v5-pal-${tile.palette ?? "dark"}`}
             style={{
               transform: `rotateY(${angle}deg) translateZ(${RADIUS}px) translateY(${yOffset}px)`,
             }}
           >
-            <img src={tile.image} alt="" loading="lazy" decoding="async" />
+            <div className="v5-tile-inner">
+              <img src={tile.image} alt="" loading="lazy" decoding="async" />
+            </div>
             <div className="v5-tile-meta">
               <span>№ {String((i % dashboards.length) + 1).padStart(3, "0")}</span>
               <span>{tile.category}</span>
