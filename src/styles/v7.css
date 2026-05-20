@@ -70,17 +70,20 @@
   .v7-grid { grid-template-columns: 1fr; }
 }
 
-/* Chaotic masonry — CSS columns keep flowing pin-board feel */
+/* Chaotic bento — 6-col grid with mixed spans for landscape cards */
 .v7-masonry {
-  column-count: 3;
-  column-gap: 22px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 22px;
+  grid-auto-flow: row dense;
 }
-@media (max-width: 1100px) { .v7-masonry { column-count: 2; } }
-@media (max-width: 700px)  { .v7-masonry { column-count: 1; } }
-.v7-masonry > .v7-card {
-  break-inside: avoid;
-  margin-bottom: 22px;
-  display: block;
+@media (max-width: 1100px) {
+  .v7-masonry { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .v7-masonry > .v7-card { grid-column: span 2 !important; }
+}
+@media (max-width: 700px) {
+  .v7-masonry { grid-template-columns: 1fr; }
+  .v7-masonry > .v7-card { grid-column: span 1 !important; }
 }
 
 /* ---------- Card ---------- */
