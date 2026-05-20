@@ -43,7 +43,7 @@ import dashArchive from "@/assets/dash-archive.jpg";
 const RAW: Raw[] = [
   {
     id: "bank-churn",
-    title: "Кто уходит и почему",
+    title: "Отток клиентов банка",
     author: "Александра Волкова",
     categories: ["Finance", "Marketing"],
     features: ["Дашборд + лонгрид", "Экспорт в PDF", "Claude"],
@@ -58,7 +58,7 @@ const RAW: Raw[] = [
   },
   {
     id: "vinoteka",
-    title: "Пузырьки и прибыль",
+    title: "Аналитика винотеки",
     author: "Елена Михайлова",
     categories: ["Sales", "Finance"],
     features: ["Анализ что-если", "Сториборд", "Claude"],
@@ -73,7 +73,7 @@ const RAW: Raw[] = [
   },
   {
     id: "archive",
-    title: "20 лет в одном окне",
+    title: "Архив документов",
     author: "Виген Баблоян",
     categories: ["Logistics"],
     features: ["Оффлайн", "Запароленное обновление", "Claude"],
