@@ -44,9 +44,9 @@ const RAW: Raw[] = [
   {
     id: "bank-churn",
     title: "Кто уходит и почему",
-    author: "Александра",
+    author: "Александра Волкова",
     categories: ["Finance", "Marketing"],
-    features: ["1 место конкурса", "Дашборд + лонгрид", "Экспорт в PDF", "Claude"],
+    features: ["Дашборд + лонгрид", "Экспорт в PDF", "Claude"],
     tools: ["Claude"],
     image: dashBank,
     link: "https://files.alexkolokolov.com/ai/gallery/bank.html",
@@ -58,9 +58,9 @@ const RAW: Raw[] = [
   {
     id: "vinoteka",
     title: "Дашборд для винотеки",
-    author: "Елена",
+    author: "Елена Михайлова",
     categories: ["Sales", "Finance"],
-    features: ["2 место конкурса", "Анализ что-если", "Анимация", "Сториборд", "Claude"],
+    features: ["Анализ что-если", "Сториборд", "Claude"],
     tools: ["Claude"],
     image: dashVinoteka,
     link: "https://files.alexkolokolov.com/ai/gallery/vinoteka.html",
@@ -72,17 +72,18 @@ const RAW: Raw[] = [
   {
     id: "archive",
     title: "Дашборд для архива",
-    author: "Виген",
+    author: "Виген Баблоян",
     categories: ["Logistics"],
-    features: ["Приз зрительских симпатий", "Оффлайн", "Без библиотек", "HTML"],
+    features: ["Оффлайн", "Запароленное обновление", "Claude"],
     tools: ["Claude"],
     image: dashArchive,
     link: "https://files.alexkolokolov.com/ai/gallery/archive.html",
     accent: "from-slate-400 to-emerald-400",
     description:
       "HTML-дашборд для архивной компании с закрытым контуром: работает в старом Хроме без интернета и внешних библиотек. 10 000+ строк документов за 20 лет, поиск по комитету, сортировка и запароленное обновление.",
-    cohort: "Конкурс · Приз симпатий",
+    cohort: "Конкурс",
   },
+
   {
     id: "fin-health",
     title: "Финансовое здоровье",
