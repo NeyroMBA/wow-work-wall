@@ -126,13 +126,18 @@ const V7Gallery = ({ onSelect }: Props) => {
         <div className={mode === "chaotic" ? "v7-masonry" : "v7-grid"}>
           {items.map((d, idx) => {
             const accent = CATEGORY_ACCENT[d.category];
-            const aspect = mode === "chaotic" ? CHAOS_ASPECTS[idx % CHAOS_ASPECTS.length] : "16 / 10";
+            const span = mode === "chaotic" ? CHAOS_SPANS[idx % CHAOS_SPANS.length] : 2;
+            const aspect = mode === "chaotic" ? CHAOS_ASPECTS_BY_SPAN[span] : "16 / 10";
+            const style: React.CSSProperties = {
+              animationDelay: `${idx * 40}ms`,
+              ...(mode === "chaotic" ? { gridColumn: `span ${span}` } : {}),
+            };
             return (
               <article
                 key={d.id}
                 className={`v7-card v7-acc-${accent}`}
                 onClick={() => onSelect(d)}
-                style={{ animationDelay: `${idx * 40}ms` }}
+                style={style}
               >
                 <div className="v7-card-image" style={{ aspectRatio: aspect }}>
                   <img src={d.image} alt={d.title} loading="lazy" />
