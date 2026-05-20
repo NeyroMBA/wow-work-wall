@@ -273,8 +273,49 @@
     0 50px 120px -30px hsl(var(--ina-green) / 0.45);
 }
 .v5-gallery-card-body {
-  padding: 22px 4px 4px;
+  padding: 18px 4px 4px;
 }
+
+/* Feature tags row under image, above title */
+.v5-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 10px;
+}
+.v5-feature {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: hsl(var(--v5-ink));
+  background: hsl(0 0% 100% / 0.04);
+  border: 1px solid hsl(var(--v5-line));
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.v5-feature-tool {
+  border-color: hsl(var(--ina-green) / 0.5);
+  color: hsl(var(--ina-green));
+  background: hsl(var(--ina-green) / 0.08);
+}
+
+.v5-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: hsl(var(--ina-green));
+  text-decoration: none;
+  border-bottom: 1px solid hsl(var(--ina-green) / 0.4);
+  padding-bottom: 2px;
+  width: fit-content;
+}
+.v5-card-link:hover { color: hsl(var(--ina-yellow)); border-color: hsl(var(--ina-yellow) / 0.6); }
 
 .v5-fade { animation: v5-fade 0.5s ease-out both; }
 @keyframes v5-fade {
