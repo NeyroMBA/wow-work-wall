@@ -43,8 +43,14 @@ const CATEGORY_ACCENT: Record<Dashboard["category"], Accent> = {
 
 type Mode = "chaotic" | "grid";
 
-// Cycle of aspect ratios for chaotic mosaic — mixes wide/tall/square
-const CHAOS_ASPECTS = ["4 / 3", "3 / 4", "16 / 10", "1 / 1", "5 / 4", "3 / 5", "16 / 9", "4 / 5"];
+// Bento mosaic — landscape cards of varying column spans (out of 6)
+// Pattern repeats every 5 cards: wide+narrow / narrow+wide / full-ish split
+const CHAOS_SPANS = [4, 2, 3, 3, 2, 4, 3, 3, 4, 2, 2, 4];
+const CHAOS_ASPECTS_BY_SPAN: Record<number, string> = {
+  2: "4 / 3",
+  3: "16 / 10",
+  4: "21 / 10",
+};
 
 const V7Gallery = ({ onSelect }: Props) => {
   const [filter, setFilter] = useState<Dashboard["category"] | "All">("All");
