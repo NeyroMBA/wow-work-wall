@@ -36,7 +36,53 @@ const PALETTE_CYCLE: Palette[] = ["dark", "green", "light", "blue", "yellow", "r
 
 type Raw = Omit<Dashboard, "palette" | "category"> & { categories: Category[] };
 
+import dashBank from "@/assets/dash-bank.jpg";
+import dashVinoteka from "@/assets/dash-vinoteka.jpg";
+import dashArchive from "@/assets/dash-archive.jpg";
+
 const RAW: Raw[] = [
+  {
+    id: "bank-churn",
+    title: "Кто уходит и почему",
+    author: "Александра",
+    categories: ["Finance", "Marketing"],
+    features: ["1 место конкурса", "Дашборд + лонгрид", "Экспорт в PDF", "Claude"],
+    tools: ["Claude"],
+    image: dashBank,
+    link: "https://files.alexkolokolov.com/ai/gallery/bank.html",
+    accent: "from-rose-500 to-orange-400",
+    description:
+      "Аналитическое расследование оттока клиентов банка в стиле The New York Times: дашборд для изучения данных и презентация-лонгрид с инсайтами, контринтуитивными находками и планом приоритетов на квартал.",
+    cohort: "Конкурс · 1 место",
+  },
+  {
+    id: "vinoteka",
+    title: "Дашборд для винотеки",
+    author: "Елена",
+    categories: ["Sales", "Finance"],
+    features: ["2 место конкурса", "Анализ что-если", "Анимация", "Сториборд", "Claude"],
+    tools: ["Claude"],
+    image: dashVinoteka,
+    link: "https://files.alexkolokolov.com/ai/gallery/vinoteka.html",
+    accent: "from-fuchsia-500 to-amber-400",
+    description:
+      "Стратегический дашборд для защиты бизнес-плана винотеки: анализ «что если» по ценам и инфляции, загрузка данных несколькими способами с учётом незакрытых периодов и фирменная стилизация вплоть до анимированных пузырьков шампанского.",
+    cohort: "Конкурс · 2 место",
+  },
+  {
+    id: "archive",
+    title: "Дашборд для архива",
+    author: "Виген",
+    categories: ["Logistics"],
+    features: ["Приз зрительских симпатий", "Оффлайн", "Без библиотек", "HTML"],
+    tools: ["Claude"],
+    image: dashArchive,
+    link: "https://files.alexkolokolov.com/ai/gallery/archive.html",
+    accent: "from-slate-400 to-emerald-400",
+    description:
+      "HTML-дашборд для архивной компании с закрытым контуром: работает в старом Хроме без интернета и внешних библиотек. 10 000+ строк документов за 20 лет, поиск по комитету, сортировка и запароленное обновление.",
+    cohort: "Конкурс · Приз симпатий",
+  },
   {
     id: "fin-health",
     title: "Финансовое здоровье",
