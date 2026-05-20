@@ -120,22 +120,22 @@ const V5Gallery = ({ onSelect }: Props) => {
                         </div>
                       </div>
                       <div className="v5-gallery-card-body">
-                        {d.features.length > 0 && (
+                        {d.features.filter((f) => !isTool(f)).length > 0 && (
                           <div className="v5-features">
-                            {d.features.map((f) => (
-                              <span
-                                key={f}
-                                className={`v5-feature ${isTool(f) ? "v5-feature-tool" : ""}`}
-                              >
-                                {f}
-                              </span>
-                            ))}
+                            {d.features
+                              .filter((f) => !isTool(f))
+                              .map((f) => (
+                                <span key={f} className="v5-feature">
+                                  {f}
+                                </span>
+                              ))}
                           </div>
                         )}
                         <h3 className="v5-display text-2xl md:text-3xl leading-[0.95] mb-2">
                           {d.title}
                         </h3>
                         <div className="text-xs v5-dim mb-3">{d.author}</div>
+
                         <p className="text-sm leading-relaxed v5-dim">
                           {d.description}
                         </p>
