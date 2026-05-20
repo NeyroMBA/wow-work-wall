@@ -57,7 +57,7 @@ const RAW: Raw[] = [
   },
   {
     id: "vinoteka",
-    title: "Дашборд для винотеки",
+    title: "Пузырьки и прибыль",
     author: "Елена Михайлова",
     categories: ["Sales", "Finance"],
     features: ["Анализ что-если", "Сториборд", "Claude"],
@@ -71,7 +71,7 @@ const RAW: Raw[] = [
   },
   {
     id: "archive",
-    title: "Дашборд для архива",
+    title: "20 лет в одном окне",
     author: "Виген Баблоян",
     categories: ["Logistics"],
     features: ["Оффлайн", "Запароленное обновление", "Claude"],
