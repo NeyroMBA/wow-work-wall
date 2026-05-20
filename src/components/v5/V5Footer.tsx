@@ -6,14 +6,8 @@ const dim = { color: "hsl(0 0% 67%)" };
 const fg = { color: "hsl(0 0% 95%)" };
 
 const V5Footer = () => (
-  <footer className="px-6 md:px-10 pt-16 pb-10 v5-scope">
-    <div
-      className="max-w-[1600px] mx-auto rounded-2xl border p-8 md:p-10"
-      style={{
-        borderColor: "hsl(0 0% 16%)",
-        background: "hsl(0 0% 6%)",
-      }}
-    >
+  <footer className="px-6 md:px-10 pt-16 pb-10 v5-scope border-t" style={{ borderColor: "hsl(0 0% 16%)" }}>
+    <div className="max-w-[1600px] mx-auto pt-10">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
         {/* Logo */}
         <div className="flex md:block items-center">
@@ -31,7 +25,7 @@ const V5Footer = () => (
           <a href="https://neyro.mba/oferta" target="_blank" rel="noreferrer" className={linkCls} style={dim}>
             Публичная оферта
           </a>
-          <div className="mt-4 text-xs" style={dim}>© Институт Бизнес-аналитики, 2026</div>
+          <div className="mt-4 text-sm" style={dim}>© Институт Бизнес-аналитики, 2026</div>
         </div>
 
         {/* Contacts */}
@@ -51,20 +45,18 @@ const V5Footer = () => (
 
         {/* Nav */}
         <div className="flex flex-col gap-3" style={dim}>
-          <a href="https://neyro.mba/study" target="_blank" rel="noreferrer" style={dim} className="hover:text-white transition-colors">
+          <a href="https://neyro.mba/study" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors">
             Каталог курсов
           </a>
-          <a href="https://neyro.mba/book_ai" target="_blank" rel="noreferrer" style={dim} className="hover:text-white transition-colors">
+          <a href="https://neyro.mba/book_ai" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors">
             Книга «Синергия Интеллектов»
           </a>
-          <a href="https://neyro.mba/corp" target="_blank" rel="noreferrer" style={dim} className="hover:text-white transition-colors">
+          <a href="https://neyro.mba/corp" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors">
             Корпоративное обучение
           </a>
-          <div className="mt-4">
-            <a href="https://neyro.mba/club-an" target="_blank" rel="noreferrer" style={dim} className="hover:text-white transition-colors">
-              Клуб Нейро МВА
-            </a>
-          </div>
+          <a href="https://neyro.mba/club-an" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors mt-4">
+            Клуб Нейро МВА
+          </a>
         </div>
       </div>
     </div>
