@@ -10,12 +10,7 @@ const V5Nav = () => (
       <Link to="/" className="flex items-center gap-3">
         <img src={logo} alt="ИНА" className="h-8 w-auto" />
       </Link>
-      <a
-        href="https://neyro.mba/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="v5-chip"
-      >
+      <a href="https://neyro.mba/" className="v5-chip">
         ← На главную neyro.mba
       </a>
     </div>
