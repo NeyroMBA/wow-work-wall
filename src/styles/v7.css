@@ -1,0 +1,246 @@
+/* V7 — Dashboard-mockup cards (inspired by reference screenshots) */
+
+.v7-scope {
+  --v7-card: 0 0% 7%;
+  --v7-card-2: 0 0% 9%;
+  --v7-line: 0 0% 14%;
+  --v7-line-strong: 0 0% 22%;
+  --v7-ink: 0 0% 96%;
+  --v7-ink-dim: 0 0% 55%;
+  --v7-ink-mid: 0 0% 72%;
+
+  --v7-green: 75 80% 60%;
+  --v7-blue:  220 90% 65%;
+  --v7-yellow: 42 95% 60%;
+  --v7-red:    355 80% 58%;
+  --v7-violet: 260 70% 65%;
+  --v7-orange: 22 95% 60%;
+}
+
+/* override v5 hero/page background a touch darker, pure black bias */
+.v7-scope.v5-scope {
+  background:
+    radial-gradient(900px 600px at 88% -8%, hsl(var(--v7-blue) / 0.10), transparent 60%),
+    radial-gradient(700px 600px at -6% 110%, hsl(var(--v7-green) / 0.08), transparent 60%),
+    hsl(0 0% 3%);
+}
+
+/* ---------- Gallery layout ---------- */
+.v7-gallery { padding: 100px 24px 120px; }
+.v7-gallery-inner { max-width: 1600px; margin: 0 auto; }
+
+.v7-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+@media (max-width: 900px) {
+  .v7-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Dashboard card ---------- */
+.v7-card {
+  position: relative;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, var(--accent-glow, transparent), transparent 55%),
+    linear-gradient(180deg, hsl(var(--v7-card-2)), hsl(var(--v7-card)));
+  border: 1px solid hsl(var(--v7-line));
+  padding: 22px;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .25s;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.v7-card:hover {
+  transform: translateY(-4px);
+  border-color: hsl(var(--v7-line-strong));
+  box-shadow: 0 30px 80px -30px var(--accent-shadow, hsl(0 0% 0% / 0.7));
+}
+
+/* Subtle grain */
+.v7-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: .35;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+.v7-card > * { position: relative; z-index: 1; }
+
+/* Accent variants (drive glow + chart palette) */
+.v7-acc-green  { --acc: var(--v7-green);  --accent-glow: hsl(var(--v7-green) / 0.10); --accent-shadow: hsl(var(--v7-green) / 0.25); }
+.v7-acc-blue   { --acc: var(--v7-blue);   --accent-glow: hsl(var(--v7-blue) / 0.12);  --accent-shadow: hsl(var(--v7-blue) / 0.25); }
+.v7-acc-yellow { --acc: var(--v7-yellow); --accent-glow: hsl(var(--v7-yellow) / 0.10);--accent-shadow: hsl(var(--v7-yellow) / 0.25); }
+.v7-acc-red    { --acc: var(--v7-red);    --accent-glow: hsl(var(--v7-red) / 0.12);   --accent-shadow: hsl(var(--v7-red) / 0.25); }
+.v7-acc-violet { --acc: var(--v7-violet); --accent-glow: hsl(var(--v7-violet) / 0.12);--accent-shadow: hsl(var(--v7-violet) / 0.25); }
+.v7-acc-orange { --acc: var(--v7-orange); --accent-glow: hsl(var(--v7-orange) / 0.12);--accent-shadow: hsl(var(--v7-orange) / 0.25); }
+
+/* ---------- Card header (chip + metric tiles + arrow) ---------- */
+.v7-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.v7-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--v7-line-strong));
+  background: hsl(0 0% 0% / 0.45);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--v7-ink));
+  align-self: flex-start;
+  white-space: nowrap;
+}
+.v7-chip-delta {
+  margin-left: 10px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--delta-color, hsl(var(--v7-ink-dim)));
+}
+
+.v7-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+@media (max-width: 520px) {
+  .v7-metrics { grid-template-columns: repeat(2, 1fr); }
+  .v7-metrics > :nth-child(n+3) { display: none; }
+}
+.v7-metric {
+  background: hsl(0 0% 0% / 0.35);
+  border: 1px solid hsl(var(--v7-line));
+  border-radius: 12px;
+  padding: 8px 12px;
+  min-width: 0;
+}
+.v7-metric-label {
+  font-size: 10px;
+  color: hsl(var(--v7-ink-dim));
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.v7-metric-value {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: hsl(var(--v7-ink));
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.v7-metric-delta {
+  margin-top: 2px;
+  font-size: 10px;
+  font-family: "JetBrains Mono", monospace;
+}
+.v7-up   { color: hsl(var(--v7-green)); }
+.v7-down { color: hsl(var(--v7-red)); }
+
+.v7-arrow {
+  width: 38px; height: 38px;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--v7-line-strong));
+  background: hsl(0 0% 0% / 0.5);
+  color: hsl(var(--v7-ink));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  transition: transform .25s, background .25s, color .25s;
+}
+.v7-card:hover .v7-arrow {
+  background: hsl(var(--acc));
+  color: hsl(0 0% 6%);
+  transform: rotate(-8deg);
+}
+
+/* ---------- Card body (chart + donut) ---------- */
+.v7-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 132px;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 160px;
+}
+.v7-viz {
+  position: relative;
+  min-height: 160px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.v7-viz svg { width: 100%; height: 100%; display: block; }
+
+.v7-donut {
+  position: relative;
+  align-self: end;
+  width: 132px; height: 132px;
+}
+.v7-donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.v7-donut-track { stroke: hsl(0 0% 100% / 0.08); }
+.v7-donut-fill  { stroke: hsl(var(--acc)); transition: stroke-dashoffset .6s ease; }
+.v7-donut-text {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+}
+.v7-donut-text .pct {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+  color: hsl(var(--v7-ink));
+}
+.v7-donut-text .lbl {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: hsl(var(--v7-ink-dim));
+  margin-top: 2px;
+}
+
+/* ---------- Card footer ---------- */
+.v7-foot { display: flex; flex-direction: column; gap: 6px; }
+.v7-author {
+  font-size: 12px;
+  color: hsl(var(--v7-ink-dim));
+  letter-spacing: 0.01em;
+}
+.v7-title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: hsl(var(--v7-ink));
+}
+.v7-stamp {
+  margin-top: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(0 0% 28%);
+}
+
+/* ---------- Header / hero overrides if needed ---------- */
+.v7-scope .v5-frame { /* unused in v7 gallery, keep clean */ }
