@@ -34,7 +34,7 @@ export type Dashboard = {
 
 const PALETTE_CYCLE: Palette[] = ["dark", "green", "light", "blue", "yellow", "red"];
 
-type Raw = Omit<Dashboard, "palette" | "category"> & { categories: Category[] };
+type Raw = Omit<Dashboard, "palette" | "category"> & { categories: Category[]; palette?: Palette };
 
 import dashBank from "@/assets/dash-bank.jpg";
 import dashVinoteka from "@/assets/dash-vinoteka.jpg";
@@ -48,6 +48,7 @@ const RAW: Raw[] = [
     categories: ["Finance", "Marketing"],
     features: ["Дашборд + лонгрид", "Экспорт в PDF", "Claude"],
     tools: ["Claude"],
+    palette: "red",
     image: dashBank,
     link: "https://files.alexkolokolov.com/ai/gallery/bank.html",
     accent: "from-rose-500 to-orange-400",
@@ -62,6 +63,7 @@ const RAW: Raw[] = [
     categories: ["Sales", "Finance"],
     features: ["Анализ что-если", "Сториборд", "Claude"],
     tools: ["Claude"],
+    palette: "dark",
     image: dashVinoteka,
     link: "https://files.alexkolokolov.com/ai/gallery/vinoteka.html",
     accent: "from-fuchsia-500 to-amber-400",
@@ -76,6 +78,7 @@ const RAW: Raw[] = [
     categories: ["Logistics"],
     features: ["Оффлайн", "Запароленное обновление", "Claude"],
     tools: ["Claude"],
+    palette: "blue",
     image: dashArchive,
     link: "https://files.alexkolokolov.com/ai/gallery/archive.html",
     accent: "from-slate-400 to-emerald-400",
@@ -271,7 +274,7 @@ const RAW: Raw[] = [
 export const dashboards: Dashboard[] = RAW.map((d, i) => ({
   ...d,
   category: d.categories[0],
-  palette: PALETTE_CYCLE[i % PALETTE_CYCLE.length],
+  palette: d.palette ?? PALETTE_CYCLE[i % PALETTE_CYCLE.length],
 }));
 
 export const PALETTES = PALETTE_CYCLE;
