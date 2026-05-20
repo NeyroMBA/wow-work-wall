@@ -68,7 +68,11 @@ const V5Gallery = ({ onSelect }: Props) => {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-16">
-          {CATEGORIES.map((c) => (
+          {CATEGORIES.filter(
+            (c) =>
+              c.key === "All" ||
+              dashboards.some((d) => d.categories.includes(c.key as Category))
+          ).map((c) => (
             <button
               key={c.key}
               onClick={() => setFilter(c.key)}
@@ -78,6 +82,7 @@ const V5Gallery = ({ onSelect }: Props) => {
             </button>
           ))}
         </div>
+
 
         {rows.length === 0 && (
           <div className="text-center py-32 v5-dim">пусто — попробуйте другой фильтр</div>
