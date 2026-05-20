@@ -6,7 +6,7 @@ const dim = { color: "hsl(0 0% 67%)" };
 const fg = { color: "hsl(0 0% 95%)" };
 
 const V5Footer = () => (
-  <footer className="px-6 md:px-10 pt-12 pb-8 v5-scope">
+  <footer className="px-6 md:px-10 pt-12 pb-4 v5-scope">
     <div
       className="max-w-[1600px] mx-auto rounded-2xl border p-6 md:p-8"
       style={{

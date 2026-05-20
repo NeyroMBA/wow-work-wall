@@ -18,9 +18,7 @@
   --v5-ink-dim: 0 0% 62%;
   --v5-line: 0 0% 16%;
 
-  background:
-    radial-gradient(900px 600px at 88% -8%, hsl(var(--ina-blue) / 0.22), transparent 60%),
-    hsl(var(--v5-bg));
+  background: hsl(var(--v5-bg));
   color: hsl(var(--v5-ink));
   font-family: "Manrope", "Gilroy", system-ui, sans-serif;
   font-feature-settings: "ss01", "cv11";
