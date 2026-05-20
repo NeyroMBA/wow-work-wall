@@ -6,16 +6,22 @@ const dim = { color: "hsl(0 0% 67%)" };
 const fg = { color: "hsl(0 0% 95%)" };
 
 const V5Footer = () => (
-  <footer className="px-6 md:px-10 pt-16 pb-10 v5-scope border-t" style={{ borderColor: "hsl(0 0% 16%)" }}>
-    <div className="max-w-[1600px] mx-auto pt-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+  <footer className="px-6 md:px-10 pt-12 pb-8 v5-scope">
+    <div
+      className="max-w-[1600px] mx-auto rounded-2xl border p-6 md:p-8"
+      style={{
+        borderColor: "hsl(0 0% 16%)",
+        background: "hsl(0 0% 6%)",
+      }}
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
         {/* Logo */}
-        <div className="flex md:block items-center">
-          <img src={logo} alt="ИНА" className="h-12 w-auto" />
+        <div className="flex items-center">
+          <img src={logo} alt="ИНА" className="h-10 w-auto" />
         </div>
 
         {/* Legal */}
-        <div className="flex flex-col gap-3" style={dim}>
+        <div className="flex flex-col gap-2" style={dim}>
           <a href="https://neyro.mba/privacy" target="_blank" rel="noreferrer" className={linkCls} style={dim}>
             Политика конфиденциальности
           </a>
@@ -25,18 +31,22 @@ const V5Footer = () => (
           <a href="https://neyro.mba/oferta" target="_blank" rel="noreferrer" className={linkCls} style={dim}>
             Публичная оферта
           </a>
-          <div className="mt-4 text-sm" style={dim}>© Институт Бизнес-аналитики, 2026</div>
+          <div className="mt-3 text-sm" style={dim}>© Институт Бизнес-аналитики, 2026</div>
         </div>
 
         {/* Contacts */}
-        <div className="flex flex-col gap-2">
-          <a href="tel:+74993807078" className="text-2xl md:text-3xl font-medium" style={fg}>
+        <div className="flex flex-col gap-1 min-w-0">
+          <a
+            href="tel:+74993807078"
+            className="text-lg md:text-xl font-medium whitespace-nowrap"
+            style={fg}
+          >
             +7 499 380-70-78
           </a>
           <div className="text-xs mb-2" style={dim}>Бесплатно по России</div>
           <a
             href="mailto:info@alexkolokolov.ru"
-            className="text-xl md:text-2xl font-medium break-all"
+            className="text-base md:text-lg font-medium break-all"
             style={fg}
           >
             info@alexkolokolov.ru
@@ -44,7 +54,7 @@ const V5Footer = () => (
         </div>
 
         {/* Nav */}
-        <div className="flex flex-col gap-3" style={dim}>
+        <div className="flex flex-col gap-2" style={dim}>
           <a href="https://neyro.mba/study" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors">
             Каталог курсов
           </a>
@@ -54,7 +64,7 @@ const V5Footer = () => (
           <a href="https://neyro.mba/corp" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors">
             Корпоративное обучение
           </a>
-          <a href="https://neyro.mba/club-an" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors mt-4">
+          <a href="https://neyro.mba/club-an" target="_blank" rel="noreferrer" style={dim} className="text-sm hover:text-white transition-colors mt-3">
             Клуб Нейро МВА
           </a>
         </div>
