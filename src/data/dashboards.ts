@@ -131,7 +131,7 @@ const RAW: Raw[] = [
   },
   {
     id: "med-dash-lovable",
-    title: "Медицинский дашборд",
+    title: "Работа медцентра",
     author: "Елена Шмаль",
     categories: ["Health", "Finance"],
     features: ["Боковое меню", "Саммари отчет", "Lovable"],
@@ -145,7 +145,7 @@ const RAW: Raw[] = [
   },
   {
     id: "student_dash7",
-    title: "Дашборд для мед. клиники",
+    title: "Финансы медклиники",
     author: "Ирина Ивойлова",
     categories: ["Health", "Sales", "Finance"],
     features: ["Переключатель", "Claude"],
@@ -201,7 +201,7 @@ const RAW: Raw[] = [
   },
   {
     id: "student_dash13",
-    title: "Сториборд",
+    title: "Сториборд: солнечные батареи",
     author: "Денис Беляев",
     categories: ["Marketing"],
     features: ["Нестандартный визуал", "Многостраничник", "Claude"],
@@ -210,12 +210,12 @@ const RAW: Raw[] = [
     link: "http://files.alexkolokolov.com/ai/gallery/student_dash13.html",
     accent: "from-yellow-500 to-emerald-600",
     description:
-      "Интерактивный отчет, который превращает аналитику в визуальную историю: ключевые инсайты, необычные диаграммы и последовательное раскрытие данных.",
+      "Годовой отчёт для компании-продавца солнечных батарей: аналитика за год с исследованиями и выводами, поданная как визуальная история с ключевыми инсайтами и необычными диаграммами.",
     cohort: "Cohort · 2026",
   },
   {
     id: "marketing_dash",
-    title: "Дашборд по маркетингу",
+    title: "Эффективность кампаний",
     author: "Анастасия Бачило",
     categories: ["Marketing"],
     features: ["Необычный визуал", "Claude"],
