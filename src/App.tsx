@@ -21,7 +21,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<IndexV5 />} />
+          <Route path="/gallery" element={<IndexV5 />} />
+          <Route path="/original" element={<Index />} />
           <Route path="/v2" element={<IndexV2 />} />
           <Route path="/v3" element={<IndexV3Page />} />
           <Route path="/v4" element={<IndexV4 />} />
