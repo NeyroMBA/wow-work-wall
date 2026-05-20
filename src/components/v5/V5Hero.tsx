@@ -72,7 +72,7 @@ const V5Hero = () => {
 
       {/* Scroll cue */}
       <div className="v5-hero-cue v5-mono text-[10px] uppercase tracking-[0.32em] v5-dim">
-        ↓ скролл — галерея ниже
+        ↓ галерея ниже
       </div>
 
       {/* Wall */}
