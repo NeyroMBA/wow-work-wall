@@ -68,7 +68,11 @@ const V5Gallery = ({ onSelect }: Props) => {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-16">
-          {CATEGORIES.map((c) => (
+          {CATEGORIES.filter(
+            (c) =>
+              c.key === "All" ||
+              dashboards.some((d) => d.categories.includes(c.key as Category))
+          ).map((c) => (
             <button
               key={c.key}
               onClick={() => setFilter(c.key)}
@@ -78,6 +82,7 @@ const V5Gallery = ({ onSelect }: Props) => {
             </button>
           ))}
         </div>
+
 
         {rows.length === 0 && (
           <div className="text-center py-32 v5-dim">пусто — попробуйте другой фильтр</div>
@@ -115,22 +120,22 @@ const V5Gallery = ({ onSelect }: Props) => {
                         </div>
                       </div>
                       <div className="v5-gallery-card-body">
-                        {d.features.length > 0 && (
+                        {d.features.filter((f) => !isTool(f)).length > 0 && (
                           <div className="v5-features">
-                            {d.features.map((f) => (
-                              <span
-                                key={f}
-                                className={`v5-feature ${isTool(f) ? "v5-feature-tool" : ""}`}
-                              >
-                                {f}
-                              </span>
-                            ))}
+                            {d.features
+                              .filter((f) => !isTool(f))
+                              .map((f) => (
+                                <span key={f} className="v5-feature">
+                                  {f}
+                                </span>
+                              ))}
                           </div>
                         )}
                         <h3 className="v5-display text-2xl md:text-3xl leading-[0.95] mb-2">
                           {d.title}
                         </h3>
                         <div className="text-xs v5-dim mb-3">{d.author}</div>
+
                         <p className="text-sm leading-relaxed v5-dim">
                           {d.description}
                         </p>
