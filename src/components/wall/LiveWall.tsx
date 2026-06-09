@@ -121,7 +121,7 @@ export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
   );
 }
 
-function WallCard({ m, index, falling, onPeel }: { m: WallMessage; index: number; falling: boolean; onPeel: () => void }) {
+function WallCard({ m, index }: { m: WallMessage; index: number }) {
   const mask = getMask(m.mask);
   const color = mask?.color ?? pickPaletteForCategory(m.category);
   const rotWall = useMemo(() => (hashTo(m.id, 100) - 50) / 14, [m.id]);
