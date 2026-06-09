@@ -200,22 +200,14 @@ function WallCard({ m, index }: { m: WallMessage; index: number }) {
     );
   }
 
-  const fallRot = (hashTo(m.id + ":f", 60) - 30);
   return (
     <article
-      className="sticker drift-in cursor-pointer select-none"
-      onClick={onPeel}
-      title="оторвать"
+      className="sticker drift-in select-none"
       style={{
-        transform: falling
-          ? `translateY(120vh) rotate(${fallRot * 4}deg)`
-          : `rotate(${rotSticker}deg)`,
+        transform: `rotate(${rotSticker}deg)`,
         animationDelay: `${index * 50}ms`,
         borderColor: `color-mix(in oklab, ${color} 35%, hsl(var(--border)))`,
-        transition: falling
-          ? "transform 1s cubic-bezier(0.55, 0.06, 0.68, 0.19), opacity 1s ease-in"
-          : "transform 0.25s ease",
-        opacity: falling ? 0 : 1,
+        transition: "transform 0.25s ease",
         willChange: "transform",
       }}
     >
