@@ -41,19 +41,14 @@ export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
     let alive = true;
     (async () => {
       setLoading(true);
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("wall_messages")
         .select("*")
         .order("created_at", { ascending: false })
-        .limit(50);
+        .limit(24);
       if (!alive) return;
-      const arr = ((data ?? []) as WallMessage[]).slice();
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      const count = 7 + Math.floor(Math.random() * 3);
-      setMessages(arr.slice(0, count));
+      if (error) console.error("[wall] load error", error);
+      setMessages((data ?? []) as WallMessage[]);
       setFallen(new Set());
       setLoading(false);
     })();
