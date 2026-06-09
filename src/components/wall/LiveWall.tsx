@@ -35,7 +35,6 @@ interface LiveWallProps {
 export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
   const [messages, setMessages] = useState<WallMessage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [fallen, setFallen] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     let alive = true;
@@ -49,22 +48,10 @@ export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
       if (!alive) return;
       if (error) console.error("[wall] load error", error);
       setMessages((data ?? []) as WallMessage[]);
-      setFallen(new Set());
       setLoading(false);
     })();
     return () => { alive = false; };
   }, [refreshKey]);
-
-  const peel = (id: string) => {
-    setFallen((prev) => {
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-    setTimeout(() => {
-      setMessages((prev) => prev.filter((m) => m.id !== id));
-    }, 1100);
-  };
 
   return (
     <section
@@ -125,7 +112,7 @@ export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
           {messages.map((m, i) => (
             <div key={m.id} className="relative min-h-[180px] overflow-hidden">
-              <WallCard m={m} index={i} falling={fallen.has(m.id)} onPeel={() => peel(m.id)} />
+              <WallCard m={m} index={i} />
             </div>
           ))}
         </div>
@@ -134,7 +121,7 @@ export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
   );
 }
 
-function WallCard({ m, index, falling, onPeel }: { m: WallMessage; index: number; falling: boolean; onPeel: () => void }) {
+function WallCard({ m, index }: { m: WallMessage; index: number }) {
   const mask = getMask(m.mask);
   const color = mask?.color ?? pickPaletteForCategory(m.category);
   const rotWall = useMemo(() => (hashTo(m.id, 100) - 50) / 14, [m.id]);
@@ -213,22 +200,14 @@ function WallCard({ m, index, falling, onPeel }: { m: WallMessage; index: number
     );
   }
 
-  const fallRot = (hashTo(m.id + ":f", 60) - 30);
   return (
     <article
-      className="sticker drift-in cursor-pointer select-none"
-      onClick={onPeel}
-      title="оторвать"
+      className="sticker drift-in select-none"
       style={{
-        transform: falling
-          ? `translateY(120vh) rotate(${fallRot * 4}deg)`
-          : `rotate(${rotSticker}deg)`,
+        transform: `rotate(${rotSticker}deg)`,
         animationDelay: `${index * 50}ms`,
         borderColor: `color-mix(in oklab, ${color} 35%, hsl(var(--border)))`,
-        transition: falling
-          ? "transform 1s cubic-bezier(0.55, 0.06, 0.68, 0.19), opacity 1s ease-in"
-          : "transform 0.25s ease",
-        opacity: falling ? 0 : 1,
+        transition: "transform 0.25s ease",
         willChange: "transform",
       }}
     >
