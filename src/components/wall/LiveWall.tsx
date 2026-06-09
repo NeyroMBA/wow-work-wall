@@ -112,7 +112,7 @@ export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
           {messages.map((m, i) => (
             <div key={m.id} className="relative min-h-[180px] overflow-hidden">
-              <WallCard m={m} index={i} falling={fallen.has(m.id)} onPeel={() => peel(m.id)} />
+              <WallCard m={m} index={i} />
             </div>
           ))}
         </div>
