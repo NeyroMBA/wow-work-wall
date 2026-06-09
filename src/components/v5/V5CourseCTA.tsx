@@ -47,7 +47,7 @@ const V5CourseCTA = () => (
           Изучить программу →
         </a>
         <div className="v5-mono text-xs v5-dim">
-          Тарифы от <span className="v5-green">20 000 ₽</span> · сертификат
+          тарифы от <span className="v5-green">30 000</span> · сертификат
         </div>
       </div>
     </div>
