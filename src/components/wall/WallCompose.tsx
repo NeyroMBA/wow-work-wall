@@ -131,7 +131,7 @@ export function WallCompose({ mask, onSent, onSubmitToWall }: WallComposeProps) 
         setSending(false);
         return;
       }
-      const { error } = await supabase.from("wall_messages").insert(parsed.data);
+      const { error } = await supabase.from("wall_messages").insert(parsed.data as { mask: string; category: string; mood: string; content: string });
       if (error) {
         toast.error("Не получилось отправить. Попробуй ещё раз.");
         setSending(false);
