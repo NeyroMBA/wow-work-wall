@@ -35,7 +35,6 @@ interface LiveWallProps {
 export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
   const [messages, setMessages] = useState<WallMessage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [fallen, setFallen] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     let alive = true;
@@ -49,22 +48,10 @@ export function LiveWall({ refreshKey, sprays }: LiveWallProps) {
       if (!alive) return;
       if (error) console.error("[wall] load error", error);
       setMessages((data ?? []) as WallMessage[]);
-      setFallen(new Set());
       setLoading(false);
     })();
     return () => { alive = false; };
   }, [refreshKey]);
-
-  const peel = (id: string) => {
-    setFallen((prev) => {
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-    setTimeout(() => {
-      setMessages((prev) => prev.filter((m) => m.id !== id));
-    }, 1100);
-  };
 
   return (
     <section
