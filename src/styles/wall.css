@@ -1,0 +1,215 @@
+/* Wall ("Стена правды") — scoped styles. All variables/classes live under .wall-root. */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
+
+.wall-root {
+  /* Dark underground (default — after the mask) — HSL triplets for tailwind utilities */
+  --background: 260 14% 9%;
+  --foreground: 260 8% 94%;
+
+  --card: 260 14% 12%;
+  --card-foreground: 260 8% 94%;
+  --popover: 260 14% 11%;
+  --popover-foreground: 260 8% 94%;
+
+  --primary: 150 65% 65%;
+  --primary-foreground: 260 14% 9%;
+  --secondary: 270 12% 16%;
+  --secondary-foreground: 260 8% 94%;
+  --muted: 265 10% 15%;
+  --muted-foreground: 260 8% 65%;
+  --accent: 350 60% 60%;
+  --accent-foreground: 260 14% 9%;
+  --destructive: 0 75% 55%;
+  --destructive-foreground: 260 10% 98%;
+
+  --border: 265 12% 22%;
+  --input: 265 12% 18%;
+  --ring: 150 65% 65%;
+
+  /* Neon palette — raw colors */
+  --neon-green:  #6dffb1;
+  --neon-pink:   #ff6dc2;
+  --neon-cyan:   #8ee9ff;
+  --neon-violet: #a984ff;
+  --neon-yellow: #ffe06d;
+
+  /* Aliases used directly by components (Tailwind 4-style names) */
+  --color-border: hsl(var(--border));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+
+  --shadow-neon-green: 0 0 18px color-mix(in oklab, var(--neon-green) 40%, transparent), 0 0 56px color-mix(in oklab, var(--neon-green) 18%, transparent);
+  --shadow-neon-pink:  0 0 18px color-mix(in oklab, var(--neon-pink)  40%, transparent), 0 0 56px color-mix(in oklab, var(--neon-pink)  18%, transparent);
+  --shadow-neon-cyan:  0 0 14px color-mix(in oklab, var(--neon-cyan)  40%, transparent);
+
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  min-height: 100vh;
+}
+
+/* Lights ON — clean corporate office, before the mask */
+.wall-root.lights-on {
+  --background: 260 12% 96%;
+  --foreground: 260 12% 16%;
+
+  --card: 260 8% 99%;
+  --card-foreground: 260 12% 16%;
+  --popover: 260 8% 99%;
+  --popover-foreground: 260 12% 16%;
+
+  --primary: 260 14% 20%;
+  --primary-foreground: 260 10% 98%;
+  --secondary: 260 8% 92%;
+  --secondary-foreground: 260 12% 16%;
+  --muted: 260 6% 93%;
+  --muted-foreground: 260 8% 40%;
+  --accent: 250 60% 55%;
+  --accent-foreground: 260 10% 98%;
+
+  --border: 260 8% 86%;
+  --input: 260 8% 90%;
+  --ring: 250 60% 55%;
+}
+
+.wall-root.no-scroll { overflow: hidden; height: 100vh; }
+html.wall-no-scroll, body.wall-no-scroll { overflow: hidden; height: 100vh; }
+
+/* === Utility classes (scoped to wall-root) === */
+.wall-root .font-display { font-family: "Bebas Neue", "Impact", system-ui, sans-serif; letter-spacing: 0.01em; }
+.wall-root .font-graffiti { font-family: "Permanent Marker", "Marker Felt", cursive; }
+.wall-root .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+.wall-root .text-glow-green { text-shadow: 0 0 12px color-mix(in oklab, var(--neon-green) 80%, transparent), 0 0 36px color-mix(in oklab, var(--neon-green) 40%, transparent); }
+.wall-root .text-glow-pink  { text-shadow: 0 0 12px color-mix(in oklab, var(--neon-pink) 80%, transparent), 0 0 36px color-mix(in oklab, var(--neon-pink) 40%, transparent); }
+.wall-root .text-glow-cyan  { text-shadow: 0 0 10px color-mix(in oklab, var(--neon-cyan) 80%, transparent); }
+
+.wall-root .shadow-neon-green { box-shadow: var(--shadow-neon-green); }
+.wall-root .shadow-neon-pink  { box-shadow: var(--shadow-neon-pink); }
+.wall-root .shadow-neon-cyan  { box-shadow: var(--shadow-neon-cyan); }
+
+/* Brick / concrete wall surface */
+.wall-root .wall-surface {
+  background-color: hsl(265 14% 14%);
+  background-image:
+    radial-gradient(circle at 15% 25%, color-mix(in oklab, var(--neon-violet) 14%, transparent) 0%, transparent 35%),
+    radial-gradient(circle at 85% 75%, color-mix(in oklab, var(--neon-pink) 10%, transparent) 0%, transparent 40%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 120px);
+}
+
+/* Sticker */
+.wall-root .sticker {
+  position: relative;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.02) inset;
+}
+.wall-root .sticker::before {
+  content: "";
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 60px; height: 16px;
+  background: color-mix(in oklab, var(--neon-yellow) 55%, transparent);
+  opacity: 0.55;
+  border-radius: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+/* Tag chip */
+.wall-root .tag-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid hsl(var(--border));
+  background: color-mix(in oklab, hsl(var(--background)) 70%, var(--neon-violet) 14%);
+  color: hsl(var(--foreground));
+}
+
+/* Glitch */
+@keyframes wall-glitch-shift {
+  0%,100% { transform: translate(0,0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 0); }
+  80% { transform: translate(1px, 1px); }
+}
+.wall-root .glitch { position: relative; display: inline-block; }
+.wall-root .glitch::before, .wall-root .glitch::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.wall-root .glitch::before { color: var(--neon-pink); transform: translate(2px, 0); opacity: 0.7; }
+.wall-root .glitch::after  { color: var(--neon-cyan); transform: translate(-2px, 0); opacity: 0.7; }
+.wall-root .glitch:hover::before { animation: wall-glitch-shift 0.4s steps(2) infinite; }
+.wall-root .glitch:hover::after  { animation: wall-glitch-shift 0.4s steps(2) reverse infinite; }
+
+/* Drift in */
+@keyframes wall-drift-in {
+  0% { opacity: 0; transform: translateY(12px) rotate(var(--rot, 0deg)) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
+}
+.wall-root .drift-in { animation: wall-drift-in 0.6s cubic-bezier(0.2,0.7,0.2,1) both; }
+
+@keyframes wall-flicker {
+  0%,100% { opacity: 1; }
+  45% { opacity: 1; }
+  50% { opacity: 0.6; }
+  55% { opacity: 1; }
+}
+.wall-root .flicker { animation: wall-flicker 4s infinite; }
+
+.wall-root .spray-can-cursor { cursor: crosshair; }
+
+/* Buttons */
+.wall-root .btn-neon {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  font-family: "Bebas Neue", "Impact", system-ui, sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: hsl(var(--primary-foreground));
+  background: var(--neon-green);
+  border: 1px solid color-mix(in oklab, var(--neon-green) 70%, white);
+  border-radius: 6px;
+  box-shadow: var(--shadow-neon-green);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+.wall-root .btn-neon:hover { transform: translateY(-1px); }
+.wall-root .btn-neon:active { transform: translateY(0); }
+
+.wall-root .btn-ghost-neon {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.2rem;
+  font-family: "Bebas Neue", "Impact", system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  background: transparent;
+  border: 1px solid color-mix(in oklab, var(--neon-cyan) 50%, transparent);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.wall-root .btn-ghost-neon:hover {
+  color: hsl(var(--background));
+  background: var(--neon-cyan);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+.wall-root ::selection { background: var(--neon-green); color: hsl(var(--background)); }
