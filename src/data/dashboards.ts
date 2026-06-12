@@ -269,14 +269,29 @@ const RAW: Raw[] = [
       "Дашборд показывает контроль сроков через диаграмму Ганта и статус выполнения задач, обеспечивая прозрачное управление сроками и бюджетом проектов.",
     cohort: "Cohort · 2026",
   },
+];
 
-  // === Поток 6 ===
+const COHORT_6: Raw[] = [
+  {
+    id: "tokarev-ecom",
+    title: "Продажи детских товаров",
+    author: "Андрей Токарев",
+    categories: ["Sales", "Marketing"],
+    features: ["ABC-анализ SKU", "Что-если", "Автотесты"],
+    tools: ["Claude"],
+    image: "http://files.alexkolokolov.com/ai/gallery/img/tokarev_2.png",
+    link: "http://files.alexkolokolov.com/ai/gallery/tokarev_2.html",
+    accent: "from-pink-500 to-orange-500",
+    description:
+      "Полноценный аналитический дашборд для e-com с детскими товарами: от динамики выручки и маржи по дням до ABC-анализа SKU, тепловой карты по дням недели и пузырьковой диаграммы брендов. Под капотом — встроенные автотесты, которые проверяют корректность всех агрегаций при загрузке новых данных.",
+    cohort: "Поток 6",
+  },
   {
     id: "tokarev-nba",
     title: "Карьеры игроков НБА",
     author: "Андрей Токарев",
     categories: ["HR", "Sales"],
-    features: ["Скаттерплот-последовательность", "Ползунок ценности", "Справка к визуалу", "Claude"],
+    features: ["Скаттерплот", "Ползунок ценности", "Claude"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/tokarev.png",
     link: "http://files.alexkolokolov.com/ai/gallery/tokarev.html",
@@ -290,7 +305,7 @@ const RAW: Raw[] = [
     title: "Снежный Гид",
     author: "Александра Скворцова",
     categories: ["Marketing", "Logistics"],
-    features: ["Анимированная карта", "Калькулятор лыж и палок", "Подбор курорта", "Экспорт в PDF", "Claude"],
+    features: ["Анимированная карта", "Подбор курорта", "PDF"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/skvorcova.png",
     link: "http://files.alexkolokolov.com/ai/gallery/skvorcova.html",
@@ -304,7 +319,7 @@ const RAW: Raw[] = [
     title: "Анализ образовательных потоков",
     author: "Татьяна Кравченко",
     categories: ["Marketing", "Sales"],
-    features: ["Кросс-фильтрация", "Карта + список", "Сценарный анализ", "PDF-выгрузка", "Claude"],
+    features: ["Кросс-фильтрация", "Сценарии", "PDF"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/kravchenko.png",
     link: "http://files.alexkolokolov.com/ai/gallery/kravchenko.html",
@@ -318,7 +333,7 @@ const RAW: Raw[] = [
     title: "Anthropic · Пульс бизнеса",
     author: "Алексей Никифоров",
     categories: ["Finance", "SaaS"],
-    features: ["Сравнение конкурентов", "Что-если", "Сохранение сценариев", "Анимация по месяцам", "Прогноз на карте", "Claude"],
+    features: ["Что-если", "Прогноз на карте", "Claude"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/nikiforov.png",
     link: "http://files.alexkolokolov.com/ai/gallery/nikiforov.html",
@@ -332,7 +347,7 @@ const RAW: Raw[] = [
     title: "Подключение и удержание клиентов",
     author: "Оксана Веселова",
     categories: ["Sales"],
-    features: ["Воронка по менеджеру", "Режим фокусировки", "PDF с фильтрами", "Claude"],
+    features: ["Воронка по менеджеру", "Фокус-режим", "PDF"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/o-veselova.png",
     link: "http://files.alexkolokolov.com/ai/gallery/o-veselova.html",
@@ -346,7 +361,7 @@ const RAW: Raw[] = [
     title: "Портфель ИТ / ЦТ",
     author: "Анна Брик",
     categories: ["Logistics", "Finance"],
-    features: ["Перерасход", "Карточки с детализацией", "Прогресс-бар скролла", "Сториборд", "Claude"],
+    features: ["Перерасход", "Сториборд", "Claude"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/brik.png",
     link: "http://files.alexkolokolov.com/ai/gallery/brik.html",
@@ -360,7 +375,7 @@ const RAW: Raw[] = [
     title: "Онлайн-школа английского",
     author: "Бурлият Османова",
     categories: ["SaaS", "Sales", "Finance"],
-    features: ["Калькулятор юнит-экономики", "Обновление данных", "Фильтр по кураторам", "Воронка по уровням", "Claude"],
+    features: ["Юнит-экономика", "Воронка по уровням", "Claude"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/osmanova.png",
     link: "http://files.alexkolokolov.com/ai/gallery/osmanova.html",
@@ -374,7 +389,7 @@ const RAW: Raw[] = [
     title: "Монетная неделя",
     author: "Елена Заворуева",
     categories: ["Finance", "Marketing"],
-    features: ["Карта регионов", "Переключатель метрики", "Индикаторы к прошлой акции", "Claude"],
+    features: ["Карта регионов", "Переключатель метрики", "Claude"],
     tools: ["Claude"],
     image: "http://files.alexkolokolov.com/ai/gallery/img/zavorueva.png",
     link: "http://files.alexkolokolov.com/ai/gallery/zavorueva.html",
@@ -385,7 +400,7 @@ const RAW: Raw[] = [
   },
 ];
 
-export const dashboards: Dashboard[] = RAW.map((d, i) => ({
+export const dashboards: Dashboard[] = [...COHORT_6, ...RAW].map((d, i) => ({
   ...d,
   category: d.categories[0],
   palette: d.palette ?? PALETTE_CYCLE[i % PALETTE_CYCLE.length],
