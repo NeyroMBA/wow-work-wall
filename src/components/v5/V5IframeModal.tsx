@@ -18,7 +18,8 @@ const DESKTOP_WIDTH = 1440;
 
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [zoom, setZoom] = useState(1);
+  const [scale, setScale] = useState(1);
+  const [size, setSize] = useState({ w: 0, h: 0 });
   const [isMobile, setIsMobile] = useState(false);
 
   const isMobileReady = MOBILE_READY_IDS.has(dashboard.id);
@@ -39,7 +40,9 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
       setIsMobile(mobile);
       if (containerRef.current) {
         const w = containerRef.current.clientWidth;
-        setZoom(Math.min(1, w / DESKTOP_WIDTH));
+        const h = containerRef.current.clientHeight;
+        setSize({ w, h });
+        setScale(Math.min(1, w / DESKTOP_WIDTH));
       }
     };
     update();
@@ -99,7 +102,7 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
           style={{ WebkitOverflowScrolling: "touch" }}
         >
           {dashboard.link && (
-            forceDesktop ? (
+            forceDesktop && size.w > 0 ? (
               <iframe
                 src={safeUrl}
                 title={dashboard.title}
@@ -108,10 +111,9 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
                 style={{
                   border: 0,
                   width: DESKTOP_WIDTH,
-                  height: `${100 / zoom}%`,
-                  // CSS zoom гораздо легче по памяти, чем transform: scale,
-                  // и реже приводит к перезагрузке вкладки на мобильном Safari.
-                  zoom: zoom,
+                  height: Math.max(size.h / scale, 900),
+                  transform: `scale(${scale})`,
+                  transformOrigin: "top left",
                 }}
               />
             ) : (
