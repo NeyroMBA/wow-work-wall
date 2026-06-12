@@ -1,17 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import type { Dashboard } from "@/data/dashboards";
 
 type Props = { dashboard: Dashboard; onClose: () => void };
 
-const DESKTOP_WIDTH = 1440;
-const DESKTOP_MIN_HEIGHT = 1024;
-
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-  const [containerW, setContainerW] = useState(0);
-  const [containerH, setContainerH] = useState(0);
-
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
@@ -21,30 +13,6 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
       document.body.style.overflow = "";
     };
   }, [onClose]);
-
-  useEffect(() => {
-    const update = () => {
-      const el = containerRef.current;
-      if (!el) return;
-      const w = el.clientWidth;
-      const h = el.clientHeight;
-      setContainerW(w);
-      setContainerH(h);
-      setScale(w < DESKTOP_WIDTH ? w / DESKTOP_WIDTH : 1);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  const isScaled = scale < 1;
-  const iframeWidth = isScaled ? DESKTOP_WIDTH : containerW;
-  // Make logical iframe tall enough so the dashboard renders its full desktop layout;
-  // we let the OUTER container scroll, so the user can scroll through the whole project.
-  const iframeHeight = isScaled
-    ? Math.max(DESKTOP_MIN_HEIGHT, containerH / scale)
-    : containerH;
-  const scaledHeight = iframeHeight * scale;
 
   return (
     <div
@@ -67,25 +35,16 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
           </svg>
         </button>
         <div
-          ref={containerRef}
-          className="w-full h-full overflow-auto bg-white"
+          className="w-full h-full overflow-hidden bg-white"
           style={{ WebkitOverflowScrolling: "touch" }}
         >
-          {dashboard.link && containerW > 0 && (
-            <div style={{ width: containerW, height: scaledHeight, position: "relative" }}>
-              <iframe
-                src={dashboard.link.replace(/^http:\/\//i, "https://")}
-                title={dashboard.title}
-                className="block bg-white"
-                style={{
-                  border: 0,
-                  width: iframeWidth,
-                  height: iframeHeight,
-                  transform: `scale(${scale})`,
-                  transformOrigin: "top left",
-                }}
-              />
-            </div>
+          {dashboard.link && (
+            <iframe
+              src={dashboard.link.replace(/^http:\/\//i, "https://")}
+              title={dashboard.title}
+              className="block w-full h-full bg-white"
+              style={{ border: 0 }}
+            />
           )}
         </div>
       </div>
