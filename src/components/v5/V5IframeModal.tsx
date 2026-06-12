@@ -1,9 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Dashboard } from "@/data/dashboards";
 
 type Props = { dashboard: Dashboard; onClose: () => void };
 
+// Кейсы, реально адаптированные под мобильную версию — открываем в нативном виде.
+const MOBILE_READY_IDS = new Set<string>([
+  "fin-health",
+  "student_dash11",
+  "student_dash10",
+  "student_dash12",
+  "tokarev-ecom",
+  "tokarev-nba",
+  "skvorcova-snow",
+]);
+
+const DESKTOP_WIDTH = 1440;
+
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  const [containerW, setContainerW] = useState(0);
+  const [containerH, setContainerH] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const isMobileReady = MOBILE_READY_IDS.has(dashboard.id);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
@@ -13,6 +34,30 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
       document.body.style.overflow = "";
     };
   }, [onClose]);
+
+  useEffect(() => {
+    const update = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (containerRef.current) {
+        const w = containerRef.current.clientWidth;
+        const h = containerRef.current.clientHeight;
+        setContainerW(w);
+        setContainerH(h);
+        setScale(Math.min(1, w / DESKTOP_WIDTH));
+      }
+    };
+    update();
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+    };
+  }, []);
+
+  // Принудительная десктоп-раскладка только для немобильных кейсов на мобиле.
+  const forceDesktop = !isMobileReady && isMobile;
+  const scaledHeight = forceDesktop && scale > 0 ? containerH / scale : containerH;
 
   return (
     <div
@@ -35,16 +80,34 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
           </svg>
         </button>
         <div
-          className="w-full h-full overflow-hidden bg-white"
+          ref={containerRef}
+          className={`w-full h-full bg-white ${forceDesktop ? "overflow-auto" : "overflow-hidden"}`}
           style={{ WebkitOverflowScrolling: "touch" }}
         >
           {dashboard.link && (
-            <iframe
-              src={dashboard.link.replace(/^http:\/\//i, "https://")}
-              title={dashboard.title}
-              className="block w-full h-full bg-white"
-              style={{ border: 0 }}
-            />
+            forceDesktop ? (
+              <div style={{ width: containerW, height: scaledHeight, position: "relative" }}>
+                <iframe
+                  src={dashboard.link.replace(/^http:\/\//i, "https://")}
+                  title={dashboard.title}
+                  className="block bg-white"
+                  style={{
+                    border: 0,
+                    width: DESKTOP_WIDTH,
+                    height: scaledHeight / scale,
+                    transform: `scale(${scale})`,
+                    transformOrigin: "top left",
+                  }}
+                />
+              </div>
+            ) : (
+              <iframe
+                src={dashboard.link.replace(/^http:\/\//i, "https://")}
+                title={dashboard.title}
+                className="block w-full h-full bg-white"
+                style={{ border: 0 }}
+              />
+            )
           )}
         </div>
       </div>
