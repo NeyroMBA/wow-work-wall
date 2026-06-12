@@ -3,12 +3,14 @@ import type { Dashboard } from "@/data/dashboards";
 
 type Props = { dashboard: Dashboard; onClose: () => void };
 
-const DESKTOP_WIDTH = 1280;
+const DESKTOP_WIDTH = 1440;
+const DESKTOP_MIN_HEIGHT = 1024;
 
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [size, setSize] = useState({ w: 0, h: 0 });
+  const [containerW, setContainerW] = useState(0);
+  const [containerH, setContainerH] = useState(0);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -26,18 +28,23 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
       if (!el) return;
       const w = el.clientWidth;
       const h = el.clientHeight;
-      setSize({ w, h });
-      // Only downscale when viewport is narrower than the desktop layout
-      const s = w < DESKTOP_WIDTH ? w / DESKTOP_WIDTH : 1;
-      setScale(s);
+      setContainerW(w);
+      setContainerH(h);
+      setScale(w < DESKTOP_WIDTH ? w / DESKTOP_WIDTH : 1);
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const iframeWidth = scale < 1 ? DESKTOP_WIDTH : size.w;
-  const iframeHeight = scale < 1 && size.h ? size.h / scale : size.h;
+  const isScaled = scale < 1;
+  const iframeWidth = isScaled ? DESKTOP_WIDTH : containerW;
+  // Make logical iframe tall enough so the dashboard renders its full desktop layout;
+  // we let the OUTER container scroll, so the user can scroll through the whole project.
+  const iframeHeight = isScaled
+    ? Math.max(DESKTOP_MIN_HEIGHT, containerH / scale)
+    : containerH;
+  const scaledHeight = iframeHeight * scale;
 
   return (
     <div
@@ -59,20 +66,26 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </button>
-        <div ref={containerRef} className="w-full h-full overflow-hidden bg-white">
-          {dashboard.link && size.w > 0 && (
-            <iframe
-              src={dashboard.link.replace(/^http:\/\//i, "https://")}
-              title={dashboard.title}
-              className="block bg-white"
-              style={{
-                border: 0,
-                width: iframeWidth,
-                height: iframeHeight,
-                transform: `scale(${scale})`,
-                transformOrigin: "top left",
-              }}
-            />
+        <div
+          ref={containerRef}
+          className="w-full h-full overflow-auto bg-white"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          {dashboard.link && containerW > 0 && (
+            <div style={{ width: containerW, height: scaledHeight, position: "relative" }}>
+              <iframe
+                src={dashboard.link.replace(/^http:\/\//i, "https://")}
+                title={dashboard.title}
+                className="block bg-white"
+                style={{
+                  border: 0,
+                  width: iframeWidth,
+                  height: iframeHeight,
+                  transform: `scale(${scale})`,
+                  transformOrigin: "top left",
+                }}
+              />
+            </div>
           )}
         </div>
       </div>
