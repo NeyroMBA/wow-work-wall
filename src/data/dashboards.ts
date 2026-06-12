@@ -30,6 +30,9 @@ export type Dashboard = {
   accent: string;
   description: string;
   cohort: string;
+  /** Опциональная обрезка изображения внутри рамки */
+  imageFit?: "cover-top";
+
 };
 
 const PALETTE_CYCLE: Palette[] = ["dark", "green", "light", "blue", "yellow", "red"];
