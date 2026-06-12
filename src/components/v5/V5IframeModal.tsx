@@ -1,9 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Dashboard } from "@/data/dashboards";
 
 type Props = { dashboard: Dashboard; onClose: () => void };
 
+const DESKTOP_WIDTH = 1280;
+
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  const [size, setSize] = useState({ w: 0, h: 0 });
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
@@ -13,6 +19,25 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
       document.body.style.overflow = "";
     };
   }, [onClose]);
+
+  useEffect(() => {
+    const update = () => {
+      const el = containerRef.current;
+      if (!el) return;
+      const w = el.clientWidth;
+      const h = el.clientHeight;
+      setSize({ w, h });
+      // Only downscale when viewport is narrower than the desktop layout
+      const s = w < DESKTOP_WIDTH ? w / DESKTOP_WIDTH : 1;
+      setScale(s);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const iframeWidth = scale < 1 ? DESKTOP_WIDTH : size.w;
+  const iframeHeight = scale < 1 && size.h ? size.h / scale : size.h;
 
   return (
     <div
@@ -34,14 +59,22 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </button>
-        {dashboard.link && (
-          <iframe
-            src={dashboard.link.replace(/^http:\/\//i, "https://")}
-            title={dashboard.title}
-            className="w-full h-full block bg-white"
-            style={{ border: 0 }}
-          />
-        )}
+        <div ref={containerRef} className="w-full h-full overflow-hidden bg-white">
+          {dashboard.link && size.w > 0 && (
+            <iframe
+              src={dashboard.link.replace(/^http:\/\//i, "https://")}
+              title={dashboard.title}
+              className="block bg-white"
+              style={{
+                border: 0,
+                width: iframeWidth,
+                height: iframeHeight,
+                transform: `scale(${scale})`,
+                transformOrigin: "top left",
+              }}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
