@@ -11,8 +11,12 @@ import "@/styles/v5.css";
 const IndexV5 = () => {
   const [selected, setSelected] = useState<Dashboard | null>(null);
 
+  // Демо защиты от прямого скачивания: открываем дашборд в модалке (iframe)
+  // вместо новой вкладки с прямой ссылкой. Пока включено только для одного кейса.
+  const OPEN_IN_MODAL = new Set(["nikiforov-construction"]);
+
   const handleSelect = (d: Dashboard) => {
-    if (d.link) {
+    if (d.link && !OPEN_IN_MODAL.has(d.id)) {
       window.open(d.link, "_blank", "noopener,noreferrer");
     } else {
       setSelected(d);
