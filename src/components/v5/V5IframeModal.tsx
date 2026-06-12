@@ -71,7 +71,7 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
               href={safeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-9 px-3 rounded-full flex items-center gap-1.5 text-white text-xs font-medium"
+              className="w-9 h-9 rounded-full flex items-center justify-center text-white"
               style={{ background: "hsl(230 35% 10% / 0.75)", backdropFilter: "blur(8px)" }}
               aria-label="Открыть в новой вкладке"
             >
@@ -80,7 +80,6 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
                 <polyline points="15 3 21 3 21 9" />
                 <line x1="10" y1="14" x2="21" y2="3" />
               </svg>
-              <span className="hidden sm:inline">В новой вкладке</span>
             </a>
           )}
           <button
