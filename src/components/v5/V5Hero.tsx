@@ -1,5 +1,8 @@
 import { dashboards, type Dashboard } from "@/data/dashboards";
 
+const HERO_SKIP = new Set(["vebinar_dash", "calc"]);
+const heroDashboards = dashboards.filter((d) => !HERO_SKIP.has(d.id));
+
 const CATEGORY_LABEL: Record<Dashboard["category"], string> = {
   Sales: "Продажи",
   Finance: "Финансы",
