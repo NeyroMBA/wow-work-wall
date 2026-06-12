@@ -136,7 +136,7 @@ const V5Gallery = ({ onSelect }: Props) => {
                         </h3>
                         <div className="text-xs v5-dim mb-3">{d.author}</div>
 
-                        <p className="text-sm leading-relaxed v5-dim">
+                        <p className="text-sm leading-tight v5-dim">
                           {d.description}
                         </p>
                         {d.link && (
