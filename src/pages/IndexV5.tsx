@@ -9,10 +9,26 @@ import V5Footer from "@/components/v5/V5Footer";
 import type { Dashboard } from "@/data/dashboards";
 import "@/styles/v5.css";
 
+// Тяжёлые дашборды, которые на мобиле приводят к перезагрузке/ошибке.
+// На мобильных устройствах открываем их сразу в новой вкладке.
+const HEAVY_ON_MOBILE = new Set<string>([
+  "kravchenko-edu",
+  "nikiforov-anthropic",
+  "brik-it",
+  "osmanova-english",
+  "student_dash13",
+]);
+
 const IndexV5 = () => {
   const [selected, setSelected] = useState<Dashboard | null>(null);
 
   const handleSelect = (d: Dashboard) => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile && d.link && HEAVY_ON_MOBILE.has(d.id)) {
+      const url = d.link.replace(/^http:\/\//i, "https://");
+      window.open(url, "_blank", "noopener,noreferrer");
+      return;
+    }
     setSelected(d);
   };
 

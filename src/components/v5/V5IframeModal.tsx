@@ -15,11 +15,11 @@ const MOBILE_READY_IDS = new Set<string>([
 ]);
 
 const DESKTOP_WIDTH = 1440;
+const DESKTOP_HEIGHT = Math.round((DESKTOP_WIDTH * 9) / 16); // 810 — формат 16:9
 
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [zoom, setZoom] = useState(1);
-  const [size, setSize] = useState({ w: 0, h: 0 });
   const [isMobile, setIsMobile] = useState(false);
 
   const isMobileReady = MOBILE_READY_IDS.has(dashboard.id);
@@ -36,12 +36,9 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
 
   useEffect(() => {
     const update = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
+      setIsMobile(window.innerWidth < 768);
       if (containerRef.current) {
         const w = containerRef.current.clientWidth;
-        const h = containerRef.current.clientHeight;
-        setSize((prev) => (prev.w === w && prev.h === h ? prev : { w, h }));
         setZoom(Math.min(1, w / DESKTOP_WIDTH));
       }
     };
@@ -54,7 +51,6 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
     };
   }, []);
 
-  // Принудительная десктоп-раскладка только для немобильных кейсов на мобиле.
   const forceDesktop = !isMobileReady && isMobile;
   const safeUrl = dashboard.link?.replace(/^http:\/\//i, "https://") ?? "";
 
@@ -98,20 +94,20 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
         </div>
         <div
           ref={containerRef}
-          className="w-full h-full bg-white overflow-auto"
+          className="w-full h-full bg-white overflow-auto flex items-center justify-center"
           style={{ WebkitOverflowScrolling: "touch" }}
         >
           {dashboard.link && (
-            forceDesktop && size.w > 0 ? (
+            forceDesktop ? (
               <iframe
                 src={safeUrl}
                 title={dashboard.title}
                 loading="lazy"
-                className="block bg-white"
+                className="block bg-white shrink-0"
                 style={{
                   border: 0,
                   width: DESKTOP_WIDTH,
-                  height: Math.max(size.h / zoom, 900),
+                  height: DESKTOP_HEIGHT,
                   zoom,
                 }}
               />
