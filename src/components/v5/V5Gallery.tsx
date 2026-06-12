@@ -111,7 +111,7 @@ const V5Gallery = ({ onSelect }: Props) => {
                         onClick={() => onSelect(d)}
                         style={{ cursor: "pointer" }}
                       >
-                        <img src={d.image} alt={d.title} loading="lazy" />
+                        <img src={d.image} alt={d.title} loading="lazy" className={d.imageFit === "cover-top" ? "v5-img-cover-top" : undefined} />
                         <div
                           className="absolute top-7 right-7 v5-chip"
                           style={{ background: "hsl(var(--v5-bg) / 0.75)", zIndex: 4 }}

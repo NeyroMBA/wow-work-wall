@@ -245,6 +245,13 @@
   box-shadow: 0 18px 40px -10px hsl(0 0% 0% / 0.55);
 }
 
+.v5-frame img.v5-img-cover-top {
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+}
+
 /* Палитры подложек — фирменные цвета ИНА */
 .v5-pal-dark    { --frame-bg: hsl(0 0% 7%); --frame-ink: hsl(0 0% 92%); }
 .v5-pal-light   { --frame-bg: hsl(40 22% 92%); --frame-ink: hsl(0 0% 8%); }

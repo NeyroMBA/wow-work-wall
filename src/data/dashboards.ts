@@ -30,6 +30,9 @@ export type Dashboard = {
   accent: string;
   description: string;
   cohort: string;
+  /** Опциональная обрезка изображения внутри рамки */
+  imageFit?: "cover-top";
+
 };
 
 const PALETTE_CYCLE: Palette[] = ["dark", "green", "light", "blue", "yellow", "red"];
@@ -285,6 +288,7 @@ const COHORT_6: Raw[] = [
     description:
       "Полноценный аналитический дашборд для e-com с детскими товарами: от динамики выручки и маржи по дням до ABC-анализа SKU, тепловой карты по дням недели и пузырьковой диаграммы брендов. Под капотом — встроенные автотесты, которые проверяют корректность всех агрегаций при загрузке новых данных.",
     cohort: "Поток 6",
+    imageFit: "cover-top",
   },
   {
     id: "tokarev-nba",
