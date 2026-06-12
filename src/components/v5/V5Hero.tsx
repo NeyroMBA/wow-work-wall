@@ -31,7 +31,7 @@ const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
     >
       {Array.from({ length: COLS }).map((_, col) => {
         const i = row * COLS + col;
-        const tile = dashboards[i % dashboards.length];
+        const tile = heroDashboards[i % heroDashboards.length];
         const angle = col * (360 / COLS) + rowAngleOffset;
         return (
           <div
@@ -45,7 +45,7 @@ const Row = ({ row, dir }: { row: number; dir: 1 | -1 }) => {
               <img src={tile.image} alt="" loading="lazy" decoding="async" />
             </div>
             <div className="v5-tile-meta">
-              <span>№ {String((i % dashboards.length) + 1).padStart(3, "0")}</span>
+              <span>№ {String((i % heroDashboards.length) + 1).padStart(3, "0")}</span>
               <span>{CATEGORY_LABEL[tile.category]}</span>
             </div>
           </div>
