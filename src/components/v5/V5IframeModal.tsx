@@ -36,7 +36,7 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
         </button>
         {dashboard.link && (
           <iframe
-            src={dashboard.link}
+            src={dashboard.link.replace(/^http:\/\//i, "https://")}
             title={dashboard.title}
             className="w-full h-full block bg-white"
             style={{ border: 0 }}
