@@ -18,7 +18,7 @@ const DESKTOP_WIDTH = 1440;
 
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const [zoom, setZoom] = useState(1);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [isMobile, setIsMobile] = useState(false);
 
@@ -41,8 +41,8 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
       if (containerRef.current) {
         const w = containerRef.current.clientWidth;
         const h = containerRef.current.clientHeight;
-        setSize({ w, h });
-        setScale(Math.min(1, w / DESKTOP_WIDTH));
+        setSize((prev) => (prev.w === w && prev.h === h ? prev : { w, h }));
+        setZoom(Math.min(1, w / DESKTOP_WIDTH));
       }
     };
     update();
@@ -111,9 +111,8 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
                 style={{
                   border: 0,
                   width: DESKTOP_WIDTH,
-                  height: Math.max(size.h / scale, 900),
-                  transform: `scale(${scale})`,
-                  transformOrigin: "top left",
+                  height: Math.max(size.h / zoom, 900),
+                  zoom,
                 }}
               />
             ) : (
