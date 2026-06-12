@@ -18,9 +18,7 @@ const DESKTOP_WIDTH = 1440;
 
 const V5IframeModal = ({ dashboard, onClose }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-  const [containerW, setContainerW] = useState(0);
-  const [containerH, setContainerH] = useState(0);
+  const [zoom, setZoom] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
   const isMobileReady = MOBILE_READY_IDS.has(dashboard.id);
@@ -37,13 +35,11 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
 
   useEffect(() => {
     const update = () => {
-      setIsMobile(window.innerWidth < 768);
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
       if (containerRef.current) {
         const w = containerRef.current.clientWidth;
-        const h = containerRef.current.clientHeight;
-        setContainerW(w);
-        setContainerH(h);
-        setScale(Math.min(1, w / DESKTOP_WIDTH));
+        setZoom(Math.min(1, w / DESKTOP_WIDTH));
       }
     };
     update();
@@ -57,7 +53,7 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
 
   // Принудительная десктоп-раскладка только для немобильных кейсов на мобиле.
   const forceDesktop = !isMobileReady && isMobile;
-  const scaledHeight = forceDesktop && scale > 0 ? containerH / scale : containerH;
+  const safeUrl = dashboard.link?.replace(/^http:\/\//i, "https://") ?? "";
 
   return (
     <div
@@ -69,41 +65,61 @@ const V5IframeModal = ({ dashboard, onClose }: Props) => {
         className="absolute inset-3 md:inset-8 rounded-2xl overflow-hidden bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full flex items-center justify-center text-white"
-          style={{ background: "hsl(230 35% 10% / 0.75)", backdropFilter: "blur(8px)" }}
-          aria-label="Закрыть"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-2">
+          {dashboard.link && (
+            <a
+              href={safeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-9 px-3 rounded-full flex items-center gap-1.5 text-white text-xs font-medium"
+              style={{ background: "hsl(230 35% 10% / 0.75)", backdropFilter: "blur(8px)" }}
+              aria-label="Открыть в новой вкладке"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              <span className="hidden sm:inline">В новой вкладке</span>
+            </a>
+          )}
+          <button
+            onClick={onClose}
+            className="w-9 h-9 rounded-full flex items-center justify-center text-white"
+            style={{ background: "hsl(230 35% 10% / 0.75)", backdropFilter: "blur(8px)" }}
+            aria-label="Закрыть"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
         <div
           ref={containerRef}
-          className={`w-full h-full bg-white ${forceDesktop ? "overflow-auto" : "overflow-hidden"}`}
+          className="w-full h-full bg-white overflow-auto"
           style={{ WebkitOverflowScrolling: "touch" }}
         >
           {dashboard.link && (
             forceDesktop ? (
-              <div style={{ width: containerW, height: scaledHeight, position: "relative" }}>
-                <iframe
-                  src={dashboard.link.replace(/^http:\/\//i, "https://")}
-                  title={dashboard.title}
-                  className="block bg-white"
-                  style={{
-                    border: 0,
-                    width: DESKTOP_WIDTH,
-                    height: scaledHeight / scale,
-                    transform: `scale(${scale})`,
-                    transformOrigin: "top left",
-                  }}
-                />
-              </div>
+              <iframe
+                src={safeUrl}
+                title={dashboard.title}
+                loading="lazy"
+                className="block bg-white"
+                style={{
+                  border: 0,
+                  width: DESKTOP_WIDTH,
+                  height: `${100 / zoom}%`,
+                  // CSS zoom гораздо легче по памяти, чем transform: scale,
+                  // и реже приводит к перезагрузке вкладки на мобильном Safari.
+                  zoom: zoom,
+                }}
+              />
             ) : (
               <iframe
-                src={dashboard.link.replace(/^http:\/\//i, "https://")}
+                src={safeUrl}
                 title={dashboard.title}
+                loading="lazy"
                 className="block w-full h-full bg-white"
                 style={{ border: 0 }}
               />
