@@ -276,6 +276,20 @@ const RAW: Raw[] = [
 
 const COHORT_6: Raw[] = [
   {
+    id: "nikiforov-construction",
+    title: "Строительные проекты",
+    author: "Алексей Никифоров",
+    categories: ["Logistics", "Finance"],
+    features: ["Прогноз задержки", "Что-если", "PDF-экспорт"],
+    tools: ["Claude"],
+    image: "http://files.alexkolokolov.com/ai/gallery/img/nikiforov_2.png",
+    link: "http://files.alexkolokolov.com/ai/gallery/nikiforov_2.html",
+    accent: "from-amber-500 to-rose-500",
+    description:
+      "Гант с реальными и плановыми сроками, прогноз задержки сдачи по каждому объекту, освоение бюджета по месяцам и кварталам. Отдельный вид «Команда» — торнадо-чарт задержек и перерасходов по ответственным. Сценарный блок позволяет задать разные допущения для каждого проекта независимо и тут же экспортировать результат в PDF для совета директоров.",
+    cohort: "Поток 6",
+  },
+  {
     id: "tokarev-ecom",
     title: "Продажи детских товаров",
     author: "Андрей Токарев",
