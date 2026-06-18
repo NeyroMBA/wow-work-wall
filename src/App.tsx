@@ -10,6 +10,7 @@ import IndexV4 from "./pages/IndexV4.tsx";
 import IndexV5 from "./pages/IndexV5.tsx";
 import IndexV6 from "./pages/IndexV6.tsx";
 import IndexV7 from "./pages/IndexV7.tsx";
+import AcceleratorPage from "./pages/AcceleratorPage.tsx";
 import Wall from "./pages/Wall.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/v5" element={<IndexV5 />} />
           <Route path="/v6" element={<IndexV6 />} />
           <Route path="/v7" element={<IndexV7 />} />
+          <Route path="/accelerator" element={<AcceleratorPage />} />
           <Route path="/wall" element={<Wall />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
