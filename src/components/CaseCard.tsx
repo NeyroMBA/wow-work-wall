@@ -13,9 +13,8 @@ const getInitials = (name: string) =>
     .toUpperCase();
 
 const CaseCard = ({ caseData }: { caseData: Case }) => {
-  const [open, setOpen] = useState(false);
+const [open, setOpen] = useState(false);
   const hasVideo = Boolean(caseData.videoUrl);
-  const initials = getInitials(caseData.authorName);
 
   return (
     <>
