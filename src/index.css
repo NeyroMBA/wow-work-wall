@@ -134,3 +134,31 @@
 .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
 .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+/* Accelerator page scoped theme (light, blue primary) */
+[data-theme="accelerator"] {
+  --background: 0 0% 99%;
+  --foreground: 0 0% 10%;
+  --card: 0 0% 96%;
+  --card-foreground: 0 0% 10%;
+  --popover: 0 0% 99%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 220 72% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 93%;
+  --secondary-foreground: 0 0% 30%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 220 72% 50%;
+  --accent-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 220 72% 50%;
+  --surface: 0 0% 97%;
+  --surface-hover: 0 0% 94%;
+  --text-secondary: 0 0% 40%;
+  --text-dim: 0 0% 55%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
+}

@@ -1,11 +1,11 @@
 {
-  "asset_id": "b65a0ff0-80ea-49af-a0b3-8f358e29e0bb",
-  "content_type": "image/jpeg",
-  "created_at": "2026-06-18T08:41:28Z",
+  "version": 1,
+  "asset_id": "0b1e722f-c4d2-4bf3-a72e-2341fab0962b",
+  "project_id": "1d2927de-b2d8-43e0-b792-6d89f0e2adc4",
+  "url": "/__l5e/assets-v1/0b1e722f-c4d2-4bf3-a72e-2341fab0962b/case-adelya-hr-preview.jpg",
+  "r2_key": "a/v1/1d2927de-b2d8-43e0-b792-6d89f0e2adc4/0b1e722f-c4d2-4bf3-a72e-2341fab0962b/case-adelya-hr-preview.jpg",
   "original_filename": "case-adelya-hr-preview.jpg",
-  "project_id": "f6bf8094-d397-410e-9feb-aa62de130fa4",
-  "r2_key": "a/v1/f6bf8094-d397-410e-9feb-aa62de130fa4/b65a0ff0-80ea-49af-a0b3-8f358e29e0bb/case-adelya-hr-preview.jpg",
   "size": 89875,
-  "url": "/__l5e/assets-v1/b65a0ff0-80ea-49af-a0b3-8f358e29e0bb/case-adelya-hr-preview.jpg",
-  "version": 1
+  "content_type": "image/jpeg",
+  "created_at": "2026-06-18T18:54:11Z"
 }
