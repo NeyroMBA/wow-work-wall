@@ -10,6 +10,7 @@ import IndexV4 from "./pages/IndexV4.tsx";
 import IndexV5 from "./pages/IndexV5.tsx";
 import IndexV6 from "./pages/IndexV6.tsx";
 import IndexV7 from "./pages/IndexV7.tsx";
+import AcceleratorPage from "./pages/AcceleratorPage.tsx";
 import Wall from "./pages/Wall.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
