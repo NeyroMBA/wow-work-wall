@@ -163,6 +163,6 @@
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-[data-theme="accelerator"] section[id] {
+[data-theme="accelerator"] [id] {
   scroll-margin-top: 96px;
 }
