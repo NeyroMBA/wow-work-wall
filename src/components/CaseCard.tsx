@@ -68,7 +68,7 @@ const CaseCard = ({ caseData }: { caseData: Case }) => {
       </motion.button>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0">
+        <DialogContent data-theme="accelerator" className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 bg-background text-foreground">
           <div className="p-6 md:p-8">
             <DialogTitle className="text-2xl md:text-3xl font-bold text-foreground mb-2 pr-8">
               {caseData.title}
