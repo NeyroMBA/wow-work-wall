@@ -74,22 +74,9 @@ const [open, setOpen] = useState(false);
             </DialogTitle>
 
             {/* Author */}
-            <div className="flex items-center gap-3 mb-6">
-              {caseData.authorPhoto ? (
-                <img
-                  src={caseData.authorPhoto}
-                  alt={caseData.authorName}
-                  className="w-12 h-12 rounded-full object-cover shrink-0"
-                />
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center shrink-0">
-                  {initials}
-                </div>
-              )}
-              <div>
-                <p className="font-semibold text-foreground">{caseData.authorName}</p>
-                <p className="text-sm text-muted-foreground">{caseData.authorRole}</p>
-              </div>
+            <div className="mb-6">
+              <p className="font-semibold text-foreground">{caseData.authorName}</p>
+              <p className="text-sm text-muted-foreground">{caseData.authorRole}</p>
             </div>
 
             {/* Video */}
