@@ -32,6 +32,7 @@ const App = () => (
           <Route path="/v5" element={<IndexV5 />} />
           <Route path="/v6" element={<IndexV6 />} />
           <Route path="/v7" element={<IndexV7 />} />
+          <Route path="/accelerator" element={<AcceleratorPage />} />
           <Route path="/wall" element={<Wall />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
