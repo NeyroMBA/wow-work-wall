@@ -188,7 +188,7 @@ const AcceleratorPage = () => {
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div data-theme="accelerator" className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero */}
