@@ -4,16 +4,8 @@ import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import type { Case } from "@/data/cases";
 
-const getInitials = (name: string) =>
-  name
-    .split(" ")
-    .map((p) => p[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-
 const CaseCard = ({ caseData }: { caseData: Case }) => {
-const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const hasVideo = Boolean(caseData.videoUrl);
 
   return (
@@ -28,18 +20,20 @@ const [open, setOpen] = useState(false);
         className="group h-full text-left rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-colors flex flex-col"
       >
         {/* Video preview area */}
-        <div className="relative aspect-[4/3] bg-muted overflow-hidden flex items-center justify-center">
+        <div className="relative aspect-[16/10] md:aspect-[4/3] w-full bg-muted overflow-hidden flex items-center justify-center">
           {caseData.previewImage || caseData.authorPhoto ? (
             <img
               src={caseData.previewImage ?? caseData.authorPhoto}
               alt={caseData.title}
-              className="absolute inset-0 w-full h-full object-cover object-left opacity-70 group-hover:opacity-80 transition-opacity"
+              loading="lazy"
+              decoding="async"
+              className="block w-full h-full object-cover object-left-top opacity-100 md:opacity-80 md:group-hover:opacity-90 transition-opacity"
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
           )}
           {hasVideo && (
-            <div className="relative z-10 w-14 h-14 rounded-full bg-background/90 backdrop-blur flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+            <div className="absolute inset-0 z-10 m-auto w-14 h-14 rounded-full bg-background/90 backdrop-blur flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
               <Play size={22} className="text-primary ml-0.5" fill="currentColor" />
             </div>
           )}
