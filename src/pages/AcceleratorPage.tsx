@@ -371,8 +371,11 @@ const AcceleratorPage = () => {
               onClick={() => setSignupOpen(true)}
               className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full"
             >
-              Записаться
+              Записаться на диагностику
             </button>
+            <p className="text-sm text-muted-foreground mt-4">
+              Сначала встреча с куратором — убедимся, что акселератор вам подходит. Оплата только после этого.
+            </p>
           </motion.div>
 
           <div className="text-center">
