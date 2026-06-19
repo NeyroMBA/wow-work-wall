@@ -20,7 +20,7 @@ const CaseCard = ({ caseData }: { caseData: Case }) => {
         className="group h-full text-left rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-colors flex flex-col"
       >
         {/* Video preview area */}
-        <div className="relative aspect-[4/3] min-h-[220px] sm:min-h-0 w-full bg-muted overflow-hidden flex items-center justify-center">
+        <div className="relative aspect-[16/10] md:aspect-[4/3] w-full bg-muted overflow-hidden flex items-center justify-center">
           {caseData.previewImage || caseData.authorPhoto ? (
             <img
               src={caseData.previewImage ?? caseData.authorPhoto}
