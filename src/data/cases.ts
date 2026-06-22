@@ -3,6 +3,9 @@ import adelyaPreview from "@/assets/case-adelya-hr-preview.jpg.asset.json";
 
 import alexeyPreview from "@/assets/case-alexey-ups-new-preview.png.asset.json";
 
+const imageVersion = "20260622-1";
+const versionedImage = (url: string) => `${url}?v=${imageVersion}`;
+
 export type Case = {
   id: string;
   authorName: string;
@@ -21,7 +24,7 @@ export const cases: Case[] = [
     id: "andrey-metal",
     authorName: "Андрей Чайков",
     authorRole: "Руководитель производства",
-    previewImage: andreyPreview.url,
+    previewImage: versionedImage(andreyPreview.url),
     title: "Приложение для раскроя листового металла",
     teaser:
       "Уникальный интерфейс для плазменной резки: минимум обрезков, заказ материалов и роли пользователей.",
@@ -38,7 +41,7 @@ export const cases: Case[] = [
     id: "alexey-ups",
     authorName: "Алексей Копнов",
     authorRole: "Менеджер по продажам ИБП",
-    previewImage: alexeyPreview.url,
+    previewImage: versionedImage(alexeyPreview.url),
     title: "Приложение для подбора ИБП и генерации коммерческих предложений",
     teaser:
       "За 2 дня собрал приложение, которое подбирает конфигурации источников бесперебойного питания и генерирует КП.",
@@ -56,7 +59,7 @@ export const cases: Case[] = [
     id: "adelya-hr",
     authorName: "Аделя Зейналова",
     authorRole: "HR-аналитик в госорганизации",
-    previewImage: adelyaPreview.url,
+    previewImage: versionedImage(adelyaPreview.url),
     title: "HR-приложение с дашбордами вакансий, лояльности и журналом действий",
     teaser:
       "Полноценное приложение для HR-аналитики вместо Power Query и презентаций в PowerPoint.",
