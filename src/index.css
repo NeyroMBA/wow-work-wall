@@ -166,3 +166,24 @@
 [data-theme="accelerator"] [id] {
   scroll-margin-top: 96px;
 }
+
+[data-theme="pravda"] {
+  --pravda-bg: 0 0% 100%;
+  --pravda-soft: 40 22% 96%;
+  --pravda-ink: 30 8% 12%;
+  --pravda-text: 30 6% 28%;
+  --pravda-muted: 30 5% 50%;
+  --pravda-line: 36 14% 86%;
+  --pravda-line-strong: 32 10% 70%;
+  --pravda-red: 14 60% 45%;
+  --pravda-green: 158 42% 32%;
+  --pravda-yellow: 48 70% 86%;
+  --pravda-line-color: hsl(var(--pravda-line));
+  background: hsl(var(--pravda-bg));
+  color: hsl(var(--pravda-ink));
+}
+
+[data-theme="pravda"] {
+  --pravda-line: 36 14% 86%;
+}
+
