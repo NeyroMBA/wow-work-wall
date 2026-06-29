@@ -153,9 +153,14 @@ function BrokenChainSchema() {
         key={i}
         data-label={n.label}
         className={cn(
-          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2",
+          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2 pravda-node-float",
         )}
-        style={{ left: `${n.x}%`, top: `${n.y}%` }}
+        style={{
+          left: `${n.x}%`,
+          top: `${n.y}%`,
+          animationDuration: `${4 + i * 0.8}s`,
+          animationDelay: `${i * 0.6}s`,
+        }}
       >
         <div className="whitespace-nowrap text-[13px] font-bold leading-tight tracking-[-0.02em] text-pravda-ink">
           {n.label}
