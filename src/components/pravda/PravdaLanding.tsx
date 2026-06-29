@@ -790,16 +790,14 @@ function Approach() {
         </div>
         <div className="rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
           <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Построение карт метрик</div>
-          <ol className="mt-4 space-y-3">
+          <ul className="mt-4 space-y-3">
             {mapSteps.map((s, i) => (
               <li key={i} className="flex items-start gap-3 text-[15px] leading-[1.55] text-pravda-text">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-pravda-ink font-mono text-[11px] font-bold text-pravda-bg">
-                  {i + 1}
-                </span>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pravda-ink" />
                 <span>{s}</span>
               </li>
             ))}
-          </ol>
+          </ul>
           <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg">
             <img
               src={metricMapImg}
