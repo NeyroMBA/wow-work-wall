@@ -746,7 +746,10 @@ function Approach() {
   return (
     <section id="approach" className="border-b border-pravda-line bg-pravda-bg py-16">
       <Container>
-        <SectionHead title="Как проходит тренинг" />
+        <SectionHead
+          title="Как проходит тренинг"
+          lead="За четыре часа мы пройдём основные шаги по систематизации ваших показателей и разберёмся, как использовать для этого ИИ."
+        />
 
         <div className="mb-2">
           <span className="inline-block rounded-full border border-pravda-line bg-pravda-soft/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-pravda-muted">
