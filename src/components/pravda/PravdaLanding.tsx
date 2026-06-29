@@ -1114,7 +1114,7 @@ function TrainerSection() {
   return (
     <section className="border-b border-pravda-line bg-pravda-bg py-16">
       <Container>
-        <div className="max-w-[720px]">
+        <div className="max-w-[1160px]">
           <h2 className="text-pravda-ink text-[clamp(30px,4.4vw,54px)] font-extrabold leading-[1.04] tracking-[-0.045em]">
             Ведущий: Алексей Колоколов.
           </h2>
@@ -1134,31 +1134,33 @@ function TrainerSection() {
             ))}
           </div>
 
-          <div className="mt-8 max-w-[360px] overflow-hidden rounded-[18px]">
-            <img
-              src={trainerImg.url}
-              alt="Алексей Колоколов"
-              className="block h-auto w-full"
-              loading="lazy"
-            />
-          </div>
+          <div className="mt-8 grid items-center gap-8 md:grid-cols-[minmax(0,360px)_1fr]">
+            <div className="max-w-[360px] overflow-hidden rounded-[18px] md:max-w-full">
+              <img
+                src={trainerImg.url}
+                alt="Алексей Колоколов"
+                className="block h-auto w-full"
+                loading="lazy"
+              />
+            </div>
 
-          <figure className="relative mt-8">
-            <span
-              aria-hidden
-              className="absolute -top-3 left-0 font-serif text-[64px] leading-none text-pravda-ink/15"
-            >
-              “
-            </span>
-            <blockquote className="pl-8 pr-2">
-              <p className="text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
-                16 лет я занимаюсь аналитикой данных. Моя компания делает отчёты для Северсталь, Сибур, РЖД, Siemens и других корпораций.
-              </p>
-              <p className="mt-3 text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
-                Я знаю, что работает, и <span className="font-semibold text-pravda-ink">НЕ</span> работает в реальном бизнесе. И покажу вам правду.
-              </p>
-            </blockquote>
-          </figure>
+            <figure className="relative">
+              <span
+                aria-hidden
+                className="absolute -top-3 left-0 font-serif text-[64px] leading-none text-pravda-ink/15"
+              >
+                “
+              </span>
+              <blockquote className="pl-8 pr-2">
+                <p className="text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
+                  16 лет я занимаюсь аналитикой данных. Моя компания делает отчёты для Северсталь, Сибур, РЖД, Siemens и других корпораций.
+                </p>
+                <p className="mt-3 text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
+                  Я знаю, что работает, и <span className="font-semibold text-pravda-ink">НЕ</span> работает в реальном бизнесе. И покажу вам правду.
+                </p>
+              </blockquote>
+            </figure>
+          </div>
         </div>
       </Container>
     </section>
