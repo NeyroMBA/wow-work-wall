@@ -39,11 +39,11 @@ function BrokenChainSchema() {
   ];
 
   const desktopNodes = [
-    { label: "Стратегические KPI", where: "в презентациях", x: 10, y: 40 },
+    { label: "Стратегические KPI", where: "в презентациях", x: 12, y: 72 },
     { label: "Отчёты", where: "в Excel", x: 30, y: 20 },
-    { label: "Реальные данные", where: "1С, CRM, базы", x: 50, y: 60 },
-    { label: "Правила расчёта", where: "в головах у людей", x: 70, y: 20 },
-    { label: "Решения", where: "в чатах и блокнотах", x: 90, y: 40 },
+    { label: "Реальные данные", where: "1С, CRM, базы", x: 48, y: 55 },
+    { label: "Правила расчёта", where: "в головах у людей", x: 72, y: 22 },
+    { label: "Решения", where: "в чатах и блокнотах", x: 90, y: 62 },
   ];
 
   const mobileLines = [
