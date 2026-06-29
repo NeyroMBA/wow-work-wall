@@ -13,11 +13,14 @@ const indexLinks = [
 const acceleratorLinks = [
   { label: "Для кого", href: "#audience" },
   { label: "Программа", href: "#solution" },
-  { label: "Стоимость", href: "#buy" },
   { label: "Тестовое", href: "#test" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  onSignupClick?: () => void;
+}
+
+const Navbar = ({ onSignupClick }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const links = pathname.startsWith("/accelerator") ? acceleratorLinks : indexLinks;
@@ -40,9 +43,18 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <a href="#buy" className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
-            Записаться
-          </a>
+          {onSignupClick ? (
+            <button
+              onClick={onSignupClick}
+              className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Записаться
+            </button>
+          ) : (
+            <a href="#buy" className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
+              Записаться
+            </a>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -67,9 +79,18 @@ const Navbar = () => {
                 {l.label}
               </a>
             ))}
-            <a href="#buy" onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">
-              Записаться
-            </a>
+            {onSignupClick ? (
+              <button
+                onClick={() => { onSignupClick(); setOpen(false); }}
+                className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold w-full"
+              >
+                Записаться
+              </button>
+            ) : (
+              <a href="#buy" onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">
+                Записаться
+              </a>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
