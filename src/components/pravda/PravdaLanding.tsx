@@ -231,8 +231,8 @@ function BrokenChainSchema() {
         {gridBg}
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(mobileLines)}
-          {renderQuestionLine(connectors.left)}
-          {renderQuestionLine(connectors.right)}
+          {renderQuestionLine(connectors.left, 0)}
+          {renderQuestionLine(connectors.right, 1)}
         </svg>
         {renderQuestionMarker(connectors.left)}
         {renderQuestionMarker(connectors.right)}
