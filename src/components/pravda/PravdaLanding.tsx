@@ -30,36 +30,32 @@ function SectionHead({ title, lead }: { title: string; lead?: React.ReactNode })
 /* ---------- Schemas ---------- */
 
 function BrokenChainSchema() {
+  // Mobile / tablet — square asymmetric layout (corners + center)
   const mobileNodes = [
-    { label: "Стратегические KPI", where: "в презентациях", x: 8, y: 10 },
-    { label: "Отчёты", where: "в Excel", x: 60, y: 6 },
-    { label: "Реальные данные", where: "1С, CRM, базы", x: 6, y: 72 },
-    { label: "Правила расчёта", where: "в головах у людей", x: 62, y: 76 },
-    { label: "Решения", where: "в чатах и блокнотах", x: 34, y: 40 },
+    { id: "kpi",      label: "Стратегические KPI", where: "в презентациях",     x: 18, y: 16, drift: "drift-a" },
+    { id: "reports",  label: "Отчёты",              where: "в Excel",            x: 82, y: 14, drift: "drift-b" },
+    { id: "data",     label: "Реальные данные",     where: "1С, CRM, базы",      x: 18, y: 84, drift: "drift-c" },
+    { id: "rules",    label: "Правила расчёта",     where: "в головах у людей",  x: 82, y: 86, drift: "drift-d" },
+    { id: "decision", label: "Решения",             where: "в чатах и блокнотах", x: 50, y: 50, drift: "drift-e" },
   ];
 
+  // Desktop / wide — 2:1 rectangle, corners + center
   const desktopNodes = [
-    { label: "Стратегические KPI", where: "в презентациях", x: 6, y: 22 },
-    { label: "Отчёты", where: "в Excel", x: 26, y: 10 },
-    { label: "Реальные данные", where: "1С, CRM, базы", x: 46, y: 28 },
-    { label: "Правила расчёта", where: "в головах у людей", x: 66, y: 8 },
-    { label: "Решения", where: "в чатах и блокнотах", x: 82, y: 24 },
+    { id: "kpi",      label: "Стратегические KPI", where: "в презентациях",     x: 10, y: 22, drift: "drift-a" },
+    { id: "reports",  label: "Отчёты",              where: "в Excel",            x: 90, y: 22, drift: "drift-b" },
+    { id: "data",     label: "Реальные данные",     where: "1С, CRM, базы",      x: 10, y: 78, drift: "drift-c" },
+    { id: "rules",    label: "Правила расчёта",     where: "в головах у людей",  x: 90, y: 78, drift: "drift-d" },
+    { id: "decision", label: "Решения",             where: "в чатах и блокнотах", x: 50, y: 50, drift: "drift-e" },
   ];
 
-  const mobileLines = [
-    [34, 40, 8, 10],
-    [34, 40, 60, 6],
-    [34, 40, 6, 72],
-    [34, 40, 62, 76],
-    [8, 10, 60, 6],
-  ];
-
-  const desktopLines = [
-    [6, 22, 26, 10],
-    [26, 10, 46, 28],
-    [46, 28, 66, 8],
-    [66, 8, 82, 24],
-    [46, 28, 82, 24],
+  // Connections by node id — center connected to all + reports↔rules
+  const edges: Array<[string, string]> = [
+    ["decision", "kpi"],
+    ["decision", "reports"],
+    ["decision", "data"],
+    ["decision", "rules"],
+    ["reports", "rules"],
+    ["kpi", "data"],
   ];
 
   const gridBg = (
@@ -73,36 +69,45 @@ function BrokenChainSchema() {
     />
   );
 
-  const renderNodes = (nodes: typeof mobileNodes, maxWClass: string) =>
-    nodes.map((n, i) => (
+  const renderLines = (nodes: typeof mobileNodes) => {
+    const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
+    return edges.map(([a, b], i) => {
+      const na = byId[a];
+      const nb = byId[b];
+      if (!na || !nb) return null;
+      return (
+        <line
+          key={i}
+          x1={na.x}
+          y1={na.y}
+          x2={nb.x}
+          y2={nb.y}
+          stroke="currentColor"
+          strokeWidth="0.4"
+          strokeDasharray="1.2 1.2"
+          className="text-pravda-line-strong"
+          vectorEffect="non-scaling-stroke"
+        />
+      );
+    });
+  };
+
+  const renderNodes = (nodes: typeof mobileNodes, widthClass: string) =>
+    nodes.map((n) => (
       <div
-        key={i}
+        key={n.id}
         className={cn(
-          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)]",
-          maxWClass,
+          "pravda-chaos absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)]",
+          widthClass,
+          n.drift,
         )}
         style={{ left: `${n.x}%`, top: `${n.y}%` }}
       >
-        <div className="whitespace-nowrap text-[13px] font-bold leading-tight tracking-[-0.02em] text-pravda-ink">
+        <div className="text-[14px] font-bold leading-tight tracking-[-0.02em] text-pravda-ink break-words">
           {n.label}
         </div>
-        <div className="mt-0.5 whitespace-nowrap text-[12px] text-pravda-red">{n.where}</div>
+        <div className="mt-0.5 text-[13px] leading-tight text-pravda-red break-words">{n.where}</div>
       </div>
-    ));
-
-  const renderLines = (lines: number[][]) =>
-    lines.map(([x1, y1, x2, y2], i) => (
-      <line
-        key={i}
-        x1={x1}
-        y1={y1}
-        x2={x2}
-        y2={y2}
-        stroke="currentColor"
-        strokeWidth="0.5"
-        strokeDasharray="3 3"
-        className="text-pravda-line-strong"
-      />
     ));
 
   return (
@@ -110,19 +115,19 @@ function BrokenChainSchema() {
       {/* Mobile / tablet — square */}
       <div className="relative aspect-square w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:hidden">
         {gridBg}
-        <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-          {renderLines(mobileLines)}
+        <svg className="absolute inset-0 z-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+          {renderLines(mobileNodes)}
         </svg>
-        {renderNodes(mobileNodes, "max-w-[38%]")}
+        {renderNodes(mobileNodes, "w-[40%] max-w-[170px]")}
       </div>
 
-      {/* Desktop — landscape */}
-      <div className="relative hidden aspect-[16/9] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
+      {/* Desktop — 2:1 landscape */}
+      <div className="relative hidden aspect-[2/1] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
         {gridBg}
-        <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-          {renderLines(desktopLines)}
+        <svg className="absolute inset-0 z-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+          {renderLines(desktopNodes)}
         </svg>
-        {renderNodes(desktopNodes, "max-w-[16%]")}
+        {renderNodes(desktopNodes, "w-[18%] max-w-[200px]")}
       </div>
     </>
   );

@@ -183,4 +183,36 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Pravda — chaotic drift for schema cards */
+@keyframes pravda-drift-a {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0) rotate(-0.6deg); }
+  50%      { transform: translate(-50%, -50%) translate(4px, -3px) rotate(0.4deg); }
+}
+@keyframes pravda-drift-b {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0) rotate(0.5deg); }
+  50%      { transform: translate(-50%, -50%) translate(-5px, 3px) rotate(-0.7deg); }
+}
+@keyframes pravda-drift-c {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0) rotate(0.3deg); }
+  50%      { transform: translate(-50%, -50%) translate(3px, 4px) rotate(-0.5deg); }
+}
+@keyframes pravda-drift-d {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0) rotate(-0.4deg); }
+  50%      { transform: translate(-50%, -50%) translate(-3px, -4px) rotate(0.6deg); }
+}
+@keyframes pravda-drift-e {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0) rotate(0deg); }
+  50%      { transform: translate(-50%, -50%) translate(0, 3px) rotate(0.3deg); }
+}
+.pravda-chaos { will-change: transform; }
+.pravda-chaos.drift-a { animation: pravda-drift-a 7.2s ease-in-out infinite; }
+.pravda-chaos.drift-b { animation: pravda-drift-b 8.4s ease-in-out infinite; }
+.pravda-chaos.drift-c { animation: pravda-drift-c 9.1s ease-in-out infinite; }
+.pravda-chaos.drift-d { animation: pravda-drift-d 7.8s ease-in-out infinite; }
+.pravda-chaos.drift-e { animation: pravda-drift-e 6.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .pravda-chaos { animation: none !important; }
+}
+
+
 
