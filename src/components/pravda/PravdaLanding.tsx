@@ -509,19 +509,19 @@ function DashboardWithAgent() {
   return (
     <div className="rounded-[18px] border border-pravda-line bg-pravda-bg p-3">
       <div className="grid grid-cols-2 gap-1.5">
-        {kpis.map((k) => (
+        {kpis.map((k, i) => (
           <div
             key={k.l}
             className={cn(
-              "flex items-center justify-between gap-2 rounded-[10px] border p-2",
+              "flex items-center justify-between gap-1.5 rounded-[10px] border p-2",
               k.l === "Маржа"
                 ? "border-pravda-red/50 bg-pravda-red/5"
                 : "border-pravda-line bg-pravda-soft/60",
             )}
           >
-            <div>
+            <div className="min-w-0 flex-1">
               <div className="text-[10px] uppercase tracking-wider text-pravda-muted">{k.l}</div>
-              <div className="mt-1 text-[15px] font-extrabold tracking-[-0.02em] text-pravda-ink">{k.v}</div>
+              <div className="mt-1 whitespace-nowrap text-[13px] font-extrabold tracking-[-0.02em] text-pravda-ink sm:text-[15px]">{k.v}</div>
               <div
                 className={cn(
                   "mt-0.5 text-[10px] font-semibold",
@@ -531,7 +531,7 @@ function DashboardWithAgent() {
                 {k.d}
               </div>
             </div>
-            <Sparkline up={k.up} red={!k.up} />
+            <Sparkline up={k.up} red={!k.up} seed={i * 1.3} />
           </div>
         ))}
       </div>
