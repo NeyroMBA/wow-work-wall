@@ -1045,15 +1045,20 @@ function Outcomes() {
           </div>
 
           {/* Panel 2 — agents */}
-          <div className="rounded-[20px] border border-pravda-line bg-pravda-bg p-5">
-            <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Обучать ИИ-агентов</div>
-            <div className="mt-3 grid gap-3 text-[14px] leading-[1.5] text-pravda-text md:grid-cols-2">
-              <p>
+          <div className="flex flex-col gap-5 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:flex-row md:items-center">
+            <div className="flex flex-col gap-3 md:w-1/2">
+              <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Обучать ИИ-агентов</div>
+              <p className="text-[14px] leading-[1.5] text-pravda-text">
                 Вы закладываете базу систематизации: структуру метрик, связи и правила. На этой основе сохраняется история — агенты каждый день отслеживают изменения и подмечают то, на что замыливается глаз.
               </p>
-              <p>
+              <p className="text-[14px] leading-[1.5] text-pravda-text">
                 Результат придёт не сразу, но через полгода такой работы агенты действительно начнут давать ценные инсайты и прогнозы.
               </p>
+            </div>
+            <div className="md:w-1/2">
+              <div className="mx-auto aspect-square w-full max-w-[420px]">
+                <AgentDialogMini />
+              </div>
             </div>
           </div>
         </div>
