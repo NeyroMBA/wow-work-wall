@@ -9,7 +9,7 @@ function Container({ children, className }: { children: React.ReactNode; classNa
   return <div className={cn("mx-auto w-full max-w-[1160px] px-5 md:px-8", className)}>{children}</div>;
 }
 
-function SectionHead({ title, lead }: { title: string; lead?: React.ReactNode }) {
+function SectionHead({ title, lead }: { title: React.ReactNode; lead?: React.ReactNode }) {
   return (
     <div className="mb-10 grid gap-6 md:mb-14 md:grid-cols-[1.05fr_.95fr] md:items-end">
       <div>
@@ -711,7 +711,7 @@ function Audience() {
     <section className="bg-pravda-soft/50 pt-16 pb-10">
       <Container>
         <SectionHead
-          title="Для тех, кто хочет изменить ситуацию"
+          title={<>Для тех, кто хочет изменить <span className="whitespace-nowrap">ситуацию</span></>}
         />
         <div className="grid gap-4 md:grid-cols-3">
           {items.map((i) => (
