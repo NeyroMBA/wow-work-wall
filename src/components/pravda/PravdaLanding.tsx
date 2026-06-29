@@ -78,7 +78,7 @@ function BrokenChainSchema() {
       <div
         key={i}
         className={cn(
-          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)]",
+          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2",
           maxWClass,
         )}
         style={{ left: `${n.x}%`, top: `${n.y}%` }}
