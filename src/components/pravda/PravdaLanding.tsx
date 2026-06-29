@@ -39,11 +39,11 @@ function BrokenChainSchema() {
   ];
 
   const desktopNodes = [
-    { label: "Стратегические KPI", where: "в презентациях", x: 12, y: 38 },
-    { label: "Отчёты", where: "в Excel", x: 32, y: 22 },
-    { label: "Реальные данные", where: "1С, CRM, базы", x: 52, y: 52 },
-    { label: "Правила расчёта", where: "в головах у людей", x: 72, y: 22 },
-    { label: "Решения", where: "в чатах и блокнотах", x: 88, y: 42 },
+    { label: "Стратегические KPI", where: "в презентациях", x: 10, y: 40 },
+    { label: "Отчёты", where: "в Excel", x: 30, y: 20 },
+    { label: "Реальные данные", where: "1С, CRM, базы", x: 50, y: 60 },
+    { label: "Правила расчёта", where: "в головах у людей", x: 70, y: 20 },
+    { label: "Решения", where: "в чатах и блокнотах", x: 90, y: 40 },
   ];
 
   const mobileLines = [
@@ -55,11 +55,11 @@ function BrokenChainSchema() {
   ];
 
   const desktopLines = [
-    [12, 38, 32, 22],
-    [32, 22, 52, 52],
-    [52, 52, 72, 22],
-    [72, 22, 88, 42],
-    [52, 52, 88, 42],
+    [10, 40, 30, 20],
+    [30, 20, 50, 60],
+    [50, 60, 70, 20],
+    [70, 20, 90, 40],
+    [50, 60, 90, 40],
   ];
 
   type Connector = {
@@ -208,8 +208,8 @@ function BrokenChainSchema() {
         {renderNodes(mobileNodes)}
       </div>
 
-      {/* Desktop — landscape */}
-      <div ref={desktopRef} className="relative hidden aspect-[16/9] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
+      {/* Desktop — compact landscape */}
+      <div ref={desktopRef} className="relative mx-auto hidden aspect-[2.2/1] w-[80%] overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
         {gridBg}
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(desktopLines)}
