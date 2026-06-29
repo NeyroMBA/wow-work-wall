@@ -569,6 +569,45 @@ function DashboardWithAgent() {
   );
 }
 
+function AgentDialogMini() {
+  const kpis = [
+    { l: "Выручка", v: "12,4 млн ₽", d: "+3%", up: true },
+    { l: "Маржа", v: "18,2%", d: "−4,1 п.п.", up: false },
+  ];
+  return (
+    <div className="flex h-full w-full flex-col gap-2 rounded-[18px] border border-pravda-line bg-pravda-bg p-3">
+      <div className="grid grid-cols-2 gap-1.5">
+        {kpis.map((k, i) => (
+          <div
+            key={k.l}
+            className={cn(
+              "flex items-center justify-between gap-1.5 rounded-[10px] border p-2",
+              k.l === "Маржа"
+                ? "border-pravda-red/50 bg-pravda-red/5"
+                : "border-pravda-line bg-pravda-soft/60",
+            )}
+          >
+            <div className="min-w-0 flex-1">
+              <div className="text-[10px] uppercase tracking-wider text-pravda-muted">{k.l}</div>
+              <div className="mt-1 whitespace-nowrap text-[13px] font-extrabold tracking-[-0.02em] text-pravda-ink sm:text-[15px]">{k.v}</div>
+              <div className={cn("mt-0.5 text-[10px] font-semibold", k.up ? "text-pravda-green" : "text-pravda-red")}>{k.d}</div>
+            </div>
+            <Sparkline up={k.up} red={!k.up} seed={i * 1.3} />
+          </div>
+        ))}
+      </div>
+      <div className="mt-1 border-t border-pravda-line pt-2">
+        <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-pravda-muted">
+          ИИ-агент · разбор отклонения
+        </div>
+        <div className="rounded-[10px] border border-pravda-line bg-pravda-soft/60 px-3 py-2 font-mono text-[12px] text-pravda-ink">
+          {">"} почему просела маржа в ноябре?
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TruthHubSchema() {
   const items = [
     { t: "Стратегические KPI", s: "что измеряем" },
