@@ -507,7 +507,7 @@ function DashboardWithAgent() {
     { l: "Заказы", v: "148", d: "+9%", up: true },
   ];
   return (
-    <div className="rounded-[18px] border border-pravda-line bg-pravda-bg p-3">
+    <div className="rounded-none border-0 bg-transparent p-0 md:rounded-[18px] md:border md:border-pravda-line md:bg-pravda-bg md:p-3">
       <div className="grid grid-cols-2 gap-1.5">
         {kpis.map((k, i) => (
           <div
