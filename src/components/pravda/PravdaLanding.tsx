@@ -1081,7 +1081,7 @@ function Outcomes() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <div className="mx-auto aspect-square w-full max-w-[420px]">
+              <div className="mx-auto w-full max-w-[420px]">
                 <AgentDialogMini />
               </div>
             </div>
