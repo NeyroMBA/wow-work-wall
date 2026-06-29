@@ -352,33 +352,6 @@ const AcceleratorPage = () => {
             })}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="max-w-xl mx-auto p-8 rounded-2xl border-2 border-primary/30 bg-background text-center mb-16"
-            id="buy"
-          >
-            <p className="text-sm text-muted-foreground mb-2">Стоимость</p>
-            <p className="text-5xl font-bold text-foreground mb-6">
-              120 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
-            </p>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              Если вы уже проходили у нас курсы по ИИ — стоимость зачтётся.
-            </p>
-            <p className="text-sm text-primary font-medium mb-8">
-              Такого предложения за такую цену ни у кого нет
-            </p>
-            <button
-              type="button"
-              onClick={() => setSignupOpen(true)}
-              className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full"
-            >
-              Записаться на диагностику
-            </button>
-            <p className="text-sm text-muted-foreground mt-4">
-              Бесплатная встреча с куратором, на которой вы получите карту компетенций, персональный маршрут и план первых шагов.
-            </p>
-          </motion.div>
-
           <div className="text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
               Вы получите опыт, будете разбираться в темах
