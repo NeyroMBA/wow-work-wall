@@ -649,13 +649,13 @@ function Header() {
           <a href="#problem" className="hover:text-pravda-ink">Проблема</a>
           <a href="#approach" className="hover:text-pravda-ink">Подход</a>
           <a href="#program" className="hover:text-pravda-ink">Программа</a>
-          <a href="#request" className="hover:text-pravda-ink">Заявка</a>
+          <a href="#pricing" className="hover:text-pravda-ink">Регистрация</a>
         </div>
         <a
-          href="#request"
+          href="#pricing"
           className="inline-flex h-10 items-center rounded-full bg-pravda-ink px-4 text-[13px] font-semibold text-pravda-bg transition-transform hover:-translate-y-0.5"
         >
-          Получить программу
+          Регистрация
         </a>
       </Container>
     </header>
