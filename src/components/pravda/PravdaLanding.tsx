@@ -113,7 +113,7 @@ function BrokenChainSchema() {
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(mobileLines)}
         </svg>
-        {renderNodes(mobileNodes, "max-w-[38%]")}
+        {renderNodes(mobileNodes, "")}
       </div>
 
       {/* Desktop — landscape */}
