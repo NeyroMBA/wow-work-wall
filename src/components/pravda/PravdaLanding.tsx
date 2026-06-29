@@ -129,15 +129,48 @@ function BrokenChainSchema() {
     />
   );
 
+  const schemaStyles = (
+    <style>{`
+      @keyframes pravda-node-float {
+        0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
+        25% { transform: translate(-50%, -50%) translate(2px, -2px); }
+        50% { transform: translate(-50%, -50%) translate(-2px, 1px); }
+        75% { transform: translate(-50%, -50%) translate(1px, 2px); }
+      }
+      .pravda-node-float {
+        animation-name: pravda-node-float;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+      @keyframes pravda-line-pulse {
+        0% { opacity: 0.15; }
+        8% { opacity: 1; }
+        22% { opacity: 1; }
+        30% { opacity: 0.15; }
+        100% { opacity: 0.15; }
+      }
+      .pravda-line-pulse {
+        animation-name: pravda-line-pulse;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    `}</style>
+  );
+
   const renderNodes = (nodes: typeof mobileNodes) =>
     nodes.map((n, i) => (
       <div
         key={i}
         data-label={n.label}
         className={cn(
-          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2",
+          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2 pravda-node-float",
         )}
-        style={{ left: `${n.x}%`, top: `${n.y}%` }}
+        style={{
+          left: `${n.x}%`,
+          top: `${n.y}%`,
+          animationDuration: `${4 + i * 0.8}s`,
+          animationDelay: `${i * 0.6}s`,
+        }}
       >
         <div className="whitespace-nowrap text-[13px] font-bold leading-tight tracking-[-0.02em] text-pravda-ink">
           {n.label}
@@ -146,7 +179,7 @@ function BrokenChainSchema() {
       </div>
     ));
 
-  const renderLines = (lines: number[][]) =>
+  const renderLines = (lines: number[][], offset = 0) =>
     lines.map(([x1, y1, x2, y2], i) => (
       <line
         key={i}
@@ -157,11 +190,15 @@ function BrokenChainSchema() {
         stroke="currentColor"
         strokeWidth="0.5"
         strokeDasharray="3 3"
-        className="text-pravda-line-strong"
+        className="text-pravda-line-strong pravda-line-pulse"
+        style={{
+          animationDuration: "10s",
+          animationDelay: `${(i + offset) * 2}s`,
+        }}
       />
     ));
 
-  const renderQuestionLine = (c: Connector | null) => {
+  const renderQuestionLine = (c: Connector | null, index = 0) => {
     if (!c) return null;
     return (
       <line
@@ -173,7 +210,11 @@ function BrokenChainSchema() {
         stroke="currentColor"
         strokeWidth="0.5"
         strokeDasharray="3 3"
-        className="text-pravda-line-strong"
+        className="text-pravda-line-strong pravda-line-pulse"
+        style={{
+          animationDuration: "10s",
+          animationDelay: `${5 + index}s`,
+        }}
       />
     );
   };
@@ -195,13 +236,14 @@ function BrokenChainSchema() {
 
   return (
     <>
+      {schemaStyles}
       {/* Mobile / tablet — square */}
       <div ref={mobileRef} className="relative aspect-square w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:hidden">
         {gridBg}
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(mobileLines)}
-          {renderQuestionLine(connectors.left)}
-          {renderQuestionLine(connectors.right)}
+          {renderQuestionLine(connectors.left, 0)}
+          {renderQuestionLine(connectors.right, 1)}
         </svg>
         {renderQuestionMarker(connectors.left)}
         {renderQuestionMarker(connectors.right)}
@@ -213,8 +255,8 @@ function BrokenChainSchema() {
         {gridBg}
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(desktopLines)}
-          {renderQuestionLine(connectors.left)}
-          {renderQuestionLine(connectors.right)}
+          {renderQuestionLine(connectors.left, 0)}
+          {renderQuestionLine(connectors.right, 1)}
         </svg>
         {renderQuestionMarker(connectors.left)}
         {renderQuestionMarker(connectors.right)}
