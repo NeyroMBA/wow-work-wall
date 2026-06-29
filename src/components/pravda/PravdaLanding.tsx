@@ -463,14 +463,38 @@ function AgentsSchema() {
   );
 }
 
-function Sparkline({ up, red }: { up: boolean; red?: boolean }) {
+function Sparkline({ up, red, seed = 0 }: { up: boolean; red?: boolean; seed?: number }) {
   const stroke = red ? "#c74432" : "#28714c";
-  const points = up
-    ? "0,18 6,14 12,16 18,10 24,12 30,6 36,8 42,4 48,6 54,2 60,1"
-    : "0,4 6,8 12,6 18,12 24,10 30,16 36,14 42,18 48,16 54,19 60,18";
+  // smooth oscillating curve with overall trend
+  const W = 60;
+  const H = 20;
+  const N = 32;
+  const trend = up ? -1 : 1; // y axis inverted in SVG
+  const startY = up ? 15 : 5;
+  const endY = up ? 4 : 16;
+  const pts: string[] = [];
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const baseY = startY + (endY - startY) * t;
+    const osc =
+      Math.sin(t * Math.PI * 3 + seed) * 2.2 +
+      Math.sin(t * Math.PI * 6 + seed * 1.7) * 1.1 +
+      Math.cos(t * Math.PI * 4.5 + seed * 0.6) * 0.8;
+    const x = t * W;
+    const y = Math.max(1.5, Math.min(H - 1.5, baseY + osc * (1 + 0.1 * trend)));
+    pts.push(`${x.toFixed(2)},${y.toFixed(2)}`);
+  }
+  // smooth via Catmull-Rom-ish: use polyline, looks fine and curvy enough at this density
   return (
-    <svg viewBox="0 0 60 20" className="h-8 w-16" preserveAspectRatio="none">
-      <polyline fill="none" stroke={stroke} strokeWidth="1.5" points={points} />
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-8 w-16 shrink-0" preserveAspectRatio="none">
+      <polyline
+        fill="none"
+        stroke={stroke}
+        strokeWidth="1.3"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        points={pts.join(" ")}
+      />
     </svg>
   );
 }
