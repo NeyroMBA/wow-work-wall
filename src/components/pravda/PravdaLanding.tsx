@@ -507,7 +507,7 @@ function DashboardWithAgent() {
     { l: "Заказы", v: "148", d: "+9%", up: true },
   ];
   return (
-    <div className="rounded-[18px] border border-pravda-line bg-pravda-bg p-3">
+    <div className="rounded-none border-0 bg-transparent p-0 md:rounded-[18px] md:border md:border-pravda-line md:bg-pravda-bg md:p-3">
       <div className="grid grid-cols-2 gap-1.5">
         {kpis.map((k, i) => (
           <div
@@ -665,13 +665,13 @@ function Header() {
 function Hero() {
   return (
     <section className="border-b border-pravda-line bg-pravda-bg">
-      <Container className="grid gap-10 py-16 md:grid-cols-[1.05fr_.95fr] md:py-24">
-        <div>
-          <h1 className="text-pravda-ink text-[clamp(56px,9vw,128px)] font-extrabold leading-[0.95] tracking-[-0.065em]">
+      <Container className="grid gap-8 py-10 md:grid-cols-[1.05fr_.95fr] md:gap-10 md:py-24">
+        <div className="order-2 md:order-1">
+          <h1 className="text-[clamp(52px,12vw,96px)] font-extrabold leading-[0.95] tracking-[-0.065em] text-pravda-ink md:text-[clamp(56px,9vw,128px)]">
             Правда<span className="text-pravda-red">.</span>
           </h1>
-          <div className="mt-8 max-w-[560px]">
-            <div className="grid grid-cols-[2fr_1fr] items-center gap-x-3 gap-y-1.5 text-[clamp(15px,1.5vw,18px)]">
+          <div className="mt-6 max-w-[560px] md:mt-8">
+            <div className="grid grid-cols-[2fr_1fr] items-center gap-x-3 gap-y-1.5 text-[14px] md:text-[clamp(15px,1.5vw,18px)]">
               {[
                 ["Отчёты ради отчётов", "Аналитика"],
                 ["Метрики тщеславия", "Решения"],
@@ -686,11 +686,11 @@ function Hero() {
               ))}
             </div>
           </div>
-          <p className="mt-8 max-w-[540px] text-[16px] leading-[1.55] text-pravda-text">
+          <p className="mt-5 max-w-[540px] text-[15px] leading-[1.55] text-pravda-text md:mt-8 md:text-[16px]">
             Мастер-класс для адекватных руководителей и аналитиков, которые
             готовы смотреть правде в глаза.
           </p>
-          <div className="mt-7">
+          <div className="mt-6 md:mt-7">
             <a
               href="#pricing"
               className="inline-flex h-12 items-center rounded-full bg-pravda-ink px-6 text-[14px] font-semibold text-pravda-bg"
@@ -699,7 +699,9 @@ function Hero() {
             </a>
           </div>
         </div>
-        <DashboardWithAgent />
+        <div className="order-1 md:order-2">
+          <DashboardWithAgent />
+        </div>
       </Container>
     </section>
   );
