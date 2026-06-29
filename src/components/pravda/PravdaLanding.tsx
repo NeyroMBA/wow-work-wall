@@ -756,25 +756,37 @@ function Approach() {
         <div className="rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
           <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Аудит метрик</div>
           <p className="mt-2 max-w-[720px] text-[15px] leading-[1.55] text-pravda-text">
-            Знакомимся с методикой определения видов метрик и типовыми проблемами, связанными с отчетностью. Разбираем кейсы и начинаем практику.
+            Знакомимся с типологией метрик. Они бывают 4 типов:
           </p>
 
-          <div className="mt-5 grid gap-2 md:grid-cols-2 lg:grid-cols-4">
-            {metrics.map((m) => (
-              <div key={m.t} className="rounded-[12px] border border-pravda-line bg-pravda-soft/40 p-3">
-                <div className="text-[15px] font-bold tracking-[-0.01em] text-pravda-ink">{m.t}</div>
-                <p className="mt-1 text-[13px] leading-[1.4] text-pravda-text">{m.s}</p>
+          <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
+            {[
+              { t: "Результат", tone: "ink" },
+              { t: "Затраты", tone: "muted" },
+              { t: "Диагностика", tone: "muted" },
+              { t: "Действия", tone: "ink" },
+            ].map((type) => (
+              <div
+                key={type.t}
+                className={cn(
+                  "flex items-center justify-center rounded-[16px] border px-4 py-5 text-center",
+                  type.tone === "ink"
+                    ? "border-pravda-ink bg-pravda-ink text-pravda-bg"
+                    : "border-pravda-line bg-pravda-bg text-pravda-ink",
+                )}
+              >
+                <div className="text-[16px] font-bold tracking-[-0.01em] md:text-[18px]">{type.t}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-4 rounded-[18px] border-2 border-pravda-ink bg-pravda-bg p-5 md:p-6">
-          <div className="text-[18px] font-extrabold tracking-[-0.02em] text-pravda-ink">
-            Метрики тщеславия
+        <div className="mt-5 px-1">
+          <div className="text-[16px] font-bold tracking-[-0.02em] text-pravda-ink">
+            Убираем метрики тщеславия
           </div>
-          <p className="mt-2 max-w-[720px] text-[14px] leading-[1.55] text-pravda-text">
-            Мы находим те показатели, которые выглядят красиво, но на самом деле не помогают принимать решения. Обсуждаем, как превратить их в полезные диагностические метрики.
+          <p className="mt-1 text-[14px] leading-[1.5] text-pravda-text">
+            Показатели, которые выглядят красиво, но на самом деле не помогают принимать решения.
           </p>
         </div>
 
@@ -1406,7 +1418,7 @@ export function PravdaLanding() {
         <Audience />
         
         <Approach />
-        <Program />
+        
         <Outcomes />
         <TrainerSection />
         <Pricing />
