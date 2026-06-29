@@ -13,11 +13,14 @@ const indexLinks = [
 const acceleratorLinks = [
   { label: "Для кого", href: "#audience" },
   { label: "Программа", href: "#solution" },
-  { label: "Стоимость", href: "#buy" },
   { label: "Тестовое", href: "#test" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  onSignupClick?: () => void;
+}
+
+const Navbar = ({ onSignupClick }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const links = pathname.startsWith("/accelerator") ? acceleratorLinks : indexLinks;
