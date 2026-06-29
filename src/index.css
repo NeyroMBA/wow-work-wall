@@ -178,12 +178,9 @@
   --pravda-red: 14 60% 45%;
   --pravda-green: 158 42% 32%;
   --pravda-yellow: 48 70% 86%;
-  --pravda-line-color: hsl(var(--pravda-line));
   background: hsl(var(--pravda-bg));
   color: hsl(var(--pravda-ink));
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-[data-theme="pravda"] {
-  --pravda-line: 36 14% 86%;
-}
 
