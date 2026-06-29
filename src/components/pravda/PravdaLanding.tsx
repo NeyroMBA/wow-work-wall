@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import metricMapImg from "@/assets/metric-map.png";
 import dashboardImg from "@/assets/dashboard-screenshot.png.asset.json";
 import trainerImg from "@/assets/trainer-photo.png.asset.json";
@@ -62,6 +62,62 @@ function BrokenChainSchema() {
     [52, 52, 88, 42],
   ];
 
+  type Connector = {
+    x1: number;
+    y1: number;
+    x2: number;
+    y2: number;
+    key: string;
+  };
+
+  const mobileRef = useRef<HTMLDivElement>(null);
+  const desktopRef = useRef<HTMLDivElement>(null);
+  const [connectors, setConnectors] = useState<{ left: Connector | null; right: Connector | null }>({
+    left: null,
+    right: null,
+  });
+
+  const measure = useCallback(() => {
+    const mobile = mobileRef.current;
+    const desktop = desktopRef.current;
+    const container = mobile && mobile.offsetWidth > 0 ? mobile : desktop && desktop.offsetWidth > 0 ? desktop : null;
+    if (!container) return;
+
+    const cRect = container.getBoundingClientRect();
+    const edge = (label: string, side: "left" | "right") => {
+      const el = container.querySelector(`[data-label="${label}"]`) as HTMLElement | null;
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      const left = ((r.left - cRect.left) / cRect.width) * 100;
+      const width = (r.width / cRect.width) * 100;
+      const top = ((r.top - cRect.top) / cRect.height) * 100;
+      const height = (r.height / cRect.height) * 100;
+      return { x: side === "left" ? left : left + width, y: top + height / 2 };
+    };
+
+    const kpiL = edge("Стратегические KPI", "left");
+    const realL = edge("Реальные данные", "left");
+    const reportsR = edge("Отчёты", "right");
+    const rulesR = edge("Правила расчёта", "right");
+
+    setConnectors({
+      left: kpiL && realL ? { x1: kpiL.x, y1: kpiL.y, x2: realL.x, y2: realL.y, key: "left" } : null,
+      right: reportsR && rulesR ? { x1: reportsR.x, y1: reportsR.y, x2: rulesR.x, y2: rulesR.y, key: "right" } : null,
+    });
+  }, []);
+
+  useEffect(() => {
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (mobileRef.current) ro.observe(mobileRef.current);
+    if (desktopRef.current) ro.observe(desktopRef.current);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [measure]);
+
   const gridBg = (
     <div
       className="pointer-events-none absolute inset-0 opacity-[0.5]"
@@ -73,13 +129,13 @@ function BrokenChainSchema() {
     />
   );
 
-  const renderNodes = (nodes: typeof mobileNodes, maxWClass: string) =>
+  const renderNodes = (nodes: typeof mobileNodes) =>
     nodes.map((n, i) => (
       <div
         key={i}
+        data-label={n.label}
         className={cn(
           "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2",
-          maxWClass,
         )}
         style={{ left: `${n.x}%`, top: `${n.y}%` }}
       >
@@ -105,24 +161,64 @@ function BrokenChainSchema() {
       />
     ));
 
+  const renderQuestionLine = (c: Connector | null) => {
+    if (!c) return null;
+    return (
+      <line
+        key={c.key}
+        x1={c.x1}
+        y1={c.y1}
+        x2={c.x2}
+        y2={c.y2}
+        stroke="currentColor"
+        strokeWidth="0.5"
+        strokeDasharray="3 3"
+        className="text-pravda-line-strong"
+      />
+    );
+  };
+
+  const renderQuestionMarker = (c: Connector | null) => {
+    if (!c) return null;
+    const mx = (c.x1 + c.x2) / 2;
+    const my = (c.y1 + c.y2) / 2;
+    return (
+      <div
+        key={c.key}
+        className="absolute flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-pravda-line-strong bg-pravda-bg text-[13px] font-bold leading-none text-pravda-ink shadow-sm"
+        style={{ left: `${mx}%`, top: `${my}%` }}
+      >
+        ?
+      </div>
+    );
+  };
+
   return (
     <>
       {/* Mobile / tablet — square */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:hidden">
+      <div ref={mobileRef} className="relative aspect-square w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:hidden">
         {gridBg}
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(mobileLines)}
+          {renderQuestionLine(connectors.left)}
+          {renderQuestionLine(connectors.right)}
         </svg>
-        {renderNodes(mobileNodes, "")}
+        {renderQuestionMarker(connectors.left)}
+        {renderQuestionMarker(connectors.right)}
+        {renderNodes(mobileNodes)}
       </div>
 
       {/* Desktop — landscape */}
-      <div className="relative hidden aspect-[16/9] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
+      <div ref={desktopRef} className="relative hidden aspect-[16/9] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
         {gridBg}
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(desktopLines)}
+          {renderQuestionLine(connectors.left)}
+          {renderQuestionLine(connectors.right)}
         </svg>
-        {renderNodes(desktopNodes, "")}
+        {renderQuestionMarker(connectors.left)}
+        {renderQuestionMarker(connectors.right)}
+        {renderNodes(desktopNodes)}
       </div>
     </>
   );
