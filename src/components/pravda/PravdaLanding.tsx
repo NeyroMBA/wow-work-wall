@@ -72,7 +72,6 @@ function BrokenChainSchema() {
 
   const mobileRef = useRef<HTMLDivElement>(null);
   const desktopRef = useRef<HTMLDivElement>(null);
-  const nodeRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [connectors, setConnectors] = useState<{ left: Connector | null; right: Connector | null }>({
     left: null,
     right: null,
@@ -86,7 +85,7 @@ function BrokenChainSchema() {
 
     const cRect = container.getBoundingClientRect();
     const edge = (label: string, side: "left" | "right") => {
-      const el = nodeRefs.current[label];
+      const el = container.querySelector(`[data-label="${label}"]`) as HTMLElement | null;
       if (!el) return null;
       const r = el.getBoundingClientRect();
       const left = ((r.left - cRect.left) / cRect.width) * 100;
@@ -130,15 +129,11 @@ function BrokenChainSchema() {
     />
   );
 
-  const setNodeRef = (label: string) => (el: HTMLDivElement | null) => {
-    nodeRefs.current[label] = el;
-  };
-
   const renderNodes = (nodes: typeof mobileNodes) =>
     nodes.map((n, i) => (
       <div
         key={i}
-        ref={setNodeRef(n.label)}
+        data-label={n.label}
         className={cn(
           "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2",
         )}
