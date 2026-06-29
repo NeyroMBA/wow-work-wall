@@ -759,23 +759,17 @@ function Approach() {
             Знакомимся с типологией метрик. Они бывают 4 типов:
           </p>
 
-          <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { t: "Результат", tone: "ink" },
-              { t: "Затраты", tone: "muted" },
-              { t: "Диагностика", tone: "muted" },
-              { t: "Действия", tone: "ink" },
-            ].map((type) => (
-              <div
-                key={type.t}
-                className={cn(
-                  "flex items-center justify-center rounded-[16px] border px-4 py-5 text-center",
-                  type.tone === "ink"
-                    ? "border-pravda-ink bg-pravda-ink text-pravda-bg"
-                    : "border-pravda-line bg-pravda-bg text-pravda-ink",
-                )}
-              >
-                <div className="text-[16px] font-bold tracking-[-0.01em] md:text-[18px]">{type.t}</div>
+              { t: "Результатные", s: "Прибыль, выручка, маржа, выполнение плана, NPS." },
+              { t: "Стоимостные", s: "Себестоимость, CAC, cost per order, стоимость ошибки." },
+              { t: "Диагностические", s: "Этап, сегмент, канал, отдел, причина отклонения." },
+              { t: "Метрики действия", s: "Кто и что должен сделать при отклонении." },
+            ].map((i, idx) => (
+              <div key={i.t} className="rounded-[16px] border border-pravda-line bg-pravda-bg p-5">
+                <div className="font-mono text-[11px] text-pravda-muted">тип {idx + 1}</div>
+                <div className="mt-2 text-[18px] font-bold tracking-[-0.02em] text-pravda-ink">{i.t}</div>
+                <p className="mt-2 text-[14px] leading-[1.5] text-pravda-text">{i.s}</p>
               </div>
             ))}
           </div>
