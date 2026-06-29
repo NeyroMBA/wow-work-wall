@@ -188,7 +188,7 @@ function BrokenChainSchema() {
       />
     ));
 
-  const renderQuestionLine = (c: Connector | null) => {
+  const renderQuestionLine = (c: Connector | null, index = 0) => {
     if (!c) return null;
     return (
       <line
@@ -200,7 +200,11 @@ function BrokenChainSchema() {
         stroke="currentColor"
         strokeWidth="0.5"
         strokeDasharray="3 3"
-        className="text-pravda-line-strong"
+        className="text-pravda-line-strong pravda-line-pulse"
+        style={{
+          animationDuration: "10s",
+          animationDelay: `${5 + index}s`,
+        }}
       />
     );
   };
