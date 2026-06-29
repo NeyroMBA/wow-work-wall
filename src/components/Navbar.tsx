@@ -79,9 +79,18 @@ const Navbar = ({ onSignupClick }: NavbarProps) => {
                 {l.label}
               </a>
             ))}
-            <a href="#buy" onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">
-              Записаться
-            </a>
+            {onSignupClick ? (
+              <button
+                onClick={() => { onSignupClick(); setOpen(false); }}
+                className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold w-full"
+              >
+                Записаться
+              </button>
+            ) : (
+              <a href="#buy" onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">
+                Записаться
+              </a>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
