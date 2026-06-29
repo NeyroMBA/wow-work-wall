@@ -494,6 +494,85 @@ function Sparkline({ up, red, seed = 0 }: { up: boolean; red?: boolean; seed?: n
   );
 }
 
+function useTypewriter(text: string, speed = 22, startDelay = 0, active = true) {
+  const [out, setOut] = React.useState("");
+  React.useEffect(() => {
+    if (!active) {
+      setOut("");
+      return;
+    }
+    setOut("");
+    let i = 0;
+    let timer: number | undefined;
+    const start = window.setTimeout(function tick() {
+      timer = window.setInterval(() => {
+        i++;
+        setOut(text.slice(0, i));
+        if (i >= text.length && timer) {
+          window.clearInterval(timer);
+        }
+      }, speed);
+    }, startDelay);
+    return () => {
+      window.clearTimeout(start);
+      if (timer) window.clearInterval(timer);
+    };
+  }, [text, speed, startDelay, active]);
+  return out;
+}
+
+function AgentTypingDialog() {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [active, setActive] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setActive(true);
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const question = "> почему просела маржа в ноябре?";
+  const answer =
+    "Маржа упала на 4,1 п.п. Драйверы: рост скидок в опте (−2,4 п.п.) и закупочной цены поставщика A-12 (−1,7 п.п.). Действия: пересмотр прайса опта, тендер по поставщику.";
+
+  const qDuration = question.length * 28;
+  const q = useTypewriter(question, 28, 300, active);
+  const a = useTypewriter(answer, 16, 300 + qDuration + 400, active);
+  const qDone = q.length >= question.length;
+
+  return (
+    <div ref={ref} className="mt-3 flex flex-col gap-2 rounded-[12px] border border-pravda-line bg-pravda-soft/40 p-3">
+      <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-pravda-muted">
+        ИИ-агент · разбор отклонения
+      </div>
+      <div className="rounded-[10px] border border-pravda-line bg-pravda-bg px-3 py-2 font-mono text-[12px] text-pravda-ink min-h-[34px]">
+        {q}
+        {!qDone && <span className="inline-block w-[6px] animate-pulse">▍</span>}
+      </div>
+      {qDone && (
+        <div className="rounded-[10px] border border-pravda-ink bg-pravda-ink px-3 py-2 text-[12px] leading-[1.45] text-pravda-bg min-h-[60px]">
+          <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-pravda-bg/70">
+            Ответ агента
+          </div>
+          <span>{a}</span>
+          {a.length < answer.length && <span className="inline-block w-[6px] animate-pulse">▍</span>}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function DashboardWithAgent() {
   const kpis = [
     { l: "Выручка", v: "12,4 млн ₽", d: "+3%", up: true },
@@ -529,6 +608,9 @@ function DashboardWithAgent() {
             <Sparkline up={k.up} red={!k.up} seed={i * 1.3} />
           </div>
         ))}
+      </div>
+      <div className="hidden md:block">
+        <AgentTypingDialog />
       </div>
     </div>
   );
