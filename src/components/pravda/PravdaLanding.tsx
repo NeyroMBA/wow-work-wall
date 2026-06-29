@@ -169,7 +169,7 @@ function BrokenChainSchema() {
       </div>
     ));
 
-  const renderLines = (lines: number[][]) =>
+  const renderLines = (lines: number[][], offset = 0) =>
     lines.map(([x1, y1, x2, y2], i) => (
       <line
         key={i}
@@ -180,7 +180,11 @@ function BrokenChainSchema() {
         stroke="currentColor"
         strokeWidth="0.5"
         strokeDasharray="3 3"
-        className="text-pravda-line-strong"
+        className="text-pravda-line-strong pravda-line-pulse"
+        style={{
+          animationDuration: "10s",
+          animationDelay: `${(i + offset) * 2}s`,
+        }}
       />
     ));
 
