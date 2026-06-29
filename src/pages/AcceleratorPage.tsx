@@ -189,7 +189,7 @@ const AcceleratorPage = () => {
 
   return (
     <div data-theme="accelerator" className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar onSignupClick={() => setSignupOpen(true)} />
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center pt-16">
