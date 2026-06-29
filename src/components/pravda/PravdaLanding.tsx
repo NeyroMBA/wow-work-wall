@@ -649,13 +649,13 @@ function Header() {
           <a href="#problem" className="hover:text-pravda-ink">Проблема</a>
           <a href="#approach" className="hover:text-pravda-ink">Подход</a>
           <a href="#program" className="hover:text-pravda-ink">Программа</a>
-          <a href="#request" className="hover:text-pravda-ink">Заявка</a>
+          <a href="#pricing" className="hover:text-pravda-ink">Регистрация</a>
         </div>
         <a
-          href="#request"
+          href="#pricing"
           className="inline-flex h-10 items-center rounded-full bg-pravda-ink px-4 text-[13px] font-semibold text-pravda-bg transition-transform hover:-translate-y-0.5"
         >
-          Получить программу
+          Регистрация
         </a>
       </Container>
     </header>
@@ -1091,51 +1091,6 @@ function Outcomes() {
   );
 }
 
-function Request() {
-  const [open, setOpen] = useState(false);
-  return (
-    <section id="request" className="bg-pravda-bg py-20">
-      <Container>
-        <div className="grid gap-10 rounded-[28px] border-2 border-pravda-ink bg-pravda-bg p-8 md:grid-cols-[1fr_1fr] md:items-center md:p-12">
-          <div>
-            <h2 className="text-[clamp(32px,4.4vw,52px)] font-extrabold leading-[1.02] tracking-[-0.045em] text-pravda-ink">
-              Получить программу и условия
-            </h2>
-            <p className="mt-4 max-w-[460px] text-[15px] leading-[1.5] text-pravda-text">
-              Пришлём программу воркшопа, форматы (онлайн / корпоратив), цены и
-              ближайшие даты. Без рассылок и звонков «просто узнать».
-            </p>
-            <div className="mt-6 grid gap-2 text-[13px] text-pravda-muted">
-              <div>2 дня · 12 часов практики</div>
-              <div>До 12 участников в группе</div>
-              <div>Разбор на ваших данных</div>
-            </div>
-          </div>
-          <div className="flex flex-col items-start gap-3 md:items-end">
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              className="inline-flex h-12 items-center justify-center rounded-full bg-pravda-ink px-7 text-[14px] font-semibold text-pravda-bg transition-transform hover:-translate-y-0.5"
-            >
-              Запросить программу
-            </button>
-            <p className="text-[12px] text-pravda-muted">
-              Откроется форма — пришлём программу на e-mail.
-            </p>
-          </div>
-        </div>
-      </Container>
-      <WidgetModal
-        open={open}
-        onOpenChange={setOpen}
-        title="Запрос программы"
-        scriptId="53c56496ada947cb2bbc32e41b4bf2231b7e145e"
-        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1624157"
-      />
-    </section>
-  );
-}
-
 function MetricMapFullscreen() {
   return (
     <section id="metric-map" className="border-b border-pravda-line bg-pravda-soft/50 pb-16 md:pb-20">
@@ -1445,7 +1400,6 @@ export function PravdaLanding() {
         <TrainerSection />
         <Outcomes />
         <Pricing />
-        <Request />
       </main>
       <Footer />
     </div>
