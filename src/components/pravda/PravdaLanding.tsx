@@ -1418,7 +1418,7 @@ export function PravdaLanding() {
         <Audience />
         
         <Approach />
-        <Program />
+        
         <Outcomes />
         <TrainerSection />
         <Pricing />
