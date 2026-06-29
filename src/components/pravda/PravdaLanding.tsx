@@ -226,6 +226,7 @@ function BrokenChainSchema() {
 
   return (
     <>
+      {schemaStyles}
       {/* Mobile / tablet — square */}
       <div ref={mobileRef} className="relative aspect-square w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:hidden">
         {gridBg}
