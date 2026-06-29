@@ -1031,7 +1031,7 @@ function TruthHub() {
 }
 
 function Outcomes() {
-  const tools = ["Power BI", "DataLens", "Excel", "Google Sheets", "Tableau", "Superset"];
+  const tools = ["Power BI", "DataLens", "Excel", "Google Sheets", "Visiology", "Superset", "Claude", "DeepSeek", "Codex"];
   return (
     <section className="border-b border-pravda-line bg-pravda-soft/50 py-16">
       <Container>
@@ -1046,7 +1046,7 @@ function Outcomes() {
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {tools.map((t) => (
-                  <span key={t} className="rounded-md border border-pravda-line bg-pravda-soft/60 px-2 py-1 text-[11px] text-pravda-muted">
+                  <span key={t} className="rounded-md border border-pravda-line-strong bg-pravda-yellow px-2 py-1 text-[11px] font-medium text-pravda-ink">
                     {t}
                   </span>
                 ))}
