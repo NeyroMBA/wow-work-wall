@@ -208,8 +208,8 @@ function BrokenChainSchema() {
         {renderNodes(mobileNodes)}
       </div>
 
-      {/* Desktop — landscape */}
-      <div ref={desktopRef} className="relative hidden aspect-[16/9] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
+      {/* Desktop — compact landscape */}
+      <div ref={desktopRef} className="relative mx-auto hidden aspect-[2.2/1] w-[80%] overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
         {gridBg}
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(desktopLines)}
