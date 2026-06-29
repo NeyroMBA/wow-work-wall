@@ -1178,53 +1178,51 @@ function TrainerSection() {
   return (
     <section className="border-b border-pravda-line bg-pravda-bg py-16">
       <Container>
-        <div className="grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
-          <div className="shrink-0">
-            <h2 className="text-[28px] font-extrabold leading-[1.05] tracking-[-0.03em] text-pravda-ink md:text-[34px]">
-              Алексей<br />Колоколов
-            </h2>
-            <div className="mt-5 overflow-hidden rounded-[18px]">
-              <img
-                src={trainerImg.url}
-                alt="Алексей Колоколов"
-                className="block h-auto w-full"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div className="md:pt-2">
-            <p className="text-[15px] leading-[1.55] text-pravda-text md:text-[16px]">
-              Директор Института Бизнес-Аналитики, автор книг
-            </p>
+        <div className="max-w-[720px]">
+          <h2 className="text-pravda-ink text-[clamp(30px,4.4vw,54px)] font-extrabold leading-[1.04] tracking-[-0.045em]">
+            Ведущий: Алексей Колоколов.
+          </h2>
 
-            <div className="mt-5 grid gap-2 sm:grid-cols-2">
-              {books.map((b) => (
-                <div
-                  key={b}
-                  className="rounded-[10px] border border-pravda-line bg-pravda-bg px-3 py-2 text-[13px] font-medium text-pravda-ink"
-                >
-                  {b}
-                </div>
-              ))}
-            </div>
+          <p className="mt-4 text-[17px] leading-[1.5] text-pravda-text md:text-[18px]">
+            Директор Института бизнес-аналитики, автор книг
+          </p>
 
-            <figure className="relative mt-8">
+          <div className="mt-4 flex flex-wrap gap-2">
+            {books.map((b) => (
               <span
-                aria-hidden
-                className="absolute -top-3 left-0 font-serif text-[64px] leading-none text-pravda-ink/15"
+                key={b}
+                className="inline-flex rounded-full border border-pravda-line bg-pravda-soft/60 px-3 py-1.5 text-[13px] font-medium text-pravda-ink"
               >
-                “
+                {b}
               </span>
-              <blockquote className="pl-8 pr-2">
-                <p className="text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
-                  16 лет я занимаюсь аналитикой данных. Моя компания делает отчёты для Северсталь, Сибур, РЖД, Siemens и других корпораций.
-                </p>
-                <p className="mt-3 text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
-                  Я знаю, что работает, и <span className="font-semibold text-pravda-ink">НЕ</span> работает в реальном бизнесе. И покажу вам правду.
-                </p>
-              </blockquote>
-            </figure>
+            ))}
           </div>
+
+          <div className="mt-8 max-w-[360px] overflow-hidden rounded-[18px]">
+            <img
+              src={trainerImg.url}
+              alt="Алексей Колоколов"
+              className="block h-auto w-full"
+              loading="lazy"
+            />
+          </div>
+
+          <figure className="relative mt-8">
+            <span
+              aria-hidden
+              className="absolute -top-3 left-0 font-serif text-[64px] leading-none text-pravda-ink/15"
+            >
+              “
+            </span>
+            <blockquote className="pl-8 pr-2">
+              <p className="text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
+                16 лет я занимаюсь аналитикой данных. Моя компания делает отчёты для Северсталь, Сибур, РЖД, Siemens и других корпораций.
+              </p>
+              <p className="mt-3 text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
+                Я знаю, что работает, и <span className="font-semibold text-pravda-ink">НЕ</span> работает в реальном бизнесе. И покажу вам правду.
+              </p>
+            </blockquote>
+          </figure>
         </div>
       </Container>
     </section>
