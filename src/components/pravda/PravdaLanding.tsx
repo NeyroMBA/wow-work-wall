@@ -1400,7 +1400,6 @@ export function PravdaLanding() {
         <Approach />
         <TrainerSection />
         <Outcomes />
-        <Pricing />
       </main>
       <Footer />
     </div>
