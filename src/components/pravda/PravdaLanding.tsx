@@ -1136,7 +1136,10 @@ function TrainerSection() {
       <Container>
         <div className="grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
           <div className="shrink-0">
-            <div className="overflow-hidden rounded-[18px] border border-pravda-line">
+            <h2 className="text-[28px] font-extrabold leading-[1.05] tracking-[-0.03em] text-pravda-ink md:text-[34px]">
+              Алексей<br />Колоколов
+            </h2>
+            <div className="mt-5 overflow-hidden rounded-[18px]">
               <img
                 src={trainerImg.url}
                 alt="Алексей Колоколов"
@@ -1145,38 +1148,38 @@ function TrainerSection() {
               />
             </div>
           </div>
-          <div>
-            <div className="text-[28px] font-extrabold tracking-[-0.03em] text-pravda-ink">
-              Алексей Колоколов
-            </div>
-            <div className="mt-1 text-[15px] text-pravda-muted">
-              Директор Института Бизнес-Аналитики
+          <div className="md:pt-2">
+            <p className="text-[15px] leading-[1.55] text-pravda-text md:text-[16px]">
+              Директор Института Бизнес-Аналитики, автор книг
+            </p>
+
+            <div className="mt-5 grid gap-2 sm:grid-cols-2">
+              {books.map((b) => (
+                <div
+                  key={b}
+                  className="rounded-[10px] border border-pravda-line bg-pravda-bg px-3 py-2 text-[13px] font-medium text-pravda-ink"
+                >
+                  {b}
+                </div>
+              ))}
             </div>
 
-            <div className="mt-6 rounded-[16px] border-l-2 border-pravda-ink bg-pravda-soft/40 p-5">
-              <p className="text-[15px] leading-[1.6] text-pravda-text">
-                16 лет я занимаюсь аналитикой данных. Моя компания делает отчёты для Северсталь, Сибур, РЖД, Siemens и других корпораций.
-              </p>
-              <p className="mt-3 text-[15px] leading-[1.6] text-pravda-text">
-                Я знаю, что работает, и <span className="font-semibold text-pravda-ink">НЕ</span> работает в реальном бизнесе. И покажу вам правду.
-              </p>
-            </div>
-
-            <div className="mt-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-pravda-muted">
-                Автор книг
-              </div>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {books.map((b) => (
-                  <div
-                    key={b}
-                    className="rounded-[10px] border border-pravda-line bg-pravda-bg px-3 py-2 text-[13px] font-medium text-pravda-ink"
-                  >
-                    {b}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <figure className="relative mt-8">
+              <span
+                aria-hidden
+                className="absolute -top-3 left-0 font-serif text-[64px] leading-none text-pravda-ink/15"
+              >
+                “
+              </span>
+              <blockquote className="pl-8 pr-2">
+                <p className="text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
+                  16 лет я занимаюсь аналитикой данных. Моя компания делает отчёты для Северсталь, Сибур, РЖД, Siemens и других корпораций.
+                </p>
+                <p className="mt-3 text-[16px] leading-[1.6] text-pravda-text md:text-[17px]">
+                  Я знаю, что работает, и <span className="font-semibold text-pravda-ink">НЕ</span> работает в реальном бизнесе. И покажу вам правду.
+                </p>
+              </blockquote>
+            </figure>
           </div>
         </div>
       </Container>
