@@ -765,10 +765,9 @@ function Approach() {
               { t: "Стоимостные", s: "Себестоимость, CAC, cost per order, стоимость ошибки." },
               { t: "Диагностические", s: "Этап, сегмент, канал, отдел, причина отклонения." },
               { t: "Метрики действия", s: "Кто и что должен сделать при отклонении." },
-            ].map((i, idx) => (
+            ].map((i) => (
               <div key={i.t} className="rounded-[16px] border border-pravda-line bg-pravda-bg p-5">
-                <div className="font-mono text-[11px] text-pravda-muted">тип {idx + 1}</div>
-                <div className="mt-2 text-[18px] font-bold tracking-[-0.02em] text-pravda-ink">{i.t}</div>
+                <div className="text-[18px] font-bold tracking-[-0.02em] text-pravda-ink">{i.t}</div>
                 <p className="mt-2 text-[14px] leading-[1.5] text-pravda-text">{i.s}</p>
               </div>
             ))}
