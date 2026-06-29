@@ -536,35 +536,6 @@ function DashboardWithAgent() {
         ))}
       </div>
 
-      <div className="mt-3 border-t border-pravda-line pt-3">
-        <div className="mb-2 flex items-center justify-between">
-          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-pravda-muted">
-            ИИ-агент · разбор отклонения
-          </div>
-        </div>
-        <div className="space-y-2">
-          <div className="rounded-[10px] border border-pravda-line bg-pravda-soft/60 px-3 py-2 font-mono text-[12px] text-pravda-ink">
-            {">"} почему просела маржа в ноябре?
-          </div>
-          <div className="rounded-[10px] border border-pravda-line bg-pravda-soft/60 px-3 py-2 text-[12px] leading-[1.5] text-pravda-ink">
-            Маржа упала на 4,1 п.п. Два драйвера:
-            <div className="mt-2 space-y-1.5">
-              <div className="flex items-baseline justify-between gap-3">
-                <span>· Рост скидок в сегменте «Опт»</span>
-                <span className="font-mono text-pravda-red">−2,4 п.п.</span>
-              </div>
-              <div className="flex items-baseline justify-between gap-3">
-                <span>· Рост закупочной цены, поставщик A-12</span>
-                <span className="font-mono text-pravda-red">−1,7 п.п.</span>
-              </div>
-            </div>
-            <div className="mt-2 text-pravda-muted">
-              Открыть карту метрики «Маржа» → действия →
-              <span className="text-pravda-ink"> пересмотр прайса опта, тендер по поставщику.</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
