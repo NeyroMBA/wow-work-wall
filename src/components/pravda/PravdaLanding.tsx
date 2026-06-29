@@ -839,6 +839,48 @@ function FourTypes() {
   );
 }
 
+function Inventory() {
+  const types = [
+    { t: "Результат", tone: "ink" },
+    { t: "Затраты", tone: "muted" },
+    { t: "Диагностика", tone: "muted" },
+    { t: "Действия", tone: "ink" },
+  ];
+  return (
+    <div className="mb-10">
+      <div className="mb-6">
+        <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Инвентаризация ваших показателей</div>
+        <p className="mt-2 text-[15px] leading-[1.5] text-pravda-text">
+          Знакомимся с типологией метрик. Они бывают 4 типов:
+        </p>
+      </div>
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        {types.map((type) => (
+          <div
+            key={type.t}
+            className={cn(
+              "flex items-center justify-center rounded-[16px] border px-4 py-5 text-center",
+              type.tone === "ink"
+                ? "border-pravda-ink bg-pravda-ink text-pravda-bg"
+                : "border-pravda-line bg-pravda-bg text-pravda-ink",
+            )}
+          >
+            <div className="text-[16px] font-bold tracking-[-0.01em] md:text-[18px]">{type.t}</div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5">
+        <div className="text-[16px] font-bold tracking-[-0.02em] text-pravda-ink">
+          Убираем метрики тщеславия
+        </div>
+        <p className="mt-1 text-[14px] leading-[1.5] text-pravda-text">
+          Показатели, которые выглядят красиво, но на самом деле не помогают принимать решения.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function Program() {
   const mods = [
     { t: "Аудит отчётов", s: "Проходим по текущим отчётам, вытаскиваем показатели, ищем дубли и неиспользуемое." },
@@ -855,6 +897,7 @@ function Program() {
           title="Шесть модулей. Без мотивационной воды."
           lead="Не разговор «зачем нужен AI». Конкретный разбор: метрики, карты, дашборды и артефакты системы отчётности."
         />
+        <Inventory />
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {mods.map((m, i) => (
             <div key={m.t} className="rounded-[18px] border border-pravda-line bg-pravda-bg p-6">
@@ -1355,6 +1398,7 @@ export function PravdaLanding() {
         <Audience />
         <MetricMapFullscreen />
         <Approach />
+        <Program />
         <Outcomes />
         <TrainerSection />
         <Pricing />
