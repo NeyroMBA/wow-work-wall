@@ -1214,44 +1214,6 @@ function Footer() {
   );
 }
 
-/* ---------- Widget modal (GetCourse) ---------- */
-
-function WidgetModal({
-  open,
-  onOpenChange,
-  title,
-  scriptId,
-  scriptSrc,
-}: {
-  open: boolean;
-  onOpenChange: (v: boolean) => void;
-  title: string;
-  scriptId: string;
-  scriptSrc: string;
-}) {
-  const srcDoc = `<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><style>html,body{margin:0;padding:0;background:transparent;font-family:Inter,system-ui,-apple-system,sans-serif;color:#111}</style></head><body><script id="${scriptId}" src="${scriptSrc}"><\/script></body></html>`;
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[560px] p-0 sm:rounded-[18px] overflow-hidden">
-        <DialogTitle className="sr-only">{title}</DialogTitle>
-        <div className="relative h-[640px] w-full bg-white">
-          {/* spinner sits behind the iframe; the loaded widget overlays it */}
-          <div className="pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center gap-3 text-pravda-muted">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-pravda-line border-t-pravda-ink" />
-            <div className="text-[13px]">Форма загружается…</div>
-          </div>
-          <iframe
-            key={scriptId + String(open)}
-            title={title}
-            srcDoc={srcDoc}
-            className="relative z-10 h-full w-full border-0 bg-transparent"
-            allow="payment *; clipboard-write *"
-          />
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
 
 
 
