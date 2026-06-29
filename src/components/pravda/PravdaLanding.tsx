@@ -784,12 +784,12 @@ function Approach() {
 
           <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { t: "Результатные", s: "Прибыль, выручка, маржа, выполнение плана, NPS." },
-              { t: "Стоимостные", s: "Себестоимость, CAC, cost per order, стоимость ошибки." },
-              { t: "Диагностические", s: "Этап, сегмент, канал, отдел, причина отклонения." },
-              { t: "Метрики действия", s: "Кто и что должен сделать при отклонении." },
-            ].map((i) => (
-              <div key={i.t} className="rounded-[16px] border border-pravda-line bg-pravda-bg p-5">
+              { t: "Результатные", s: "Финансовый и количественный итог за период." },
+              { t: "Затратные", s: "Расходы, как правило, сокращающие прибыль." },
+              { t: "Диагностические", s: "Расчетные индексы, удельные показатели." },
+              { t: "Действия", s: "Метрика, на которую вы можете влиять напрямую." },
+            ].map((i, idx) => (
+              <div key={i.t} className={`rounded-[16px] border ${idx === 3 ? 'border-pravda-ink' : 'border-pravda-line'} bg-pravda-bg p-5`}>
                 <div className="text-[18px] font-bold tracking-[-0.02em] text-pravda-ink">{i.t}</div>
                 <p className="mt-2 text-[14px] leading-[1.5] text-pravda-text">{i.s}</p>
               </div>
