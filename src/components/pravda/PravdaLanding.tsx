@@ -129,6 +129,24 @@ function BrokenChainSchema() {
     />
   );
 
+  const schemaStyles = (
+    <style>{`
+      @keyframes pravda-node-float {
+        0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
+        25% { transform: translate(-50%, -50%) translate(2px, -2px); }
+        50% { transform: translate(-50%, -50%) translate(-2px, 1px); }
+        75% { transform: translate(-50%, -50%) translate(1px, 2px); }
+      }
+      @keyframes pravda-line-pulse {
+        0% { opacity: 0.15; }
+        8% { opacity: 1; }
+        22% { opacity: 1; }
+        30% { opacity: 0.15; }
+        100% { opacity: 0.15; }
+      }
+    `}</style>
+  );
+
   const renderNodes = (nodes: typeof mobileNodes) =>
     nodes.map((n, i) => (
       <div
