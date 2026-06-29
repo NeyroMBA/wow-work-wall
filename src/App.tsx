@@ -12,6 +12,7 @@ import IndexV6 from "./pages/IndexV6.tsx";
 import IndexV7 from "./pages/IndexV7.tsx";
 import AcceleratorPage from "./pages/AcceleratorPage.tsx";
 import Wall from "./pages/Wall.tsx";
+import Pravda from "./pages/Pravda.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/v7" element={<IndexV7 />} />
           <Route path="/accelerator" element={<AcceleratorPage />} />
           <Route path="/wall" element={<Wall />} />
+          <Route path="/pravda" element={<Pravda />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
