@@ -1404,7 +1404,7 @@ export function PravdaLanding() {
         <Hero />
         <Problem />
         <Audience />
-        <MetricMapFullscreen />
+        
         <Approach />
         <Program />
         <Outcomes />
