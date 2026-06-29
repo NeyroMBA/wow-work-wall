@@ -207,12 +207,13 @@ const AcceleratorPage = () => {
               <h2 className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed">
                 3 месяца интенсивной практики
               </h2>
-              <a
-                href="#buy"
+              <button
+                type="button"
+                onClick={() => setSignupOpen(true)}
                 className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
               >
                 Записаться
-              </a>
+              </button>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}
