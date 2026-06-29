@@ -1,3 +1,4 @@
+import * as React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import metricMapImg from "@/assets/metric-map.png.asset.json";
 import dashboardImg from "@/assets/dashboard-screenshot.png.asset.json";
