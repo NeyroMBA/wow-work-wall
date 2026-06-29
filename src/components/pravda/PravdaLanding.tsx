@@ -1123,11 +1123,11 @@ function TrainerSection() {
             Директор Института бизнес-аналитики, автор книг
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
             {books.map((b) => (
               <span
                 key={b}
-                className="inline-flex rounded-full border border-pravda-line bg-pravda-soft/60 px-3 py-1.5 text-[13px] font-medium text-pravda-ink"
+                className="inline-flex items-center whitespace-nowrap rounded-full border border-pravda-line bg-pravda-soft/60 px-2 py-1 text-[11px] font-medium text-pravda-ink sm:px-3 sm:py-1.5 sm:text-[13px]"
               >
                 {b}
               </span>
