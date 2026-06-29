@@ -798,11 +798,11 @@ function Approach() {
               </li>
             ))}
           </ul>
-          <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg">
+          <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg aspect-square md:aspect-auto">
             <img
               src={metricMapImg}
               alt="Карта метрик: финансовый результат, физлица, страховые"
-              className="block w-full h-auto"
+              className="block h-full w-full object-cover object-left md:h-auto md:w-full"
               loading="lazy"
             />
           </div>
