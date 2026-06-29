@@ -535,7 +535,6 @@ function DashboardWithAgent() {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
