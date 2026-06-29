@@ -67,7 +67,7 @@ function BrokenChainSchema() {
       className="pointer-events-none absolute inset-0 opacity-[0.5]"
       style={{
         backgroundImage:
-          "linear-gradient(to right, var(--pravda-line) 1px, transparent 1px), linear-gradient(to bottom, var(--pravda-line) 1px, transparent 1px)",
+          "linear-gradient(to right, hsl(var(--pravda-line)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--pravda-line)) 1px, transparent 1px)",
         backgroundSize: "32px 32px",
       }}
     />
