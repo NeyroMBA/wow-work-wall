@@ -795,6 +795,14 @@ function Approach() {
               </li>
             ))}
           </ol>
+          <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg">
+            <img
+              src={metricMapImg}
+              alt="Карта метрик: финансовый результат, физлица, страховые"
+              className="block w-full h-auto"
+              loading="lazy"
+            />
+          </div>
         </div>
       </Container>
     </section>
