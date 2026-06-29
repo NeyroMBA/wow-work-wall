@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import metricMapImg from "@/assets/metric-map.png";
+import metricMapImg from "@/assets/metric-map.png.asset.json";
 import dashboardImg from "@/assets/dashboard-screenshot.png.asset.json";
 import trainerImg from "@/assets/trainer-photo.png.asset.json";
 
@@ -822,9 +822,9 @@ function Approach() {
             ))}
           </ul>
           <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg aspect-square md:aspect-auto">
-            <img
-              src={metricMapImg}
-              alt="Карта метрик: финансовый результат, физлица, страховые"
+          <img
+            src={metricMapImg.url}
+            alt="Карта метрик: финансовый результат, физлица, страховые"
               className="block h-full w-full object-cover object-left md:h-auto md:w-full"
               loading="lazy"
             />
@@ -1093,7 +1093,7 @@ function MetricMapFullscreen() {
       <Container>
         <div className="overflow-hidden rounded-[18px] border border-pravda-line bg-pravda-bg">
           <img
-            src={metricMapImg}
+            src={metricMapImg.url}
             alt="Карта метрик: финансовый результат, физлица, страховые"
             className="block w-full h-auto"
             loading="lazy"
