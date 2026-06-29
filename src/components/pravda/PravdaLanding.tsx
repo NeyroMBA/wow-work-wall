@@ -137,12 +137,22 @@ function BrokenChainSchema() {
         50% { transform: translate(-50%, -50%) translate(-2px, 1px); }
         75% { transform: translate(-50%, -50%) translate(1px, 2px); }
       }
+      .pravda-node-float {
+        animation-name: pravda-node-float;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
       @keyframes pravda-line-pulse {
         0% { opacity: 0.15; }
         8% { opacity: 1; }
         22% { opacity: 1; }
         30% { opacity: 0.15; }
         100% { opacity: 0.15; }
+      }
+      .pravda-line-pulse {
+        animation-name: pravda-line-pulse;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
       }
     `}</style>
   );
