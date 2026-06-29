@@ -779,15 +779,15 @@ function Approach() {
               </div>
             ))}
           </div>
-        </div>
 
-        <div className="mt-5 px-1">
-          <div className="text-[16px] font-bold tracking-[-0.02em] text-pravda-ink">
-            Убираем метрики тщеславия
+          <div className="mt-5 border-t border-pravda-line pt-4">
+            <div className="text-[16px] font-bold tracking-[-0.02em] text-pravda-ink">
+              Убираем метрики тщеславия
+            </div>
+            <p className="mt-1 text-[14px] leading-[1.5] text-pravda-text">
+              Показатели, которые выглядят красиво, но на самом деле не помогают принимать решения.
+            </p>
           </div>
-          <p className="mt-1 text-[14px] leading-[1.5] text-pravda-text">
-            Показатели, которые выглядят красиво, но на самом деле не помогают принимать решения.
-          </p>
         </div>
 
         <div className="mt-8 mb-2">
