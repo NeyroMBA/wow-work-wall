@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import metricMapImg from "@/assets/metric-map.png";
+import metricMapImg from "@/assets/metric-map.png.asset.json";
 import dashboardImg from "@/assets/dashboard-screenshot.png.asset.json";
 import trainerImg from "@/assets/trainer-photo.png.asset.json";
 
