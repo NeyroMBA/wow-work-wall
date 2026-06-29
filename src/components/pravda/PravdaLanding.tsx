@@ -711,7 +711,7 @@ function Audience() {
     <section className="bg-pravda-soft/50 pt-16 pb-10">
       <Container>
         <SectionHead
-          title="Для тех, кто хочет изменить ситуацию"
+          title={<>Для тех, кто хочет изменить <span className="whitespace-nowrap">ситуацию</span></>}
         />
         <div className="grid gap-4 md:grid-cols-3">
           {items.map((i) => (
