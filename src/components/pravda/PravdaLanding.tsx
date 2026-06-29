@@ -31,35 +31,35 @@ function SectionHead({ title, lead }: { title: string; lead?: React.ReactNode })
 
 function BrokenChainSchema() {
   const mobileNodes = [
-    { label: "Стратегические KPI", where: "в презентациях", x: 8, y: 10 },
-    { label: "Отчёты", where: "в Excel", x: 60, y: 6 },
-    { label: "Реальные данные", where: "1С, CRM, базы", x: 6, y: 72 },
-    { label: "Правила расчёта", where: "в головах у людей", x: 62, y: 76 },
-    { label: "Решения", where: "в чатах и блокнотах", x: 34, y: 40 },
+    { label: "Стратегические KPI", where: "в презентациях", x: 28, y: 18 },
+    { label: "Отчёты", where: "в Excel", x: 78, y: 14 },
+    { label: "Реальные данные", where: "1С, CRM, базы", x: 28, y: 82 },
+    { label: "Правила расчёта", where: "в головах у людей", x: 72, y: 86 },
+    { label: "Решения", where: "в чатах и блокнотах", x: 50, y: 50 },
   ];
 
   const desktopNodes = [
-    { label: "Стратегические KPI", where: "в презентациях", x: 6, y: 22 },
-    { label: "Отчёты", where: "в Excel", x: 26, y: 10 },
-    { label: "Реальные данные", where: "1С, CRM, базы", x: 46, y: 28 },
-    { label: "Правила расчёта", where: "в головах у людей", x: 66, y: 8 },
-    { label: "Решения", where: "в чатах и блокнотах", x: 82, y: 24 },
+    { label: "Стратегические KPI", where: "в презентациях", x: 12, y: 38 },
+    { label: "Отчёты", where: "в Excel", x: 32, y: 22 },
+    { label: "Реальные данные", where: "1С, CRM, базы", x: 52, y: 52 },
+    { label: "Правила расчёта", where: "в головах у людей", x: 72, y: 22 },
+    { label: "Решения", where: "в чатах и блокнотах", x: 88, y: 42 },
   ];
 
   const mobileLines = [
-    [34, 40, 8, 10],
-    [34, 40, 60, 6],
-    [34, 40, 6, 72],
-    [34, 40, 62, 76],
-    [8, 10, 60, 6],
+    [50, 50, 28, 18],
+    [50, 50, 78, 14],
+    [50, 50, 28, 82],
+    [50, 50, 72, 86],
+    [28, 18, 78, 14],
   ];
 
   const desktopLines = [
-    [6, 22, 26, 10],
-    [26, 10, 46, 28],
-    [46, 28, 66, 8],
-    [66, 8, 82, 24],
-    [46, 28, 82, 24],
+    [12, 38, 32, 22],
+    [32, 22, 52, 52],
+    [52, 52, 72, 22],
+    [72, 22, 88, 42],
+    [52, 52, 88, 42],
   ];
 
   const gridBg = (
@@ -78,7 +78,7 @@ function BrokenChainSchema() {
       <div
         key={i}
         className={cn(
-          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)]",
+          "absolute rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)] w-max -translate-x-1/2 -translate-y-1/2",
           maxWClass,
         )}
         style={{ left: `${n.x}%`, top: `${n.y}%` }}
@@ -113,7 +113,7 @@ function BrokenChainSchema() {
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(mobileLines)}
         </svg>
-        {renderNodes(mobileNodes, "max-w-[38%]")}
+        {renderNodes(mobileNodes, "")}
       </div>
 
       {/* Desktop — landscape */}
@@ -122,7 +122,7 @@ function BrokenChainSchema() {
         <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           {renderLines(desktopLines)}
         </svg>
-        {renderNodes(desktopNodes, "max-w-[16%]")}
+        {renderNodes(desktopNodes, "")}
       </div>
     </>
   );
