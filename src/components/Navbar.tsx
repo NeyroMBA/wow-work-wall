@@ -43,9 +43,18 @@ const Navbar = ({ onSignupClick }: NavbarProps) => {
               {l.label}
             </a>
           ))}
-          <a href="#buy" className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
-            Записаться
-          </a>
+          {onSignupClick ? (
+            <button
+              onClick={onSignupClick}
+              className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Записаться
+            </button>
+          ) : (
+            <a href="#buy" className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
+              Записаться
+            </a>
+          )}
         </div>
 
         {/* Mobile toggle */}
