@@ -2,11 +2,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import metricMapImg from "@/assets/metric-map.png";
 import dashboardImg from "@/assets/dashboard-screenshot.png.asset.json";
 import trainerImg from "@/assets/trainer-photo.png.asset.json";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
 
 const cn = (...c: Array<string | false | undefined>) => c.filter(Boolean).join(" ");
 
@@ -649,10 +644,9 @@ function Header() {
           <a href="#problem" className="hover:text-pravda-ink">Проблема</a>
           <a href="#approach" className="hover:text-pravda-ink">Подход</a>
           <a href="#program" className="hover:text-pravda-ink">Программа</a>
-          <a href="#pricing" className="hover:text-pravda-ink">Регистрация</a>
         </div>
         <a
-          href="#pricing"
+          href="#program"
           className="inline-flex h-10 items-center rounded-full bg-pravda-ink px-4 text-[13px] font-semibold text-pravda-bg transition-transform hover:-translate-y-0.5"
         >
           Регистрация
@@ -692,7 +686,7 @@ function Hero() {
           </p>
           <div className="mt-6 md:mt-7">
             <a
-              href="#pricing"
+              href="#program"
               className="inline-flex h-12 items-center rounded-full bg-pravda-ink px-6 text-[14px] font-semibold text-pravda-bg"
             >
               Регистрация
@@ -1215,174 +1209,7 @@ function Footer() {
   );
 }
 
-/* ---------- Widget modal (GetCourse) ---------- */
 
-function WidgetModal({
-  open,
-  onOpenChange,
-  title,
-  scriptId,
-  scriptSrc,
-}: {
-  open: boolean;
-  onOpenChange: (v: boolean) => void;
-  title: string;
-  scriptId: string;
-  scriptSrc: string;
-}) {
-  const srcDoc = `<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><style>html,body{margin:0;padding:0;background:transparent;font-family:Inter,system-ui,-apple-system,sans-serif;color:#111}</style></head><body><script id="${scriptId}" src="${scriptSrc}"><\/script></body></html>`;
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[560px] p-0 sm:rounded-[18px] overflow-hidden">
-        <DialogTitle className="sr-only">{title}</DialogTitle>
-        <div className="relative h-[640px] w-full bg-white">
-          {/* spinner sits behind the iframe; the loaded widget overlays it */}
-          <div className="pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-center gap-3 text-pravda-muted">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-pravda-line border-t-pravda-ink" />
-            <div className="text-[13px]">Форма загружается…</div>
-          </div>
-          <iframe
-            key={scriptId + String(open)}
-            title={title}
-            srcDoc={srcDoc}
-            className="relative z-10 h-full w-full border-0 bg-transparent"
-            allow="payment *; clipboard-write *"
-          />
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
-
-/* ---------- Pricing ---------- */
-
-function Pricing() {
-  const [openStd, setOpenStd] = useState(false);
-  const [openBiz, setOpenBiz] = useState(false);
-
-  const stdFeatures = [
-    "Очное участие в воркшопе, 30 июля, Москва",
-    "Все материалы и шаблоны",
-    "Помощь преподавателей при выполнении заданий",
-  ];
-  const bizFeatures = [
-    "Всё, что входит в «Стандарт»",
-    "Персональная консультация с экспертом",
-    "Разбор индивидуального запроса по вашим данным",
-  ];
-
-  return (
-    <section id="pricing" className="border-b border-pravda-line bg-pravda-soft/40 py-20">
-      <Container>
-        <SectionHead title="Тарифы" />
-        <div className="grid gap-5 md:grid-cols-2">
-          <PricingCard
-            name="Стандарт"
-            price="5 000 ₽"
-            note="Участие в воркшопе"
-            features={stdFeatures}
-            ctaLabel="Купить «Стандарт»"
-            onClick={() => setOpenStd(true)}
-            variant="default"
-          />
-          <PricingCard
-            name="Бизнес"
-            price="15 000 ₽"
-            note="Воркшоп + персональная консультация"
-            features={bizFeatures}
-            ctaLabel="Купить «Бизнес»"
-            onClick={() => setOpenBiz(true)}
-            variant="accent"
-          />
-        </div>
-      </Container>
-      <WidgetModal
-        open={openStd}
-        onOpenChange={setOpenStd}
-        title="Тариф «Стандарт»"
-        scriptId="d3463e220da9a7dca915362c2e87c214fcad7309"
-        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1624152"
-      />
-      <WidgetModal
-        open={openBiz}
-        onOpenChange={setOpenBiz}
-        title="Тариф «Бизнес»"
-        scriptId="7360192070ad4ca2c37cac13cd33cd323156513e"
-        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1624154"
-      />
-    </section>
-  );
-}
-
-function PricingCard({
-  name,
-  price,
-  note,
-  features,
-  ctaLabel,
-  onClick,
-  variant,
-}: {
-  name: string;
-  price: string;
-  note: string;
-  features: string[];
-  ctaLabel: string;
-  onClick: () => void;
-  variant: "default" | "accent";
-}) {
-  const isAccent = variant === "accent";
-  return (
-    <div
-      className={cn(
-        "flex flex-col rounded-[20px] border bg-pravda-bg p-8",
-        isAccent ? "border-pravda-ink border-2" : "border-pravda-line",
-      )}
-    >
-      <div className="flex items-baseline justify-between gap-3">
-        <div className="text-[22px] font-extrabold tracking-[-0.03em] text-pravda-ink">
-          {name}
-        </div>
-        {isAccent && (
-          <span className="rounded-full bg-pravda-ink px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-pravda-bg">
-            Рекомендуем
-          </span>
-        )}
-      </div>
-      <div className="mt-4 text-[44px] font-extrabold leading-none tracking-[-0.04em] text-pravda-ink">
-        {price}
-      </div>
-      <div className="mt-2 text-[13px] text-pravda-muted">{note}</div>
-
-      <ul className="mt-6 grid gap-3 border-t border-pravda-line pt-5 text-[14px] leading-[1.45] text-pravda-text">
-        {features.map((f) => (
-          <li key={f} className="flex gap-2.5">
-            <span
-              className={cn(
-                "mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full",
-                isAccent ? "bg-pravda-red" : "bg-pravda-ink",
-              )}
-            />
-            <span>{f}</span>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        type="button"
-        onClick={onClick}
-        className={cn(
-          "mt-8 inline-flex h-12 items-center justify-center rounded-full px-6 text-[14px] font-semibold transition-transform hover:-translate-y-0.5",
-          isAccent
-            ? "bg-pravda-ink text-pravda-bg"
-            : "border border-pravda-ink bg-pravda-bg text-pravda-ink",
-        )}
-      >
-        {ctaLabel}
-      </button>
-    </div>
-  );
-}
 
 
 export function PravdaLanding() {
@@ -1401,7 +1228,6 @@ export function PravdaLanding() {
         <Approach />
         <TrainerSection />
         <Outcomes />
-        <Pricing />
       </main>
       <Footer />
     </div>
