@@ -1277,7 +1277,7 @@ function TrainerSection() {
           <div className="mt-8 grid items-center gap-8 md:grid-cols-[minmax(0,360px)_1fr]">
             <div className="max-w-[360px] overflow-hidden rounded-[18px] md:max-w-full">
               <img
-                src={trainerImg.url}
+                src={trainerImg}
                 alt="Алексей Колоколов"
                 className="block h-auto w-full"
                 loading="lazy"
