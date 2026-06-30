@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
-import metricMapImg from "@/assets/metric-map.png.asset.json";
-import dashboardImg from "@/assets/dashboard-illustration.png.asset.json";
-import dashboardMobileImg from "@/assets/dashboard-screenshot.png.asset.json";
+import metricMapImg from "@/assets/pravda/metric-map.png";
+import dashboardImg from "@/assets/pravda/dashboard-illustration.png";
+import dashboardMobileImg from "@/assets/pravda/dashboard-screenshot.png";
 import trainerImg from "@/assets/trainer-photo.png.asset.json";
 import GetCourseWidgetDialog from "@/components/GetCourseWidgetDialog";
 
@@ -929,10 +929,11 @@ function Approach() {
             </ul>
             <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg aspect-square md:aspect-auto">
               <img
-                src={metricMapImg.url}
+                src={metricMapImg}
                 alt="Карта метрик: финансовый результат, физлица, страховые"
                 className="block h-full w-full object-cover object-left md:h-auto md:w-full"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -957,12 +958,13 @@ function Approach() {
             </ul>
             <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg aspect-square md:aspect-auto">
               <picture>
-                <source media="(min-width:768px)" srcSet={dashboardImg.url} />
+                <source media="(min-width:768px)" srcSet={dashboardImg} />
                 <img
-                  src={dashboardMobileImg.url}
+                  src={dashboardMobileImg}
                   alt="Иллюстрация управленческого дашборда"
                   className="block h-full w-full object-cover object-left md:h-auto md:w-full"
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                 />
               </picture>
             </div>
@@ -1190,12 +1192,13 @@ function Outcomes() {
             <div className="md:w-1/2">
               <div className="overflow-hidden rounded-[14px] border border-pravda-line aspect-square md:aspect-auto">
                 <picture>
-                  <source media="(min-width:768px)" srcSet={dashboardImg.url} />
+                  <source media="(min-width:768px)" srcSet={dashboardImg} />
                   <img
-                    src={dashboardMobileImg.url}
+                    src={dashboardMobileImg}
                     alt="Actionable-дашборд: маржа, структура, премия"
                     className="block h-full w-full object-cover object-left md:h-auto md:w-full"
                     loading="lazy"
+                    decoding="async"
                   />
                 </picture>
               </div>
@@ -1228,10 +1231,11 @@ function MetricMapFullscreen() {
       <Container>
         <div className="overflow-hidden rounded-[18px] border border-pravda-line bg-pravda-bg">
           <img
-            src={metricMapImg.url}
+            src={metricMapImg}
             alt="Карта метрик: финансовый результат, физлица, страховые"
             className="block w-full h-auto"
             loading="lazy"
+            decoding="async"
           />
         </div>
       </Container>
