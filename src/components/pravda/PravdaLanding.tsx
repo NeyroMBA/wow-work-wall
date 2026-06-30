@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import metricMapImg from "@/assets/metric-map.png.asset.json";
 import dashboardImg from "@/assets/dashboard-illustration.png.asset.json";
+import dashboardMobileImg from "@/assets/dashboard-screenshot.png.asset.json";
 import trainerImg from "@/assets/trainer-photo.png.asset.json";
 import GetCourseWidgetDialog from "@/components/GetCourseWidgetDialog";
 
@@ -939,12 +940,15 @@ function Approach() {
               ))}
             </ul>
             <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg aspect-square md:aspect-auto">
-              <img
-                src={dashboardImg.url}
-                alt="Иллюстрация управленческого дашборда"
-                className="block h-full w-full object-cover object-left md:h-auto md:w-full"
-                loading="lazy"
-              />
+              <picture>
+                <source media="(min-width:768px)" srcSet={dashboardImg.url} />
+                <img
+                  src={dashboardMobileImg.url}
+                  alt="Иллюстрация управленческого дашборда"
+                  className="block h-full w-full object-cover object-left md:h-auto md:w-full"
+                  loading="lazy"
+                />
+              </picture>
             </div>
           </div>
         </div>
@@ -1172,12 +1176,15 @@ function Outcomes() {
             </div>
             <div className="md:w-1/2">
               <div className="overflow-hidden rounded-[14px] border border-pravda-line aspect-square md:aspect-auto">
-                <img
-                  src={dashboardImg.url}
-                  alt="Actionable-дашборд: маржа, структура, премия"
-                  className="block h-full w-full object-cover object-left md:h-auto md:w-full"
-                  loading="lazy"
-                />
+                <picture>
+                  <source media="(min-width:768px)" srcSet={dashboardImg.url} />
+                  <img
+                    src={dashboardMobileImg.url}
+                    alt="Actionable-дашборд: маржа, структура, премия"
+                    className="block h-full w-full object-cover object-left md:h-auto md:w-full"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
             </div>
           </div>
