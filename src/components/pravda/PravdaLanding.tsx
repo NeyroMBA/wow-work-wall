@@ -726,6 +726,7 @@ function Header() {
         <div className="hidden gap-6 text-[13px] text-pravda-muted md:flex">
           <a href="#problem" className="hover:text-pravda-ink">Проблема</a>
           <a href="#program" className="hover:text-pravda-ink">Программа</a>
+          <a href="#result" className="hover:text-pravda-ink">Результат</a>
           <a href="#pricing" className="hover:text-pravda-ink">Тарифы</a>
         </div>
         <a
