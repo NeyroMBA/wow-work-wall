@@ -786,7 +786,7 @@ function Hero() {
             </a>
           </div>
         </div>
-        <div className="order-1 md:order-2">
+        <div className="order-1 hidden md:block md:order-2">
           <DashboardWithAgent />
         </div>
       </Container>
