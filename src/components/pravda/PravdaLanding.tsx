@@ -746,7 +746,7 @@ function Hero() {
     <section className="border-b border-pravda-line bg-pravda-bg">
       <Container className="grid gap-8 py-10 md:grid-cols-[1.05fr_.95fr] md:gap-10 md:py-24">
         <div className="order-2 md:order-1">
-          <div className="mb-4 inline-flex items-center rounded-full border border-pravda-line-strong bg-pravda-yellow px-4 py-1.5 text-[13px] font-semibold tracking-[-0.01em] text-pravda-ink md:mb-5 md:px-5 md:py-2 md:text-[14px]">
+          <div className="mb-4 inline-flex items-center rounded-full border border-pravda-line bg-pravda-soft/80 px-4 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-pravda-text md:mb-5 md:px-5 md:py-2 md:text-[14px]">
             Москва 30 мая 10:00 – 14:00
           </div>
           <h1 className="text-[clamp(52px,12vw,96px)] font-extrabold leading-[0.95] tracking-[-0.065em] text-pravda-ink md:text-[clamp(56px,9vw,128px)]">
