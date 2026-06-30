@@ -1493,12 +1493,12 @@ function ResultSchema() {
   ];
 
   const mobileNodes: NodeDef[] = [
-    { id: "kpi", label: "Стратегические\nKPI", x: 50, y: 10, side: "top" },
-    { id: "solutions", label: "Решения", x: 50, y: 90, side: "bottom" },
-    { id: "data", label: "Реальные\nданные", x: 18, y: 34, side: "left" },
-    { id: "rules", label: "Правила\nрасчёта", x: 18, y: 66, side: "left" },
-    { id: "reports", label: "Отчёты", x: 82, y: 34, side: "right" },
-    { id: "agents", label: "ИИ-агенты", x: 82, y: 66, side: "right" },
+    { id: "kpi", label: "Стратегические\nKPI", x: 50, y: 12, side: "top" },
+    { id: "solutions", label: "Решения", x: 50, y: 88, side: "bottom" },
+    { id: "data", label: "Реальные\nданные", x: 14, y: 36, side: "left" },
+    { id: "rules", label: "Правила\nрасчёта", x: 14, y: 64, side: "left" },
+    { id: "reports", label: "Отчёты", x: 86, y: 36, side: "right" },
+    { id: "agents", label: "ИИ-\nагенты", x: 86, y: 64, side: "right" },
   ];
 
   const gridBg = (
