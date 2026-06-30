@@ -900,7 +900,7 @@ function Approach() {
 
         <div className="mb-12">
           <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
-            2. Построение карт метрик
+            2. Построение карт
           </h3>
           <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
             <ul className="space-y-3">
