@@ -1157,7 +1157,7 @@ function Outcomes() {
   return (
     <section className="border-b border-pravda-line bg-pravda-soft/50 py-16">
       <Container>
-        <SectionHead title="Что вы сможете делать после тренинга" />
+        <SectionHead title="Вы сможете после тренинга" />
         <div className="flex flex-col gap-5">
           {/* Panel 1 — dashboards */}
           <div className="flex flex-col gap-5 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:flex-row md:items-center">
