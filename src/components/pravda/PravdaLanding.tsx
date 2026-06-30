@@ -772,9 +772,10 @@ function Hero() {
               ))}
             </div>
           </div>
-          <p className="mt-5 max-w-[540px] text-[15px] leading-[1.55] text-pravda-text md:mt-8 md:text-[16px]">
-            Мастер-класс для адекватных руководителей и аналитиков, которые
-            готовы смотреть правде в глаза.
+          <p className="mt-5 max-w-2xl text-[clamp(18px,2.2vw,24px)] font-semibold leading-tight tracking-tight text-pravda-ink md:mt-8">
+            Как строить управленческую отчётность
+            <br className="hidden lg:block" />
+            с&nbsp;ИИ-агентами и здравым смыслом
           </p>
           <div className="mt-6 md:mt-7">
             <a
