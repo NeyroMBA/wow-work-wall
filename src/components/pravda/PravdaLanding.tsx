@@ -584,7 +584,7 @@ function DashboardWithAgent() {
   ];
   return (
     <div className="rounded-none border-0 bg-transparent p-0 md:rounded-[18px] md:border md:border-pravda-line md:bg-pravda-bg md:p-3">
-      <div className="grid grid-cols-2 gap-1.5">
+      <div className="hidden grid-cols-2 gap-1.5 md:grid">
         {kpis.map((k, i) => (
           <div
             key={k.l}
@@ -611,9 +611,7 @@ function DashboardWithAgent() {
           </div>
         ))}
       </div>
-      <div className="hidden md:block">
-        <AgentTypingDialog />
-      </div>
+      <AgentTypingDialog />
     </div>
   );
 }
@@ -774,7 +772,9 @@ function Hero() {
           <p className="mt-5 max-w-2xl text-[clamp(18px,2.2vw,24px)] font-semibold leading-tight tracking-tight text-pravda-ink md:mt-8">
             Как строить управленческую отчётность
             <br className="hidden lg:block" />{' '}
-            с&nbsp;ИИ-агентами и здравым смыслом
+            с&nbsp;ИИ-агентами
+            <br className="block md:hidden" />{' '}
+            и&nbsp;здравым смыслом
           </p>
           <div className="mt-6 md:mt-7">
             <a
