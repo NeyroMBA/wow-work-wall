@@ -1613,8 +1613,10 @@ export function PravdaLanding() {
         <Audience />
         
         <Approach />
+        <Result />
         <TrainerSection />
         <Outcomes />
+
         <Pricing />
       </main>
       <Footer />
