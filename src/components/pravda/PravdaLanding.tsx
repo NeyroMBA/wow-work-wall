@@ -1470,6 +1470,132 @@ function Footer() {
   );
 }
 
+function ResultSchema() {
+  const center = { label: "Вся правда\nв одном месте", x: 50, y: 50, big: true };
+  const mobileNodes = [
+    { label: "Стратегические KPI", x: 50, y: 8 },
+    { label: "Решения", x: 50, y: 92 },
+    { label: "Реальные данные", x: 14, y: 30 },
+    { label: "Правила расчёта", x: 14, y: 70 },
+    { label: "Отчёты", x: 86, y: 30 },
+    { label: "ИИ-агенты", x: 86, y: 70 },
+  ];
+  const desktopNodes = [
+    { label: "Стратегические KPI", x: 50, y: 10 },
+    { label: "Решения", x: 50, y: 90 },
+    { label: "Реальные данные", x: 12, y: 30 },
+    { label: "Правила расчёта", x: 12, y: 70 },
+    { label: "Отчёты", x: 88, y: 30 },
+    { label: "ИИ-агенты", x: 88, y: 70 },
+  ];
+
+  const renderNodes = (nodes: typeof mobileNodes) => (
+    <>
+      {/* center hub */}
+      <div
+        data-label={center.label}
+        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-[14px] border-2 border-pravda-ink bg-pravda-yellow px-4 py-3 shadow-[0_10px_28px_rgba(0,0,0,0.08)]"
+        style={{ left: `${center.x}%`, top: `${center.y}%` }}
+      >
+        <div className="whitespace-pre-line text-center text-[14px] font-extrabold leading-tight tracking-[-0.02em] text-pravda-ink md:text-[16px]">
+          {center.label}
+        </div>
+      </div>
+      {nodes.map((n, i) => (
+        <div
+          key={i}
+          data-label={n.label}
+          className="absolute w-max -translate-x-1/2 -translate-y-1/2 rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)]"
+          style={{ left: `${n.x}%`, top: `${n.y}%` }}
+        >
+          <div className="whitespace-nowrap text-[13px] font-bold leading-tight tracking-[-0.02em] text-pravda-ink">
+            {n.label}
+          </div>
+        </div>
+      ))}
+    </>
+  );
+
+  const renderArrows = (nodes: typeof mobileNodes) => (
+    <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+      <defs>
+        <marker id="result-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
+        </marker>
+      </defs>
+      {nodes.map((n, i) => {
+        const dx = n.x - center.x;
+        const dy = n.y - center.y;
+        const len = Math.sqrt(dx * dx + dy * dy) || 1;
+        // pull endpoints in so arrows don't overlap node boxes
+        const startPad = 8;
+        const endPad = 9;
+        const x1 = center.x + (dx / len) * startPad;
+        const y1 = center.y + (dy / len) * startPad;
+        const x2 = n.x - (dx / len) * endPad;
+        const y2 = n.y - (dy / len) * endPad;
+        return (
+          <line
+            key={i}
+            x1={x1}
+            y1={y1}
+            x2={x2}
+            y2={y2}
+            stroke="currentColor"
+            strokeWidth="0.5"
+            className="text-pravda-ink"
+            markerEnd="url(#result-arrow)"
+          />
+        );
+      })}
+    </svg>
+  );
+
+  const gridBg = (
+    <div
+      className="pointer-events-none absolute inset-0 opacity-[0.5]"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, hsl(var(--pravda-line)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--pravda-line)) 1px, transparent 1px)",
+        backgroundSize: "32px 32px",
+      }}
+    />
+  );
+
+  return (
+    <>
+      <div className="relative aspect-square w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:hidden">
+        {gridBg}
+        {renderArrows(mobileNodes)}
+        {renderNodes(mobileNodes)}
+      </div>
+      <div className="relative hidden aspect-[2.2/1] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
+        {gridBg}
+        {renderArrows(desktopNodes)}
+        {renderNodes(desktopNodes)}
+      </div>
+    </>
+  );
+}
+
+function Result() {
+  return (
+    <section id="result" className="border-b border-pravda-line bg-pravda-bg py-16">
+      <Container>
+        <SectionHead
+          title="Результат"
+          lead="После воркшопа у вас остаётся не презентация, а рабочий контур: метрики, формулы, отчёты, источники и решения связаны между собой."
+        />
+        <div className="mx-auto max-w-[720px] md:max-w-none">
+          <ResultSchema />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+
+
 
 
 
