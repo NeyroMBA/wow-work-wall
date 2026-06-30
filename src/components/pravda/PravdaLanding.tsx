@@ -726,7 +726,6 @@ function Header() {
         </a>
         <div className="hidden gap-6 text-[13px] text-pravda-muted md:flex">
           <a href="#problem" className="hover:text-pravda-ink">Проблема</a>
-          <a href="#approach" className="hover:text-pravda-ink">Подход</a>
           <a href="#program" className="hover:text-pravda-ink">Программа</a>
           <a href="#pricing" className="hover:text-pravda-ink">Тарифы</a>
         </div>
@@ -866,7 +865,7 @@ function Approach() {
 
         <div className="mb-12">
           <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
-            Аудит метрик
+            1. Аудит метрик
           </h3>
           <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
             <p className="max-w-[720px] text-[15px] leading-[1.55] text-pravda-text">
@@ -900,7 +899,7 @@ function Approach() {
 
         <div className="mb-12">
           <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
-            Построение карт метрик
+            2. Построение карт метрик
           </h3>
           <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
             <ul className="space-y-3">
@@ -924,7 +923,7 @@ function Approach() {
 
         <div>
           <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
-            Дизайн дашбордов
+            3. Дизайн дашбордов
           </h3>
           <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
             <ul className="space-y-3">
