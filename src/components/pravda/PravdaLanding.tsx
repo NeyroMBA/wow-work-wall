@@ -868,20 +868,20 @@ function Approach() {
           <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
             1. Аудит метрик
           </h3>
-          <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
-            <p className="max-w-[720px] text-[15px] leading-[1.55] text-pravda-text">
+          <div className="mt-4">
+            <p className="text-[15px] leading-[1.55] text-pravda-text">
               Знакомимся с типологией метрик. Они бывают 4 типов:
             </p>
 
-            <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-4">
               {[
                 { t: "Результатные", s: "Финансовый и количественный итог за период." },
                 { t: "Затратные", s: "Расходы, как правило, сокращающие прибыль." },
                 { t: "Диагностические", s: "Расчетные индексы, удельные показатели." },
                 { t: "Действия", s: "Метрика, на которую вы можете влиять напрямую." },
               ].map((i, idx) => (
-                <div key={i.t} className={`rounded-[16px] border ${idx === 3 ? 'border-pravda-ink' : 'border-pravda-line'} bg-pravda-bg p-5`}>
-                  <div className="text-[18px] font-bold tracking-[-0.02em] text-pravda-ink">{i.t}</div>
+                <div key={i.t} className={`rounded-[16px] border ${idx === 3 ? 'border-pravda-ink' : 'border-pravda-line'} bg-pravda-bg p-3 md:p-5`}>
+                  <div className="text-[15px] font-bold tracking-[-0.02em] text-pravda-ink md:text-[18px]">{i.t}</div>
                   <p className="mt-2 text-[14px] leading-[1.5] text-pravda-text">{i.s}</p>
                 </div>
               ))}
@@ -902,7 +902,7 @@ function Approach() {
           <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
             2. Построение карт
           </h3>
-          <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
+          <div className="mt-4">
             <ul className="space-y-3">
               {mapSteps.map((s, i) => (
                 <li key={i} className="flex items-start gap-3 text-[15px] leading-[1.55] text-pravda-text">
@@ -926,7 +926,7 @@ function Approach() {
           <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
             3. Дизайн дашбордов
           </h3>
-          <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
+          <div className="mt-4">
             <ul className="space-y-3">
               {[
                 "Как собрать понятный экран управления из 6–8 ключевых показателей.",
