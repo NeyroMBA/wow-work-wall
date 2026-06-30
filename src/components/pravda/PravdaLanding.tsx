@@ -1471,44 +1471,75 @@ function Footer() {
 }
 
 function ResultSchema() {
-  const center = { label: "Вся правда\nв одном месте", x: 50, y: 50, big: true };
+  const center = { label1: "Вся правда", label2: "в одном месте", x: 50, y: 50 };
+
+  // Desktop: wide 2:1 composition like reference 1
+  const desktopNodes = [
+    { label: "Стратегические KPI", x: 50, y: 12 },
+    { label: "Решения", x: 50, y: 88 },
+    { label: "Реальные данные", x: 15, y: 35 },
+    { label: "Правила расчёта", x: 15, y: 65 },
+    { label: "Отчёты", x: 85, y: 35 },
+    { label: "ИИ-агенты", x: 85, y: 65 },
+  ];
+
+  // Mobile: more square composition like reference 2; side labels wrap to 2 lines
   const mobileNodes = [
     { label: "Стратегические KPI", x: 50, y: 8 },
     { label: "Решения", x: 50, y: 92 },
-    { label: "Реальные данные", x: 14, y: 30 },
-    { label: "Правила расчёта", x: 14, y: 70 },
-    { label: "Отчёты", x: 86, y: 30 },
-    { label: "ИИ-агенты", x: 86, y: 70 },
-  ];
-  const desktopNodes = [
-    { label: "Стратегические KPI", x: 50, y: 10 },
-    { label: "Решения", x: 50, y: 90 },
-    { label: "Реальные данные", x: 12, y: 30 },
-    { label: "Правила расчёта", x: 12, y: 70 },
-    { label: "Отчёты", x: 88, y: 30 },
-    { label: "ИИ-агенты", x: 88, y: 70 },
+    { label: "Реальные\nданные", x: 17, y: 32 },
+    { label: "Правила\nрасчёта", x: 17, y: 68 },
+    { label: "Отчёты", x: 83, y: 32 },
+    { label: "ИИ-агенты", x: 83, y: 68 },
   ];
 
-  const renderNodes = (nodes: typeof mobileNodes) => (
+  const renderLines = (nodes: typeof desktopNodes) => (
+    <svg
+      className="absolute inset-0 h-full w-full text-pravda-line"
+      preserveAspectRatio="none"
+      viewBox="0 0 100 100"
+    >
+      {nodes.map((n, i) => {
+        const isVertical = Math.abs(n.x - center.x) < 5;
+        const x1 = isVertical ? center.x : n.x;
+        const y1 = isVertical ? n.y : center.y;
+        return (
+          <line
+            key={i}
+            x1={x1}
+            y1={y1}
+            x2={center.x}
+            y2={center.y}
+            stroke="currentColor"
+            strokeWidth="1.2"
+            vectorEffect="non-scaling-stroke"
+          />
+        );
+      })}
+    </svg>
+  );
+
+  const renderNodes = (nodes: typeof desktopNodes, opts: { hubW: string; hubH: string; nodeText: string; hubTitle: string; hubSub: string }) => (
     <>
       {/* center hub */}
       <div
-        data-label={center.label}
-        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-[14px] border-2 border-pravda-ink bg-pravda-yellow px-4 py-3 shadow-[0_10px_28px_rgba(0,0,0,0.08)]"
+        className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-[18px] border-2 border-pravda-ink bg-pravda-bg flex flex-col items-center justify-center ${opts.hubW} ${opts.hubH}`}
         style={{ left: `${center.x}%`, top: `${center.y}%` }}
       >
-        <div className="whitespace-pre-line text-center text-[14px] font-extrabold leading-tight tracking-[-0.02em] text-pravda-ink md:text-[16px]">
-          {center.label}
+        <div className={`text-center font-extrabold leading-tight tracking-[-0.02em] text-pravda-ink ${opts.hubTitle}`}>
+          {center.label1}
+        </div>
+        <div className={`text-center font-medium leading-tight text-pravda-ink ${opts.hubSub}`}>
+          {center.label2}
         </div>
       </div>
       {nodes.map((n, i) => (
         <div
           key={i}
-          data-label={n.label}
-          className="absolute w-max -translate-x-1/2 -translate-y-1/2 rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)]"
+          className="absolute -translate-x-1/2 -translate-y-1/2 rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2"
           style={{ left: `${n.x}%`, top: `${n.y}%` }}
         >
-          <div className="whitespace-nowrap text-[13px] font-bold leading-tight tracking-[-0.02em] text-pravda-ink">
+          <div className={`whitespace-pre-line text-center font-bold leading-tight tracking-[-0.01em] text-pravda-ink ${opts.nodeText}`}>
             {n.label}
           </div>
         </div>
@@ -1516,63 +1547,29 @@ function ResultSchema() {
     </>
   );
 
-  const renderArrows = (nodes: typeof mobileNodes) => (
-    <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-      <defs>
-        <marker id="result-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="currentColor" />
-        </marker>
-      </defs>
-      {nodes.map((n, i) => {
-        const dx = n.x - center.x;
-        const dy = n.y - center.y;
-        const len = Math.sqrt(dx * dx + dy * dy) || 1;
-        // pull endpoints in so arrows don't overlap node boxes
-        const startPad = 8;
-        const endPad = 9;
-        const x1 = center.x + (dx / len) * startPad;
-        const y1 = center.y + (dy / len) * startPad;
-        const x2 = n.x - (dx / len) * endPad;
-        const y2 = n.y - (dy / len) * endPad;
-        return (
-          <line
-            key={i}
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
-            stroke="currentColor"
-            strokeWidth="0.5"
-            className="text-pravda-ink"
-            markerEnd="url(#result-arrow)"
-          />
-        );
-      })}
-    </svg>
-  );
-
-  const gridBg = (
-    <div
-      className="pointer-events-none absolute inset-0 opacity-[0.5]"
-      style={{
-        backgroundImage:
-          "linear-gradient(to right, hsl(var(--pravda-line)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--pravda-line)) 1px, transparent 1px)",
-        backgroundSize: "32px 32px",
-      }}
-    />
-  );
-
   return (
     <>
-      <div className="relative aspect-square w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:hidden">
-        {gridBg}
-        {renderArrows(mobileNodes)}
-        {renderNodes(mobileNodes)}
+      {/* Mobile */}
+      <div className="relative aspect-[1.25/1] w-full md:hidden">
+        {renderLines(mobileNodes)}
+        {renderNodes(mobileNodes, {
+          hubW: "w-[44%]",
+          hubH: "h-[26%]",
+          nodeText: "text-[12px]",
+          hubTitle: "text-[16px]",
+          hubSub: "text-[12px]",
+        })}
       </div>
-      <div className="relative hidden aspect-[2.2/1] w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg lg:block">
-        {gridBg}
-        {renderArrows(desktopNodes)}
-        {renderNodes(desktopNodes)}
+      {/* Desktop */}
+      <div className="relative hidden aspect-[2/1] w-full md:block">
+        {renderLines(desktopNodes)}
+        {renderNodes(desktopNodes, {
+          hubW: "w-[28%]",
+          hubH: "h-[40%]",
+          nodeText: "text-[15px]",
+          hubTitle: "text-[26px]",
+          hubSub: "text-[16px]",
+        })}
       </div>
     </>
   );
@@ -1586,7 +1583,7 @@ function Result() {
           title="Результат"
           lead="После воркшопа у вас остаётся не презентация, а рабочий контур: метрики, формулы, отчёты, источники и решения связаны между собой."
         />
-        <div className="mx-auto max-w-[720px] md:max-w-none">
+        <div className="mx-auto max-w-[1080px]">
           <ResultSchema />
         </div>
       </Container>
