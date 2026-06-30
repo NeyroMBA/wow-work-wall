@@ -1684,33 +1684,15 @@ function Result() {
 }
 
 function FinalCTA() {
-  const [open, setOpen] = useState(false);
   return (
-    <section id="register" className="border-b border-pravda-line bg-pravda-ink py-20 text-pravda-bg">
+    <section id="register" className="border-b border-pravda-line bg-pravda-ink py-16 text-pravda-bg md:py-20">
       <Container>
-        <div className="mx-auto max-w-[760px] text-center">
-          <h2 className="text-[32px] font-extrabold leading-[1.05] tracking-[-0.03em] md:text-[44px]">
-            Готовы навести порядок в&nbsp;цифрах?
-          </h2>
-          <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.5] text-pravda-bg/75 md:text-[17px]">
-            30&nbsp;июля, Москва. Один день, чтобы перестать спорить о&nbsp;метриках и&nbsp;начать ими управлять.
+        <div className="text-center">
+          <p className="text-[clamp(20px,3.2vw,32px)] font-bold leading-[1.2] tracking-[-0.02em]">
+            Москва, 30 июля, 10:00 - 14:00
           </p>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-pravda-yellow px-8 py-4 text-[15px] font-bold tracking-[-0.01em] text-pravda-ink transition hover:brightness-95"
-          >
-            Зарегистрироваться
-          </button>
         </div>
       </Container>
-      <GetCourseWidgetDialog
-        open={open}
-        onOpenChange={setOpen}
-        title="Регистрация на воркшоп"
-        scriptId="d3463e220da9a7dca915362c2e87c214fcad7309"
-        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1624152"
-      />
     </section>
   );
 }
