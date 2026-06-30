@@ -792,7 +792,7 @@ function Hero() {
           </div>
             <div className="mt-8 md:mt-7">
               <a
-                href="#program"
+                href="#register"
                 className="inline-flex h-12 items-center rounded-full bg-pravda-ink px-6 text-[14px] font-semibold text-pravda-bg"
               >
                 Регистрация
