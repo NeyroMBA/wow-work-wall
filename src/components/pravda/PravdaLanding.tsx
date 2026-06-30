@@ -759,7 +759,7 @@ function Hero() {
             </h1>
             <p className="mt-6 max-w-2xl text-[clamp(18px,2.2vw,24px)] font-semibold leading-tight tracking-tight text-pravda-ink md:mt-8">
               Как строить управленческую отчётность
-              <br className="hidden lg:block" />{' '}
+              <br className="block md:hidden lg:block" />{' '}
               с&nbsp;ИИ-агентами
               <br className="block md:hidden" />{' '}
               и&nbsp;здравым смыслом
