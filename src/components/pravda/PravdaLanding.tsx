@@ -864,63 +864,89 @@ function Approach() {
           lead="За четыре часа мы пройдём основные шаги по систематизации ваших показателей и разберёмся, как использовать для этого ИИ."
         />
 
-        <div className="mb-2">
-          <span className="inline-block rounded-full border border-pravda-line bg-pravda-soft/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-pravda-muted">
-            10:00 – 12:00
-          </span>
-        </div>
-        <div className="rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
-          <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Аудит метрик</div>
-          <p className="mt-2 max-w-[720px] text-[15px] leading-[1.55] text-pravda-text">
-            Знакомимся с типологией метрик. Они бывают 4 типов:
-          </p>
-
-          <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              { t: "Результатные", s: "Финансовый и количественный итог за период." },
-              { t: "Затратные", s: "Расходы, как правило, сокращающие прибыль." },
-              { t: "Диагностические", s: "Расчетные индексы, удельные показатели." },
-              { t: "Действия", s: "Метрика, на которую вы можете влиять напрямую." },
-            ].map((i, idx) => (
-              <div key={i.t} className={`rounded-[16px] border ${idx === 3 ? 'border-pravda-ink' : 'border-pravda-line'} bg-pravda-bg p-5`}>
-                <div className="text-[18px] font-bold tracking-[-0.02em] text-pravda-ink">{i.t}</div>
-                <p className="mt-2 text-[14px] leading-[1.5] text-pravda-text">{i.s}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-5 border-t border-pravda-line pt-4">
-            <div className="text-[16px] font-bold tracking-[-0.02em] text-pravda-ink">
-              Убираем метрики тщеславия
-            </div>
-            <p className="mt-1 text-[14px] leading-[1.5] text-pravda-text">
-              Показатели, которые выглядят красиво, но на самом деле не помогают принимать решения.
+        <div className="mb-12">
+          <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
+            Аудит метрик
+          </h3>
+          <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
+            <p className="max-w-[720px] text-[15px] leading-[1.55] text-pravda-text">
+              Знакомимся с типологией метрик. Они бывают 4 типов:
             </p>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                { t: "Результатные", s: "Финансовый и количественный итог за период." },
+                { t: "Затратные", s: "Расходы, как правило, сокращающие прибыль." },
+                { t: "Диагностические", s: "Расчетные индексы, удельные показатели." },
+                { t: "Действия", s: "Метрика, на которую вы можете влиять напрямую." },
+              ].map((i, idx) => (
+                <div key={i.t} className={`rounded-[16px] border ${idx === 3 ? 'border-pravda-ink' : 'border-pravda-line'} bg-pravda-bg p-5`}>
+                  <div className="text-[18px] font-bold tracking-[-0.02em] text-pravda-ink">{i.t}</div>
+                  <p className="mt-2 text-[14px] leading-[1.5] text-pravda-text">{i.s}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 border-t border-pravda-line pt-4">
+              <div className="text-[16px] font-bold tracking-[-0.02em] text-pravda-ink">
+                Убираем метрики тщеславия
+              </div>
+              <p className="mt-1 text-[14px] leading-[1.5] text-pravda-text">
+                Показатели, которые выглядят красиво, но на самом деле не помогают принимать решения.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 mb-2">
-          <span className="inline-block rounded-full border border-pravda-line bg-pravda-soft/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-pravda-muted">
-            12:00 – 14:00
-          </span>
+        <div className="mb-12">
+          <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
+            Построение карт метрик
+          </h3>
+          <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
+            <ul className="space-y-3">
+              {mapSteps.map((s, i) => (
+                <li key={i} className="flex items-start gap-3 text-[15px] leading-[1.55] text-pravda-text">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pravda-ink" />
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg aspect-square md:aspect-auto">
+              <img
+                src={metricMapImg.url}
+                alt="Карта метрик: финансовый результат, физлица, страховые"
+                className="block h-full w-full object-cover object-left md:h-auto md:w-full"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
-        <div className="rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
-          <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Построение карт метрик</div>
-          <ul className="mt-4 space-y-3">
-            {mapSteps.map((s, i) => (
-              <li key={i} className="flex items-start gap-3 text-[15px] leading-[1.55] text-pravda-text">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pravda-ink" />
-                <span>{s}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg aspect-square md:aspect-auto">
-          <img
-            src={metricMapImg.url}
-            alt="Карта метрик: финансовый результат, физлица, страховые"
-              className="block h-full w-full object-cover object-left md:h-auto md:w-full"
-              loading="lazy"
-            />
+
+        <div>
+          <h3 className="text-[clamp(26px,3.4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-pravda-ink">
+            Дизайн дашбордов
+          </h3>
+          <div className="mt-4 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:p-6">
+            <ul className="space-y-3">
+              {[
+                "Как собрать понятный экран управления из 6–8 ключевых показателей.",
+                "Как сделать так, чтобы дашборд подсказывал действия, а не просто показывал цифры.",
+                "Практика: на примере участников складываем макет управленческого пульта.",
+              ].map((s, i) => (
+                <li key={i} className="flex items-start gap-3 text-[15px] leading-[1.55] text-pravda-text">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-pravda-ink" />
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 overflow-hidden rounded-[14px] border border-pravda-line bg-pravda-bg">
+              <img
+                src={dashboardImg.url}
+                alt="Иллюстрация управленческого дашборда"
+                className="block h-auto w-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </Container>
