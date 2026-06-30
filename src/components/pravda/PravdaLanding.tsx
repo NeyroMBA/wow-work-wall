@@ -742,8 +742,8 @@ function Header() {
 function Hero() {
   return (
     <section className="border-b border-pravda-line bg-pravda-bg">
-      <Container className="flex min-h-[calc(100svh-68px)] flex-col py-7 md:grid md:min-h-0 md:grid-cols-[1.05fr_.95fr] md:gap-10 md:py-24">
-        <div className="order-2 flex min-h-[calc(100svh-124px)] flex-col justify-between md:order-1 md:min-h-0 md:block">
+      <Container className="flex flex-col py-7 md:grid md:grid-cols-[1.05fr_.95fr] md:gap-10 md:py-24">
+        <div className="order-2 flex flex-col md:order-1 md:block">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-pravda-line bg-pravda-soft/80 px-4 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-pravda-text md:mb-5 md:px-5 md:py-2 md:text-[14px]">
               <span>Москва</span>
@@ -753,7 +753,7 @@ function Hero() {
               <span>10:00 – 14:00</span>
             </div>
           </div>
-          <div className="py-5 md:py-0">
+          <div className="mt-8 md:mt-0">
             <h1 className="text-[clamp(52px,12vw,96px)] font-extrabold leading-[0.95] tracking-[-0.065em] text-pravda-ink md:text-[clamp(56px,9vw,128px)]">
               Правда<span className="text-pravda-red">.</span>
             </h1>
@@ -770,7 +770,7 @@ function Hero() {
               </span>
             </p>
           </div>
-          <div>
+          <div className="mt-10 md:mt-0">
             <div className="max-w-[560px] md:mt-8">
             <div className="grid grid-cols-[2fr_1fr] items-center gap-x-3 gap-y-1.5 text-[14px] md:text-[clamp(15px,1.5vw,18px)]">
               {[
@@ -796,6 +796,8 @@ function Hero() {
               </a>
             </div>
           </div>
+        </div>
+
         </div>
         <div className="order-1 hidden md:block md:order-2">
           <DashboardWithAgent />
