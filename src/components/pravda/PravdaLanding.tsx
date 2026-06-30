@@ -1175,12 +1175,12 @@ function Outcomes() {
   return (
     <section className="border-b border-pravda-line bg-pravda-soft/50 py-16">
       <Container>
-        <SectionHead title="Вы сможете после тренинга" lead="Создавать actionable-дашборды в любом инструменте" />
+        <SectionHead title="Вы сможете после тренинга" />
         <div className="flex flex-col gap-5">
           {/* Panel 1 — dashboards */}
           <div className="flex flex-col gap-5 rounded-[20px] border border-pravda-line bg-pravda-bg p-5 md:flex-row md:items-center">
             <div className="flex flex-col gap-4 md:w-1/2">
-              <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Создавать actionable-дашборды</div>
+              <div className="text-[20px] font-bold tracking-[-0.02em] text-pravda-ink">Создавать actionable-дашборды в любом инструменте</div>
               <div className="flex flex-wrap gap-1.5">
                 {tools.map((t) => (
                   <span key={t} className="rounded-md border border-pravda-line-strong bg-pravda-yellow px-2 py-1 text-[11px] font-medium text-pravda-ink">
