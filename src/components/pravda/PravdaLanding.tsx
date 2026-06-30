@@ -1642,11 +1642,11 @@ function ResultSchema() {
         <Canvas
           nodes={mobileNodes}
           aspect="aspect-square"
-          hubW="w-[46%]"
-          hubH="h-[24%]"
-          nodeText="text-[12px]"
-          hubTitle="text-[18px]"
-          hubSub="text-[12px]"
+          hubW="w-[42%]"
+          hubH="h-[22%]"
+          nodeText="text-[11px]"
+          hubTitle="text-[17px]"
+          hubSub="text-[11px]"
           hubPad="px-3 py-2"
         />
       </div>
