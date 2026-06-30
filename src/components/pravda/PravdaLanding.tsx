@@ -753,16 +753,21 @@ function Hero() {
               <span>10:00 – 14:00</span>
             </div>
           </div>
-          <div className="py-10 md:py-0">
+          <div className="py-5 md:py-0">
             <h1 className="text-[clamp(52px,12vw,96px)] font-extrabold leading-[0.95] tracking-[-0.065em] text-pravda-ink md:text-[clamp(56px,9vw,128px)]">
               Правда<span className="text-pravda-red">.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[clamp(18px,2.2vw,24px)] font-semibold leading-tight tracking-tight text-pravda-ink md:mt-8">
-              Как строить управленческую отчётность
-              <br className="block md:hidden lg:block" />{' '}
-              с&nbsp;ИИ-агентами
-              <br className="block md:hidden" />{' '}
-              и&nbsp;здравым смыслом
+              <span className="md:hidden">
+                Как строить<br />
+                управленческую&nbsp;отчётность<br />
+                с&nbsp;ИИ-агентами<br />
+                и&nbsp;здравым&nbsp;смыслом
+              </span>
+              <span className="hidden md:inline">
+                Как строить управленческую отчётность<br className="hidden lg:inline" />{' '}
+                с&nbsp;ИИ-агентами и&nbsp;здравым смыслом
+              </span>
             </p>
           </div>
           <div>
