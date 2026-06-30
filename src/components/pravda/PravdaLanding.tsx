@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import metricMapImg from "@/assets/pravda/metric-map.png";
 import dashboardImg from "@/assets/pravda/dashboard-illustration.png";
 import dashboardMobileImg from "@/assets/pravda/dashboard-screenshot.png";
-import trainerImg from "@/assets/trainer-photo.png.asset.json";
+import trainerImg from "@/assets/pravda/trainer-photo.png";
 import GetCourseWidgetDialog from "@/components/GetCourseWidgetDialog";
 
 const cn = (...c: Array<string | false | undefined>) => c.filter(Boolean).join(" ");
