@@ -1481,105 +1481,187 @@ function Footer() {
 }
 
 function ResultSchema() {
-  const center = { label1: "Вся правда", label2: "в одном месте", x: 50, y: 50 };
+  type NodeDef = { id: string; label: string; x: number; y: number; side: "top" | "bottom" | "left" | "right" };
 
-  // Desktop: wide 2:1 composition like reference 1
-  const desktopNodes = [
-    { label: "Стратегические KPI", x: 50, y: 12 },
-    { label: "Решения", x: 50, y: 88 },
-    { label: "Реальные данные", x: 15, y: 35 },
-    { label: "Правила расчёта", x: 15, y: 65 },
-    { label: "Отчёты", x: 85, y: 35 },
-    { label: "ИИ-агенты", x: 85, y: 65 },
+  const desktopNodes: NodeDef[] = [
+    { id: "kpi", label: "Стратегические KPI", x: 50, y: 14, side: "top" },
+    { id: "solutions", label: "Решения", x: 50, y: 86, side: "bottom" },
+    { id: "data", label: "Реальные данные", x: 14, y: 38, side: "left" },
+    { id: "rules", label: "Правила расчёта", x: 14, y: 62, side: "left" },
+    { id: "reports", label: "Отчёты", x: 86, y: 38, side: "right" },
+    { id: "agents", label: "ИИ-агенты", x: 86, y: 62, side: "right" },
   ];
 
-  // Mobile: more square composition like reference 2; side labels wrap to 2 lines
-  const mobileNodes = [
-    { label: "Стратегические KPI", x: 50, y: 8 },
-    { label: "Решения", x: 50, y: 92 },
-    { label: "Реальные\nданные", x: 17, y: 32 },
-    { label: "Правила\nрасчёта", x: 17, y: 68 },
-    { label: "Отчёты", x: 83, y: 32 },
-    { label: "ИИ-агенты", x: 83, y: 68 },
+  const mobileNodes: NodeDef[] = [
+    { id: "kpi", label: "Стратегические\nKPI", x: 50, y: 10, side: "top" },
+    { id: "solutions", label: "Решения", x: 50, y: 90, side: "bottom" },
+    { id: "data", label: "Реальные\nданные", x: 18, y: 34, side: "left" },
+    { id: "rules", label: "Правила\nрасчёта", x: 18, y: 66, side: "left" },
+    { id: "reports", label: "Отчёты", x: 82, y: 34, side: "right" },
+    { id: "agents", label: "ИИ-агенты", x: 82, y: 66, side: "right" },
   ];
 
-  const renderLines = (nodes: typeof desktopNodes) => (
-    <svg
-      className="absolute inset-0 h-full w-full text-pravda-line"
-      preserveAspectRatio="none"
-      viewBox="0 0 100 100"
-    >
-      {nodes.map((n, i) => {
-        const isVertical = Math.abs(n.x - center.x) < 5;
-        const x1 = isVertical ? center.x : n.x;
-        const y1 = isVertical ? n.y : center.y;
-        return (
-          <line
-            key={i}
-            x1={x1}
-            y1={y1}
-            x2={center.x}
-            y2={center.y}
-            stroke="currentColor"
-            strokeWidth="1.2"
-            vectorEffect="non-scaling-stroke"
-          />
-        );
-      })}
-    </svg>
+  const gridBg = (
+    <div
+      className="pointer-events-none absolute inset-0 opacity-[0.5]"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, hsl(var(--pravda-line)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--pravda-line)) 1px, transparent 1px)",
+        backgroundSize: "32px 32px",
+      }}
+    />
   );
 
-  const renderNodes = (nodes: typeof desktopNodes, opts: { hubW: string; hubH: string; nodeText: string; hubTitle: string; hubSub: string }) => (
-    <>
-      {/* center hub */}
+  const Canvas = ({
+    nodes,
+    aspect,
+    hubW,
+    hubH,
+    nodeText,
+    hubTitle,
+    hubSub,
+    hubPad,
+  }: {
+    nodes: NodeDef[];
+    aspect: string;
+    hubW: string;
+    hubH: string;
+    nodeText: string;
+    hubTitle: string;
+    hubSub: string;
+    hubPad: string;
+  }) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [lines, setLines] = useState<{ x1: number; y1: number; x2: number; y2: number; key: string }[]>([]);
+
+    const measure = useCallback(() => {
+      const root = containerRef.current;
+      if (!root) return;
+      const rRect = root.getBoundingClientRect();
+      if (rRect.width === 0 || rRect.height === 0) return;
+      const hub = root.querySelector('[data-node="hub"]') as HTMLElement | null;
+      if (!hub) return;
+      const hRect = hub.getBoundingClientRect();
+      const hub_left = ((hRect.left - rRect.left) / rRect.width) * 100;
+      const hub_right = ((hRect.right - rRect.left) / rRect.width) * 100;
+      const hub_top = ((hRect.top - rRect.top) / rRect.height) * 100;
+      const hub_bottom = ((hRect.bottom - rRect.top) / rRect.height) * 100;
+      const hub_cx = (hub_left + hub_right) / 2;
+
+      const result: { x1: number; y1: number; x2: number; y2: number; key: string }[] = [];
+      nodes.forEach((n) => {
+        const el = root.querySelector(`[data-node="${n.id}"]`) as HTMLElement | null;
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const left = ((r.left - rRect.left) / rRect.width) * 100;
+        const right = ((r.right - rRect.left) / rRect.width) * 100;
+        const top = ((r.top - rRect.top) / rRect.height) * 100;
+        const bottom = ((r.bottom - rRect.top) / rRect.height) * 100;
+        const cy = (top + bottom) / 2;
+        if (n.side === "top") {
+          result.push({ x1: hub_cx, y1: bottom, x2: hub_cx, y2: hub_top, key: n.id });
+        } else if (n.side === "bottom") {
+          result.push({ x1: hub_cx, y1: hub_bottom, x2: hub_cx, y2: top, key: n.id });
+        } else if (n.side === "left") {
+          result.push({ x1: right, y1: cy, x2: hub_left, y2: cy, key: n.id });
+        } else {
+          result.push({ x1: hub_right, y1: cy, x2: left, y2: cy, key: n.id });
+        }
+      });
+      setLines(result);
+    }, [nodes]);
+
+    useEffect(() => {
+      measure();
+      const ro = new ResizeObserver(measure);
+      if (containerRef.current) ro.observe(containerRef.current);
+      window.addEventListener("resize", measure);
+      const t = setTimeout(measure, 50);
+      return () => {
+        ro.disconnect();
+        window.removeEventListener("resize", measure);
+        clearTimeout(t);
+      };
+    }, [measure]);
+
+    return (
       <div
-        className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-[18px] border-2 border-pravda-ink bg-pravda-bg flex flex-col items-center justify-center ${opts.hubW} ${opts.hubH}`}
-        style={{ left: `${center.x}%`, top: `${center.y}%` }}
+        ref={containerRef}
+        className={`relative w-full overflow-hidden rounded-[20px] border border-pravda-line bg-pravda-bg ${aspect}`}
       >
-        <div className={`text-center font-extrabold leading-tight tracking-[-0.02em] text-pravda-ink ${opts.hubTitle}`}>
-          {center.label1}
-        </div>
-        <div className={`text-center font-medium leading-tight text-pravda-ink ${opts.hubSub}`}>
-          {center.label2}
-        </div>
-      </div>
-      {nodes.map((n, i) => (
+        {gridBg}
+        <svg className="absolute inset-0 h-full w-full text-pravda-line-strong" preserveAspectRatio="none" viewBox="0 0 100 100">
+          {lines.map((l) => (
+            <line
+              key={l.key}
+              x1={l.x1}
+              y1={l.y1}
+              x2={l.x2}
+              y2={l.y2}
+              stroke="currentColor"
+              strokeWidth="1"
+              vectorEffect="non-scaling-stroke"
+            />
+          ))}
+        </svg>
+
+        {/* center hub */}
         <div
-          key={i}
-          className="absolute -translate-x-1/2 -translate-y-1/2 rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2"
-          style={{ left: `${n.x}%`, top: `${n.y}%` }}
+          data-node="hub"
+          className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-[14px] border-2 border-pravda-ink bg-pravda-bg flex flex-col items-center justify-center shadow-[0_8px_22px_rgba(0,0,0,0.05)] ${hubW} ${hubH} ${hubPad}`}
+          style={{ left: "50%", top: "50%" }}
         >
-          <div className={`whitespace-pre-line text-center font-bold leading-tight tracking-[-0.01em] text-pravda-ink ${opts.nodeText}`}>
-            {n.label}
+          <div className={`text-center font-extrabold leading-tight tracking-[-0.02em] text-pravda-ink ${hubTitle}`}>
+            Вся правда
+          </div>
+          <div className={`text-center font-medium leading-tight text-pravda-ink ${hubSub}`}>
+            в&nbsp;одном месте
           </div>
         </div>
-      ))}
-    </>
-  );
+
+        {nodes.map((n) => (
+          <div
+            key={n.id}
+            data-node={n.id}
+            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-[12px] border border-pravda-line bg-pravda-bg px-3 py-2 shadow-[0_8px_22px_rgba(0,0,0,0.05)]"
+            style={{ left: `${n.x}%`, top: `${n.y}%` }}
+          >
+            <div className={`whitespace-pre-line text-center font-bold leading-tight tracking-[-0.01em] text-pravda-ink ${nodeText}`}>
+              {n.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <>
       {/* Mobile */}
-      <div className="relative aspect-[1.25/1] w-full md:hidden">
-        {renderLines(mobileNodes)}
-        {renderNodes(mobileNodes, {
-          hubW: "w-[44%]",
-          hubH: "h-[26%]",
-          nodeText: "text-[12px]",
-          hubTitle: "text-[16px]",
-          hubSub: "text-[12px]",
-        })}
+      <div className="md:hidden">
+        <Canvas
+          nodes={mobileNodes}
+          aspect="aspect-square"
+          hubW="w-[46%]"
+          hubH="h-[24%]"
+          nodeText="text-[12px]"
+          hubTitle="text-[18px]"
+          hubSub="text-[12px]"
+          hubPad="px-3 py-2"
+        />
       </div>
       {/* Desktop */}
-      <div className="relative hidden aspect-[2/1] w-full md:block">
-        {renderLines(desktopNodes)}
-        {renderNodes(desktopNodes, {
-          hubW: "w-[28%]",
-          hubH: "h-[40%]",
-          nodeText: "text-[15px]",
-          hubTitle: "text-[26px]",
-          hubSub: "text-[16px]",
-        })}
+      <div className="hidden md:block">
+        <Canvas
+          nodes={desktopNodes}
+          aspect="aspect-[2/1]"
+          hubW="w-[28%]"
+          hubH="h-[40%]"
+          nodeText="text-[15px]"
+          hubTitle="text-[26px]"
+          hubSub="text-[16px]"
+          hubPad="px-4 py-3"
+        />
       </div>
     </>
   );
