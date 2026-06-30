@@ -1601,10 +1601,81 @@ function Result() {
   );
 }
 
+function FinalCTA() {
+  const [open, setOpen] = useState(false);
+  return (
+    <section id="register" className="border-b border-pravda-line bg-pravda-ink py-20 text-pravda-bg">
+      <Container>
+        <div className="mx-auto max-w-[760px] text-center">
+          <h2 className="text-[32px] font-extrabold leading-[1.05] tracking-[-0.03em] md:text-[44px]">
+            Готовы навести порядок в&nbsp;цифрах?
+          </h2>
+          <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.5] text-pravda-bg/75 md:text-[17px]">
+            30&nbsp;июля, Москва. Один день, чтобы перестать спорить о&nbsp;метриках и&nbsp;начать ими управлять.
+          </p>
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-pravda-yellow px-8 py-4 text-[15px] font-bold tracking-[-0.01em] text-pravda-ink transition hover:brightness-95"
+          >
+            Зарегистрироваться
+          </button>
+        </div>
+      </Container>
+      <GetCourseWidgetDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="Регистрация на воркшоп"
+        scriptId="d3463e220da9a7dca915362c2e87c214fcad7309"
+        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1624152"
+      />
+    </section>
+  );
+}
 
-
-
-
+function FAQ() {
+  const items = [
+    {
+      q: "Какое нужно ПО?",
+      a: "Вам не нужно ставить каких-то специальных программ, просто приходите со\u00A0своим ноутбуком или планшетом\u00A0— и\u00A0этого достаточно. VPN тоже не\u00A0потребуется.",
+    },
+    {
+      q: "Нужно ли программировать?",
+      a: "Нет, не\u00A0нужно знать ни\u00A0Python, ни\u00A0SQL, ни\u00A0какие-то специализированные программы. С\u00A0формулами и\u00A0показателями мы\u00A0будем работать на\u00A0логическом уровне.",
+    },
+    {
+      q: "Зачем это нужно руководителям?",
+      a: "Даже если вы\u00A0не\u00A0собираетесь заниматься разработкой, вы\u00A0убедитесь, как с\u00A0помощью ИИ можно разрабатывать ваши требования и\u00A0чётко формулировать задачи.",
+    },
+  ];
+  return (
+    <section id="faq" className="border-b border-pravda-line bg-pravda-bg py-20">
+      <Container>
+        <SectionHead title={"Ответы на\u00A0вопросы"} />
+        <div className="mx-auto max-w-[820px]">
+          {items.map((it, i) => (
+            <details
+              key={i}
+              className="group border-b border-pravda-line py-5 [&_summary::-webkit-details-marker]:hidden"
+            >
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[18px] font-bold leading-[1.3] tracking-[-0.02em] text-pravda-ink md:text-[22px]">
+                <span>{it.q}</span>
+                <span className="mt-1 shrink-0 text-pravda-muted transition group-open:rotate-45">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 4v12M4 10h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </span>
+              </summary>
+              <p className="mt-4 text-[15px] leading-[1.55] text-pravda-text md:text-[16px]">
+                {it.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
 
 export function PravdaLanding() {
   return (
@@ -1618,13 +1689,13 @@ export function PravdaLanding() {
         <Hero />
         <Problem />
         <Audience />
-        
         <Approach />
-        <Result />
         <TrainerSection />
-        <Outcomes />
-
         <Pricing />
+        <Result />
+        <Outcomes />
+        <FinalCTA />
+        <FAQ />
       </main>
       <Footer />
     </div>
