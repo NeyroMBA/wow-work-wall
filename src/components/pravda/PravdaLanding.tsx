@@ -742,19 +742,31 @@ function Header() {
 function Hero() {
   return (
     <section className="border-b border-pravda-line bg-pravda-bg">
-      <Container className="grid gap-8 py-10 md:grid-cols-[1.05fr_.95fr] md:gap-10 md:py-24">
-        <div className="order-2 md:order-1">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-pravda-line bg-pravda-soft/80 px-4 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-pravda-text md:mb-5 md:px-5 md:py-2 md:text-[14px]">
-            <span>Москва</span>
-            <span className="text-pravda-muted">·</span>
-            <span>30 июля</span>
-            <span className="text-pravda-muted">·</span>
-            <span>10:00 – 14:00</span>
+      <Container className="flex min-h-[calc(100svh-68px)] flex-col py-7 md:grid md:min-h-0 md:grid-cols-[1.05fr_.95fr] md:gap-10 md:py-24">
+        <div className="order-2 flex min-h-[calc(100svh-124px)] flex-col justify-between md:order-1 md:min-h-0 md:block">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-pravda-line bg-pravda-soft/80 px-4 py-1.5 text-[13px] font-medium tracking-[-0.01em] text-pravda-text md:mb-5 md:px-5 md:py-2 md:text-[14px]">
+              <span>Москва</span>
+              <span className="text-pravda-muted">·</span>
+              <span>30 июля</span>
+              <span className="text-pravda-muted">·</span>
+              <span>10:00 – 14:00</span>
+            </div>
           </div>
-          <h1 className="text-[clamp(52px,12vw,96px)] font-extrabold leading-[0.95] tracking-[-0.065em] text-pravda-ink md:text-[clamp(56px,9vw,128px)]">
-            Правда<span className="text-pravda-red">.</span>
-          </h1>
-          <div className="mt-6 max-w-[560px] md:mt-8">
+          <div className="py-10 md:py-0">
+            <h1 className="text-[clamp(52px,12vw,96px)] font-extrabold leading-[0.95] tracking-[-0.065em] text-pravda-ink md:text-[clamp(56px,9vw,128px)]">
+              Правда<span className="text-pravda-red">.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-[clamp(18px,2.2vw,24px)] font-semibold leading-tight tracking-tight text-pravda-ink md:mt-8">
+              Как строить управленческую отчётность
+              <br className="block md:hidden lg:block" />{' '}
+              с&nbsp;ИИ-агентами
+              <br className="block md:hidden" />{' '}
+              и&nbsp;здравым смыслом
+            </p>
+          </div>
+          <div>
+            <div className="max-w-[560px] md:mt-8">
             <div className="grid grid-cols-[2fr_1fr] items-center gap-x-3 gap-y-1.5 text-[14px] md:text-[clamp(15px,1.5vw,18px)]">
               {[
                 ["Отчёты ради отчётов", "Аналитика"],
@@ -770,20 +782,14 @@ function Hero() {
               ))}
             </div>
           </div>
-          <p className="mt-5 max-w-2xl text-[clamp(18px,2.2vw,24px)] font-semibold leading-tight tracking-tight text-pravda-ink md:mt-8">
-            Как строить управленческую отчётность
-            <br className="hidden lg:block" />{' '}
-            с&nbsp;ИИ-агентами
-            <br className="block md:hidden" />{' '}
-            и&nbsp;здравым смыслом
-          </p>
-          <div className="mt-6 md:mt-7">
-            <a
-              href="#program"
-              className="inline-flex h-12 items-center rounded-full bg-pravda-ink px-6 text-[14px] font-semibold text-pravda-bg"
-            >
-              Регистрация
-            </a>
+            <div className="mt-8 md:mt-7">
+              <a
+                href="#program"
+                className="inline-flex h-12 items-center rounded-full bg-pravda-ink px-6 text-[14px] font-semibold text-pravda-bg"
+              >
+                Регистрация
+              </a>
+            </div>
           </div>
         </div>
         <div className="order-1 hidden md:block md:order-2">
