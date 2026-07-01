@@ -402,20 +402,6 @@ const COHORT_6: Raw[] = [
       "Аналитический портал, который охватывает всё: от продаж до прибыли и убытков. Метрика-центр — LTV студента, потому что школа работает по подписочной модели. Внутри — дашборд, сториборд и калькулятор юнит-экономики в одном флаконе.",
     cohort: "Поток 6",
   },
-  {
-    id: "zavorueva-coins",
-    title: "Монетная неделя",
-    author: "Елена Заворуева",
-    categories: ["Finance", "Marketing"],
-    features: ["Карта регионов", "Переключатель метрики", "Claude"],
-    tools: ["Claude"],
-    image: "http://files.alexkolokolov.com/ai/gallery/img/zavorueva.png",
-    link: "http://files.alexkolokolov.com/ai/gallery/zavorueva.html",
-    accent: "from-yellow-400 to-amber-600",
-    description:
-      "Дашборд для всероссийской акции по сбору монет: сколько собрали штук, тонн и рублей, топ-10 банков, карта регионов, индикаторы роста к прошлой акции. Первая не-учебная работа автора — и сразу реальные операционные данные.",
-    cohort: "Поток 6",
-  },
 ];
 
 export const dashboards: Dashboard[] = [...COHORT_6, ...RAW].map((d, i) => ({
