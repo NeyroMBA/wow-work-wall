@@ -183,4 +183,51 @@
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Security page scoped theme (dark, green primary, red danger) */
+[data-theme="security"] {
+  --background: 260 25% 6%;
+  --foreground: 260 8% 96%;
+  --card: 260 20% 10%;
+  --card-foreground: 260 8% 96%;
+  --popover: 260 20% 10%;
+  --popover-foreground: 260 8% 96%;
+  --primary: 145 65% 48%;
+  --primary-foreground: 260 25% 6%;
+  --secondary: 260 15% 16%;
+  --secondary-foreground: 260 8% 96%;
+  --muted: 260 15% 14%;
+  --muted-foreground: 260 8% 60%;
+  --accent: 145 65% 48%;
+  --accent-foreground: 260 25% 6%;
+  --border: 260 15% 20%;
+  --input: 260 15% 20%;
+  --ring: 145 65% 48%;
+  --danger: 12 78% 52%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+[data-theme="security"] .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+[data-theme="security"] [id] { scroll-margin-top: 80px; }
+[data-theme="security"] .scanlines {
+  background-image: repeating-linear-gradient(0deg, transparent 0, transparent 2px, hsl(0 0% 100% / 0.025) 2px, hsl(0 0% 100% / 0.025) 3px);
+}
+[data-theme="security"] .noise {
+  background-image: radial-gradient(hsl(0 0% 100% / 0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+@keyframes sec-scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100vh); } }
+@keyframes sec-flicker { 0%,100% { opacity: 1; } 50% { opacity: 0.85; } 52% { opacity: 1; } }
+@keyframes sec-pulse-danger {
+  0%,100% { box-shadow: 0 0 60px 10px hsl(12 78% 52% / 0.4), inset 0 0 80px hsl(12 78% 52% / 0.2); }
+  50% { box-shadow: 0 0 120px 20px hsl(12 78% 52% / 0.6), inset 0 0 120px hsl(12 78% 52% / 0.35); }
+}
+@keyframes sec-float-up {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+@keyframes sec-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+
 
