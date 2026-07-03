@@ -17,6 +17,10 @@ const THREAT_ICONS = [
   ShieldAlert, Fingerprint, Mail, CreditCard, MessageSquareWarning,
 ];
 
+const SECURITY_ASSET_HOST = "https://wow-work-wall.lovable.app";
+const securityAssetUrl = (url: string) =>
+  url.startsWith("/__l5e/assets-v1/") ? `${SECURITY_ASSET_HOST}${url}` : url;
+
 type Threat = { id: number; x: number; y: number; Icon: typeof Skull; rot: number; dur: number; drift: number };
 
 type WidgetKind = "free" | "paid" | "program";
@@ -183,7 +187,7 @@ function Hero() {
 
       <header className="relative z-40 px-6 md:px-10 py-5 flex items-center justify-between font-mono text-xs tracking-widest uppercase text-muted-foreground">
         <a href="#" className="flex items-center gap-3 text-foreground">
-          <img src={inaLogo.url} alt="Институт нейроаналитики" className="h-10 w-auto" />
+          <img src={securityAssetUrl(inaLogo.url)} alt="Институт нейроаналитики" className="h-10 w-auto" />
         </a>
         <div className="hidden md:flex gap-6">
           <a href="#whom" className="hover:text-foreground transition-colors">Для кого</a>
@@ -461,9 +465,9 @@ function Program() {
           <div className="font-mono text-xs tracking-[0.4em] text-primary mb-6">// СПИКЕРЫ</div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { name: "Александр Команченко", role: "Эксперт по ИБ", photo: alexanderPhoto.url, bio: "В информационной безопасности с 2008 года. Не «безопасник-запретитель», а переводчик между бизнесом и ИБ." },
-              { name: "Анна Зыкина", role: "Директор по маркетингу ИБА", photo: annaPhoto.url, bio: "Работает «за троих» с помощью ИИ. Практик по обезличиванию и безопасной работе с данными." },
-              { name: "Алексей Колоколов", role: "Основатель ИБА", photo: alexeyPhoto.url, bio: "Международный эксперт по BI-дашбордам. 16 лет в аналитике и визуализации данных, автор книг." },
+              { name: "Александр Команченко", role: "Эксперт по ИБ", photo: securityAssetUrl(alexanderPhoto.url), bio: "В информационной безопасности с 2008 года. Не «безопасник-запретитель», а переводчик между бизнесом и ИБ." },
+              { name: "Анна Зыкина", role: "Директор по маркетингу ИБА", photo: securityAssetUrl(annaPhoto.url), bio: "Работает «за троих» с помощью ИИ. Практик по обезличиванию и безопасной работе с данными." },
+              { name: "Алексей Колоколов", role: "Основатель ИБА", photo: securityAssetUrl(alexeyPhoto.url), bio: "Международный эксперт по BI-дашбордам. 16 лет в аналитике и визуализации данных, автор книг." },
             ].map((s) => (
               <div key={s.name} className="border border-border bg-card flex flex-col">
                 <img
