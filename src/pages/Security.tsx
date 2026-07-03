@@ -586,9 +586,9 @@ function Skills() {
       <div className="relative max-w-6xl mx-auto">
         <div className="mb-14 max-w-4xl">
           <div className="font-mono text-xs tracking-[0.4em] text-primary mb-4">// НАВЫКИ</div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.02]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.05] break-words hyphens-auto">
             Шаблоны заберёте сразу.<br />
-            <span className="whitespace-nowrap"><span className="text-primary">Навыки</span> — останутся навсегда.</span>
+            <span className="text-primary">Навыки</span> — останутся навсегда.
           </h2>
           <p className="mt-6 text-muted-foreground">
             Что вы научитесь делать сами — без подсказок, без чек-листа под рукой.
