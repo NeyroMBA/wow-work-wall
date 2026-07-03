@@ -620,10 +620,6 @@ function Finale() {
   return (
     <section className="relative py-24 md:py-40 px-6 border-t border-border/50 overflow-hidden bg-background">
       <div className="absolute inset-0 scanlines opacity-20 pointer-events-none" />
-      <div
-        className="absolute inset-0 opacity-50 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at bottom, hsl(var(--primary) / 0.20), transparent 65%)" }}
-      />
       <div className="relative max-w-6xl mx-auto">
         <div className="max-w-4xl">
           <div className="font-mono text-xs tracking-[0.4em] text-primary mb-6">// СИСТЕМА_СТАБИЛЬНА</div>
