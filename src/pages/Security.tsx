@@ -636,34 +636,58 @@ function Finale() {
           </p>
         </div>
 
-        <div className="mt-14 border border-border bg-card overflow-hidden">
-          <div className="grid grid-cols-[minmax(0,140px)_1fr_1fr] md:grid-cols-[220px_1fr_1fr] border-b border-border/50">
-            <div className="p-4 md:p-6 flex items-center font-mono text-[10px] md:text-xs tracking-widest text-muted-foreground">
+        <div className="mt-14 hidden md:block border border-border bg-card overflow-hidden">
+          <div className="grid grid-cols-[220px_1fr_1fr] border-b border-border/50">
+            <div className="p-6 flex items-center font-mono text-xs tracking-widest text-muted-foreground">
               &nbsp;
             </div>
-            <div className="p-4 md:p-6 border-l border-border/50 flex items-center gap-2 md:gap-3">
+            <div className="p-6 border-l border-border/50 flex items-center gap-3">
               <AlertTriangle className="text-danger shrink-0" size={18} />
-              <div className="font-mono text-[10px] md:text-xs tracking-widest text-danger">ДО ИНТЕНСИВА</div>
+              <div className="font-mono text-xs tracking-widest text-danger">ДО ИНТЕНСИВА</div>
             </div>
-            <div className="p-4 md:p-6 border-l border-border/50 bg-primary/[0.06] flex items-center gap-2 md:gap-3">
+            <div className="p-6 border-l border-border/50 bg-primary/[0.06] flex items-center gap-3">
               <Check className="text-primary shrink-0" size={18} strokeWidth={2.5} />
-              <div className="font-mono text-[10px] md:text-xs tracking-widest text-primary">ПОСЛЕ ИНТЕНСИВА</div>
+              <div className="font-mono text-xs tracking-widest text-primary">ПОСЛЕ ИНТЕНСИВА</div>
             </div>
           </div>
 
           {rows.map((r, idx) => (
             <div
               key={r.label}
-              className={`grid grid-cols-[minmax(0,140px)_1fr_1fr] md:grid-cols-[220px_1fr_1fr] ${idx !== rows.length - 1 ? "border-b border-border/50" : ""}`}
+              className={`grid grid-cols-[220px_1fr_1fr] ${idx !== rows.length - 1 ? "border-b border-border/50" : ""}`}
             >
-              <div className="p-4 md:p-6 flex items-start font-mono text-[10px] md:text-xs tracking-widest text-muted-foreground uppercase">
+              <div className="p-6 flex items-start font-mono text-xs tracking-widest text-muted-foreground uppercase">
                 {r.label}
               </div>
-              <div className="p-4 md:p-6 border-l border-border/50 text-sm text-muted-foreground leading-relaxed">
+              <div className="p-6 border-l border-border/50 text-sm text-muted-foreground leading-relaxed">
                 {r.before}
               </div>
-              <div className="p-4 md:p-6 border-l border-border/50 bg-primary/[0.04] text-sm text-foreground leading-relaxed">
+              <div className="p-6 border-l border-border/50 bg-primary/[0.04] text-sm text-foreground leading-relaxed">
                 {r.after}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14 md:hidden flex flex-col gap-4">
+          {rows.map((r) => (
+            <div key={r.label} className="border border-border bg-card overflow-hidden">
+              <div className="px-4 py-3 border-b border-border/50 font-mono text-xs tracking-widest text-muted-foreground uppercase">
+                {r.label}
+              </div>
+              <div className="p-4 border-b border-border/50">
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertTriangle className="text-danger shrink-0" size={16} />
+                  <div className="font-mono text-[10px] tracking-widest text-danger">ДО ИНТЕНСИВА</div>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{r.before}</p>
+              </div>
+              <div className="p-4 bg-primary/[0.04]">
+                <div className="flex items-center gap-2 mb-2">
+                  <Check className="text-primary shrink-0" size={16} strokeWidth={2.5} />
+                  <div className="font-mono text-[10px] tracking-widest text-primary">ПОСЛЕ ИНТЕНСИВА</div>
+                </div>
+                <p className="text-sm text-foreground leading-relaxed">{r.after}</p>
               </div>
             </div>
           ))}
