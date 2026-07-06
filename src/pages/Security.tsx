@@ -60,11 +60,13 @@ function WidgetModal() {
   const openCountRef = useRef(0);
   const [openId, setOpenId] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [slow, setSlow] = useState(false);
   useEffect(() => {
     const onOpen = (e: Event) => {
       openCountRef.current += 1;
       setOpenId(openCountRef.current);
       setLoading(true);
+      setSlow(false);
       setKind((e as CustomEvent).detail as WidgetKind);
     };
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setKind(null);
@@ -75,6 +77,11 @@ function WidgetModal() {
       window.removeEventListener("keydown", onKey);
     };
   }, []);
+  useEffect(() => {
+    if (!kind || !loading) return;
+    const t = setTimeout(() => setSlow(true), 5000);
+    return () => clearTimeout(t);
+  }, [kind, loading, openId]);
   useEffect(() => {
     if (kind) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
