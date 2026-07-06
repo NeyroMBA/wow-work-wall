@@ -84,69 +84,7 @@ function WidgetModal() {
   if (!kind) return null;
   const w = WIDGETS[kind];
   const scriptSrc = `https://insba.getcourse.ru/pl/lite/widget/script?id=${w.widgetId}?p=${openId}`;
-  const commonStyle = `<style>
-    html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}
-    body{padding:20px;background:#F3F3F3;color:#111;}
-    .lt-form{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto;}
-    .lt-form h2{font-size:22px;margin:0 0 4px;font-weight:700;text-align:center;}
-    .lt-form p.sub{margin:0 0 12px;font-size:14px;color:#555;text-align:center;}
-    .lt-form br{display:none;}
-    .lt-form input[type=text],.lt-form input[type=email],.lt-form input[type=tel]{width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid #d0d0d0;border-radius:12px;font-size:15px;background:#fff;outline:none;transition:border-color .15s;}
-    .lt-form input[type=text]:focus,.lt-form input[type=email]:focus,.lt-form input[type=tel]:focus{border-color:#111;}
-    .lt-form button[type=submit]{width:100%;padding:16px;border:0;border-radius:16px;font-size:16px;font-weight:700;cursor:pointer;margin-top:6px;}
-    .lt-form input[type=radio]{display:none;}
-    #gccounterImgContainer{display:none;}
-  </style>`;
-  const freeFormHtml = `<form
-    id="ltForm8955395"
-    class="lt-normal-form lt-form-inner lt-form"
-    data-id="2239112257"
-    action="https://insba.getcourse.ru/pl/lite/block-public/process-html?id=2239112257"
-    method="post"
-    data-open-new-window="0"
-    data-sequential-request="1"
-  >
-    <h2>Записаться бесплатно</h2>
-    <p class="sub">Оставьте контакты — пришлём доступ к марафону</p>
-    <input type="hidden" name="formParams[setted_offer_id]">
-    <input type="hidden" name="formParams[willCreatePaidDeal]" value="">
-    <input type="hidden" name="__gc__internal__form__helper" value="">
-    <input type="hidden" name="__gc__internal__form__helper_ref" value="">
-    <input name="formParams[need_offer]" type="hidden" value="">
-    <input data-price-value="" data-old-price-value="" data-price-currency="руб." data-qty-value="" data-decimal-separator="." data-thousands-separator=" " name="formParams[offer_id][]" type="radio" checked value="">
-    <input type="text" maxlength="60" placeholder="Ваше имя и фамилия" name="formParams[full_name]" value="">
-    <input type="email" maxlength="60" placeholder="Ваш эл. адрес" name="formParams[email]" value="">
-    <input type="tel" name="formParams[phone]" value="" placeholder="Телефон">
-    <input name="formParams[userCustomFields][394600]" type="hidden">
-    <input name="formParams[userCustomFields][10902540]" type="hidden">
-    <button type="submit" style="color:#000000;background-color:#BFE74B;">Регистрация</button>
-    <input name="formParams[userCustomFields][1065563]" type="hidden">
-    <input name="formParams[userCustomFields][1065564]" type="hidden">
-    <input name="formParams[userCustomFields][1065565]" type="hidden">
-    <input name="formParams[userCustomFields][1065566]" type="hidden">
-    <input name="formParams[userCustomFields][1065567]" type="hidden">
-    <input name="formParams[userCustomFields][10878344]" type="hidden">
-    <input type="hidden" id="16259016a4bbb49241ce" name="__gc__internal__form__helper" class="__gc__internal__form__helper" value="">
-    <input type="hidden" id="16259016a4bbb49241ceref" name="__gc__internal__form__helper_ref" class="__gc__internal__form__helper_ref" value="">
-    <input type="hidden" name="requestTime" value="1783348041">
-    <input type="hidden" name="requestSimpleSign" value="112c7f967291ac0ab344cc191f3a07ed">
-    <input type="hidden" name="isHtmlWidget" value="1">
-  </form>
-  <span id="gccounterImgContainer"></span>
-  <script>
-    window.addEventListener('load', function(){
-      var loc = document.getElementById("16259016a4bbb49241ce");
-      if (loc) loc.value = window.location.href;
-      var ref = document.getElementById("16259016a4bbb49241ceref");
-      if (ref) ref.value = document.referrer;
-      var statUrl = "https://insba.getcourse.ru/stat/counter?ref=" + encodeURIComponent(document.referrer) + "&loc=" + encodeURIComponent(document.location.href);
-      var c = document.getElementById('gccounterImgContainer');
-      if (c) c.innerHTML = "<img width=1 height=1 style='display:none' src='" + statUrl + "'/>";
-    });
-  <\/script>`;
-  const srcDoc = kind === "free"
-    ? `<!doctype html><html><head><meta charset="utf-8"><base target="_parent">${commonStyle}</head><body>${freeFormHtml}</body></html>`
-    : `<!doctype html><html><head><meta charset="utf-8"><base target="_parent">${commonStyle}</head><body><script id="${w.scriptId}" src="${scriptSrc}"><\/script></body></html>`;
+  const srcDoc = `<!doctype html><html><head><meta charset="utf-8"><base target="_parent"><style>html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}body{padding:20px;background:#F3F3F3;}</style></head><body><script id="${w.scriptId}" src="${scriptSrc}"><\/script></body></html>`;
 
   return (
     <div
