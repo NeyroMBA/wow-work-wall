@@ -114,9 +114,24 @@ function WidgetModal() {
         </button>
         <iframe
           key={`${kind}-${openId}`}
+          ref={(el) => {
+            if (!el) return;
+            const started = Date.now();
+            const check = () => {
+              try {
+                const doc = el.contentDocument;
+                const hasForm = !!doc && !!doc.querySelector("form, input, .lt-form, .lt-normal-form");
+                if (hasForm) {
+                  setLoading(false);
+                  return;
+                }
+              } catch {}
+              if (Date.now() - started < 20000) setTimeout(check, 300);
+            };
+            setTimeout(check, 300);
+          }}
           title={w.title}
           srcDoc={srcDoc}
-          onLoad={() => setTimeout(() => setLoading(false), 600)}
           className="relative z-0 w-full h-full border-0"
           style={{ background: "#F3F3F3" }}
         />
