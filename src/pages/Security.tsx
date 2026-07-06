@@ -60,11 +60,13 @@ function WidgetModal() {
   const openCountRef = useRef(0);
   const [openId, setOpenId] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [slow, setSlow] = useState(false);
   useEffect(() => {
     const onOpen = (e: Event) => {
       openCountRef.current += 1;
       setOpenId(openCountRef.current);
       setLoading(true);
+      setSlow(false);
       setKind((e as CustomEvent).detail as WidgetKind);
     };
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setKind(null);
@@ -75,6 +77,11 @@ function WidgetModal() {
       window.removeEventListener("keydown", onKey);
     };
   }, []);
+  useEffect(() => {
+    if (!kind || !loading) return;
+    const t = setTimeout(() => setSlow(true), 5000);
+    return () => clearTimeout(t);
+  }, [kind, loading, openId]);
   useEffect(() => {
     if (kind) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
@@ -115,11 +122,27 @@ function WidgetModal() {
         />
         {loading && (
           <div
-            className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 text-gray-500 pointer-events-none"
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 text-gray-600 px-6 text-center"
             style={{ background: "#F3F3F3" }}
           >
             <div className="w-8 h-8 border-2 border-gray-300 border-t-gray-700 rounded-full animate-spin" />
-            <div className="font-mono text-xs tracking-widest uppercase">Форма загружается</div>
+            {!slow ? (
+              <div className="font-mono text-xs tracking-widest uppercase pointer-events-none">Форма загружается</div>
+            ) : (
+              <>
+                <div className="text-sm max-w-xs">
+                  Форма загружается дольше обычного. Попробуйте зарегистрироваться по кнопке ниже.
+                </div>
+                <a
+                  href={kind === "free" ? "https://insba.getcourse.ru/security_free" : "https://insba.getcourse.ru/security_buy"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors"
+                >
+                  Открыть форму регистрации
+                </a>
+              </>
+            )}
           </div>
         )}
       </div>
