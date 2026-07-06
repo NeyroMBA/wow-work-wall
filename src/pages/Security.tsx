@@ -83,7 +83,9 @@ function WidgetModal() {
 
   if (!kind) return null;
   const w = WIDGETS[kind];
-  const scriptSrc = `https://insba.getcourse.ru/pl/lite/widget/script?id=${w.widgetId}?p=${openId}`;
+  const scriptSrc = kind === "free"
+    ? `https://insba.getcourse.ru/pl/lite/widget/script?id=${w.widgetId}`
+    : `https://insba.getcourse.ru/pl/lite/widget/script?id=${w.widgetId}?p=${openId}`;
   const srcDoc = `<!doctype html><html><head><meta charset="utf-8"><base target="_parent"><style>html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;}body{padding:20px;background:#F3F3F3;}</style></head><body><script id="${w.scriptId}" src="${scriptSrc}"><\/script></body></html>`;
 
   return (
