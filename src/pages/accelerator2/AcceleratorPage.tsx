@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
