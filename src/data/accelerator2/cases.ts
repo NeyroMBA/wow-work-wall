@@ -77,7 +77,7 @@ export const cases: Case[] = [
   },
   {
     id: "mining-fleet",
-    authorName: "",
+    authorName: "Алиса Б.",
     authorRole: "",
     previewImage: miningFleetPreview.url,
     posterImage: miningFleetPreview.url,
