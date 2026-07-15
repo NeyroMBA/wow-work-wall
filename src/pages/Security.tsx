@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import inaLogo from "@/assets/security/ina-logo-dark.svg.asset.json";
-import annaPhoto from "@/assets/security/anna-zykina.png.asset.json";
-import alexeyPhoto from "@/assets/security/kolokolov-mugshot.png.asset.json";
-import alexanderPhoto from "@/assets/security/komachenko-mugshot.png.asset.json";
+import inaLogo from "@/assets/security/ina-logo-dark.svg";
+import annaPhoto from "@/assets/security/anna-zykina.png";
+import alexeyPhoto from "@/assets/security/kolokolov-mugshot.png";
+import alexanderPhoto from "@/assets/security/komachenko-mugshot.png";
 import FooterSection from "@/components/FooterSection";
 import {
   Skull, Bug, Ghost, EyeOff, Bot, Wifi, Lock, KeyRound, AlertTriangle,
