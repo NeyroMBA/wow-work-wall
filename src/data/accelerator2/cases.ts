@@ -1,14 +1,14 @@
-import andreyPreview from "@/assets/case-andrey-metal-preview.png.asset.json";
-import adelyaPreview from "@/assets/case-adelya-hr-preview.jpg.asset.json";
-import alexeyPreview from "@/assets/case-alexey-ups-new-preview.png.asset.json";
-import miningFleetPreview from "@/assets/case-mining-fleet-preview.jpg.asset.json";
+import andreyPreview from "@/assets/case-andrey-metal-preview.png";
+import adelyaPreview from "@/assets/case-adelya-hr-preview.jpg";
+import alexeyPreview from "@/assets/case-alexey-ups-new-preview.png";
+import miningFleetPreview from "@/assets/case-mining-fleet-preview.jpg";
 import miningFleetVideo from "@/assets/case-mining-fleet-video.mp4.asset.json";
-import climate1 from "@/assets/case-climate-1.png.asset.json";
-import climate2 from "@/assets/case-climate-2.png.asset.json";
-import climate3 from "@/assets/case-climate-3.png.asset.json";
-import climate4 from "@/assets/case-climate-4.png.asset.json";
+import climate1 from "@/assets/case-climate-1.png";
+import climate2 from "@/assets/case-climate-2.png";
+import climate3 from "@/assets/case-climate-3.png";
+import climate4 from "@/assets/case-climate-4.png";
 import romanVideo from "@/assets/case-roman-video.mp4.asset.json";
-import romanPreview from "@/assets/case-roman-preview.jpg.asset.json";
+import romanPreview from "@/assets/case-roman-preview.jpg";
 
 export type Case = {
   id: string;
@@ -30,7 +30,7 @@ export const cases: Case[] = [
     id: "andrey-metal",
     authorName: "Андрей Чайков",
     authorRole: "Руководитель производства",
-    previewImage: andreyPreview.url,
+    previewImage: andreyPreview,
     title: "Приложение для раскроя листового металла",
     teaser: "Уникальный интерфейс для плазменной резки: минимум обрезков, заказ материалов и роли пользователей.",
     description: [
@@ -45,7 +45,7 @@ export const cases: Case[] = [
     id: "alexey-ups",
     authorName: "Алексей Копнов",
     authorRole: "Менеджер по продажам ИБП",
-    previewImage: alexeyPreview.url,
+    previewImage: alexeyPreview,
     title: "Приложение для подбора ИБП и генерации коммерческих предложений",
     teaser: "За 2 дня собрал приложение, которое подбирает конфигурации источников бесперебойного питания и генерирует КП.",
     description: [
@@ -61,7 +61,7 @@ export const cases: Case[] = [
     id: "adelya-hr",
     authorName: "Аделя Зейналова",
     authorRole: "HR-аналитик в госорганизации",
-    previewImage: adelyaPreview.url,
+    previewImage: adelyaPreview,
     title: "HR-приложение с дашбордами вакансий, лояльности и журналом действий",
     teaser: "Полноценное приложение для HR-аналитики вместо Power Query и презентаций в PowerPoint.",
     description: [
@@ -79,8 +79,8 @@ export const cases: Case[] = [
     id: "mining-fleet",
     authorName: "Алиса Б.",
     authorRole: "",
-    previewImage: miningFleetPreview.url,
-    posterImage: miningFleetPreview.url,
+    previewImage: miningFleetPreview,
+    posterImage: miningFleetPreview,
     videoUrl: miningFleetVideo.url,
     title: "Система для управления парком горной техники",
     teaser: "Цель системы: помочь руководителям и инженерам принимать решения, основываясь на жизненном цикле машины.",
@@ -94,8 +94,8 @@ export const cases: Case[] = [
     id: "climate-ai",
     authorName: "Юрий",
     authorRole: "",
-    previewImage: climate1.url,
-    galleryImages: [climate1.url, climate2.url, climate3.url, climate4.url],
+    previewImage: climate1,
+    galleryImages: [climate1, climate2, climate3, climate4],
     title: "AI-консультант по климату в интерьере",
     teaser: "Сайт помогает подобрать комфортный климатический сценарий для дома или квартиры без необходимости разбираться в вентиляции и кондиционировании.",
     description: [
@@ -109,8 +109,8 @@ export const cases: Case[] = [
     id: "roman-planning",
     authorName: "Роман Бартенев",
     authorRole: "Руководитель направления цифровизации электронного документооборота",
-    previewImage: romanPreview.url,
-    posterImage: romanPreview.url,
+    previewImage: romanPreview,
+    posterImage: romanPreview,
     videoUrl: romanVideo.url,
     title: "Система планирования и контроля поручений",
     teaser: "Гибрид дашборда и планировщика: единая точка для постановки поручений, контроля сроков и загрузки команды.",

@@ -5,7 +5,7 @@ const MethodologyStairs = () => {
     <div className="methodology-image-offset" style={{ marginTop: "-156px" }}>
       <div className="w-full" style={{ paddingTop: "117px" }}>
         <img
-          src={stairsAsset.url}
+          src={stairsAsset}
           alt="Лестница уровней проекта V0–V4"
           style={{
             width: "min(1492px, 73.6vw)",
