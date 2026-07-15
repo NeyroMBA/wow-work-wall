@@ -351,7 +351,8 @@ const AcceleratorPage = () => {
         </div>
       </Section>
 
-      <ReviewsSection />
+      {/* Чтобы вернуть блок с отзывами — раскомментируйте строку ниже */}
+      {/* <ReviewsSection /> */}
 
       <Section id="faq" title="Частые" highlight="вопросы">
         <div className="max-w-2xl mx-auto">
