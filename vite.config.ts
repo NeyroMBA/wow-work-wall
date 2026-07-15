@@ -8,13 +8,20 @@ import { componentTagger } from "lovable-tagger";
 // Lovable CDN URL, so assets keep working on hosts that don't proxy /__l5e/
 // (e.g. GitHub Pages). On Lovable's own hosting the absolute URL still resolves.
 const ASSET_ABSOLUTE_PREFIX = "https://wow-work-wall.lovable.app";
+const ASSET_PREFIX = "\0asset-json:";
 function assetUrlAbsolutize(): Plugin {
   return {
     name: "asset-url-absolutize",
     enforce: "pre",
+    async resolveId(source, importer) {
+      if (!source.endsWith(".asset.json")) return null;
+      const resolved = await this.resolve(source, importer, { skipSelf: true });
+      if (!resolved) return null;
+      return ASSET_PREFIX + resolved.id;
+    },
     load(id) {
-      const filePath = id.split("?")[0];
-      if (!filePath.endsWith(".asset.json")) return null;
+      if (!id.startsWith(ASSET_PREFIX)) return null;
+      const filePath = id.slice(ASSET_PREFIX.length).split("?")[0];
       const raw = fs.readFileSync(filePath, "utf8");
       const json = JSON.parse(raw);
       if (typeof json.url === "string" && json.url.startsWith("/__l5e/")) {
