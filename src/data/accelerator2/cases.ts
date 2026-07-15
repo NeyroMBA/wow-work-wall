@@ -2,7 +2,7 @@ import andreyPreview from "@/assets/case-andrey-metal-preview.png.asset.json";
 import adelyaPreview from "@/assets/case-adelya-hr-preview.jpg.asset.json";
 import alexeyPreview from "@/assets/case-alexey-ups-new-preview.png.asset.json";
 import miningFleetPreview from "@/assets/case-mining-fleet-preview.jpg.asset.json";
-import miningFleetVideo from "@/assets/case-mining-fleet-video.mov.asset.json";
+import miningFleetVideo from "@/assets/case-mining-fleet-video.mp4.asset.json";
 import climate1 from "@/assets/case-climate-1.png.asset.json";
 import climate2 from "@/assets/case-climate-2.png.asset.json";
 import climate3 from "@/assets/case-climate-3.png.asset.json";
