@@ -112,7 +112,7 @@ const PricingPage = () => {
             <p className="text-5xl md:text-6xl font-bold text-foreground mb-3">
               120 000 <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
             </p>
-            <p className="text-primary font-medium mb-8">Если вы уже учились у нас — для вас специальная цена: −30%</p>
+            <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
 
             <ul className="text-left space-y-3 mb-8">
               {bullets.map((b) => (
@@ -131,6 +131,9 @@ const PricingPage = () => {
 
             <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
               Войти можно в любой момент · Без потоков и дат старта
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              *Максимальная скидка 30%
             </p>
           </motion.div>
         </section>
