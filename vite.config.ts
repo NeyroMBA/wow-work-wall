@@ -12,15 +12,15 @@ function assetUrlAbsolutize(): Plugin {
   return {
     name: "asset-url-absolutize",
     enforce: "pre",
-    transform(_code, id) {
-      if (!id.endsWith(".asset.json")) return null;
+    load(id) {
       const filePath = id.split("?")[0];
+      if (!filePath.endsWith(".asset.json")) return null;
       const raw = fs.readFileSync(filePath, "utf8");
       const json = JSON.parse(raw);
       if (typeof json.url === "string" && json.url.startsWith("/__l5e/")) {
         json.url = ASSET_ABSOLUTE_PREFIX + json.url;
       }
-      return { code: `export default ${JSON.stringify(json)};`, map: null };
+      return `export default ${JSON.stringify(json)};`;
     },
   };
 }
