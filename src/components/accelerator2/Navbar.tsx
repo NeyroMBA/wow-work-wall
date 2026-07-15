@@ -37,15 +37,19 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const href = isInternalPage && l.href.startsWith("#") ? `/accelerator${l.href}` : l.href;
+            return (
+              <a key={l.href} href={href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                {l.label}
+              </a>
+            );
+          })}
           <a href={isInternalPage ? "/accelerator#buy" : "#buy"} className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
             Записаться
           </a>
         </div>
+
 
         <button onClick={() => setOpen(!open)} className="md:hidden text-foreground p-2">
           <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
