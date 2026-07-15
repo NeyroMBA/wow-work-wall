@@ -129,6 +129,22 @@ const AcceleratorPage = () => {
   const [signupOpen, setSignupOpen] = useState(false);
   const [testOpen, setTestOpen] = useState(false);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.slice(1);
+    // wait for sections to mount
+    const tryScroll = (attempt = 0) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (attempt < 10) {
+        setTimeout(() => tryScroll(attempt + 1), 100);
+      }
+    };
+    tryScroll();
+  }, [hash]);
 
   return (
     <div data-theme="accelerator" className="min-h-screen bg-background">
