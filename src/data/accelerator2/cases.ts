@@ -107,8 +107,8 @@ export const cases: Case[] = [
   },
   {
     id: "roman-planning",
-    authorName: "Роман",
-    authorRole: "",
+    authorName: "Роман Бартенев",
+    authorRole: "Руководитель направления цифровизации электронного документооборота",
     previewImage: romanPreview.url,
     posterImage: romanPreview.url,
     videoUrl: romanVideo.url,
