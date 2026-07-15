@@ -24,6 +24,15 @@ const CasesPage = () => {
                 <CaseCard key={c.id} caseData={c} />
               ))}
             </div>
+
+            <div className="mt-12 flex justify-center">
+              <Link
+                to="/accelerator#solution"
+                className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
+              >
+                К&nbsp;программе
+              </Link>
+            </div>
           </div>
         </section>
       </main>
