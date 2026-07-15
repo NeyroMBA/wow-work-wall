@@ -11,6 +11,9 @@ import IndexV5 from "./pages/IndexV5.tsx";
 import IndexV6 from "./pages/IndexV6.tsx";
 import IndexV7 from "./pages/IndexV7.tsx";
 import AcceleratorPage from "./pages/AcceleratorPage.tsx";
+import AcceleratorPageNew from "./pages/accelerator2/AcceleratorPage.tsx";
+import CasesPageNew from "./pages/accelerator2/CasesPage.tsx";
+import PricingPageNew from "./pages/accelerator2/PricingPage.tsx";
 import Wall from "./pages/Wall.tsx";
 import Pravda from "./pages/Pravda.tsx";
 import Security from "./pages/Security.tsx";
@@ -34,7 +37,10 @@ const App = () => (
           <Route path="/v5" element={<IndexV5 />} />
           <Route path="/v6" element={<IndexV6 />} />
           <Route path="/v7" element={<IndexV7 />} />
-          <Route path="/accelerator" element={<AcceleratorPage />} />
+          <Route path="/accelerator-ol" element={<AcceleratorPage />} />
+          <Route path="/accelerator" element={<AcceleratorPageNew />} />
+          <Route path="/cases" element={<CasesPageNew />} />
+          <Route path="/pricing" element={<PricingPageNew />} />
           <Route path="/wall" element={<Wall />} />
           <Route path="/pravda" element={<Pravda />} />
           <Route path="/security" element={<Security />} />
