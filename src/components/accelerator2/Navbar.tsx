@@ -66,11 +66,15 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -10 }}
             className="md:hidden bg-background border-b border-border px-6 pb-6"
           >
-            {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-3 text-muted-foreground hover:text-foreground transition-colors">
-                {l.label}
-              </a>
-            ))}
+            {links.map((l) => {
+              const href = isInternalPage && l.href.startsWith("#") ? `/accelerator${l.href}` : l.href;
+              return (
+                <a key={l.href} href={href} onClick={() => setOpen(false)} className="block py-3 text-muted-foreground hover:text-foreground transition-colors">
+                  {l.label}
+                </a>
+              );
+            })}
+
             <a href={isInternalPage ? "/accelerator#buy" : "#buy"} onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">
               Записаться
             </a>
