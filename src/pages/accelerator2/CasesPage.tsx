@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const CasesPage = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div data-theme="accelerator" className="min-h-screen bg-background flex flex-col">
       <Navbar />
       <main className="flex-1 pt-24 pb-16">
         <section className="py-10 bg-background">
