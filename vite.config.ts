@@ -18,11 +18,11 @@ function assetUrlAbsolutize(): Plugin {
       if (!source.endsWith(".asset.json")) return null;
       const resolved = await this.resolve(source, importer, { skipSelf: true });
       if (!resolved) return null;
-      return ASSET_PREFIX + resolved.id;
+      return ASSET_PREFIX + resolved.id + ASSET_SUFFIX;
     },
     load(id) {
       if (!id.startsWith(ASSET_PREFIX)) return null;
-      const filePath = id.slice(ASSET_PREFIX.length).split("?")[0];
+      const filePath = id.slice(ASSET_PREFIX.length, -ASSET_SUFFIX.length).split("?")[0];
       const raw = fs.readFileSync(filePath, "utf8");
       const json = JSON.parse(raw);
       if (typeof json.url === "string" && json.url.startsWith("/__l5e/")) {
