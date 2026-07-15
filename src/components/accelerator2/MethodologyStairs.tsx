@@ -1,4 +1,4 @@
-import stairsAsset from "@/assets/methodology-stairs.png.asset.json";
+import stairsAsset from "@/assets/methodology-stairs.png";
 
 const MethodologyStairs = () => {
   return (
