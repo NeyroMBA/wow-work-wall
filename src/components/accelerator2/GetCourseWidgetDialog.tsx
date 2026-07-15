@@ -59,7 +59,7 @@ const GetCourseWidgetDialog = ({ open, onOpenChange, title, scriptId, scriptSrc 
               key={scriptId}
               title={title}
               srcDoc={srcDoc}
-              className="relative w-full border-0 bg-transparent z-10 h-full sm:h-[640px]"
+              className="relative w-full border-0 bg-transparent z-10 h-full sm:h-[740px]"
               sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
             />
           )}

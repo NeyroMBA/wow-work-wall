@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
@@ -129,6 +129,22 @@ const AcceleratorPage = () => {
   const [signupOpen, setSignupOpen] = useState(false);
   const [testOpen, setTestOpen] = useState(false);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.slice(1);
+    // wait for sections to mount
+    const tryScroll = (attempt = 0) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (attempt < 10) {
+        setTimeout(() => tryScroll(attempt + 1), 100);
+      }
+    };
+    tryScroll();
+  }, [hash]);
 
   return (
     <div data-theme="accelerator" className="min-h-screen bg-background">
@@ -335,7 +351,8 @@ const AcceleratorPage = () => {
         </div>
       </Section>
 
-      <ReviewsSection />
+      {/* Чтобы вернуть блок с отзывами — раскомментируйте строку ниже */}
+      {/* <ReviewsSection /> */}
 
       <Section id="faq" title="Частые" highlight="вопросы">
         <div className="max-w-2xl mx-auto">
