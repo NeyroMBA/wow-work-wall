@@ -9,6 +9,7 @@ import { componentTagger } from "lovable-tagger";
 // (e.g. GitHub Pages). On Lovable's own hosting the absolute URL still resolves.
 const ASSET_ABSOLUTE_PREFIX = "https://wow-work-wall.lovable.app";
 const ASSET_PREFIX = "\0asset-json:";
+const ASSET_SUFFIX = ".js";
 function assetUrlAbsolutize(): Plugin {
   return {
     name: "asset-url-absolutize",
