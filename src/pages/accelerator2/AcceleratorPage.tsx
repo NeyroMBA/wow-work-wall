@@ -131,7 +131,7 @@ const AcceleratorPage = () => {
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div data-theme="accelerator" className="min-h-screen bg-background">
       <Navbar />
 
       <section className="relative min-h-[90vh] flex items-center pt-16">

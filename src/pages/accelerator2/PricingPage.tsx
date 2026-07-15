@@ -37,7 +37,7 @@ const PricingPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div data-theme="accelerator" className="min-h-screen bg-background flex flex-col">
       <Navbar />
       <main className="flex-1 pt-16">
         <section className="container mx-auto px-6 py-16 md:py-24">
