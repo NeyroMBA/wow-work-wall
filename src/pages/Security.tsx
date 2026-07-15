@@ -17,9 +17,7 @@ const THREAT_ICONS = [
   ShieldAlert, Fingerprint, Mail, CreditCard, MessageSquareWarning,
 ];
 
-const SECURITY_ASSET_HOST = "https://wow-work-wall.lovable.app";
-const securityAssetUrl = (url: string) =>
-  url.startsWith("/__l5e/assets-v1/") ? `${SECURITY_ASSET_HOST}${url}` : url;
+const securityAssetUrl = (url: string) => url;
 
 type Threat = { id: number; x: number; y: number; Icon: typeof Skull; rot: number; dur: number; drift: number };
 
