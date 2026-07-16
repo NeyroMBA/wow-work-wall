@@ -331,7 +331,7 @@ const AcceleratorPage = () => {
       <Section id="solution" title="Какое решение мы" highlight="предлагаем" intro="Программа акселерации: учебные курсы + практика с ментором">
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-sm font-mono font-medium text-primary uppercase tracking-wider mb-6">Доступ к курсам</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
             {courses.map((c, i) => {
               const Icon = c.icon;
               return (
