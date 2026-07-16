@@ -84,7 +84,7 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
               value={paidRaw}
               onChange={handlePaidChange}
               maxLength={7}
-              className="w-[110px] md:w-[130px] rounded-lg border border-border bg-background px-3 py-1 text-right text-[16px] md:text-[18px] font-semibold text-foreground outline-none focus:border-primary transition-colors"
+              className="w-[110px] md:w-[130px] h-8 py-0 rounded-lg border border-border bg-background px-3 text-right text-[16px] md:text-[18px] font-semibold text-foreground outline-none focus:border-primary transition-colors"
             />
           </div>
 
