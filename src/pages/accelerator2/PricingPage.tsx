@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
 import GetCourseWidgetDialog from "@/components/accelerator2/GetCourseWidgetDialog";
+import PricingCalculator from "@/components/accelerator2/PricingCalculator";
 
 const courses = [
   { idx: "01", name: "Нейросети для бизнеса и карьеры", plan: "Тариф «Для бизнеса»", price: "120 000 ₽" },
