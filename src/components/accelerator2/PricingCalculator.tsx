@@ -336,7 +336,7 @@ const PricingCalculator = () => {
                 <p className="text-5xl md:text-6xl font-bold text-foreground">
                   <AnimatedPrice
                     target={displayPrice}
-                    initial={answer === "no" ? 0 : initialForYes.current}
+                    initial={answer === "no" ? 0 : displayPrice}
                   />
                 </p>
                 <AnimatePresence>
