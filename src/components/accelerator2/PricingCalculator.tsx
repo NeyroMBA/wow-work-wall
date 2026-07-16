@@ -200,7 +200,7 @@ const PricingCalculator = () => {
             >
               <div className="pt-8">
                 <p className="text-foreground font-medium mb-4 text-center">
-                  Какие курсы и\u00A0тарифы вы\u00A0уже проходили?
+                  Какие курсы и тарифы вы уже проходили?
                 </p>
 
                 <div ref={dropdownRef} className="relative">
