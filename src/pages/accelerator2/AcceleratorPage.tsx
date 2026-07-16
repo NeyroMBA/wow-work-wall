@@ -461,13 +461,7 @@ const AcceleratorPage = () => {
         scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1590377"
       />
 
-      <GetCourseWidgetDialog
-        open={testOpen}
-        onOpenChange={setTestOpen}
-        title="Получить тестовое задание"
-        scriptId="6d07126f338f02b40277e72870b00a1cad41f27e"
-        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1619094"
-      />
+
 
       <CourseDialog
         open={activeCourse !== null}
