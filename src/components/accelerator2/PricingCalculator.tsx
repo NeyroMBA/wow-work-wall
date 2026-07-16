@@ -114,11 +114,9 @@ const PricingCalculator = () => {
 
   const showResult = answer === "no" || (answer === "yes" && selections.length > 0);
   const displayPrice = answer === "no" ? BASE_PRICE : finalPrice;
+  // For "no": count-up from 0. For "yes": animate from current selections value.
+  const initialForYes = useRef(finalPrice);
 
-  // For "no": we want count-up from 0. Reset by keying the animated component.
-  const animated = useAnimatedNumber(showResult ? displayPrice : 0, 450);
-  // Force restart when switching to "no": start value at 0.
-  // Achieved by remounting via key on the price element.
 
   const chooseAnswer = (val: "yes" | "no") => {
     if (val === answer) return;
