@@ -116,7 +116,7 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
             <select
               value={months}
               onChange={(e) => setMonths(parseInt(e.target.value, 10))}
-              className="rounded-lg border border-border bg-background px-3 py-1 text-[16px] md:text-[18px] font-semibold text-foreground outline-none focus:border-primary transition-colors cursor-pointer"
+              className="h-8 py-0 rounded-lg border border-border bg-background px-3 text-[16px] md:text-[18px] font-semibold text-foreground outline-none focus:border-primary transition-colors cursor-pointer"
             >
               {INSTALLMENT_OPTIONS.map((m) => (
                 <option key={m} value={m}>
