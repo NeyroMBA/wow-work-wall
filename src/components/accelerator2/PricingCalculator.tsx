@@ -276,7 +276,7 @@ const PricingCalculator = () => {
                         </div>
                         {warn && (
                           <div className="px-4 py-2 text-xs text-primary bg-primary/10 border-t border-border">
-                            Можно выбрать не\u00A0более 5\u00A0курсов.
+                            Можно выбрать не более 5 курсов.
                           </div>
                         )}
                       </motion.div>
