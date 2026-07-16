@@ -154,13 +154,74 @@ const AcceleratorPage = () => {
         <div className="container mx-auto px-6 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
                 ИИ-Акселератор
               </h1>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 leading-snug">
-                ИТ-решения на&nbsp;основе ИИ
-              </h2>
-              <h2 className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed">
+              <p
+                className="text-foreground font-semibold text-left"
+                style={{
+                  fontSize: "clamp(21px, 2.2vw, 28px)",
+                  lineHeight: 1.25,
+                  maxWidth: 620,
+                  marginTop: 28,
+                }}
+              >
+                Программа по&nbsp;созданию решений для ваших рабочих и&nbsp;бизнес-задач&nbsp;— от&nbsp;идеи до&nbsp;запуска
+              </p>
+
+              <div style={{ marginTop: 28, maxWidth: 620 }}>
+                <h3
+                  className="text-foreground text-left"
+                  style={{ fontSize: "clamp(20px, 1.9vw, 24px)", lineHeight: 1.2, fontWeight: 700 }}
+                >
+                  Работайте быстрее. Успевайте больше.
+                </h3>
+                <p
+                  className="text-muted-foreground text-left"
+                  style={{
+                    fontSize: "clamp(16px, 1.5vw, 18px)",
+                    lineHeight: 1.4,
+                    fontWeight: 400,
+                    marginTop: 10,
+                    maxWidth: 600,
+                  }}
+                >
+                  ИИ&nbsp;помогает не&nbsp;заменять специалиста, а&nbsp;усиливать его&nbsp;возможности.
+                </p>
+
+                <div
+                  className="grid grid-cols-1 sm:grid-cols-2 border-y border-border sm:divide-x sm:divide-border divide-y sm:divide-y-0"
+                  style={{ marginTop: 22, paddingTop: 18, paddingBottom: 18, columnGap: 32 }}
+                >
+                  <div className="sm:pr-4 py-3 sm:py-0">
+                    <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
+                      Экономия времени
+                    </p>
+                    <p
+                      className="text-muted-foreground"
+                      style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
+                    >
+                      До&nbsp;2–5 раз быстрее выполнение типовых задач
+                    </p>
+                  </div>
+                  <div className="sm:pl-4 py-3 sm:py-0">
+                    <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
+                      Повышение эффективности
+                    </p>
+                    <p
+                      className="text-muted-foreground"
+                      style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
+                    >
+                      Меньше рутины и&nbsp;ручной работы
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <h2
+                className="text-xl md:text-2xl text-muted-foreground leading-relaxed"
+                style={{ marginTop: 26, marginBottom: 40 }}
+              >
                 3 месяца интенсивной практики
               </h2>
               <a href="#buy" className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity">
