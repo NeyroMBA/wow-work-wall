@@ -160,7 +160,9 @@ const MethodologyStairs = () => {
               <p style={pStyle}><strong>Запустить в&nbsp;эксплуатацию</strong></p>
             </div>
           </article>
-        </section>
+            </section>
+          </div>
+        </div>
       </div>
     </div>
   );
