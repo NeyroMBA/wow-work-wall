@@ -107,7 +107,7 @@ const PricingPage = () => {
         <section className="container mx-auto px-6 py-16 md:py-24">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto rounded-2xl border-2 border-primary/30 bg-background p-8 md:p-10 text-center">
             <div className="mb-2">
-              <span className="text-muted-foreground line-through mr-2">437 600 ₽</span>
+              <span className="text-muted-foreground line-through mr-2">387 900 ₽</span>
               <span className="text-sm text-muted-foreground">по отдельности</span>
             </div>
             <p className="text-5xl md:text-6xl font-bold text-foreground mb-3">
