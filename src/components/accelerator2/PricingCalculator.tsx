@@ -166,7 +166,7 @@ const PricingCalculator = () => {
         </h3>
 
         <div className="text-center">
-          <p className="text-foreground font-medium mb-4">Вы уже проходили у\u00A0нас курсы?</p>
+          <p className="text-foreground font-medium mb-4">Вы уже проходили у нас курсы?</p>
           <div className="flex gap-3 justify-center">
             {(["yes", "no"] as const).map((v) => {
               const selected = answer === v;
