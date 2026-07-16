@@ -230,7 +230,7 @@ const PricingCalculator = () => {
                             type="text"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Поиск по\u00A0названию курса"
+                            placeholder="Поиск по названию курса"
                             className="w-full bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground"
                           />
                         </div>
