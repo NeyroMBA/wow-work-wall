@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
-  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock,
+  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, ChevronDown,
 } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
