@@ -428,24 +428,8 @@ const AcceleratorPage = () => {
         </div>
       </Section>
 
-      <Section id="test">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 rounded-2xl border border-primary/30 bg-primary/5">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Проверьте себя
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Для тех, кто считает что им это не нужно, сами разберутся — мы сделали тестовое задание на навык вайбкодинга.
-            </p>
-            <p className="text-foreground font-medium leading-relaxed mb-8">
-              Для мебельной фабрики нужно сделать модуль контроля качества. Первую версию — MVP.
-            </p>
-            <button type="button" onClick={() => setTestOpen(true)} className="inline-flex items-center px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity">
-              Получить тестовое
-            </button>
-          </motion.div>
-        </div>
-      </Section>
+
+
 
       {/* Чтобы вернуть блок с отзывами — раскомментируйте строку ниже */}
       {/* <ReviewsSection /> */}
