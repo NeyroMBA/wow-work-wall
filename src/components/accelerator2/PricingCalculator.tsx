@@ -85,7 +85,7 @@ function AnimatedPrice({ target, initial, duration = 450 }: { target: number; in
 
 type Selection = { courseId: string; tariffId: string };
 
-const PricingCalculator = () => {
+const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
   const [answer, setAnswer] = useState<"yes" | "no" | null>(null);
   const [selections, setSelections] = useState<Selection[]>([]);
   const [countUpKey, setCountUpKey] = useState(0);
@@ -166,7 +166,7 @@ const PricingCalculator = () => {
         </h3>
 
         <div className="text-center">
-          <p className="text-foreground font-medium mb-4">Вы уже проходили у\u00A0нас курсы?</p>
+          <p className="text-foreground font-medium mb-4">Вы уже проходили у нас курсы?</p>
           <div className="flex gap-3 justify-center">
             {(["yes", "no"] as const).map((v) => {
               const selected = answer === v;
@@ -200,7 +200,7 @@ const PricingCalculator = () => {
             >
               <div className="pt-8">
                 <p className="text-foreground font-medium mb-4 text-center">
-                  Какие курсы и\u00A0тарифы вы\u00A0уже проходили?
+                  Какие курсы и тарифы вы уже проходили?
                 </p>
 
                 <div ref={dropdownRef} className="relative">
@@ -230,13 +230,13 @@ const PricingCalculator = () => {
                             type="text"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Поиск по\u00A0названию курса"
+                            placeholder="Поиск по названию курса"
                             className="w-full bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground"
                           />
                         </div>
                         <div className="max-h-[320px] overflow-y-auto p-2">
                           {filteredCourses.length === 0 && (
-                            <p className="text-sm text-muted-foreground p-3">Ничего не\u00A0найдено</p>
+                            <p className="text-sm text-muted-foreground p-3">Ничего не найдено</p>
                           )}
                           {filteredCourses.map((c) => (
                             <div key={c.id} className="py-2">
@@ -276,7 +276,7 @@ const PricingCalculator = () => {
                         </div>
                         {warn && (
                           <div className="px-4 py-2 text-xs text-primary bg-primary/10 border-t border-border">
-                            Можно выбрать не\u00A0более 5\u00A0курсов.
+                            Можно выбрать не более 5 курсов.
                           </div>
                         )}
                       </motion.div>
@@ -285,7 +285,7 @@ const PricingCalculator = () => {
                 </div>
 
                 {warn && !open && (
-                  <p className="mt-2 text-xs text-primary">Можно выбрать не\u00A0более 5\u00A0курсов.</p>
+                  <p className="mt-2 text-xs text-primary">Можно выбрать не более 5 курсов.</p>
                 )}
 
                 {selections.length > 0 && (
@@ -352,6 +352,18 @@ const PricingCalculator = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
+                {onSignup && (
+                  <motion.button
+                    type="button"
+                    onClick={onSignup}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
+                    className="mt-8 inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full"
+                  >
+                    Записаться
+                  </motion.button>
+                )}
               </div>
             </motion.div>
           )}
