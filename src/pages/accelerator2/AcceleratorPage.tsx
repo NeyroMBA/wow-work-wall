@@ -269,7 +269,7 @@ const AcceleratorPage = () => {
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto p-8 rounded-2xl border-2 border-primary/30 bg-background text-center mb-16" id="buy">
             <p className="text-sm text-muted-foreground mb-2">Стоимость</p>
             <p className="text-5xl font-bold text-foreground mb-6">
-              <span className="text-2xl text-muted-foreground font-medium">от</span> 6 690 <span className="text-2xl text-muted-foreground font-medium">₽ / мес.</span>
+              <span className="text-2xl text-muted-foreground font-medium">от</span> 7 000 <span className="text-2xl text-muted-foreground font-medium">₽ / мес.</span>
             </p>
             <p className="text-muted-foreground mb-4 leading-relaxed">
               Если вы уже проходили у нас курсы по ИИ — стоимость зачтётся.
