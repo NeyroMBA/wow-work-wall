@@ -29,7 +29,7 @@ const pStyle: React.CSSProperties = { margin: 0 };
 const MethodologyStairs = () => {
   return (
     <div className="methodology-image-offset" style={{ marginTop: "-156px" }}>
-      <div className="w-full" style={{ paddingTop: "40px" }}>
+      <div className="w-full" style={{ paddingTop: "90px" }}>
         <section
           className="project-staircase"
           aria-labelledby="project-staircase-title"
