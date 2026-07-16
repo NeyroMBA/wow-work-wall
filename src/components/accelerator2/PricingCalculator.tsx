@@ -58,7 +58,7 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
   return (
     <section className="container mx-auto px-6 pb-16 md:pb-24">
       <div className="max-w-2xl mx-auto rounded-2xl border border-border bg-card p-6 md:p-8">
-        <h3 className="text-center font-bold text-foreground text-[clamp(13px,3.4vw,28px)] leading-tight mb-6 md:mb-8 whitespace-nowrap">
+        <h3 className="text-center font-bold text-foreground text-[clamp(11px,3.4vw,24px)] leading-tight mb-6 md:mb-8 whitespace-nowrap">
           Индивидуальный калькулятор стоимости
         </h3>
 
