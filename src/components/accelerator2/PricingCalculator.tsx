@@ -236,7 +236,7 @@ const PricingCalculator = () => {
                         </div>
                         <div className="max-h-[320px] overflow-y-auto p-2">
                           {filteredCourses.length === 0 && (
-                            <p className="text-sm text-muted-foreground p-3">Ничего не\u00A0найдено</p>
+                            <p className="text-sm text-muted-foreground p-3">Ничего не найдено</p>
                           )}
                           {filteredCourses.map((c) => (
                             <div key={c.id} className="py-2">
