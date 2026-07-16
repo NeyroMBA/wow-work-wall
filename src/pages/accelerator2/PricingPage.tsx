@@ -139,7 +139,7 @@ const PricingPage = () => {
           </motion.div>
         </section>
 
-        <PricingCalculator />
+        <PricingCalculator onSignup={() => setSignupOpen(true)} />
 
       </main>
       <FooterSection />
