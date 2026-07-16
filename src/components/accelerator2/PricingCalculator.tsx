@@ -146,7 +146,7 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
         </button>
 
         <p className="mt-6 text-sm text-muted-foreground leading-relaxed text-center">
-          Точную стоимость уточним на\u00A0диагностике.
+          {"Точную стоимость уточним на\u00A0диагностике."}
         </p>
       </div>
     </section>
