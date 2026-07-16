@@ -58,24 +58,24 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
   return (
     <section className="container mx-auto px-6 pb-16 md:pb-24">
       <div className="max-w-2xl mx-auto rounded-2xl border border-border bg-card p-6 md:p-8">
-        <h3 className="text-center font-bold text-foreground text-[24px] sm:text-[30px] md:text-[36px] leading-tight mb-6 md:mb-8 whitespace-nowrap">
+        <h3 className="text-center font-bold text-foreground text-[clamp(9px,2.8vw,24px)] leading-tight mb-6 md:mb-8 whitespace-nowrap">
           Индивидуальный калькулятор стоимости
         </h3>
 
         <div className="rounded-2xl border border-border bg-background divide-y divide-border">
           {/* 1. Standard price */}
-          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-3">
-            <span className="text-[16px] md:text-[17px] font-normal text-foreground">
+          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-2 min-h-12">
+            <span className="text-[14px] md:text-[15px] font-normal text-foreground">
               Стандартная цена
             </span>
-            <span className="text-[18px] md:text-[20px] font-semibold text-foreground text-right">
+            <span className="text-[16px] md:text-[18px] font-semibold text-foreground text-right tabular-nums">
               {formatNumber(BASE_PRICE)} ₽
             </span>
           </div>
 
           {/* 2. Paid before */}
-          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-3">
-            <span className="text-[16px] md:text-[17px] font-normal text-foreground">
+          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-2 min-h-12">
+            <span className="text-[14px] md:text-[15px] font-normal text-foreground">
               Сумма ранее купленных курсов
             </span>
             <input
@@ -84,13 +84,13 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
               value={paidRaw}
               onChange={handlePaidChange}
               maxLength={7}
-              className="w-[110px] md:w-[130px] rounded-lg border border-border bg-background px-3 py-1.5 text-right text-[18px] md:text-[20px] font-semibold text-foreground outline-none focus:border-primary transition-colors"
+              className="w-[110px] md:w-[130px] h-8 py-0 rounded-lg border border-border bg-background px-3 text-right text-[16px] md:text-[18px] font-semibold text-foreground outline-none focus:border-primary transition-colors"
             />
           </div>
 
           {/* 3. Your price */}
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 md:px-5 py-3">
-            <span className="text-[16px] md:text-[17px] font-normal text-foreground">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 md:px-5 py-2 min-h-12">
+            <span className="text-[14px] md:text-[15px] font-normal text-foreground">
               Ваша цена
             </span>
             <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-2 ml-auto">
@@ -102,21 +102,21 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
               >
                 Максимальная скидка — 30%
               </span>
-              <span className="text-[18px] md:text-[20px] font-semibold text-foreground text-right tabular-nums">
+              <span className="text-[16px] md:text-[18px] font-semibold text-foreground text-right tabular-nums">
                 {formatNumber(animatedPrice)} ₽
               </span>
             </div>
           </div>
 
           {/* 4. Installment */}
-          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-3">
-            <span className="text-[16px] md:text-[17px] font-normal text-foreground">
+          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-2 min-h-12">
+            <span className="text-[14px] md:text-[15px] font-normal text-foreground">
               Рассрочка, мес.
             </span>
             <select
               value={months}
               onChange={(e) => setMonths(parseInt(e.target.value, 10))}
-              className="rounded-lg border border-border bg-background px-3 py-1.5 text-[18px] md:text-[20px] font-semibold text-foreground outline-none focus:border-primary transition-colors cursor-pointer"
+              className="h-8 py-0 rounded-lg border border-border bg-background px-3 text-[16px] md:text-[18px] font-semibold text-foreground outline-none focus:border-primary transition-colors cursor-pointer"
             >
               {INSTALLMENT_OPTIONS.map((m) => (
                 <option key={m} value={m}>
@@ -127,11 +127,11 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
           </div>
 
           {/* 5. Monthly */}
-          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-3">
-            <span className="text-[16px] md:text-[17px] font-normal text-foreground">
+          <div className="flex items-center justify-between gap-4 px-4 md:px-5 py-2 min-h-12">
+            <span className="text-[14px] md:text-[15px] font-normal text-foreground">
               Ежемесячный платёж
             </span>
-            <span className="text-[18px] md:text-[20px] font-semibold text-foreground text-right tabular-nums">
+            <span className="text-[16px] md:text-[18px] font-semibold text-foreground text-right tabular-nums">
               {formatNumber(animatedMonthly)} ₽
             </span>
           </div>
