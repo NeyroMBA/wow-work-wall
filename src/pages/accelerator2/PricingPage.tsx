@@ -138,6 +138,9 @@ const PricingPage = () => {
             </p>
           </motion.div>
         </section>
+
+        <PricingCalculator />
+
       </main>
       <FooterSection />
 
