@@ -16,9 +16,9 @@ const stepLabelStyle: React.CSSProperties = {
 
 const stepTextBlockStyle: React.CSSProperties = {
   position: "absolute",
-  fontSize: "0.9765625cqw",
+  fontSize: "1.07421875cqw",
   fontWeight: 400,
-  lineHeight: 1.45,
+  lineHeight: 1.5,
   color: "#1a1a1a",
   whiteSpace: "nowrap",
   fontFamily: "inherit",
@@ -29,7 +29,7 @@ const pStyle: React.CSSProperties = { margin: 0 };
 const MethodologyStairs = () => {
   return (
     <div className="methodology-image-offset" style={{ marginTop: "-156px" }}>
-      <div className="w-full" style={{ paddingTop: "117px" }}>
+      <div className="w-full" style={{ paddingTop: "40px" }}>
         <section
           className="project-staircase"
           aria-labelledby="project-staircase-title"
@@ -44,26 +44,6 @@ const MethodologyStairs = () => {
             background: "transparent",
           }}
         >
-          <h2
-            id="project-staircase-title"
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: pct(80, CANVAS_H),
-              transform: "translateX(-50%)",
-              margin: 0,
-              fontFamily: "inherit",
-              fontSize: "2.34375cqw",
-              lineHeight: 1.1,
-              fontWeight: 700,
-              color: "#1a1a1a",
-              whiteSpace: "nowrap",
-              textAlign: "center",
-            }}
-          >
-            Как вы будете собирать проекты
-          </h2>
-
           <svg
             className="project-staircase__geometry"
             aria-hidden="true"
@@ -87,33 +67,33 @@ const MethodologyStairs = () => {
               strokeLinejoin="miter"
             />
             <g stroke="#737373" strokeWidth={2} strokeLinecap="square">
-              {/* V0 */}
-              <line x1="393" y1="665" x2="536" y2="665" />
-              <line x1="405" y1="652" x2="524" y2="652" />
-              <line x1="418" y1="639" x2="511" y2="639" />
-              {/* V1 */}
-              <line x1="548" y1="555" x2="694" y2="555" />
-              <line x1="560" y1="542" x2="682" y2="542" />
-              <line x1="573" y1="529" x2="670" y2="529" />
-              {/* V2 */}
-              <line x1="729" y1="452" x2="878" y2="452" />
-              <line x1="741" y1="439" x2="866" y2="439" />
-              <line x1="754" y1="426" x2="853" y2="426" />
-              {/* V3 */}
-              <line x1="941" y1="349" x2="1081" y2="349" />
-              <line x1="953" y1="336" x2="1069" y2="336" />
-              <line x1="966" y1="323" x2="1056" y2="323" />
-              {/* V4 */}
-              <line x1="1121" y1="247" x2="1257" y2="247" />
-              <line x1="1133" y1="234" x2="1245" y2="234" />
-              <line x1="1146" y1="221" x2="1232" y2="221" />
+              {/* V0 — tread center 468 */}
+              <line x1="397" y1="665" x2="539" y2="665" />
+              <line x1="409" y1="652" x2="527" y2="652" />
+              <line x1="422" y1="639" x2="514" y2="639" />
+              {/* V1 — tread center 648.5 */}
+              <line x1="577" y1="555" x2="720" y2="555" />
+              <line x1="589" y1="542" x2="708" y2="542" />
+              <line x1="602" y1="529" x2="695" y2="529" />
+              {/* V2 — tread center 829.5 */}
+              <line x1="758" y1="452" x2="901" y2="452" />
+              <line x1="770" y1="439" x2="889" y2="439" />
+              <line x1="783" y1="426" x2="876" y2="426" />
+              {/* V3 — tread center 1008.5 */}
+              <line x1="938" y1="349" x2="1079" y2="349" />
+              <line x1="950" y1="336" x2="1067" y2="336" />
+              <line x1="963" y1="323" x2="1054" y2="323" />
+              {/* V4 — tread center 1183.5 */}
+              <line x1="1113" y1="247" x2="1254" y2="247" />
+              <line x1="1125" y1="234" x2="1242" y2="234" />
+              <line x1="1138" y1="221" x2="1229" y2="221" />
             </g>
           </svg>
 
           {/* V0 */}
           <article className="project-step project-step--v0">
-            <h3 style={{ ...stepLabelStyle, left: pct(428, CANVAS_W), top: pct(574, CANVAS_H) }}>V0</h3>
-            <div style={{ ...stepTextBlockStyle, left: pct(570, CANVAS_W), top: pct(589, CANVAS_H), width: pct(440, CANVAS_W) }}>
+            <h3 style={{ ...stepLabelStyle, left: pct(438, CANVAS_W), top: pct(574, CANVAS_H) }}>V0</h3>
+            <div style={{ ...stepTextBlockStyle, left: pct(570, CANVAS_W), top: pct(573, CANVAS_H), width: pct(460, CANVAS_W) }}>
               <p style={pStyle}><strong>Озвучить намерение</strong></p>
               <p style={pStyle}>Получить обратную связь от&nbsp;ИИ</p>
               <p style={pStyle}>Отдать в&nbsp;работу 3 нейронкам</p>
@@ -122,8 +102,8 @@ const MethodologyStairs = () => {
 
           {/* V1 */}
           <article className="project-step project-step--v1">
-            <h3 style={{ ...stepLabelStyle, left: pct(607, CANVAS_W), top: pct(472, CANVAS_H) }}>V1</h3>
-            <div style={{ ...stepTextBlockStyle, left: pct(750, CANVAS_W), top: pct(486, CANVAS_H), width: pct(520, CANVAS_W) }}>
+            <h3 style={{ ...stepLabelStyle, left: pct(618, CANVAS_W), top: pct(465, CANVAS_H) }}>V1</h3>
+            <div style={{ ...stepTextBlockStyle, left: pct(751, CANVAS_W), top: pct(467, CANVAS_H), width: pct(540, CANVAS_W) }}>
               <p style={pStyle}>Раскритиковать чужую работу</p>
               <p style={pStyle}>Доработать <strong>один модуль / роль</strong></p>
               <p style={pStyle}>Получить обратную связь от&nbsp;людей</p>
@@ -132,8 +112,8 @@ const MethodologyStairs = () => {
 
           {/* V2 */}
           <article className="project-step project-step--v2">
-            <h3 style={{ ...stepLabelStyle, left: pct(783, CANVAS_W), top: pct(369, CANVAS_H) }}>V2</h3>
-            <div style={{ ...stepTextBlockStyle, left: pct(922, CANVAS_W), top: pct(384, CANVAS_H), width: pct(610, CANVAS_W) }}>
+            <h3 style={{ ...stepLabelStyle, left: pct(799, CANVAS_W), top: pct(362, CANVAS_H) }}>V2</h3>
+            <div style={{ ...stepTextBlockStyle, left: pct(932, CANVAS_W), top: pct(364, CANVAS_H), width: pct(630, CANVAS_W) }}>
               <p style={pStyle}>Описать архитектуру</p>
               <p style={pStyle}>Доработать <strong>один законченный процесс</strong></p>
               <p style={pStyle}>Наполнить данными, протестировать</p>
@@ -142,8 +122,8 @@ const MethodologyStairs = () => {
 
           {/* V3 */}
           <article className="project-step project-step--v3">
-            <h3 style={{ ...stepLabelStyle, left: pct(961, CANVAS_W), top: pct(264, CANVAS_H) }}>V3</h3>
-            <div style={{ ...stepTextBlockStyle, left: pct(1106, CANVAS_W), top: pct(280, CANVAS_H), width: pct(550, CANVAS_W) }}>
+            <h3 style={{ ...stepLabelStyle, left: pct(978, CANVAS_W), top: pct(259, CANVAS_H) }}>V3</h3>
+            <div style={{ ...stepTextBlockStyle, left: pct(1109, CANVAS_W), top: pct(261, CANVAS_H), width: pct(570, CANVAS_W) }}>
               <p style={pStyle}>Стабилизировать, устранить баги</p>
               <p style={pStyle}>Кастомизировать до&nbsp;комфорта</p>
               <p style={pStyle}><strong>Получить киллер фичу</strong></p>
@@ -152,8 +132,8 @@ const MethodologyStairs = () => {
 
           {/* V4 */}
           <article className="project-step project-step--v4">
-            <h3 style={{ ...stepLabelStyle, left: pct(1138, CANVAS_W), top: pct(167, CANVAS_H) }}>V4</h3>
-            <div style={{ ...stepTextBlockStyle, left: pct(1280, CANVAS_W), top: pct(176, CANVAS_H), width: pct(500, CANVAS_W) }}>
+            <h3 style={{ ...stepLabelStyle, left: pct(1153, CANVAS_W), top: pct(157, CANVAS_H) }}>V4</h3>
+            <div style={{ ...stepTextBlockStyle, left: pct(1282, CANVAS_W), top: pct(163, CANVAS_H), width: pct(520, CANVAS_W) }}>
               <p style={pStyle}>Описать, согласовать интеграции</p>
               <p style={pStyle}>Развернуть в&nbsp;рабочем контуре</p>
               <p style={pStyle}><strong>Запустить в&nbsp;эксплуатацию</strong></p>
