@@ -285,7 +285,7 @@ const PricingCalculator = () => {
                 </div>
 
                 {warn && !open && (
-                  <p className="mt-2 text-xs text-primary">Можно выбрать не\u00A0более 5\u00A0курсов.</p>
+                  <p className="mt-2 text-xs text-primary">Можно выбрать не более 5 курсов.</p>
                 )}
 
                 {selections.length > 0 && (
