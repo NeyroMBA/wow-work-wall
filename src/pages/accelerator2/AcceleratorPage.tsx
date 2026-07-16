@@ -46,7 +46,7 @@ const courses = [
 const support = [
   { icon: UserCheck, label: "Сопровождение куратора" },
   { icon: Video, label: "Онлайн-коворкинги, разборы ваших проектов" },
-  { icon: MessageCircle, label: "Персональные консультации" },
+  { icon: MessageCircle, label: "Персональный подход" },
 ];
 
 const skills = [
