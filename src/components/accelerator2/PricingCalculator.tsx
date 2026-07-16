@@ -54,35 +54,33 @@ const MAX_SELECTED = 5;
 
 const formatPrice = (n: number) => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0");
 
-function useAnimatedNumber(target: number, duration = 450) {
-  const [value, setValue] = useState(target);
-  const fromRef = useRef(target);
-  const startRef = useRef<number | null>(null);
-  const rafRef = useRef<number | null>(null);
-
+function AnimatedPrice({ target, initial, duration = 450 }: { target: number; initial: number; duration?: number }) {
+  const [value, setValue] = useState(initial);
+  const valueRef = useRef(initial);
   useEffect(() => {
-    fromRef.current = value;
-    startRef.current = null;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    const from = fromRef.current;
+    let raf = 0;
+    let start: number | null = null;
+    const from = valueRef.current;
     const to = target;
     if (from === to) return;
     const step = (t: number) => {
-      if (startRef.current === null) startRef.current = t;
-      const elapsed = t - startRef.current;
-      const p = Math.min(1, elapsed / duration);
+      if (start === null) start = t;
+      const p = Math.min(1, (t - start) / duration);
       const eased = 1 - Math.pow(1 - p, 3);
-      setValue(from + (to - from) * eased);
-      if (p < 1) rafRef.current = requestAnimationFrame(step);
+      const v = from + (to - from) * eased;
+      valueRef.current = v;
+      setValue(v);
+      if (p < 1) raf = requestAnimationFrame(step);
     };
-    rafRef.current = requestAnimationFrame(step);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
   }, [target, duration]);
-
-  return value;
+  return (
+    <>
+      {formatPrice(value)}{" "}
+      <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
+    </>
+  );
 }
 
 type Selection = { courseId: string; tariffId: string };
