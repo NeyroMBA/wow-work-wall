@@ -8,10 +8,10 @@ import PricingCalculator from "@/components/accelerator2/PricingCalculator";
 
 const courses = [
   { idx: "01", name: "Нейросети для бизнеса и карьеры", plan: "Тариф «Для бизнеса»", price: "120 000 ₽" },
-  { idx: "02", name: "Python + нейросети", plan: "Тариф «С поддержкой кураторов»", price: "59 700 ₽" },
-  { idx: "03", name: "Вайбкодинг: с нуля к IT-системе с Cursor", plan: "Тариф «Бизнес»", price: "120 000 ₽" },
-  { idx: "04", name: "ИИ-дашборды", plan: "Тариф «Бизнес»", price: "40 000 ₽" },
-  { idx: "05", name: "ИИ-агенты", plan: "Тариф «Архитектор»", price: "19 900 ₽" },
+  { idx: "02", name: "Python + нейросети", plan: "Тариф «С поддержкой кураторов»", price: "60 000 ₽" },
+  { idx: "03", name: "Вайбкодинг: с нуля к IT-системе с Cursor", plan: "Тариф «Бизнес»", price: "30 000 ₽" },
+  { idx: "04", name: "ИИ-дашборды", plan: "Тариф «Бизнес»", price: "60 000 ₽" },
+  { idx: "05", name: "ИИ-агенты", plan: "Тариф «Архитектор»", price: "39 900 ₽" },
 ];
 
 const infra = [
