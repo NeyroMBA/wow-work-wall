@@ -347,7 +347,7 @@ const AcceleratorPage = () => {
             })}
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-4 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
             {support.map((s, i) => {
               const Icon = s.icon;
               return (
