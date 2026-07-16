@@ -127,7 +127,7 @@ const Section = ({ id, title, highlight, children, intro }: {
 
 const AcceleratorPage = () => {
   const [signupOpen, setSignupOpen] = useState(false);
-  const [testOpen, setTestOpen] = useState(false);
+  const [casesExpanded, setCasesExpanded] = useState(false);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
   const { hash } = useLocation();
 
