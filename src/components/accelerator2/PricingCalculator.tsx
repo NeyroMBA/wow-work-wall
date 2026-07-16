@@ -352,6 +352,18 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
                     </motion.div>
                   )}
                 </AnimatePresence>
+                {onSignup && (
+                  <motion.button
+                    type="button"
+                    onClick={onSignup}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
+                    className="mt-8 inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full"
+                  >
+                    Записаться
+                  </motion.button>
+                )}
               </div>
             </motion.div>
           )}
