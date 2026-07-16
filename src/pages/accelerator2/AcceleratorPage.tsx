@@ -158,69 +158,66 @@ const AcceleratorPage = () => {
                 ИИ-Акселератор
               </h1>
               <p
-                className="text-foreground font-semibold text-left"
+                className="text-foreground text-left"
                 style={{
-                  fontSize: "clamp(21px, 2.2vw, 28px)",
+                  fontSize: "clamp(20px, 1.9vw, 24px)",
                   lineHeight: 1.25,
+                  fontWeight: 400,
                   maxWidth: 620,
-                  marginTop: 28,
+                  marginTop: 24,
                 }}
               >
                 Программа по&nbsp;созданию решений для ваших рабочих и&nbsp;бизнес-задач&nbsp;— от&nbsp;идеи до&nbsp;запуска
               </p>
 
-              <div style={{ marginTop: 28, maxWidth: 620 }}>
+              <div style={{ marginTop: 18, maxWidth: 620 }}>
                 <h3
                   className="text-foreground text-left"
                   style={{ fontSize: "clamp(20px, 1.9vw, 24px)", lineHeight: 1.2, fontWeight: 700 }}
                 >
                   Работайте быстрее. Успевайте больше.
                 </h3>
-                <p
-                  className="text-muted-foreground text-left"
-                  style={{
-                    fontSize: "clamp(16px, 1.5vw, 18px)",
-                    lineHeight: 1.4,
-                    fontWeight: 400,
-                    marginTop: 10,
-                    maxWidth: 600,
-                  }}
-                >
-                  ИИ&nbsp;помогает не&nbsp;заменять специалиста, а&nbsp;усиливать его&nbsp;возможности.
-                </p>
 
                 <div
-                  className="grid grid-cols-1 sm:grid-cols-2 border-y border-border sm:divide-x sm:divide-border divide-y sm:divide-y-0"
-                  style={{ marginTop: 22, paddingTop: 18, paddingBottom: 18, columnGap: 32 }}
+                  className="rounded-xl border border-primary/20 bg-primary/5 overflow-hidden"
+                  style={{ marginTop: 18 }}
                 >
-                  <div className="sm:pr-4 py-3 sm:py-0">
-                    <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
-                      Экономия времени
-                    </p>
-                    <p
-                      className="text-muted-foreground"
-                      style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
-                    >
-                      До&nbsp;2–5 раз быстрее выполнение типовых задач
-                    </p>
-                  </div>
-                  <div className="sm:pl-4 py-3 sm:py-0">
-                    <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
-                      Повышение эффективности
-                    </p>
-                    <p
-                      className="text-muted-foreground"
-                      style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
-                    >
-                      Меньше рутины и&nbsp;ручной работы
-                    </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 divide-y divide-border sm:divide-y-0 sm:divide-x sm:divide-border">
+                    <div className="flex items-start gap-3 p-5">
+                      <Clock size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
+                      <div className="min-w-0">
+                        <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
+                          Экономия времени
+                        </p>
+                        <p
+                          className="text-muted-foreground"
+                          style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
+                        >
+                          До&nbsp;2–5 раз быстрее выполнение типовых задач
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-5">
+                      <TrendingUp size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
+                      <div className="min-w-0">
+                        <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
+                          Повышение эффективности
+                        </p>
+                        <p
+                          className="text-muted-foreground"
+                          style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
+                        >
+                          Меньше рутины и&nbsp;ручной работы
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <h2
-                className="text-xl md:text-2xl text-muted-foreground leading-relaxed"
-                style={{ marginTop: 26, marginBottom: 40 }}
+                className="text-muted-foreground leading-relaxed"
+                style={{ marginTop: 24, marginBottom: 32, fontSize: 18 }}
               >
                 3 месяца интенсивной практики
               </h2>
