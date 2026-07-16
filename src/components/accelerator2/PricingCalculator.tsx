@@ -114,8 +114,7 @@ const PricingCalculator = () => {
 
   const showResult = answer === "no" || (answer === "yes" && selections.length > 0);
   const displayPrice = answer === "no" ? BASE_PRICE : finalPrice;
-  // For "no": count-up from 0. For "yes": animate from current selections value.
-  const initialForYes = useRef(finalPrice);
+
 
 
   const chooseAnswer = (val: "yes" | "no") => {
