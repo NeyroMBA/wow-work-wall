@@ -85,7 +85,7 @@ function AnimatedPrice({ target, initial, duration = 450 }: { target: number; in
 
 type Selection = { courseId: string; tariffId: string };
 
-const PricingCalculator = () => {
+const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
   const [answer, setAnswer] = useState<"yes" | "no" | null>(null);
   const [selections, setSelections] = useState<Selection[]>([]);
   const [countUpKey, setCountUpKey] = useState(0);
