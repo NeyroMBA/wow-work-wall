@@ -89,8 +89,8 @@ const PricingPage = () => {
           <div className="max-w-4xl mx-auto rounded-2xl border border-border bg-card p-8 grid md:grid-cols-2 gap-8">
             <div>
               <p className="text-sm text-muted-foreground mb-3">Полная стоимость компонентов по отдельности</p>
-              <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">437 600 ₽</p>
-              <p className="text-sm text-muted-foreground mt-3">359 600 ₽ курсы + 78 000 ₽ инфраструктура</p>
+              <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">387 900 ₽</p>
+              <p className="text-sm text-muted-foreground mt-3">309 900 ₽ курсы + 78 000 ₽ инфраструктура</p>
             </div>
             <div>
               <p className="text-sm text-primary font-medium mb-3">Цена по программе акселератора</p>
@@ -98,7 +98,7 @@ const PricingPage = () => {
                 120 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
               </p>
               <div className="mt-4 inline-flex items-center rounded-lg bg-primary/10 text-primary px-3 py-1.5 text-sm font-medium">
-                Экономия 317 600 ₽ · −73%
+                Экономия 267 900 ₽ · −69%
               </div>
             </div>
           </div>
