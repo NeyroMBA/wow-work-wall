@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
-  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock,
+  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, ChevronDown,
 } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
@@ -127,7 +127,7 @@ const Section = ({ id, title, highlight, children, intro }: {
 
 const AcceleratorPage = () => {
   const [signupOpen, setSignupOpen] = useState(false);
-  const [testOpen, setTestOpen] = useState(false);
+  const [casesExpanded, setCasesExpanded] = useState(false);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
   const { hash } = useLocation();
 
@@ -154,13 +154,74 @@ const AcceleratorPage = () => {
         <div className="container mx-auto px-6 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
                 ИИ-Акселератор
               </h1>
-              <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4 leading-snug">
-                ИТ-решения на&nbsp;основе ИИ
-              </h2>
-              <h2 className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed">
+              <p
+                className="text-foreground font-semibold text-left"
+                style={{
+                  fontSize: "clamp(21px, 2.2vw, 28px)",
+                  lineHeight: 1.25,
+                  maxWidth: 620,
+                  marginTop: 28,
+                }}
+              >
+                Программа по&nbsp;созданию решений для ваших рабочих и&nbsp;бизнес-задач&nbsp;— от&nbsp;идеи до&nbsp;запуска
+              </p>
+
+              <div style={{ marginTop: 28, maxWidth: 620 }}>
+                <h3
+                  className="text-foreground text-left"
+                  style={{ fontSize: "clamp(20px, 1.9vw, 24px)", lineHeight: 1.2, fontWeight: 700 }}
+                >
+                  Работайте быстрее. Успевайте больше.
+                </h3>
+                <p
+                  className="text-muted-foreground text-left"
+                  style={{
+                    fontSize: "clamp(16px, 1.5vw, 18px)",
+                    lineHeight: 1.4,
+                    fontWeight: 400,
+                    marginTop: 10,
+                    maxWidth: 600,
+                  }}
+                >
+                  ИИ&nbsp;помогает не&nbsp;заменять специалиста, а&nbsp;усиливать его&nbsp;возможности.
+                </p>
+
+                <div
+                  className="grid grid-cols-1 sm:grid-cols-2 border-y border-border sm:divide-x sm:divide-border divide-y sm:divide-y-0"
+                  style={{ marginTop: 22, paddingTop: 18, paddingBottom: 18, columnGap: 32 }}
+                >
+                  <div className="sm:pr-4 py-3 sm:py-0">
+                    <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
+                      Экономия времени
+                    </p>
+                    <p
+                      className="text-muted-foreground"
+                      style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
+                    >
+                      До&nbsp;2–5 раз быстрее выполнение типовых задач
+                    </p>
+                  </div>
+                  <div className="sm:pl-4 py-3 sm:py-0">
+                    <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
+                      Повышение эффективности
+                    </p>
+                    <p
+                      className="text-muted-foreground"
+                      style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
+                    >
+                      Меньше рутины и&nbsp;ручной работы
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <h2
+                className="text-xl md:text-2xl text-muted-foreground leading-relaxed"
+                style={{ marginTop: 26, marginBottom: 40 }}
+              >
                 3 месяца интенсивной практики
               </h2>
               <a href="#buy" className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity">
@@ -228,10 +289,45 @@ const AcceleratorPage = () => {
           ))}
         </div>
 
+        <AnimatePresence initial={false}>
+          {casesExpanded && (
+            <motion.div
+              key="extra-cases"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.32, ease: "easeOut" }}
+              style={{ overflow: "hidden" }}
+            >
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mt-4">
+                {cases.slice(3, 6).map((c) => (
+                  <CaseCard
+                    key={c.id}
+                    caseData={
+                      c.id === "mining-fleet" && !c.authorRole
+                        ? { ...c, authorRole: "Менеджер проектов" }
+                        : c
+                    }
+                  />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <div className="mt-8 flex justify-center">
-          <Link to="/cases" className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity">
-            Посмотреть все кейсы
-          </Link>
+          <button
+            type="button"
+            onClick={() => setCasesExpanded((v) => !v)}
+            className="inline-flex items-center gap-2 px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
+          >
+            {casesExpanded ? "Свернуть" : "Посмотреть ещё"}
+            <ChevronDown
+              size={20}
+              className="transition-transform"
+              style={{ transform: casesExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
+            />
+          </button>
         </div>
       </Section>
 
@@ -332,24 +428,8 @@ const AcceleratorPage = () => {
         </div>
       </Section>
 
-      <Section id="test">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 rounded-2xl border border-primary/30 bg-primary/5">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Проверьте себя
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Для тех, кто считает что им это не нужно, сами разберутся — мы сделали тестовое задание на навык вайбкодинга.
-            </p>
-            <p className="text-foreground font-medium leading-relaxed mb-8">
-              Для мебельной фабрики нужно сделать модуль контроля качества. Первую версию — MVP.
-            </p>
-            <button type="button" onClick={() => setTestOpen(true)} className="inline-flex items-center px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity">
-              Получить тестовое
-            </button>
-          </motion.div>
-        </div>
-      </Section>
+
+
 
       {/* Чтобы вернуть блок с отзывами — раскомментируйте строку ниже */}
       {/* <ReviewsSection /> */}
@@ -381,13 +461,7 @@ const AcceleratorPage = () => {
         scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1590377"
       />
 
-      <GetCourseWidgetDialog
-        open={testOpen}
-        onOpenChange={setTestOpen}
-        title="Получить тестовое задание"
-        scriptId="6d07126f338f02b40277e72870b00a1cad41f27e"
-        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1619094"
-      />
+
 
       <CourseDialog
         open={activeCourse !== null}
