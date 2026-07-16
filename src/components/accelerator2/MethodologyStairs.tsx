@@ -30,20 +30,41 @@ const MethodologyStairs = () => {
   return (
     <div className="methodology-image-offset" style={{ marginTop: "-156px" }}>
       <div className="w-full" style={{ paddingTop: "90px" }}>
-        <section
-          className="project-staircase"
-          aria-labelledby="project-staircase-title"
+        <div
           style={{
             position: "relative",
-            containerType: "inline-size",
             width: "min(1492px, 73.6vw)",
-            aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
+            aspectRatio: `${CANVAS_W} / ${CANVAS_H * 1.12}`,
             marginLeft: "auto",
             marginRight: "auto",
-            overflow: "hidden",
-            background: "transparent",
           }}
         >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "calc(100% / 1.12)",
+              transform: "scale(1.12)",
+              transformOrigin: "top center",
+            }}
+          >
+            <section
+              className="project-staircase"
+              aria-labelledby="project-staircase-title"
+              style={{
+                position: "relative",
+                containerType: "inline-size",
+                width: "100%",
+                height: "100%",
+                aspectRatio: `${CANVAS_W} / ${CANVAS_H}`,
+                marginLeft: "auto",
+                marginRight: "auto",
+                overflow: "hidden",
+                background: "transparent",
+              }}
+            >
           <svg
             className="project-staircase__geometry"
             aria-hidden="true"
