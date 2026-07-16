@@ -335,8 +335,10 @@ const PricingCalculator = () => {
                   Ваша индивидуальная стоимость
                 </p>
                 <p className="text-5xl md:text-6xl font-bold text-foreground">
-                  {formatPrice(animated)}{" "}
-                  <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
+                  <AnimatedPrice
+                    target={displayPrice}
+                    initial={answer === "no" ? 0 : initialForYes.current}
+                  />
                 </p>
                 <AnimatePresence>
                   {answer === "yes" && maxReached && (
