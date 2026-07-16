@@ -42,18 +42,18 @@ const CaseCard = ({ caseData }: { caseData: Case }) => {
         </div>
         {hasAuthor ? (
           <div className="p-4 border-t border-border min-w-0">
-            <p className="text-sm font-semibold text-foreground">{caseData.authorName}</p>
+            <p className="text-base font-bold text-foreground leading-snug">{caseData.authorName}</p>
             <p className="text-xs text-muted-foreground">{caseData.authorRole || "\u00A0"}</p>
           </div>
         ) : (
           <div className="p-4 border-t border-border min-w-0" aria-hidden="true">
-            <p className="text-sm font-semibold text-foreground">&nbsp;</p>
+            <p className="text-base font-bold text-foreground leading-snug">&nbsp;</p>
             <p className="text-xs text-muted-foreground">&nbsp;</p>
           </div>
         )}
 
         <div className="px-4 pb-4 space-y-3 flex flex-col flex-1">
-          <p className="text-sm text-foreground font-medium leading-snug min-h-[3.75rem]">
+          <p className="text-base text-foreground font-semibold leading-snug min-h-[3.75rem]">
             {caseData.title}
           </p>
           {caseData.kpi && (
