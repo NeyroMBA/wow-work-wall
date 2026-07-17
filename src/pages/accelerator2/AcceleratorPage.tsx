@@ -388,7 +388,7 @@ const AcceleratorPage = () => {
                     </Link>
                   )}
                   {s.desc && (
-                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                    <p className="text-base text-muted-foreground leading-relaxed">{s.desc}</p>
                   )}
                   {s.tools && (
                     <div className="flex flex-wrap gap-1.5 mt-auto pt-1">
@@ -450,6 +450,19 @@ const AcceleratorPage = () => {
 
       <Section>
         <div className="max-w-3xl mx-auto">
+          <div className="space-y-3 mb-12">
+            {results.map((r, i) => (
+              <motion.div key={r} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex items-start gap-3 p-4 rounded-xl border border-border bg-background">
+                <CheckCircle2 size={22} className="text-primary shrink-0 mt-0.5" strokeWidth={2} />
+                <p className="text-foreground leading-relaxed">{r}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section id="test">
+        <div className="max-w-3xl mx-auto text-center mt-14">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 rounded-2xl border border-primary/30 bg-primary/5 mb-8 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               Запишитесь на диагностику
@@ -468,15 +481,6 @@ const AcceleratorPage = () => {
               Записаться
             </button>
           </motion.div>
-
-          <div className="space-y-3 mb-12">
-            {results.map((r, i) => (
-              <motion.div key={r} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex items-start gap-3 p-4 rounded-xl border border-border bg-background">
-                <CheckCircle2 size={22} className="text-primary shrink-0 mt-0.5" strokeWidth={2} />
-                <p className="text-foreground leading-relaxed">{r}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </Section>
 
