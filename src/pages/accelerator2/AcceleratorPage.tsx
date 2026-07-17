@@ -247,7 +247,7 @@ const AcceleratorPage = () => {
       </section>
 
       <Section id="problem" title="В чём" highlight="проблема">
-        <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
           {problems.map((p, i) => (
             <motion.div key={p} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="p-5 rounded-xl border border-border bg-background">
               <p className="text-foreground text-base leading-relaxed">{p}</p>
