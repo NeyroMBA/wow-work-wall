@@ -257,7 +257,7 @@ const AcceleratorPage = () => {
       </Section>
 
       <Section id="audience" title="Для" highlight="кого" intro="Вы работаете с людьми и процессами. Пользуетесь ИТ-системами, но не пишете код. И не должны.">
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-6 rounded-xl border border-primary/30 bg-background">
             <div className="flex items-center gap-3 mb-4">
               <Crown size={22} strokeWidth={1.8} className="text-primary shrink-0" />
