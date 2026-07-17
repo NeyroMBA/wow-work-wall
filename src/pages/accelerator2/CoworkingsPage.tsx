@@ -138,7 +138,7 @@ const CoworkingsPage = () => {
               </h1>
               <p
                 className="text-muted-foreground"
-                style={{ fontSize: "clamp(18px, 1.6vw, 22px)", lineHeight: 1.45, marginTop: 24, maxWidth: 700 }}
+                style={{ fontSize: "clamp(15.33px, 1.5vw, 19.33px)", lineHeight: 1.45, marginTop: 24, maxWidth: 700 }}
               >
                 Приходите с&nbsp;идеей, черновиком или работающей системой. Куратор и&nbsp;участники помогут определить следующий шаг, разобраться со&nbsp;сложностью и&nbsp;продвинуть проект дальше.
               </p>
