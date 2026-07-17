@@ -1,16 +1,36 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import {
   Calendar, Clock, ArrowRight, Layers, Route, CheckCircle2,
   Brain, Wrench, LayoutGrid, KeyRound, Lightbulb, Hammer, Rocket,
-  MessageSquare, Users, Presentation,
+  MessageSquare, Users, Presentation, Quote,
 } from "lucide-react";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
-import CaseCard from "@/components/accelerator2/CaseCard";
 import GetCourseWidgetDialog from "@/components/accelerator2/GetCourseWidgetDialog";
-import { cases } from "@/data/accelerator2/cases";
+
+const reviews: { name: string; role: string; text: string }[] = [
+  {
+    name: "Ксения Иванова",
+    role: "Руководитель направления аналитической поддержки бизнеса",
+    text: "Здесь ты показываешь свой проект, получаешь обратную связь, тебе помогают увидеть более короткий путь. Это экономит огромное количество времени.",
+  },
+  {
+    name: "Роман Бартенев",
+    role: "Руководитель направления цифровизации ЭДО",
+    text: "Когда работаешь один, постоянно откладываешь собственные проекты. Всегда находятся срочные задачи. А здесь ты буквально вырываешься из операционки и каждую неделю двигаешь свой проект вперёд.",
+  },
+  {
+    name: "Ирина Антонова",
+    role: "Руководитель проектов",
+    text: "Я пришла не за очередной теорией. Мне хотелось получить пространство, где можно регулярно работать именно над своим проектом, получать обратную связь и постепенно превращать идею в рабочий инструмент.",
+  },
+  {
+    name: "Пётр Чариков",
+    role: "",
+    text: "Я давно не получал такого удовольствия от обучения. Каждый раз кажется, что открыл очередную грань возможностей, а на следующий день понимаешь, что инструмент умеет ещё в десять раз больше.",
+  },
+];
 
 const schedule = [
   { day: "Вторник", short: "Вт", time: "09:00" },
