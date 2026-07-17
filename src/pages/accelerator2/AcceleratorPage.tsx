@@ -302,6 +302,7 @@ const AcceleratorPage = () => {
           })}
         </div>
 
+        <div id="cases" aria-hidden="true" className="scroll-mt-24" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {cases.slice(0, 3).map((c) => (
             <CaseCard key={c.id} caseData={c} />
