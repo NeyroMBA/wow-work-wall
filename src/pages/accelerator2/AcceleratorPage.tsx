@@ -443,12 +443,22 @@ const AcceleratorPage = () => {
       <Section>
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 rounded-2xl border border-primary/30 bg-primary/5 mb-8 text-center">
-            <p className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Вы сможете в одни руки делать настоящие ИТ-проекты.
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Запишитесь на диагностику
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              На бесплатном индивидуальном созвоне разберём вашу задачу, ответим на вопросы и оценим, подходит ли вам программа.
             </p>
-            <p className="text-muted-foreground">
-              Локальные задачи — за часы. Серьёзные проекты — за недели.
+            <p className="text-foreground font-medium leading-relaxed mb-8">
+              Поможем определить следующий шаг и подобрать оптимальный маршрут. Встреча ни к чему не обязывает.
             </p>
+            <button
+              type="button"
+              onClick={() => setSignupOpen(true)}
+              className="inline-flex items-center px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
+            >
+              Записаться
+            </button>
           </motion.div>
 
           <div className="space-y-3 mb-12">
