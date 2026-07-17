@@ -43,7 +43,15 @@ const courses = [
   { icon: BarChart3, name: "Аналитика", desc: "Работа с данными, дашборды и визуализация" },
 ];
 
-const support = [
+type SupportItem = {
+  icon: typeof UserCheck;
+  label: string;
+  desc?: string;
+  cta?: { label: string; href: string };
+  tools?: string[];
+};
+
+const support: SupportItem[] = [
   {
     icon: UserCheck,
     label: "Сопровождение куратора",
