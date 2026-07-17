@@ -130,9 +130,11 @@ const CoworkingsPage = () => {
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <h1
                 className="font-bold text-foreground"
-                style={{ fontSize: "clamp(34px, 5.2vw, 56px)", lineHeight: 1.1, maxWidth: 760 }}
+                style={{ fontSize: "clamp(30px, 4.0vw, 34px)", lineHeight: 1.12, maxWidth: 700 }}
               >
-                Начните работать над проектом уже на&nbsp;ближайшем коворкинге
+                Начните работать над проектом{" "}
+                <br className="hidden sm:block" />
+                уже на&nbsp;ближайшем коворкинге
               </h1>
               <p
                 className="text-muted-foreground"
@@ -233,8 +235,13 @@ const CoworkingsPage = () => {
       <SectionShell>
         <div className="max-w-5xl mx-auto">
           <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Нужна точечная помощь? Перейдите с&nbsp;куратором в&nbsp;отдельную комнату
+            <h2
+              className="font-bold text-foreground mb-4"
+              style={{ fontSize: "clamp(28px, 3.4vw, 36px)", lineHeight: 1.15, maxWidth: 720 }}
+            >
+              Нужна индивидуальная помощь?{" "}
+              <br className="hidden sm:block" />
+              Куратор окажет её персонально
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Во&nbsp;время коворкинга можно перейти с&nbsp;куратором в&nbsp;отдельную онлайн-комнату и&nbsp;персонально разобрать свой проект. Куратор поможет найти причину проблемы, выбрать подходящий инструмент и&nbsp;определить оптимальный способ реализации.
