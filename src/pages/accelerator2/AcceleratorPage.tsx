@@ -388,7 +388,7 @@ const AcceleratorPage = () => {
                     </Link>
                   )}
                   {s.desc && (
-                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                    <p className="text-base text-muted-foreground leading-relaxed">{s.desc}</p>
                   )}
                   {s.tools && (
                     <div className="flex flex-wrap gap-1.5 mt-auto pt-1">
