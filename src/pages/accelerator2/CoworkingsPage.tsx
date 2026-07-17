@@ -1,16 +1,36 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import {
   Calendar, Clock, ArrowRight, Layers, Route, CheckCircle2,
   Brain, Wrench, LayoutGrid, KeyRound, Lightbulb, Hammer, Rocket,
-  MessageSquare, Users, Presentation,
+  MessageSquare, Users, Presentation, Quote,
 } from "lucide-react";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
-import CaseCard from "@/components/accelerator2/CaseCard";
 import GetCourseWidgetDialog from "@/components/accelerator2/GetCourseWidgetDialog";
-import { cases } from "@/data/accelerator2/cases";
+
+const reviews: { name: string; role: string; text: string }[] = [
+  {
+    name: "Ксения Иванова",
+    role: "Руководитель направления аналитической поддержки бизнеса",
+    text: "Здесь ты показываешь свой проект, получаешь обратную связь, тебе помогают увидеть более короткий путь. Это экономит огромное количество времени.",
+  },
+  {
+    name: "Роман Бартенев",
+    role: "Руководитель направления цифровизации ЭДО",
+    text: "Когда работаешь один, постоянно откладываешь собственные проекты. Всегда находятся срочные задачи. А здесь ты буквально вырываешься из операционки и каждую неделю двигаешь свой проект вперёд.",
+  },
+  {
+    name: "Ирина Антонова",
+    role: "Руководитель проектов",
+    text: "Я пришла не за очередной теорией. Мне хотелось получить пространство, где можно регулярно работать именно над своим проектом, получать обратную связь и постепенно превращать идею в рабочий инструмент.",
+  },
+  {
+    name: "Пётр Чариков",
+    role: "",
+    text: "Я давно не получал такого удовольствия от обучения. Каждый раз кажется, что открыл очередную грань возможностей, а на следующий день понимаешь, что инструмент умеет ещё в десять раз больше.",
+  },
+];
 
 const schedule = [
   { day: "Вторник", short: "Вт", time: "09:00" },
@@ -265,7 +285,6 @@ const CoworkingsPage = () => {
 
           <div className="mt-10 flex flex-col items-center text-center">
             <PrimaryCTA onClick={openSignup} className="w-full sm:w-auto" />
-            <CtaNote />
           </div>
         </div>
       </SectionShell>
@@ -316,9 +335,6 @@ const CoworkingsPage = () => {
             </motion.div>
           ))}
         </div>
-        <motion.div {...fadeIn} className="mt-6 max-w-4xl mx-auto rounded-xl border border-border bg-background px-5 py-3 text-center text-base text-muted-foreground">
-          Демо-сессии проходят раз в&nbsp;две недели
-        </motion.div>
       </SectionShell>
 
       {/* 8. Демо-сессии */}
@@ -342,28 +358,33 @@ const CoworkingsPage = () => {
         </motion.div>
       </SectionShell>
 
-      {/* 9. Кейсы */}
+      {/* 9. Отзывы участников */}
       <SectionShell>
         <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Посмотрите, какие проекты собирают участники
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Что говорят участники
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Реальные системы для производства, аналитики, управления, продаж и&nbsp;других рабочих задач.
-          </p>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {cases.slice(0, 3).map((c) => (
-            <CaseCard key={c.id} caseData={c} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          {reviews.map((r, i) => (
+            <motion.div
+              key={r.name}
+              {...fadeIn}
+              transition={{ ...fadeIn.transition, delay: i * 0.05 }}
+              className="p-6 rounded-xl border border-primary/25 bg-background flex flex-col h-full"
+            >
+              <Quote size={22} strokeWidth={1.8} className="text-primary mb-3" />
+              <p className="text-base text-foreground leading-relaxed flex-1">
+                {r.text}
+              </p>
+              <div className="mt-5 pt-4 border-t border-border">
+                <p className="text-base font-semibold text-foreground leading-snug">{r.name}</p>
+                {r.role && (
+                  <p className="text-sm text-muted-foreground leading-snug mt-0.5">{r.role}</p>
+                )}
+              </div>
+            </motion.div>
           ))}
-        </div>
-        <div className="mt-8 flex justify-center">
-          <Link
-            to="/accelerator#cases"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5 transition-colors"
-          >
-            Смотреть кейсы участников <ArrowRight size={18} />
-          </Link>
         </div>
       </SectionShell>
 
