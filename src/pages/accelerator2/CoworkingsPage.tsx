@@ -338,28 +338,33 @@ const CoworkingsPage = () => {
         </motion.div>
       </SectionShell>
 
-      {/* 9. Кейсы */}
+      {/* 9. Отзывы участников */}
       <SectionShell>
         <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Посмотрите, какие проекты собирают участники
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Что говорят участники
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Реальные системы для производства, аналитики, управления, продаж и&nbsp;других рабочих задач.
-          </p>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {cases.slice(0, 3).map((c) => (
-            <CaseCard key={c.id} caseData={c} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          {reviews.map((r, i) => (
+            <motion.div
+              key={r.name}
+              {...fadeIn}
+              transition={{ ...fadeIn.transition, delay: i * 0.05 }}
+              className="p-6 rounded-xl border border-primary/25 bg-background flex flex-col h-full"
+            >
+              <Quote size={22} strokeWidth={1.8} className="text-primary mb-3" />
+              <p className="text-base text-foreground leading-relaxed flex-1">
+                {r.text}
+              </p>
+              <div className="mt-5 pt-4 border-t border-border">
+                <p className="text-base font-semibold text-foreground leading-snug">{r.name}</p>
+                {r.role && (
+                  <p className="text-sm text-muted-foreground leading-snug mt-0.5">{r.role}</p>
+                )}
+              </div>
+            </motion.div>
           ))}
-        </div>
-        <div className="mt-8 flex justify-center">
-          <Link
-            to="/accelerator#cases"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5 transition-colors"
-          >
-            Смотреть кейсы участников <ArrowRight size={18} />
-          </Link>
         </div>
       </SectionShell>
 
