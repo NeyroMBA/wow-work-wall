@@ -7,15 +7,14 @@ import logo from "@/assets/logo.svg";
 const acceleratorLinks = [
   { label: "Для кого", href: "#audience" },
   { label: "Программа", href: "#solution" },
-  { label: "Тестовое", href: "#test" },
   { label: "Стоимость", href: "/pricing" },
-  { label: "Кейсы", href: "/cases" },
+  { label: "Коворкинги", href: "/coworkings" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
-  const isInternalPage = pathname === "/cases" || pathname === "/pricing";
+  const isInternalPage = pathname === "/cases" || pathname === "/pricing" || pathname === "/coworkings";
   const links = acceleratorLinks;
 
   return (
