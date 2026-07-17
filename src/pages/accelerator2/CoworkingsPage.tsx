@@ -142,7 +142,7 @@ const CoworkingsPage = () => {
               >
                 Приходите с&nbsp;идеей, черновиком или работающей системой. Куратор и&nbsp;участники помогут определить следующий шаг, разобраться со&nbsp;сложностью и&nbsp;продвинуть проект дальше.
               </p>
-              <div style={{ marginTop: 32 }}>
+          <div className="inline-flex flex-col items-center w-full sm:w-auto" style={{ marginTop: 32 }}>
                 <PrimaryCTA onClick={openSignup} className="w-full sm:w-auto" />
                 <CtaNote />
               </div>
