@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
-  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, ChevronDown, Clock,
+  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, ChevronDown, Clock, ArrowRight,
 } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
@@ -43,10 +43,32 @@ const courses = [
   { icon: BarChart3, name: "Аналитика", desc: "Работа с данными, дашборды и визуализация" },
 ];
 
-const support = [
-  { icon: UserCheck, label: "Сопровождение куратора" },
-  { icon: Video, label: "Онлайн-коворкинги, разборы ваших проектов" },
-  { icon: MessageCircle, label: "Персональный подход" },
+type SupportItem = {
+  icon: typeof UserCheck;
+  label: string;
+  desc?: string;
+  cta?: { label: string; href: string };
+  tools?: string[];
+};
+
+const support: SupportItem[] = [
+  {
+    icon: UserCheck,
+    label: "Сопровождение куратора",
+    desc: "Поддержка для любого уровня подготовки: выбрать нейросети и решить технические вопросы, при необходимости настроить доступы, VPN и подписки.",
+  },
+  {
+    icon: Video,
+    label: "Онлайн-коворкинги, разборы ваших проектов",
+    cta: { label: "Как проходят коворкинги", href: "/coworkings" },
+    desc: "Подключаться можно ещё до начала обучения. Четыре сессии в неделю: приходите на все или выбирайте удобные, получайте обратную связь и помощь по проекту.",
+  },
+  {
+    icon: MessageCircle,
+    label: "Персональный подход",
+    desc: "Помогаем подобрать подходящие ИИ-инструменты под вашу задачу и рекомендуем, с какой моделью лучше работать.",
+    tools: ["Claude", "GPT", "Qwen", "Perplexity"],
+  },
 ];
 
 const skills = [
@@ -233,7 +255,7 @@ const AcceleratorPage = () => {
       </section>
 
       <Section id="problem" title="В чём" highlight="проблема">
-        <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
           {problems.map((p, i) => (
             <motion.div key={p} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="p-5 rounded-xl border border-border bg-background">
               <p className="text-foreground text-base leading-relaxed">{p}</p>
@@ -243,7 +265,7 @@ const AcceleratorPage = () => {
       </Section>
 
       <Section id="audience" title="Для" highlight="кого" intro="Вы работаете с людьми и процессами. Пользуетесь ИТ-системами, но не пишете код. И не должны.">
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-6 rounded-xl border border-primary/30 bg-background">
             <div className="flex items-center gap-3 mb-4">
               <Crown size={22} strokeWidth={1.8} className="text-primary shrink-0" />
@@ -347,13 +369,36 @@ const AcceleratorPage = () => {
             })}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto items-stretch">
             {support.map((s, i) => {
               const Icon = s.icon;
               return (
-                <motion.div key={s.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex items-start gap-3 p-5 rounded-xl border border-primary/20 bg-primary/5">
-                  <Icon size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
-                  <p className="text-base text-foreground leading-relaxed font-medium">{s.label}</p>
+                <motion.div key={s.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex flex-col gap-3 p-5 rounded-xl border border-primary/20 bg-primary/5 h-full">
+                  <div className="flex items-start gap-3">
+                    <Icon size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
+                    <p className="text-base text-foreground leading-relaxed font-medium">{s.label}</p>
+                  </div>
+                  {s.cta && (
+                    <Link
+                      to={s.cta.href}
+                      className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-lg border border-primary/40 bg-background text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      {s.cta.label}
+                      <ArrowRight size={14} strokeWidth={2} />
+                    </Link>
+                  )}
+                  {s.desc && (
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  )}
+                  {s.tools && (
+                    <div className="flex flex-wrap gap-1.5 mt-auto pt-1">
+                      {s.tools.map((t) => (
+                        <span key={t} className="inline-flex items-center px-2.5 py-1 rounded-md border border-primary/20 bg-background text-xs font-medium text-muted-foreground">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               );
             })}
@@ -406,12 +451,22 @@ const AcceleratorPage = () => {
       <Section>
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 rounded-2xl border border-primary/30 bg-primary/5 mb-8 text-center">
-            <p className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Вы сможете в одни руки делать настоящие ИТ-проекты.
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Запишитесь на диагностику
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              На бесплатном индивидуальном созвоне разберём вашу задачу, ответим на вопросы и оценим, подходит ли вам программа.
             </p>
-            <p className="text-muted-foreground">
-              Локальные задачи — за часы. Серьёзные проекты — за недели.
+            <p className="text-foreground font-medium leading-relaxed mb-8">
+              Поможем определить следующий шаг и подобрать оптимальный маршрут. Встреча ни к чему не обязывает.
             </p>
+            <button
+              type="button"
+              onClick={() => setSignupOpen(true)}
+              className="inline-flex items-center px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
+            >
+              Записаться
+            </button>
           </motion.div>
 
           <div className="space-y-3 mb-12">
