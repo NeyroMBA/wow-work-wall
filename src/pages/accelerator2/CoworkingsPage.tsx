@@ -265,7 +265,6 @@ const CoworkingsPage = () => {
 
           <div className="mt-10 flex flex-col items-center text-center">
             <PrimaryCTA onClick={openSignup} className="w-full sm:w-auto" />
-            <CtaNote />
           </div>
         </div>
       </SectionShell>
