@@ -315,9 +315,6 @@ const CoworkingsPage = () => {
             </motion.div>
           ))}
         </div>
-        <motion.div {...fadeIn} className="mt-6 max-w-4xl mx-auto rounded-xl border border-border bg-background px-5 py-3 text-center text-base text-muted-foreground">
-          Демо-сессии проходят раз в&nbsp;две недели
-        </motion.div>
       </SectionShell>
 
       {/* 8. Демо-сессии */}
