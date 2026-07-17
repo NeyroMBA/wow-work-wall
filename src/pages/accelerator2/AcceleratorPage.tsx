@@ -361,13 +361,36 @@ const AcceleratorPage = () => {
             })}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 max-w-4xl mx-auto items-stretch">
             {support.map((s, i) => {
               const Icon = s.icon;
               return (
-                <motion.div key={s.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex items-start gap-3 p-5 rounded-xl border border-primary/20 bg-primary/5">
-                  <Icon size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
-                  <p className="text-base text-foreground leading-relaxed font-medium">{s.label}</p>
+                <motion.div key={s.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex flex-col gap-3 p-5 rounded-xl border border-primary/20 bg-primary/5 h-full">
+                  <div className="flex items-start gap-3">
+                    <Icon size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
+                    <p className="text-base text-foreground leading-relaxed font-medium">{s.label}</p>
+                  </div>
+                  {s.cta && (
+                    <Link
+                      to={s.cta.href}
+                      className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 rounded-lg border border-primary/40 bg-background text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
+                    >
+                      {s.cta.label}
+                      <ArrowRight size={14} strokeWidth={2} />
+                    </Link>
+                  )}
+                  {s.desc && (
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  )}
+                  {s.tools && (
+                    <div className="flex flex-wrap gap-1.5 mt-auto pt-1">
+                      {s.tools.map((t) => (
+                        <span key={t} className="inline-flex items-center px-2.5 py-1 rounded-md border border-primary/20 bg-background text-xs font-medium text-muted-foreground">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               );
             })}
