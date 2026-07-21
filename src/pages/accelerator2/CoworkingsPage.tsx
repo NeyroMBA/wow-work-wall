@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Calendar, Clock, ArrowRight, Layers, Route, CheckCircle2,
+  ArrowRight, Layers, Calendar, Route, CheckCircle2,
   Brain, Wrench, LayoutGrid, KeyRound, Lightbulb, Hammer, Rocket,
   MessageSquare, Users, Presentation, Quote,
 } from "lucide-react";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
 import GetCourseWidgetDialog from "@/components/accelerator2/GetCourseWidgetDialog";
+import HeroCarousel from "@/components/accelerator2/HeroCarousel";
 
 const reviews: { name: string; role: string; text: string }[] = [
   {
@@ -108,7 +109,7 @@ const PrimaryCTA = ({ onClick, className = "" }: { onClick: () => void; classNam
 );
 
 const CtaNote = () => (
-  <p className="mt-3 text-sm md:text-base text-muted-foreground">Бесплатно · Ни к чему не обязывает</p>
+  <p className="mt-3 text-sm md:text-base text-muted-foreground text-center">Бесплатно</p>
 );
 
 const CoworkingsPage = () => {
@@ -132,13 +133,17 @@ const CoworkingsPage = () => {
                 className="font-bold text-foreground"
                 style={{ fontSize: "clamp(30px, 4.0vw, 34px)", lineHeight: 1.12, maxWidth: 700 }}
               >
-                Начните работать над проектом{" "}
-                <br className="hidden sm:block" />
-                уже на&nbsp;ближайшем коворкинге
+                Коворкинг по&nbsp;разработке ИТ-проектов с&nbsp;ИИ
               </h1>
               <p
-                className="text-muted-foreground"
+                className="font-bold text-foreground"
                 style={{ fontSize: "clamp(15.33px, 1.5vw, 19.33px)", lineHeight: 1.45, marginTop: 24, maxWidth: 700 }}
+              >
+                4&nbsp;коворкинга в&nbsp;неделю · доступ на&nbsp;3&nbsp;месяца
+              </p>
+              <p
+                className="text-muted-foreground"
+                style={{ fontSize: "clamp(15.33px, 1.5vw, 19.33px)", lineHeight: 1.45, marginTop: 16, maxWidth: 700 }}
               >
                 Приходите с&nbsp;идеей, черновиком или работающей системой. Куратор и&nbsp;участники помогут определить следующий шаг, разобраться со&nbsp;сложностью и&nbsp;продвинуть проект дальше.
               </p>
@@ -148,61 +153,14 @@ const CoworkingsPage = () => {
               </div>
             </motion.div>
 
-            <motion.div
-              {...fadeIn}
-              className="rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-7"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Calendar size={20} strokeWidth={1.8} className="text-primary" />
-                <h2 className="text-lg md:text-xl font-semibold text-foreground">Коворкинги каждую неделю</h2>
-              </div>
-              <ul className="divide-y divide-border rounded-xl bg-background border border-border overflow-hidden">
-                {schedule.map((s) => (
-                  <li key={s.short} className="flex items-baseline justify-between px-4 py-3">
-                    <span className="text-sm md:text-base text-muted-foreground">{s.short}</span>
-                    <span className="text-lg md:text-xl font-semibold text-foreground tabular-nums">{s.time}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-3 text-sm text-muted-foreground flex items-center gap-1.5">
-                <Clock size={14} strokeWidth={1.8} /> Московское время
-              </p>
-              <div className="mt-5 rounded-xl bg-background border border-border px-4 py-3 text-sm md:text-base text-foreground">
-                Демо-сессии&nbsp;— раз в&nbsp;две недели
-              </div>
+            <motion.div {...fadeIn}>
+              <HeroCarousel />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 2. Начать можно сразу */}
-      <SectionShell>
-        <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Начать можно сразу</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Коворкинг&nbsp;— это рабочая среда, в&nbsp;которую можно включиться с&nbsp;первых дней.
-          </p>
-        </motion.div>
-        <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {startCards.map((c, i) => {
-            const Icon = c.icon;
-            return (
-              <motion.div
-                key={c.title}
-                {...fadeIn}
-                transition={{ ...fadeIn.transition, delay: i * 0.06 }}
-                className="p-6 rounded-xl border border-border bg-background flex flex-col"
-              >
-                <Icon size={26} strokeWidth={1.6} className="text-primary mb-4" />
-                <h3 className="text-xl md:text-[22px] font-semibold text-foreground mb-2 leading-snug">{c.title}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed">{c.desc}</p>
-              </motion.div>
-            );
-          })}
-        </div>
-      </SectionShell>
-
-      {/* 3. Как проходит коворкинг */}
+      {/* 2. Как проходит коворкинг */}
       <SectionShell>
         <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Как проходит коворкинг</h2>
@@ -229,6 +187,33 @@ const CoworkingsPage = () => {
         <motion.div {...fadeIn} className="max-w-5xl mx-auto mt-8 rounded-xl border border-primary/20 bg-primary/5 px-6 py-4 text-center text-base text-foreground">
           Это не&nbsp;классический формат вебинаров: основное время вы&nbsp;работаете над собственной задачей.
         </motion.div>
+      </SectionShell>
+
+      {/* 3. Начать можно сразу */}
+      <SectionShell>
+        <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Начать можно сразу</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Коворкинг&nbsp;— это рабочая среда, к&nbsp;которой можно подключиться сразу или позже.
+          </p>
+        </motion.div>
+        <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          {startCards.map((c, i) => {
+            const Icon = c.icon;
+            return (
+              <motion.div
+                key={c.title}
+                {...fadeIn}
+                transition={{ ...fadeIn.transition, delay: i * 0.06 }}
+                className="p-6 rounded-xl border border-border bg-background flex flex-col"
+              >
+                <Icon size={26} strokeWidth={1.6} className="text-primary mb-4" />
+                <h3 className="text-xl md:text-[22px] font-semibold text-foreground mb-2 leading-snug">{c.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">{c.desc}</p>
+              </motion.div>
+            );
+          })}
+        </div>
       </SectionShell>
 
       {/* 4. Персональная консультация */}
@@ -323,7 +308,7 @@ const CoworkingsPage = () => {
       {/* 6. Полное расписание */}
       <SectionShell>
         <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Выберите удобное время</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Начните работу уже на&nbsp;ближайшем коворкинге</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Можно приходить на&nbsp;все встречи или выбирать только удобные сессии.
           </p>
