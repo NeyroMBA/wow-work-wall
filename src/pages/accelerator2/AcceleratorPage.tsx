@@ -193,17 +193,9 @@ const AcceleratorPage = () => {
                 Программа по&nbsp;созданию решений для ваших рабочих и&nbsp;бизнес-задач&nbsp;— от&nbsp;идеи до&nbsp;запуска
               </p>
 
-              <div style={{ marginTop: 18, maxWidth: 620 }}>
-                <h3
-                  className="text-foreground text-left"
-                  style={{ fontSize: "clamp(20px, 1.9vw, 24px)", lineHeight: 1.2, fontWeight: 700 }}
-                >
-                  Работайте быстрее. Успевайте больше.
-                </h3>
-
+              <div style={{ marginTop: 24, maxWidth: 620 }}>
                 <div
                   className="rounded-xl border border-primary/20 bg-primary/5 overflow-hidden"
-                  style={{ marginTop: 18 }}
                 >
                   <div className="p-5">
                     <h4 className="text-foreground font-semibold text-[17px] mb-4">
