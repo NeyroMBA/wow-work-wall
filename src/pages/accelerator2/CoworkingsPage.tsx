@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Calendar, Clock, ArrowRight, Layers, Route, CheckCircle2,
+  ArrowRight, Layers, Calendar, Route, CheckCircle2,
   Brain, Wrench, LayoutGrid, KeyRound, Lightbulb, Hammer, Rocket,
   MessageSquare, Users, Presentation, Quote,
 } from "lucide-react";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
 import GetCourseWidgetDialog from "@/components/accelerator2/GetCourseWidgetDialog";
+import HeroCarousel from "@/components/accelerator2/HeroCarousel";
 
 const reviews: { name: string; role: string; text: string }[] = [
   {
