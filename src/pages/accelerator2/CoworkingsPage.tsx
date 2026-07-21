@@ -109,7 +109,7 @@ const PrimaryCTA = ({ onClick, className = "" }: { onClick: () => void; classNam
 );
 
 const CtaNote = () => (
-  <p className="mt-3 text-sm md:text-base text-muted-foreground">Бесплатно · Ни к чему не обязывает</p>
+  <p className="mt-3 text-sm md:text-base text-muted-foreground text-center">Бесплатно</p>
 );
 
 const CoworkingsPage = () => {
@@ -133,13 +133,17 @@ const CoworkingsPage = () => {
                 className="font-bold text-foreground"
                 style={{ fontSize: "clamp(30px, 4.0vw, 34px)", lineHeight: 1.12, maxWidth: 700 }}
               >
-                Начните работать над проектом{" "}
-                <br className="hidden sm:block" />
-                уже на&nbsp;ближайшем коворкинге
+                Коворкинг по&nbsp;разработке ИТ-проектов с&nbsp;ИИ
               </h1>
               <p
-                className="text-muted-foreground"
+                className="font-bold text-foreground"
                 style={{ fontSize: "clamp(15.33px, 1.5vw, 19.33px)", lineHeight: 1.45, marginTop: 24, maxWidth: 700 }}
+              >
+                4&nbsp;коворкинга в&nbsp;неделю · доступ на&nbsp;3&nbsp;месяца
+              </p>
+              <p
+                className="text-muted-foreground"
+                style={{ fontSize: "clamp(15.33px, 1.5vw, 19.33px)", lineHeight: 1.45, marginTop: 16, maxWidth: 700 }}
               >
                 Приходите с&nbsp;идеей, черновиком или работающей системой. Куратор и&nbsp;участники помогут определить следующий шаг, разобраться со&nbsp;сложностью и&nbsp;продвинуть проект дальше.
               </p>
@@ -149,28 +153,8 @@ const CoworkingsPage = () => {
               </div>
             </motion.div>
 
-            <motion.div
-              {...fadeIn}
-              className="rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-7"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <Calendar size={20} strokeWidth={1.8} className="text-primary" />
-                <h2 className="text-lg md:text-xl font-semibold text-foreground">Коворкинги каждую неделю</h2>
-              </div>
-              <ul className="divide-y divide-border rounded-xl bg-background border border-border overflow-hidden">
-                {schedule.map((s) => (
-                  <li key={s.short} className="flex items-baseline justify-between px-4 py-3">
-                    <span className="text-sm md:text-base text-muted-foreground">{s.short}</span>
-                    <span className="text-lg md:text-xl font-semibold text-foreground tabular-nums">{s.time}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-3 text-sm text-muted-foreground flex items-center gap-1.5">
-                <Clock size={14} strokeWidth={1.8} /> Московское время
-              </p>
-              <div className="mt-5 rounded-xl bg-background border border-border px-4 py-3 text-sm md:text-base text-foreground">
-                Демо-сессии&nbsp;— раз в&nbsp;две недели
-              </div>
+            <motion.div {...fadeIn}>
+              <HeroCarousel />
             </motion.div>
           </div>
         </div>
