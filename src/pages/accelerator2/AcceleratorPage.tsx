@@ -5,6 +5,7 @@ import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
   UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, ChevronDown, Clock, ArrowRight,
+  CalendarDays, Layers3,
 } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
@@ -204,34 +205,30 @@ const AcceleratorPage = () => {
                   className="rounded-xl border border-primary/20 bg-primary/5 overflow-hidden"
                   style={{ marginTop: 18 }}
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 divide-y divide-border sm:divide-y-0 sm:divide-x sm:divide-border">
-                    <div className="flex items-start gap-3 p-5">
-                      <Clock size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
-                      <div className="min-w-0">
-                        <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
-                          Экономия времени
-                        </p>
-                        <p
-                          className="text-muted-foreground"
-                          style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
-                        >
-                          До&nbsp;2–5 раз быстрее выполнение типовых задач
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3 p-5">
-                      <TrendingUp size={22} strokeWidth={1.8} className="text-primary shrink-0 mt-0.5" />
-                      <div className="min-w-0">
-                        <p className="text-foreground" style={{ fontSize: 18, fontWeight: 600 }}>
-                          Повышение эффективности
-                        </p>
-                        <p
-                          className="text-muted-foreground"
-                          style={{ fontSize: 16, fontWeight: 400, lineHeight: 1.35, marginTop: 6 }}
-                        >
-                          Меньше рутины и&nbsp;ручной работы
-                        </p>
-                      </div>
+                  <div className="p-5">
+                    <h4 className="text-foreground font-semibold text-[17px] mb-4">
+                      Формат акселератора
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-4 sm:grid-rows-2 gap-3">
+                      {[
+                        { icon: CalendarDays, label: "16 недель практики" },
+                        { icon: Layers3, label: "5 курсов" },
+                        { icon: UserCheck, label: "Сопровождение куратора" },
+                        { icon: Video, label: "Онлайн-коворкинги" },
+                      ].map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <div
+                            key={item.label}
+                            className="flex items-center gap-3 p-4 rounded-xl border border-primary/20 bg-background min-h-[68px]"
+                          >
+                            <Icon size={22} strokeWidth={1.8} className="text-primary shrink-0" />
+                            <span className="text-foreground font-semibold text-base leading-tight">
+                              {item.label}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
