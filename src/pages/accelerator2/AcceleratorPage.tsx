@@ -230,7 +230,7 @@ const AcceleratorPage = () => {
                 className="text-muted-foreground leading-relaxed"
                 style={{ marginTop: 24, marginBottom: 32, fontSize: 18 }}
               >
-                3 месяца интенсивной практики
+                {"\n"}
               </h2>
               <a href="#buy" className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity">
                 Записаться
