@@ -220,7 +220,7 @@ const AcceleratorPage = () => {
                         return (
                           <div
                             key={item.label}
-                            className="flex items-center gap-3 p-4 rounded-xl border border-primary/20 bg-background"
+                            className="flex items-center gap-3 p-4 rounded-xl border border-primary/20 bg-background min-h-[68px]"
                           >
                             <Icon size={22} strokeWidth={1.8} className="text-primary shrink-0" />
                             <span className="text-foreground font-semibold text-base leading-tight">
