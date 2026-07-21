@@ -199,7 +199,7 @@ const AcceleratorPage = () => {
                 >
                   <div className="p-5">
                     <h4 className="text-foreground font-semibold text-[17px] mb-4">
-                      Формат акселератора
+                      Работайте быстрее. Успевайте больше.
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-4 sm:grid-rows-2 gap-3">
                       {[
