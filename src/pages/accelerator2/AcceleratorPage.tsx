@@ -183,11 +183,11 @@ const AcceleratorPage = () => {
               <p
                 className="text-foreground text-left"
                 style={{
-                  fontSize: "clamp(20px, 1.9vw, 24px)",
+                  fontSize: "clamp(16px, 1.9vw, 20px)",
                   lineHeight: 1.25,
                   fontWeight: 400,
                   maxWidth: 620,
-                  marginTop: 24,
+                  marginTop: 28,
                 }}
               >
                 Программа по&nbsp;созданию решений для ваших рабочих и&nbsp;бизнес-задач&nbsp;— от&nbsp;идеи до&nbsp;запуска
