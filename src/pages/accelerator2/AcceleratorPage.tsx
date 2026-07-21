@@ -188,7 +188,6 @@ const AcceleratorPage = () => {
                   fontWeight: 400,
                   maxWidth: 620,
                   marginTop: 28,
-                  textWrap: "balance",
                 }}
               >
                 Программа по&nbsp;созданию решений для ваших рабочих и&nbsp;бизнес-задач&nbsp;— от&nbsp;идеи до&nbsp;запуска
