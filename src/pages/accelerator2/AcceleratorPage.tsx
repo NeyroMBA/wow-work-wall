@@ -226,13 +226,11 @@ const AcceleratorPage = () => {
                 </div>
               </div>
 
-              <h2
-                className="text-muted-foreground leading-relaxed"
-                style={{ marginTop: 24, marginBottom: 32, fontSize: 18 }}
+              <a
+                href="#buy"
+                className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
+                style={{ marginTop: 24 }}
               >
-                {"\n"}
-              </h2>
-              <a href="#buy" className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity">
                 Записаться
               </a>
             </motion.div>
