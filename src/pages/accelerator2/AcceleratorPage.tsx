@@ -209,7 +209,7 @@ const AcceleratorPage = () => {
                     <h4 className="text-foreground font-semibold text-[17px] mb-4">
                       Формат акселератора
                     </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-4 sm:grid-rows-2 gap-3">
                       {[
                         { icon: CalendarDays, label: "16 недель практики" },
                         { icon: Layers3, label: "5 курсов" },
