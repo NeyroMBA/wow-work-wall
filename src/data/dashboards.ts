@@ -44,20 +44,6 @@ import dashVinoteka from "@/assets/dash-vinoteka.jpg";
 import dashArchive from "@/assets/dash-archive.jpg";
 
 const RAW: Raw[] = [
-  {
-    id: "simonov-ijk",
-    title: "Ипотечное жилищное кредитование",
-    author: "Константин Симонов и Андрей",
-    categories: ["Finance"],
-    features: ["Реальные данные", "Переключатель регионов", "Рейтинг", "Сравнение с ФО и РФ"],
-    tools: ["Claude"],
-    image: "https://files.alexkolokolov.com/ai/gallery/img/simonov.png",
-    link: "https://files.alexkolokolov.com/ai/gallery/simonov.html",
-    accent: "from-sky-500 to-indigo-500",
-    description:
-      "Одностраничный дашборд по ипотечному жилищному кредитованию для экономиста Отделения Банка России по Тверской области. Выбор региона, динамика портфеля и выдач с 2019 года, просрочка и ставка, сравнение с федеральным округом и Россией, а также рейтинг регионов.",
-    cohort: "Cohort · 2026",
-  },
 
   {
     id: "bank-churn",
