@@ -281,7 +281,7 @@ const COHORT_6: Raw[] = [
     title: "Ипотечное жилищное кредитование",
     author: "Константин Симонов и Андрей",
     categories: ["Finance"],
-    features: ["Реальные данные", "Переключатель регионов", "Рейтинг", "Сравнение с ФО и РФ"],
+    features: ["Динамика с 2019", "Просрочка и ставка", "Рейтинг", "Сравнение с ФО и РФ"],
     tools: ["Claude"],
     image: "https://files.alexkolokolov.com/ai/gallery/img/simonov.png",
     link: "https://files.alexkolokolov.com/ai/gallery/simonov.html",
