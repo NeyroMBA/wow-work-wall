@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const BASE_PRICE = 120000;
-const MIN_PRICE = 84000;
+const BASE_PRICE = 160000;
+const MIN_PRICE = 112000;
 const DEFAULT_PAID = 30000;
 const INSTALLMENT_OPTIONS = [12, 9, 6] as const;
 
@@ -45,7 +45,7 @@ const PricingCalculator = ({ onSignup }: { onSignup?: () => void }) => {
   const rawPrice = BASE_PRICE - paid;
   const yourPrice = Math.max(MIN_PRICE, rawPrice);
   const maxReached = rawPrice < MIN_PRICE;
-  const monthly = Math.ceil(yourPrice / months);
+  const monthly = Math.ceil((yourPrice / months) / 50) * 50;
 
   const animatedPrice = useAnimatedNumber(yourPrice);
   const animatedMonthly = useAnimatedNumber(monthly);
