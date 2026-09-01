@@ -95,10 +95,10 @@ const PricingPage = () => {
             <div>
               <p className="text-sm text-primary font-medium mb-3">Цена по программе акселератора</p>
               <p className="text-4xl md:text-5xl font-bold text-foreground">
-                120 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
+                160 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
               </p>
               <div className="mt-4 inline-flex items-center rounded-lg bg-primary/10 text-primary px-3 py-1.5 text-sm font-medium">
-                Экономия 267 900 ₽ · −69%
+                Экономия 227 900 ₽ · −59%
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ const PricingPage = () => {
               <span className="text-sm text-muted-foreground">по отдельности</span>
             </div>
             <p className="text-5xl md:text-6xl font-bold text-foreground mb-3">
-              120 000 <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
+              160 000 <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
             </p>
             <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
 
