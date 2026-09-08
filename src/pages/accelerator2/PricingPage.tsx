@@ -11,7 +11,7 @@ const courses = [
   { idx: "02", name: "Python + нейросети", plan: "Тариф «С поддержкой кураторов»", price: "60 000 ₽", href: "https://neyro.mba/cursor?rel_scan=489e9b98-4377-46be-8c4a-48d0ebb5c4dd%7C{}" },
   { idx: "03", name: "Вайбкодинг: с нуля к IT-системе с Cursor", plan: "Тариф «Бизнес»", price: "30 000 ₽", href: "https://neyro.mba/cursor?rel_scan=489e9b98-4377-46be-8c4a-48d0ebb5c4dd%7C{}" },
   { idx: "04", name: "ИИ-дашборды", plan: "Тариф «Бизнес»", price: "60 000 ₽", href: "https://neyro.mba/intensiv-dash-ai?scan=593f8a93-cb8b-4abb-8bed-fac8c8698a1a&scan_id=489e9b98-4377-46be-8c4a-48d0ebb5c4dd" },
-  { idx: "05", name: "ИИ-агенты", plan: "Тариф «Архитектор»", price: "39 900 ₽" },
+  { idx: "05", name: "ИИ-агенты", plan: "Тариф «Архитектор»", price: "39 900 ₽", href: "https://neyro.mba/ai-agents-zz?scan=a99b42d7-fc3e-4fff-9bce-f5aae0f88b92&scan_id=489e9b98-4377-46be-8c4a-48d0ebb5c4dd" },
 ];
 
 const infra = [
