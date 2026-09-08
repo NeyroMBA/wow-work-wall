@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Check } from "lucide-react";
+import { Check, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
@@ -7,10 +7,10 @@ import GetCourseWidgetDialog from "@/components/accelerator2/GetCourseWidgetDial
 import PricingCalculator from "@/components/accelerator2/PricingCalculator";
 
 const courses = [
-  { idx: "01", name: "Нейросети для бизнеса и карьеры", plan: "Тариф «Для бизнеса»", price: "120 000 ₽" },
-  { idx: "02", name: "Python + нейросети", plan: "Тариф «С поддержкой кураторов»", price: "60 000 ₽" },
-  { idx: "03", name: "Вайбкодинг: с нуля к IT-системе с Cursor", plan: "Тариф «Бизнес»", price: "30 000 ₽" },
-  { idx: "04", name: "ИИ-дашборды", plan: "Тариф «Бизнес»", price: "60 000 ₽" },
+  { idx: "01", name: "Нейросети для бизнеса и карьеры", plan: "Тариф «Для бизнеса»", price: "120 000 ₽", href: "https://neyro.mba/aiforbusiness-aa?scan=62e1b084-550c-4fff-9dc2-6441458e076e&scan_id=489e9b98-4377-46be-8c4a-48d0ebb5c4dd" },
+  { idx: "02", name: "Python + нейросети", plan: "Тариф «С поддержкой кураторов»", price: "60 000 ₽", href: "https://neyro.mba/cursor?rel_scan=489e9b98-4377-46be-8c4a-48d0ebb5c4dd%7C{}" },
+  { idx: "03", name: "Вайбкодинг: с нуля к IT-системе с Cursor", plan: "Тариф «Бизнес»", price: "30 000 ₽", href: "https://neyro.mba/cursor?rel_scan=489e9b98-4377-46be-8c4a-48d0ebb5c4dd%7C{}" },
+  { idx: "04", name: "ИИ-дашборды", plan: "Тариф «Бизнес»", price: "60 000 ₽", href: "https://neyro.mba/intensiv-dash-ai?scan=593f8a93-cb8b-4abb-8bed-fac8c8698a1a&scan_id=489e9b98-4377-46be-8c4a-48d0ebb5c4dd" },
   { idx: "05", name: "ИИ-агенты", plan: "Тариф «Архитектор»", price: "39 900 ₽" },
 ];
 
@@ -58,7 +58,22 @@ const PricingPage = () => {
                 <div key={c.idx} className="flex items-start gap-4 p-5">
                   <span className="text-primary font-mono font-semibold text-sm mt-0.5 shrink-0">{c.idx}</span>
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-foreground">{c.name}</p>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-semibold text-foreground no-underline hover:opacity-80 transition-opacity"
+                      >
+                        {c.name}
+                        <ArrowUpRight
+                          className="text-muted-foreground shrink-0"
+                          style={{ width: "1em", height: "1em" }}
+                        />
+                      </a>
+                    ) : (
+                      <p className="font-semibold text-foreground">{c.name}</p>
+                    )}
                     <p className="text-sm text-muted-foreground mt-1">{c.plan}</p>
                   </div>
                   <p className="text-muted-foreground font-medium text-right shrink-0 ml-4">{c.price}</p>
