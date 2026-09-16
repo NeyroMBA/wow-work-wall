@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
@@ -153,6 +153,20 @@ const AcceleratorPage = () => {
   const [casesExpanded, setCasesExpanded] = useState(false);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
   const { hash } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("open") === "signup") setSignupOpen(true);
+  }, [searchParams]);
+
+  const handleSignupOpenChange = (open: boolean) => {
+    setSignupOpen(open);
+    if (!open && searchParams.has("open")) {
+      const next = new URLSearchParams(searchParams);
+      next.delete("open");
+      setSearchParams(next, { replace: true });
+    }
+  };
 
   useEffect(() => {
     if (!hash) return;
@@ -500,7 +514,7 @@ const AcceleratorPage = () => {
 
       <GetCourseWidgetDialog
         open={signupOpen}
-        onOpenChange={setSignupOpen}
+        onOpenChange={handleSignupOpenChange}
         title="Записаться на акселератор"
         scriptId="5ea8f1369820bcde792d9c3030918857d7f9b0a2"
         scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1590377"
