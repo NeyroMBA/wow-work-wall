@@ -11,7 +11,11 @@ const acceleratorLinks = [
   { label: "Коворкинги", href: "/coworkings" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  onSignupClick?: () => void;
+}
+
+const Navbar = ({ onSignupClick }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const isInternalPage = pathname === "/cases" || pathname === "/pricing" || pathname === "/coworkings";
@@ -44,9 +48,19 @@ const Navbar = () => {
               </a>
             );
           })}
-          <a href={isInternalPage ? "/accelerator#buy" : "#buy"} className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
-            Записаться
-          </a>
+          {onSignupClick ? (
+            <button
+              type="button"
+              onClick={onSignupClick}
+              className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Записаться
+            </button>
+          ) : (
+            <a href={isInternalPage ? "/accelerator#buy" : "#buy"} className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
+              Записаться
+            </a>
+          )}
         </div>
 
 
@@ -74,9 +88,19 @@ const Navbar = () => {
               );
             })}
 
-            <a href={isInternalPage ? "/accelerator#buy" : "#buy"} onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">
-              Записаться
-            </a>
+            {onSignupClick ? (
+              <button
+                type="button"
+                onClick={() => { onSignupClick(); setOpen(false); }}
+                className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold w-full"
+              >
+                Записаться
+              </button>
+            ) : (
+              <a href={isInternalPage ? "/accelerator#buy" : "#buy"} onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">
+                Записаться
+              </a>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
