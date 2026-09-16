@@ -171,7 +171,7 @@ const AcceleratorPage = () => {
 
   return (
     <div data-theme="accelerator" className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar onSignupClick={() => setSignupOpen(true)} />
 
       <section className="relative min-h-[90vh] flex items-center pt-16">
         <div className="container mx-auto px-6 py-20">
@@ -226,13 +226,14 @@ const AcceleratorPage = () => {
                 </div>
               </div>
 
-              <a
-                href="#buy"
+              <button
+                type="button"
+                onClick={() => setSignupOpen(true)}
                 className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
                 style={{ marginTop: 24 }}
               >
                 Записаться
-              </a>
+              </button>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}>
               <StairsIllustration />
