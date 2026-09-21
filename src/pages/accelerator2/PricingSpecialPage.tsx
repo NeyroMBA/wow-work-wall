@@ -49,7 +49,7 @@ const PricingPage = () => {
             </h2>
           </div>
 
-          <div className="max-w-2xl mx-auto mb-10">
+          <div className="max-w-2xl mx-auto">
             <div className="rounded-2xl border border-border bg-card p-8 grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-sm text-muted-foreground mb-3">Полная стоимость Акселератора</p>
@@ -66,6 +66,39 @@ const PricingPage = () => {
               </div>
             </div>
           </div>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto mt-[75px] mb-10 rounded-2xl border-2 border-primary/30 bg-background p-8 md:p-10 text-center">
+            <div className="mb-2">
+              <span className="text-muted-foreground line-through mr-2">387 900 ₽</span>
+              <span className="text-sm text-muted-foreground">по отдельности</span>
+            </div>
+            <p className="text-5xl md:text-6xl font-bold text-foreground mb-3">
+              160 000 <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
+            </p>
+            <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
+
+            <ul className="text-left space-y-3 mb-8">
+              {bullets.map((b) => (
+                <li key={b.b} className="flex items-start gap-3">
+                  <Check size={20} className="text-primary shrink-0 mt-1" />
+                  <p className="text-foreground leading-relaxed">
+                    <span className="font-semibold">{b.b}</span> — {b.t}
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <button type="button" onClick={() => setSignupOpen(true)} className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full">
+              Записаться
+            </button>
+
+            <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
+              Войти можно в любой момент · Без потоков и дат старта
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              *Максимальная скидка 30%
+            </p>
+          </motion.div>
 
           <div className="max-w-3xl mx-auto mb-10">
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
@@ -116,41 +149,6 @@ const PricingPage = () => {
               ))}
             </div>
           </div>
-        </section>
-
-        <section className="container mx-auto px-6 py-16 md:py-24">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto rounded-2xl border-2 border-primary/30 bg-background p-8 md:p-10 text-center">
-            <div className="mb-2">
-              <span className="text-muted-foreground line-through mr-2">387 900 ₽</span>
-              <span className="text-sm text-muted-foreground">по отдельности</span>
-            </div>
-            <p className="text-5xl md:text-6xl font-bold text-foreground mb-3">
-              160 000 <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
-            </p>
-            <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
-
-            <ul className="text-left space-y-3 mb-8">
-              {bullets.map((b) => (
-                <li key={b.b} className="flex items-start gap-3">
-                  <Check size={20} className="text-primary shrink-0 mt-1" />
-                  <p className="text-foreground leading-relaxed">
-                    <span className="font-semibold">{b.b}</span> — {b.t}
-                  </p>
-                </li>
-              ))}
-            </ul>
-
-            <button type="button" onClick={() => setSignupOpen(true)} className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full">
-              Записаться
-            </button>
-
-            <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
-              Войти можно в любой момент · Без потоков и дат старта
-            </p>
-            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-              *Максимальная скидка 30%
-            </p>
-          </motion.div>
         </section>
 
         <PricingCalculator onSignup={() => setSignupOpen(true)} />
