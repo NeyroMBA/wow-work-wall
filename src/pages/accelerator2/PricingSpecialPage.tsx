@@ -90,9 +90,9 @@ const PricingPage = () => {
 
           <div className="text-center mb-10">
             <h3 className="text-3xl md:text-4xl leading-[53px] md:leading-[57px] font-bold text-foreground">
-              Доступ ко всей инфраструктуре Акселератора
+              Доступ ко всей инфраструктуре
               <br />
-              на 1 месяц
+              Акселератора на 1 месяц
             </h3>
           </div>
 
