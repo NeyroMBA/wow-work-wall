@@ -115,7 +115,7 @@ const PricingPage = () => {
                     )}
                     <p className="text-sm text-muted-foreground mt-1">{c.plan}</p>
                   </div>
-                  <p className="text-muted-foreground font-medium text-right shrink-0 ml-4">{c.price}</p>
+                  <p className="text-muted-foreground font-medium text-right shrink-0">{c.price}</p>
                 </div>
               ))}
             </div>
