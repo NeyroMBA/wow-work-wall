@@ -121,13 +121,13 @@ const PricingPage = () => {
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
               Часть 2 · Инфраструктура акселератора
             </p>
             <div className="rounded-2xl border border-border bg-card divide-y divide-border">
               {infra.map((r) => (
-                <div key={r.name} className="flex items-start gap-4 p-5">
+                <div key={r.name} className="flex items-start gap-2 p-5">
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-foreground">{r.name}</p>
                     <p className="text-sm text-muted-foreground mt-1">{r.desc}</p>
