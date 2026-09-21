@@ -56,7 +56,7 @@ const PricingPage = () => {
                 <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">160 000 ₽</p>
               </div>
               <div>
-                <p className="text-sm text-primary font-medium mb-3">Специальное предложение</p>
+                <p className="text-sm text-primary font-medium mb-3">🔥 Специальное предложение</p>
                 <p className="text-4xl md:text-5xl font-bold text-foreground">
                   30 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
                 </p>
