@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
 import GetCourseWidgetDialog from "@/components/accelerator2/GetCourseWidgetDialog";
-import PricingCalculator from "@/components/accelerator2/PricingCalculator";
 
 const courses = [
   { idx: "01", name: "Нейросети для бизнеса и карьеры", plan: "Тариф «Для бизнеса»", price: "120 000 ₽", href: "https://neyro.mba/aiforbusiness-aa?scan=62e1b084-550c-4fff-9dc2-6441458e076e&scan_id=489e9b98-4377-46be-8c4a-48d0ebb5c4dd" },
@@ -152,7 +151,27 @@ const PricingPage = () => {
           </div>
         </section>
 
-        <PricingCalculator onSignup={() => setSignupOpen(true)} />
+        <section className="container mx-auto px-6 pb-16 md:pb-24">
+          <div className="max-w-2xl mx-auto rounded-2xl border border-border bg-card p-6 md:p-8">
+            <h3 className="font-bold text-foreground text-[clamp(9px,2.8vw,24px)] leading-tight mb-5 md:mb-6">
+              Остались вопросы?
+            </h3>
+
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+              <p className="text-[14px] md:text-[15px] font-normal text-muted-foreground leading-relaxed">
+                {"Заполните форму, и\u00A0мы свяжемся с\u00A0Вами, чтобы ответить на\u00A0вопросы о\u00A0пробном доступе к\u00A0программе Акселератора."}
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setSignupOpen(true)}
+                className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full"
+              >
+                Задать вопрос
+              </button>
+            </div>
+          </div>
+        </section>
 
       </main>
       <FooterSection />
