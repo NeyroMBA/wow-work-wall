@@ -31,6 +31,7 @@ const bullets = [
 
 const PricingPage = () => {
   const [signupOpen, setSignupOpen] = useState(false);
+  const [questionOpen, setQuestionOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
