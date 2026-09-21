@@ -14,6 +14,7 @@ import AcceleratorPage from "./pages/AcceleratorPage.tsx";
 import AcceleratorPageNew from "./pages/accelerator2/AcceleratorPage.tsx";
 import CasesPageNew from "./pages/accelerator2/CasesPage.tsx";
 import PricingPageNew from "./pages/accelerator2/PricingPage.tsx";
+import PricingSpecialPage from "./pages/accelerator2/PricingSpecialPage.tsx";
 import CoworkingsPage from "./pages/accelerator2/CoworkingsPage.tsx";
 import Wall from "./pages/Wall.tsx";
 import Pravda from "./pages/Pravda.tsx";
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/accelerator" element={<AcceleratorPageNew />} />
           <Route path="/cases" element={<CasesPageNew />} />
           <Route path="/pricing" element={<PricingPageNew />} />
+          <Route path="/pricing-special" element={<PricingSpecialPage />} />
           <Route path="/coworkings" element={<CoworkingsPage />} />
           <Route path="/wall" element={<Wall />} />
           <Route path="/pravda" element={<Pravda />} />
