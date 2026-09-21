@@ -145,6 +145,11 @@ const PricingPage = () => {
               ))}
             </div>
           </div>
+          <div className="max-w-2xl mx-auto px-8 md:px-10">
+            <button type="button" onClick={() => setSignupOpen(true)} className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full">
+              Присоединиться
+            </button>
+          </div>
         </section>
 
         <PricingCalculator onSignup={() => setSignupOpen(true)} />
@@ -156,8 +161,8 @@ const PricingPage = () => {
         open={signupOpen}
         onOpenChange={setSignupOpen}
         title="Записаться на акселератор"
-        scriptId="5ea8f1369820bcde792d9c3030918857d7f9b0a2"
-        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1590377"
+        scriptId="b51239bc91c7f2321c5c4b324650f6cc3e9fd3d9"
+        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1658893"
       />
     </div>
   );
