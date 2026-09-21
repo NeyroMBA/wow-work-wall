@@ -83,8 +83,6 @@ const PricingPage = () => {
                 </div>
               </div>
             </div>
-            <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
-
             <ul className="text-left space-y-3 mb-8">
               {bullets.map((b) => (
                 <li key={b.b} className="flex items-start gap-3">
@@ -95,6 +93,8 @@ const PricingPage = () => {
                 </li>
               ))}
             </ul>
+
+            <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
 
             <button type="button" onClick={() => setSignupOpen(true)} className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full">
               Записаться
