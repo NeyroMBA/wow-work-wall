@@ -132,7 +132,7 @@ const PricingPage = () => {
                     <p className="font-semibold text-foreground">{r.name}</p>
                     <p className="text-sm text-muted-foreground mt-1">{r.desc}</p>
                   </div>
-                  <p className="text-muted-foreground font-medium text-right shrink-0 ml-4">{r.price}</p>
+                  <p className="text-muted-foreground font-medium text-right shrink-0">{r.price}</p>
                 </div>
               ))}
             </div>
