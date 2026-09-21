@@ -43,7 +43,7 @@ const PricingPage = () => {
       <main className="flex-1 pt-16">
         <section className="container mx-auto px-6 py-16 md:py-24">
           <div className="text-center mb-12">
-            <p className="text-xs font-mono uppercase tracking-wider text-primary mb-3">Честный расчёт</p>
+            <p className="text-xs font-mono uppercase tracking-wider text-primary mb-3">{"\n"}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">
               Что входит в программу
             </h2>
