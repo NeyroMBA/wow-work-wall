@@ -23,8 +23,8 @@ const infra = [
 ];
 
 const bullets = [
-  { b: "5 курсов", t: "от промптинга до ИИ-агентов, в своём темпе" },
-  { b: "Персональный трек", t: "диагностика покажет, с чего начать именно вам" },
+  { b: "5 курсов", t: "выберете тот, который актуален для вашей задачи сейчас" },
+  { b: "Персональный трек", t: "онбординг покажет, с чего начать именно вам" },
   { b: "Живой коворкинг 3×/нед", t: "приходите с задачей, уходите с результатом" },
   { b: "Обратная связь от трекеров", t: "не застрянете в одиночку" },
   { b: "Демо-сессии каждые 2 недели", t: "ритм, который не даст бросить" },
@@ -94,18 +94,16 @@ const PricingPage = () => {
               ))}
             </ul>
 
-            <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
+            <p className="text-primary font-medium mb-8">Получите пробный доступ к программе на 1 месяц</p>
 
             <button type="button" onClick={() => setSignupOpen(true)} className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full">
-              Записаться
+              Присоединиться
             </button>
 
             <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
               Войти можно в любой момент · Без потоков и дат старта
             </p>
-            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-              *Максимальная скидка 30%
-            </p>
+            <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{"\n"}</p>
           </motion.div>
 
           <div className="max-w-3xl mx-auto mb-10">
