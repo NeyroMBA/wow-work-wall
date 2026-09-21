@@ -89,7 +89,7 @@ const PricingPage = () => {
           </motion.div>
 
           <div className="text-center mb-10">
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h3 className="text-3xl md:text-4xl leading-[53px] md:leading-[57px] font-bold text-foreground">
               Доступ ко всей инфраструктуре Акселератора
               <br />
               на 1 месяц
