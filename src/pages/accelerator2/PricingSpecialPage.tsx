@@ -49,6 +49,25 @@ const PricingPage = () => {
             </h2>
           </div>
 
+          <div className="max-w-2xl mx-auto mb-10">
+            <div className="rounded-2xl border border-border bg-card p-8 grid md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-sm text-muted-foreground mb-3">Полная стоимость компонентов по отдельности</p>
+                <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">387 900 ₽</p>
+                <p className="text-sm text-muted-foreground mt-3">309 900 ₽ курсы + 78 000 ₽ инфраструктура</p>
+              </div>
+              <div>
+                <p className="text-sm text-primary font-medium mb-3">Цена по программе акселератора</p>
+                <p className="text-4xl md:text-5xl font-bold text-foreground">
+                  160 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
+                </p>
+                <div className="mt-4 inline-flex items-center rounded-lg bg-primary/10 text-primary px-3 py-1.5 text-sm font-medium">
+                  Экономия 227 900 ₽ · −59%
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="max-w-3xl mx-auto mb-10">
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
               Часть 1 · 5 курсов (тариф с поддержкой)
@@ -96,25 +115,6 @@ const PricingPage = () => {
                   <p className="text-muted-foreground font-medium text-right shrink-0 ml-4">{r.price}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="container mx-auto px-6 py-8">
-          <div className="max-w-4xl mx-auto rounded-2xl border border-border bg-card p-8 grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-sm text-muted-foreground mb-3">Полная стоимость компонентов по отдельности</p>
-              <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">387 900 ₽</p>
-              <p className="text-sm text-muted-foreground mt-3">309 900 ₽ курсы + 78 000 ₽ инфраструктура</p>
-            </div>
-            <div>
-              <p className="text-sm text-primary font-medium mb-3">Цена по программе акселератора</p>
-              <p className="text-4xl md:text-5xl font-bold text-foreground">
-                160 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
-              </p>
-              <div className="mt-4 inline-flex items-center rounded-lg bg-primary/10 text-primary px-3 py-1.5 text-sm font-medium">
-                Экономия 227 900 ₽ · −59%
-              </div>
             </div>
           </div>
         </section>
