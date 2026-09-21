@@ -49,25 +49,7 @@ const PricingPage = () => {
             </h2>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <div className="rounded-2xl border border-border bg-card p-8 grid md:grid-cols-2 gap-8">
-              <div>
-                <p className="text-sm text-muted-foreground mb-3">Полная стоимость Акселератора</p>
-                <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">160 000 ₽</p>
-              </div>
-              <div>
-                <p className="text-sm text-primary font-medium mb-3">🔥 Специальное предложение</p>
-                <p className="text-4xl md:text-5xl font-bold text-foreground">
-                  30 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
-                </p>
-                <div className="mt-4 inline-flex items-center rounded-lg bg-primary/10 text-primary px-3 py-1.5 text-sm font-medium">
-                  Доступ к коворкингам на 1 месяц
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto mt-[75px] mb-10 rounded-2xl border-2 border-primary/30 bg-background p-8 md:p-10 text-center">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto mb-10 rounded-2xl border-2 border-primary/30 bg-background p-8 md:p-10 text-center">
             <div className="grid md:grid-cols-2 gap-8 text-left mb-8">
               <div>
                 <p className="text-sm text-muted-foreground mb-3">Полная стоимость Акселератора</p>
