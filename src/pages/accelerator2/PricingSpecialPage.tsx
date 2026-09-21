@@ -88,6 +88,12 @@ const PricingPage = () => {
             <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{"\n"}</p>
           </motion.div>
 
+          <div className="text-center mb-10">
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+              Доступ ко\u00A0всей инфраструктуре Акселератора на\u00A01 месяц
+            </h3>
+          </div>
+
           <div className="max-w-2xl mx-auto mb-10">
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
               Часть 1 · 5 курсов (тариф с поддержкой)
