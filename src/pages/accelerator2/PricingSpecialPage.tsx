@@ -68,13 +68,21 @@ const PricingPage = () => {
           </div>
 
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto mt-[75px] mb-10 rounded-2xl border-2 border-primary/30 bg-background p-8 md:p-10 text-center">
-            <div className="mb-2">
-              <span className="text-muted-foreground line-through mr-2">387 900 ₽</span>
-              <span className="text-sm text-muted-foreground">по отдельности</span>
+            <div className="grid md:grid-cols-2 gap-8 text-left mb-8">
+              <div>
+                <p className="text-sm text-muted-foreground mb-3">Полная стоимость Акселератора</p>
+                <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">160 000 ₽</p>
+              </div>
+              <div>
+                <p className="text-sm text-primary font-medium mb-3">🔥 Специальное предложение</p>
+                <p className="text-4xl md:text-5xl font-bold text-foreground">
+                  30 000 <span className="text-2xl text-muted-foreground font-medium">₽</span>
+                </p>
+                <div className="mt-4 inline-flex items-center rounded-lg bg-primary/10 text-primary px-3 py-1.5 text-sm font-medium">
+                  Доступ к коворкингам на 1 месяц
+                </div>
+              </div>
             </div>
-            <p className="text-5xl md:text-6xl font-bold text-foreground mb-3">
-              160 000 <span className="text-2xl md:text-3xl text-muted-foreground font-medium">₽</span>
-            </p>
             <p className="text-primary font-medium mb-8">Если вы уже учились у нас — вычтем стоимость пройденных курсов*</p>
 
             <ul className="text-left space-y-3 mb-8">
