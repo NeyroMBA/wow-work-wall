@@ -54,7 +54,7 @@ const Navbar = ({ onSignupClick }: NavbarProps) => {
               onClick={onSignupClick}
               className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
             >
-              Записаться
+              {pathname === "/pricing-special" ? "Присоединиться" : "Записаться"}
             </button>
           ) : (
             <a href={isInternalPage ? "/accelerator#buy" : "#buy"} className="px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity">
@@ -94,7 +94,7 @@ const Navbar = ({ onSignupClick }: NavbarProps) => {
                 onClick={() => { onSignupClick(); setOpen(false); }}
                 className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold w-full"
               >
-                Записаться
+                {pathname === "/pricing-special" ? "Присоединиться" : "Записаться"}
               </button>
             ) : (
               <a href={isInternalPage ? "/accelerator#buy" : "#buy"} onClick={() => setOpen(false)} className="block mt-3 text-center py-3 rounded-lg bg-primary text-primary-foreground font-semibold">

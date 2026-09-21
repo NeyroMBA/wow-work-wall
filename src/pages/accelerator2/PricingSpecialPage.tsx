@@ -38,7 +38,7 @@ const PricingPage = () => {
 
   return (
     <div data-theme="accelerator" className="min-h-screen bg-background flex flex-col">
-      <Navbar />
+      <Navbar onSignupClick={() => setSignupOpen(true)} />
       <main className="flex-1 pt-16">
         <section className="container mx-auto px-6 pt-16 md:pt-24 pb-[34px] md:pb-[66px]">
           <div className="text-center mb-12">
