@@ -52,7 +52,7 @@ const PricingPage = () => {
           <div className="max-w-2xl mx-auto mb-10">
             <div className="rounded-2xl border border-border bg-card p-8 grid md:grid-cols-2 gap-8">
               <div>
-                <p className="text-sm text-muted-foreground mb-3">Полная стоимость программы Акселератора</p>
+                <p className="text-sm text-muted-foreground mb-3">Полная стоимость Акселератора</p>
                 <p className="text-4xl md:text-5xl font-bold line-through text-muted-foreground">160 000 ₽</p>
               </div>
               <div>
