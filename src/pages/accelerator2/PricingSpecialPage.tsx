@@ -170,7 +170,7 @@ const PricingPage = () => {
               <div className="flex items-center">
                 <button
                   type="button"
-                  onClick={() => setSignupOpen(true)}
+                  onClick={() => setQuestionOpen(true)}
                   className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full"
                 >
                   Задать вопрос
@@ -189,6 +189,14 @@ const PricingPage = () => {
         title="Записаться на акселератор"
         scriptId="b51239bc91c7f2321c5c4b324650f6cc3e9fd3d9"
         scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1658893"
+      />
+
+      <GetCourseWidgetDialog
+        open={questionOpen}
+        onOpenChange={setQuestionOpen}
+        title="Задать вопрос"
+        scriptId="5ea8f1369820bcde792d9c3030918857d7f9b0a2"
+        scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1590377"
       />
     </div>
   );
