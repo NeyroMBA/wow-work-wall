@@ -88,13 +88,13 @@ const PricingPage = () => {
             <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{"\n"}</p>
           </motion.div>
 
-          <div className="max-w-3xl mx-auto mb-10">
+          <div className="max-w-2xl mx-auto mb-10">
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
               Часть 1 · 5 курсов (тариф с поддержкой)
             </p>
             <div className="rounded-2xl border border-border bg-card divide-y divide-border">
               {courses.map((c) => (
-                <div key={c.idx} className="flex items-start gap-4 p-5">
+                <div key={c.idx} className="flex items-start gap-2 p-5">
                   <span className="text-primary font-mono font-semibold text-sm mt-0.5 shrink-0">{c.idx}</span>
                   <div className="min-w-0 flex-1">
                     {c.href ? (
@@ -115,24 +115,24 @@ const PricingPage = () => {
                     )}
                     <p className="text-sm text-muted-foreground mt-1">{c.plan}</p>
                   </div>
-                  <p className="text-muted-foreground font-medium text-right shrink-0 ml-4">{c.price}</p>
+                  <p className="text-muted-foreground font-medium text-right shrink-0">{c.price}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
               Часть 2 · Инфраструктура акселератора
             </p>
             <div className="rounded-2xl border border-border bg-card divide-y divide-border">
               {infra.map((r) => (
-                <div key={r.name} className="flex items-start gap-4 p-5">
+                <div key={r.name} className="flex items-start gap-2 p-5">
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-foreground">{r.name}</p>
                     <p className="text-sm text-muted-foreground mt-1">{r.desc}</p>
                   </div>
-                  <p className="text-muted-foreground font-medium text-right shrink-0 ml-4">{r.price}</p>
+                  <p className="text-muted-foreground font-medium text-right shrink-0">{r.price}</p>
                 </div>
               ))}
             </div>
