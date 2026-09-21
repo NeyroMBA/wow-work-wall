@@ -40,7 +40,7 @@ const PricingPage = () => {
     <div data-theme="accelerator" className="min-h-screen bg-background flex flex-col">
       <Navbar />
       <main className="flex-1 pt-16">
-        <section className="container mx-auto px-6 py-16 md:py-24">
+        <section className="container mx-auto px-6 pt-16 md:pt-24 pb-[34px] md:pb-[66px]">
           <div className="text-center mb-12">
             <p className="text-xs font-mono uppercase tracking-wider text-primary mb-3">{"\n"}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">
@@ -146,8 +146,8 @@ const PricingPage = () => {
           </div>
         </section>
 
-        <div className="container mx-auto px-6 pb-16 md:pb-24 flex justify-center">
-          <div className="w-full max-w-2xl">
+        <div className="container mx-auto px-6 pb-[34px] md:pb-[66px] flex justify-center">
+          <div className="w-full max-w-2xl px-8 md:px-10">
             <button type="button" onClick={() => setSignupOpen(true)} className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full">
               Присоединиться
             </button>
