@@ -147,7 +147,7 @@ const PricingPage = () => {
         </section>
 
         <div className="container mx-auto px-6 pb-[34px] md:pb-[66px] flex justify-center">
-          <div className="w-full max-w-2xl px-8 md:px-10">
+          <div className="w-full max-w-[668px] px-8 md:px-10">
             <button type="button" onClick={() => setSignupOpen(true)} className="inline-block px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all w-full">
               Присоединиться
             </button>
