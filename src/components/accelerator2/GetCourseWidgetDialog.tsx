@@ -21,8 +21,9 @@ const buildSrcDoc = (scriptId: string, scriptSrc: string, scrollable: boolean) =
       body { padding: 0; }
       ${scrollable ? `
         html { min-height: 100%; height: auto; overflow-y: auto !important; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-        body { min-height: calc(100% + 1px); height: auto; overflow: visible !important; padding-bottom: 48px; box-sizing: border-box; }
+        body { min-height: calc(100% + 1px); height: auto; overflow: visible !important; box-sizing: border-box; }
         body > iframe { display: block; max-width: 100%; }
+        body::after { content: ""; display: block; width: 100%; height: calc(128px + env(safe-area-inset-bottom, 0px)); }
       ` : ""}
     </style>
   </head>
