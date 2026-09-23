@@ -189,6 +189,7 @@ const PricingPage = () => {
         title="Записаться на акселератор"
         scriptId="b51239bc91c7f2321c5c4b324650f6cc3e9fd3d9"
         scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1658893"
+        scrollable
       />
 
       <GetCourseWidgetDialog

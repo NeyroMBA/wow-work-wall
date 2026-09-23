@@ -8,9 +8,10 @@ type Props = {
   title: string;
   scriptId: string;
   scriptSrc: string;
+  scrollable?: boolean;
 };
 
-const buildSrcDoc = (scriptId: string, scriptSrc: string) => `<!doctype html>
+const buildSrcDoc = (scriptId: string, scriptSrc: string, scrollable: boolean) => `<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
@@ -18,6 +19,7 @@ const buildSrcDoc = (scriptId: string, scriptSrc: string) => `<!doctype html>
     <style>
       html, body { margin: 0; padding: 0; background: transparent; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
       body { padding: 0; }
+      ${scrollable ? `html, body { min-height: 100%; height: auto; overflow-y: auto !important; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }` : ""}
     </style>
   </head>
   <body>
@@ -37,8 +39,8 @@ const buildSrcDoc = (scriptId: string, scriptSrc: string) => `<!doctype html>
   </body>
 </html>`;
 
-const GetCourseWidgetDialog = ({ open, onOpenChange, title, scriptId, scriptSrc }: Props) => {
-  const srcDoc = useMemo(() => buildSrcDoc(scriptId, scriptSrc), [scriptId, scriptSrc]);
+const GetCourseWidgetDialog = ({ open, onOpenChange, title, scriptId, scriptSrc, scrollable = false }: Props) => {
+  const srcDoc = useMemo(() => buildSrcDoc(scriptId, scriptSrc, scrollable), [scriptId, scriptSrc, scrollable]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -59,6 +61,7 @@ const GetCourseWidgetDialog = ({ open, onOpenChange, title, scriptId, scriptSrc 
               key={scriptId}
               title={title}
               srcDoc={srcDoc}
+              scrolling={scrollable ? "yes" : undefined}
               className="relative w-full border-0 bg-transparent z-10 h-full sm:h-[740px]"
               sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
             />
