@@ -198,6 +198,7 @@ const PricingPage = () => {
         title="Задать вопрос"
         scriptId="5ea8f1369820bcde792d9c3030918857d7f9b0a2"
         scriptSrc="https://insba.getcourse.ru/pl/lite/widget/script?id=1590377"
+        scrollable
       />
     </div>
   );

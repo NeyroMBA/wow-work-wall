@@ -19,7 +19,11 @@ const buildSrcDoc = (scriptId: string, scriptSrc: string, scrollable: boolean) =
     <style>
       html, body { margin: 0; padding: 0; background: transparent; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
       body { padding: 0; }
-      ${scrollable ? `html, body { min-height: 100%; height: auto; overflow-y: auto !important; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }` : ""}
+      ${scrollable ? `
+        html { min-height: 100%; height: auto; overflow-y: auto !important; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+        body { min-height: calc(100% + 1px); height: auto; overflow: visible !important; padding-bottom: 48px; box-sizing: border-box; }
+        body > iframe { display: block; max-width: 100%; }
+      ` : ""}
     </style>
   </head>
   <body>
