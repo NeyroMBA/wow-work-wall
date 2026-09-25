@@ -146,7 +146,7 @@ const newCases: Case[] = [
   {
     id: "ksenia-slow-moving-goods",
     authorName: "Ксения Иванова",
-    authorRole: "Руководитель аналитической поддержки бизнеса",
+    authorRole: "Руководитель аналитической\nподдержки бизнеса",
     previewImage: kseniaSlow1.url,
     galleryImages: [kseniaSlow1.url, kseniaSlow2.url, kseniaSlow3.url, kseniaSlow4.url, kseniaSlow5.url],
     title: "Анализ неликвидных товаров",
@@ -166,7 +166,7 @@ const newCases: Case[] = [
   {
     id: "roman-instructions-navigator",
     authorName: "Роман Бартенев",
-    authorRole: "Руководитель направления цифровизации ЭДО",
+    authorRole: "Руководитель направления\nцифровизации ЭДО",
     title: "Контроль исполнения поручений",
     previewImage: romanPreview,
     posterImage: romanPreview,
