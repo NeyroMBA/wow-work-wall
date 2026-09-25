@@ -4,7 +4,7 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
-  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, ChevronDown, Clock, ArrowRight,
+  UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, Clock, ArrowRight,
    CalendarDays, Layers3,
 } from "lucide-react";
 import {
