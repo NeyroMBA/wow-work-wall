@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/accelerator2/Navbar";
 import FooterSection from "@/components/accelerator2/FooterSection";
@@ -6,6 +7,10 @@ import { cases } from "@/data/accelerator2/cases";
 import { motion } from "framer-motion";
 
 const CasesPage = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
   return (
     <div data-theme="accelerator" className="min-h-screen bg-background flex flex-col">
       <Navbar />
