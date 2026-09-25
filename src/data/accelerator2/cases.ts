@@ -33,7 +33,7 @@ export type Case = {
   authorRole: string;
   authorPhoto?: string;
   previewImage?: string;
-  previewAlign?: "center";
+  previewAlign?: "center" | "right";
   posterImage?: string;
   title: string;
   teaser: string;
