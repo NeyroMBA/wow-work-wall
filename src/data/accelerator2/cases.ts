@@ -197,6 +197,8 @@ const newCases: Case[] = [
     id: "irina-procurement-platform",
     authorName: "Ирина Антонова",
     authorRole: "Руководитель проектов в сегменте HoReCa\u00A0",
+    previewImage: irinaProc1.url,
+    galleryImages: [irinaProc1.url, irinaProc2.url],
     title: "Платформа по управлению закупками",
     teaser: "Нужно было собрать инструмент для управления закупками: видеть динамику цен, новых поставщиков и договоры, контролировать остатки и связывать объём закупок с расходом сырья в готовых блюдах.",
     description: [
