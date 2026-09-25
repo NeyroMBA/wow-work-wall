@@ -229,6 +229,9 @@ const newCases: Case[] = [
     id: "petr-rental-management",
     authorName: "Пётр Чариков",
     authorRole: "Руководитель службы аналитики",
+    previewImage: petrPreview.url,
+    previewAlign: "center",
+    galleryImages: [petr1.url, petr2.url, petr3.url, petr5.url, petr6.url],
     title: "Система управления арендными отношениями в торговом центре",
     teaser: "Свести данные торгового центра в одну систему и за счёт этого максимизировать арендную выручку.",
     description: [
@@ -268,6 +271,9 @@ const newCases: Case[] = [
     id: "roman-process-diagram-builder",
     authorName: "Роман Бартенев",
     authorRole: "Руководитель направления цифровизации ЭДО",
+    previewImage: romanProcess1.url,
+    previewAlign: "center",
+    galleryImages: [romanProcess1.url],
     title: "Конструктор схем процессов",
     teaser: "Получить инструмент, который позволяет описывать и постоянно актуализировать схемы процессов, а на их основе автоматически собирать регламент.",
     description: [
