@@ -29,7 +29,11 @@ const CaseCard = ({ caseData }: { caseData: Case }) => {
             <img
               src={caseData.previewImage ?? caseData.authorPhoto}
               alt={caseData.title}
-              className="absolute inset-0 w-full h-full object-cover object-center md:object-left opacity-70 group-hover:opacity-80 transition-opacity"
+              className={`absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-80 transition-opacity ${
+                caseData.previewAlign === "center"
+                  ? "object-center"
+                  : "object-center md:object-left"
+              }`}
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5" />
