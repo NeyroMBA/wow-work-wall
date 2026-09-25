@@ -313,10 +313,9 @@ const AcceleratorPage = () => {
         <div className="mt-8 flex justify-center">
           <Link
             to="/cases"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
+            className="inline-flex items-center px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
           >
             Посмотреть все
-            <ChevronDown size={20} />
           </Link>
         </div>
       </Section>
