@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import {
   Crown, Wrench, ShoppingCart, Users, GraduationCap, Wrench as WrenchIcon, FolderKanban, TrendingUp,
   Brain, Bot, Code2, MousePointerClick, BarChart3,
   UserCheck, Video, MessageCircle, CheckCircle2, Database, Globe, LineChart, Lock, ChevronDown, Clock, ArrowRight,
-  CalendarDays, Layers3,
+   CalendarDays, Layers3, ChevronDown,
 } from "lucide-react";
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
@@ -150,7 +150,6 @@ const Section = ({ id, title, highlight, children, intro }: {
 
 const AcceleratorPage = () => {
   const [signupOpen, setSignupOpen] = useState(false);
-  const [casesExpanded, setCasesExpanded] = useState(false);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
   const { hash } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -311,45 +310,14 @@ const AcceleratorPage = () => {
           ))}
         </div>
 
-        <AnimatePresence initial={false}>
-          {casesExpanded && (
-            <motion.div
-              key="extra-cases"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.32, ease: "easeOut" }}
-              style={{ overflow: "hidden" }}
-            >
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mt-4">
-                {cases.slice(3, 6).map((c) => (
-                  <CaseCard
-                    key={c.id}
-                    caseData={
-                      c.id === "mining-fleet" && !c.authorRole
-                        ? { ...c, authorRole: "Менеджер проектов" }
-                        : c
-                    }
-                  />
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         <div className="mt-8 flex justify-center">
-          <button
-            type="button"
-            onClick={() => setCasesExpanded((v) => !v)}
+          <Link
+            to="/cases"
             className="inline-flex items-center gap-2 px-10 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
           >
-            {casesExpanded ? "Свернуть" : "Посмотреть ещё"}
-            <ChevronDown
-              size={20}
-              className="transition-transform"
-              style={{ transform: casesExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
-            />
-          </button>
+            Посмотреть все
+            <ChevronDown size={20} />
+          </Link>
         </div>
       </Section>
 

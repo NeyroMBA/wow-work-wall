@@ -7,6 +7,7 @@ import logo from "@/assets/logo.svg";
 const acceleratorLinks = [
   { label: "Для кого", href: "#audience" },
   { label: "Программа", href: "#solution" },
+  { label: "Cases", href: "/cases", casesOnly: true },
   { label: "Стоимость", href: "/pricing" },
   { label: "Коворкинги", href: "/coworkings" },
 ];
@@ -19,7 +20,10 @@ const Navbar = ({ onSignupClick }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const isInternalPage = pathname === "/cases" || pathname === "/pricing" || pathname === "/coworkings" || pathname === "/pricing-special";
-  const links = acceleratorLinks.filter((l) => !(pathname === "/pricing-special" && l.label === "Стоимость"));
+  const links = acceleratorLinks.filter((l) => {
+    if (l.casesOnly && pathname !== "/accelerator" && pathname !== "/cases") return false;
+    return !(pathname === "/pricing-special" && l.label === "Стоимость");
+  });
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
