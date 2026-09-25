@@ -32,6 +32,8 @@ const CaseCard = ({ caseData }: { caseData: Case }) => {
               className={`absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-80 transition-opacity ${
                 caseData.previewAlign === "center"
                   ? "object-center"
+                  : caseData.previewAlign === "right"
+                  ? "object-center md:object-right"
                   : "object-center md:object-left"
               }`}
             />
