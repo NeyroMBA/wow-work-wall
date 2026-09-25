@@ -19,6 +19,13 @@ import kseniaCalc2 from "@/assets/cases/case-ksenia-calc-2.png.asset.json";
 import elenaStock1 from "@/assets/cases/case-elena-stock-1.png.asset.json";
 import irinaProc1 from "@/assets/cases/case-irina-proc-1.png.asset.json";
 import irinaProc2 from "@/assets/cases/case-irina-proc-2.png.asset.json";
+import petrPreview from "@/assets/cases/case-petr-preview.png.asset.json";
+import petr1 from "@/assets/cases/case-petr-1.png.asset.json";
+import petr2 from "@/assets/cases/case-petr-2.png.asset.json";
+import petr3 from "@/assets/cases/case-petr-3.png.asset.json";
+import petr5 from "@/assets/cases/case-petr-5.png.asset.json";
+import petr6 from "@/assets/cases/case-petr-6.png.asset.json";
+import romanProcess1 from "@/assets/cases/case-roman-process-1.png.asset.json";
 
 export type Case = {
   id: string;
