@@ -26,6 +26,7 @@ export type Case = {
   authorRole: string;
   authorPhoto?: string;
   previewImage?: string;
+  previewAlign?: "center";
   posterImage?: string;
   title: string;
   teaser: string;
@@ -198,6 +199,7 @@ const newCases: Case[] = [
     authorName: "Ирина Антонова",
     authorRole: "Руководитель проектов в сегменте HoReCa\u00A0",
     previewImage: irinaProc1.url,
+    previewAlign: "center",
     galleryImages: [irinaProc1.url, irinaProc2.url],
     title: "Платформа по управлению закупками",
     teaser: "Нужно было собрать инструмент для управления закупками: видеть динамику цен, новых поставщиков и договоры, контролировать остатки и связывать объём закупок с расходом сырья в готовых блюдах.",
@@ -236,6 +238,7 @@ const newCases: Case[] = [
     authorName: "Ксения Иванова",
     authorRole: "Руководитель аналитической поддержки бизнеса",
     previewImage: kseniaCalc1.url,
+    previewAlign: "center",
     galleryImages: [kseniaCalc1.url, kseniaCalc2.url],
     title: "Калькулятор согласования бонусов",
     teaser: "Сделать калькулятор бонуса, который сразу выдаёт менеджеру готовую рекомендацию, с прицелом на дальнейшую интеграцию с Bitrix для автоматического согласования у руководства.",
