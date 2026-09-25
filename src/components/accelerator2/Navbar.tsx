@@ -7,7 +7,7 @@ import logo from "@/assets/logo.svg";
 const acceleratorLinks = [
   { label: "Для кого", href: "#audience" },
   { label: "Программа", href: "#solution" },
-  { label: "Cases", href: "/cases", casesOnly: true },
+  { label: "Кейсы", href: "/cases", casesOnly: true },
   { label: "Стоимость", href: "/pricing" },
   { label: "Коворкинги", href: "/coworkings" },
 ];
