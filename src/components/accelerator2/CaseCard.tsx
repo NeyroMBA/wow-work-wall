@@ -56,12 +56,12 @@ const CaseCard = ({ caseData }: { caseData: Case }) => {
           <p className="text-base text-foreground font-semibold leading-snug min-h-[3.75rem]">
             {caseData.title}
           </p>
-          {caseData.kpi && (
+          {(caseData.cardKpi || caseData.kpi) && (
             <div className="mt-auto rounded-lg border border-primary/30 bg-primary/5 px-3 py-2">
               <p className="text-[10px] font-mono font-semibold text-primary uppercase tracking-wider mb-0.5">
                 Результат
               </p>
-              <p className="text-xs text-foreground leading-snug">{caseData.kpi}</p>
+              <p className="text-xs text-foreground leading-snug">{caseData.cardKpi ?? caseData.kpi}</p>
             </div>
           )}
         </div>
