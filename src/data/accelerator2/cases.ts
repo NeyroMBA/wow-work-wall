@@ -177,6 +177,8 @@ const newCases: Case[] = [
     id: "elena-slow-moving-goods",
     authorName: "Елена Бочарова",
     authorRole: "Ex-Экономист\nЦентробанка",
+    previewImage: elenaStock1.url,
+    galleryImages: [elenaStock1.url],
     title: "Управление товарными запасами",
     teaser: "Построить модель, которая по выгрузкам из 1С считает тренд продаж и по каждой позиции выдаёт рекомендацию.",
     description: [
@@ -231,6 +233,8 @@ const newCases: Case[] = [
     id: "ksenia-bonus-calculator",
     authorName: "Ксения Иванова",
     authorRole: "Руководитель аналитической поддержки бизнеса",
+    previewImage: kseniaCalc1.url,
+    galleryImages: [kseniaCalc1.url, kseniaCalc2.url],
     title: "Калькулятор согласования бонусов",
     teaser: "Сделать калькулятор бонуса, который сразу выдаёт менеджеру готовую рекомендацию, с прицелом на дальнейшую интеграцию с Bitrix для автоматического согласования у руководства.",
     description: [
