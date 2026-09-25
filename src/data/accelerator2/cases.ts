@@ -9,6 +9,16 @@ import climate3 from "@/assets/case-climate-3.png";
 import climate4 from "@/assets/case-climate-4.png";
 import romanVideo from "@/assets/case-roman-video.mp4.asset.json";
 import romanPreview from "@/assets/case-roman-preview.jpg";
+import kseniaSlow1 from "@/assets/cases/case-ksenia-slow-1.png.asset.json";
+import kseniaSlow2 from "@/assets/cases/case-ksenia-slow-2.png.asset.json";
+import kseniaSlow3 from "@/assets/cases/case-ksenia-slow-3.png.asset.json";
+import kseniaSlow4 from "@/assets/cases/case-ksenia-slow-4.png.asset.json";
+import kseniaSlow5 from "@/assets/cases/case-ksenia-slow-5.png.asset.json";
+import kseniaCalc1 from "@/assets/cases/case-ksenia-calc-1.png.asset.json";
+import kseniaCalc2 from "@/assets/cases/case-ksenia-calc-2.png.asset.json";
+import elenaStock1 from "@/assets/cases/case-elena-stock-1.png.asset.json";
+import irinaProc1 from "@/assets/cases/case-irina-proc-1.png.asset.json";
+import irinaProc2 from "@/assets/cases/case-irina-proc-2.png.asset.json";
 
 export type Case = {
   id: string;
@@ -129,6 +139,8 @@ const newCases: Case[] = [
     id: "ksenia-slow-moving-goods",
     authorName: "Ксения Иванова",
     authorRole: "Руководитель аналитической поддержки бизнеса",
+    previewImage: kseniaSlow1.url,
+    galleryImages: [kseniaSlow1.url, kseniaSlow2.url, kseniaSlow3.url, kseniaSlow4.url, kseniaSlow5.url],
     title: "Анализ неликвидных товаров",
     teaser: "Необходимо было сделать удобную форму вместо тяжёлого Excel: менеджер вводит товар или артикул и сразу получает остаток, историю продаж, предыдущих покупателей и рекомендацию по цене или скидке.",
     description: [
@@ -165,6 +177,8 @@ const newCases: Case[] = [
     id: "elena-slow-moving-goods",
     authorName: "Елена Бочарова",
     authorRole: "Ex-Экономист\nЦентробанка",
+    previewImage: elenaStock1.url,
+    galleryImages: [elenaStock1.url],
     title: "Управление товарными запасами",
     teaser: "Построить модель, которая по выгрузкам из 1С считает тренд продаж и по каждой позиции выдаёт рекомендацию.",
     description: [
@@ -183,6 +197,8 @@ const newCases: Case[] = [
     id: "irina-procurement-platform",
     authorName: "Ирина Антонова",
     authorRole: "Руководитель проектов в сегменте HoReCa\u00A0",
+    previewImage: irinaProc1.url,
+    galleryImages: [irinaProc1.url, irinaProc2.url],
     title: "Платформа по управлению закупками",
     teaser: "Нужно было собрать инструмент для управления закупками: видеть динамику цен, новых поставщиков и договоры, контролировать остатки и связывать объём закупок с расходом сырья в готовых блюдах.",
     description: [
@@ -219,6 +235,8 @@ const newCases: Case[] = [
     id: "ksenia-bonus-calculator",
     authorName: "Ксения Иванова",
     authorRole: "Руководитель аналитической поддержки бизнеса",
+    previewImage: kseniaCalc1.url,
+    galleryImages: [kseniaCalc1.url, kseniaCalc2.url],
     title: "Калькулятор согласования бонусов",
     teaser: "Сделать калькулятор бонуса, который сразу выдаёт менеджеру готовую рекомендацию, с прицелом на дальнейшую интеграцию с Bitrix для автоматического согласования у руководства.",
     description: [
