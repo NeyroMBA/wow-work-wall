@@ -20,6 +20,7 @@ import Wall from "./pages/Wall.tsx";
 import Pravda from "./pages/Pravda.tsx";
 import Security from "./pages/Security.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import YandexMetrika from "./components/YandexMetrika";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <YandexMetrika />
         <Routes>
           <Route path="/" element={<IndexV5 />} />
           <Route path="/gallery" element={<IndexV5 />} />
