@@ -148,7 +148,7 @@ const Section = ({ id, title, highlight, children, intro }: {
   </section>
 );
 
-const AcceleratorPage = () => {
+const AcceleratorPage = ({ hidePricing = false }: { hidePricing?: boolean }) => {
   const [signupOpen, setSignupOpen] = useState(false);
   const [activeCourse, setActiveCourse] = useState<string | null>(null);
   const { hash } = useLocation();
@@ -374,6 +374,7 @@ const AcceleratorPage = () => {
             })}
           </div>
 
+          {!hidePricing && (
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-xl mx-auto p-8 rounded-2xl border-2 border-primary/30 bg-background text-center mb-16" id="buy">
             <p className="text-sm text-muted-foreground mb-2">Стоимость</p>
             <p className="text-5xl font-bold text-foreground mb-6">
@@ -389,6 +390,7 @@ const AcceleratorPage = () => {
               Смотреть расчёт стоимости
             </Link>
           </motion.div>
+          )}
 
           <div className="text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">

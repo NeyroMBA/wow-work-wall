@@ -42,7 +42,8 @@ const App = () => (
           <Route path="/v6" element={<IndexV6 />} />
           <Route path="/v7" element={<IndexV7 />} />
           <Route path="/accelerator-ol" element={<AcceleratorPage />} />
-          <Route path="/accelerator" element={<AcceleratorPageNew />} />
+          <Route path="/accelerator" element={<AcceleratorPageNew hidePricing />} />
+          <Route path="/accelerator-price" element={<AcceleratorPageNew />} />
           <Route path="/cases" element={<CasesPageNew />} />
           <Route path="/pricing" element={<PricingPageNew />} />
           <Route path="/pricing-special" element={<PricingSpecialPage />} />
