@@ -21,7 +21,8 @@ const Navbar = ({ onSignupClick }: NavbarProps) => {
   const { pathname } = useLocation();
   const isInternalPage = pathname === "/cases" || pathname === "/pricing" || pathname === "/coworkings" || pathname === "/pricing-special";
   const links = acceleratorLinks.filter((l) => {
-    if (l.casesOnly && pathname !== "/accelerator" && pathname !== "/cases") return false;
+    if (l.casesOnly && pathname !== "/accelerator" && pathname !== "/accelerator-price" && pathname !== "/cases") return false;
+    if (pathname === "/accelerator" && l.label === "Стоимость") return false;
     return !(pathname === "/pricing-special" && l.label === "Стоимость");
   });
 
